@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文是关于针对Android O 通知渠道的总结。">
+<meta name="keywords" content="Notification Channels,Android O,通知渠道">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Android O 通知渠道总结">
+<meta property="og:url" content="https://shoewann0402.github.io/2018/01/08/about-android-o-notification-channels/index.html">
+<meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
+<meta property="og:description" content="本文是关于针对Android O 通知渠道的总结。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://shoewann0402.github.io/images/android-o-notification-channel-0.png">
+<meta property="og:updated_time" content="2018-01-08T07:40:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Android O 通知渠道总结">
+<meta name="twitter:description" content="本文是关于针对Android O 通知渠道的总结。">
+<meta name="twitter:image" content="https://shoewann0402.github.io/images/android-o-notification-channel-0.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://shoewann0402.github.io/2018/01/08/about-android-o-notification-channels/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>关于Android O 通知渠道总结 | Shoewann's Personal Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shoewann's Personal Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Love Google Technology , Just Do It !</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/shoewann0402" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2018/01/08/about-android-o-notification-channels/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shoewann">
+      <meta itemprop="description" content="Android Developer & Google Fans">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shoewann's Personal Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于Android O 通知渠道总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-01-08 10:56:22 / Modified: 15:40:38" itemprop="dateCreated datePublished" datetime="2018-01-08T10:56:22+08:00">2018-01-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/Notification/" itemprop="url" rel="index"><span itemprop="name">Notification</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018/01/08/about-android-o-notification-channels/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/01/08/about-android-o-notification-channels/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="/images/android-o-notification-channel-0.png" rel="gallery_cjs2y8rrv0029g8jx2w22iupx" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/android-o-notification-channel-0.png" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <blockquote>
+<p>本文是关于针对Android O 通知渠道的总结。 </p>
+</blockquote>
+<a id="more"></a>
+<p>Android O 引入了通知渠道<a href="https://developer.android.google.cn/guide/topics/ui/notifiers/notifications.html#ManageChannels" target="_blank" rel="noopener">Notification Channels</a>，更好的方便用户管理通知栏消息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NotificationChannel</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">NotificationChannel</span> </span></span><br><span class="line"><span class="class"><span class="keyword">extends</span> <span class="title">Object</span> <span class="keyword">implements</span> <span class="title">Parcelable</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">java</span>.<span class="title">lang</span>.<span class="title">Object</span></span></span><br><span class="line"><span class="class">   ↳	<span class="title">android</span>.<span class="title">app</span>.<span class="title">NotificationChannel</span></span></span><br></pre></td></tr></table></figure>
+<p>距离上一次总结通知栏相关的东西好像有很久了，可以去<a href="http://shoewann.top/2016/05/12/Android-Notification-%E9%80%9A%E7%9F%A5%E6%A0%B7%E5%BC%8F%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener">这里查看</a></p>
+<p>今天我们从一个基本的通知示例开始，来总结下Android O 通知渠道相关的使用。</p>
+<h2 id="基本示例"><a href="#基本示例" class="headerlink" title="基本示例"></a>基本示例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建通知栏管理对象</span></span><br><span class="line">NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);</span><br><span class="line"><span class="comment">//为了版本兼容  选择V7包下的NotificationCompat进行构造</span></span><br><span class="line">NotificationCompat.Builder builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>);</span><br><span class="line"><span class="comment">//setTicker 在5.0以上不显示Ticker属性信息</span></span><br><span class="line">builder.setTicker(<span class="string">"状态栏显示的提示"</span>);;</span><br><span class="line"><span class="comment">//setContentTitle 通知栏通知的标题</span></span><br><span class="line">builder.setContentTitle(<span class="string">"内容标题"</span>);</span><br><span class="line"><span class="comment">//setContentText  通知栏通知的详细内容</span></span><br><span class="line">builder.setContentText(<span class="string">"内容文本信息"</span>);</span><br><span class="line"><span class="comment">//setAutoCancel 点击通知的清除按钮是否清除该消息（true/false）</span></span><br><span class="line">builder.setAutoCancel(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//setLargeIcon  通知消息上的大图标</span></span><br><span class="line">builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));</span><br><span class="line"><span class="comment">//setSmallIcon  通知上面的小图标</span></span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher);<span class="comment">//小图标</span></span><br><span class="line"><span class="comment">//创建一个意图</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://www.baidu.com"</span>));</span><br><span class="line">PendingIntent pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//setContentIntent  将意图设置到通知上</span></span><br><span class="line">builder.setContentIntent(pIntent);</span><br><span class="line"><span class="comment">//通知默认的声音 震动 呼吸灯</span></span><br><span class="line">builder.setDefaults(NotificationCompat.DEFAULT_ALL);</span><br><span class="line"><span class="comment">//构建通知</span></span><br><span class="line">Notification notification = builder.build();</span><br><span class="line"><span class="comment">//将构建好的通知添加到通知管理器中，执行通知</span></span><br><span class="line">mNotificationManager.notify(<span class="number">0</span>, notification);</span><br></pre></td></tr></table></figure>
+<p>这段代码很简单，已经添加了注释，没有什么可以说的。</p>
+<h2 id="差异复现"><a href="#差异复现" class="headerlink" title="差异复现"></a>差异复现</h2><h3 id="SDK-lt-8-0-API-26"><a href="#SDK-lt-8-0-API-26" class="headerlink" title="SDK &lt; 8.0(API 26)"></a>SDK &lt; 8.0(API 26)</h3><p>这种情况，上面的示例代码是能无障碍的将通知消息显示出来。</p>
+<h3 id="SDK-gt-8-0-API-26"><a href="#SDK-gt-8-0-API-26" class="headerlink" title="SDK &gt; = 8.0(API 26)"></a>SDK &gt; = 8.0(API 26)</h3><p>这种情况，上面的示例代码，是死活都不会把通知消息显示出来的。</p>
+<p>在Android Oreo上的开发者选项中，新增加了一个<strong>show notification channel warnings</strong>的选项功能，可以通过<strong>Settings</strong> &gt; <strong>System</strong> &gt; <strong>Developer options</strong> 下找到开启。</p>
+<p>再次运行代码后，界面上会弹出类似于下面的这样一个<strong>Toast</strong>,告知你的通知消息post失败，详细情况查看log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Developer warning for package &quot;com.shoewann.notificationsimple&quot; </span><br><span class="line">Failed to post notification on channel &quot;null&quot; </span><br><span class="line">See log for more details</span><br></pre></td></tr></table></figure>
+<p>查看log是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E/NotificationService: No Channel found for pkg=com.shoewann.notificationsimple, channelId=null, id=0, tag=null, opPkg=com.shoewann.notificationsimple, callingUid=10083, userId=0, incomingUserId=0, notificationUid=10083, notification=Notification(channel=null pri=0 contentView=null vibrate=default sound=default tick defaults=0xffffffff flags=0x11 color=0x00000000 vis=PRIVATE)</span><br></pre></td></tr></table></figure>
+<p>通过跟踪查看相关源代码，分析到了，在NotificationCompat这个类中的Builder方法。</p>
+<p>在版本<strong>com.android.support:appcompat-v7:26.1.0</strong>的兼容库中，可以看到传一个参数的<strong>Builder(Context context)</strong>方法已经过期，使用传入两个参数的<strong>Builder(@NonNull Context context, @NonNull String channelId)</strong>新方法代替。</p>
+<p><strong>注意</strong>：该新方法需要传入的这两个参数都是标注了<strong>@NonNull</strong>，也就是<strong>不能传入null</strong>或者<strong>未初始化的变量</strong>。</p>
+<h2 id="兼容代码"><a href="#兼容代码" class="headerlink" title="兼容代码"></a>兼容代码</h2><p>通过以上的分析，也就是我们在Android Oreo上面使用Notification，就必须要为你的Notification创建一个Notification Channels(通知渠道)。</p>
+<h3 id="创建通知渠道"><a href="#创建通知渠道" class="headerlink" title="创建通知渠道"></a>创建通知渠道</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">NotificationCompat.Builder builder = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    NotificationChannel channel = <span class="keyword">new</span> NotificationChannel(<span class="string">"通知渠道ID"</span>,</span><br><span class="line">                    <span class="string">"通知渠道名称"</span>, NotificationManager.IMPORTANCE_DEFAULT);</span><br><span class="line">    channel.enableLights(<span class="keyword">true</span>); <span class="comment">//设置开启指示灯，如果设备有的话</span></span><br><span class="line">    channel.setLightColor(Color.RED); <span class="comment">//设置指示灯颜色</span></span><br><span class="line">    channel.setShowBadge(<span class="keyword">true</span>); <span class="comment">//设置是否显示角标</span></span><br><span class="line">    channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);<span class="comment">//设置是否应在锁定屏幕上显示此频道的通知</span></span><br><span class="line">    channel.setDescription(<span class="string">"通知渠道描述"</span>);<span class="comment">//设置渠道描述</span></span><br><span class="line">    channel.setVibrationPattern(<span class="keyword">new</span> <span class="keyword">long</span>[]&#123;<span class="number">100</span>,<span class="number">200</span>,<span class="number">300</span>,<span class="number">400</span>,<span class="number">500</span>,<span class="number">600</span>&#125;);<span class="comment">//设置震动频率</span></span><br><span class="line">    channel.setBypassDnd(<span class="keyword">true</span>);<span class="comment">//设置是否绕过免打扰模式</span></span><br><span class="line">    mNotificationManager.createNotificationChannel(channel);</span><br><span class="line">    createNotificationChannelGroups();</span><br><span class="line">    setNotificationChannelGroups(channel);</span><br><span class="line">    builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>, <span class="string">"通知渠道ID"</span>);</span><br><span class="line">    builder.setBadgeIconType(BADGE_ICON_SMALL);<span class="comment">//设置显示角标的样式</span></span><br><span class="line">    builder.setNumber(<span class="number">3</span>);<span class="comment">//设置显示角标的数量</span></span><br><span class="line">    builder.setTimeoutAfter(<span class="number">5000</span>);<span class="comment">//设置通知被创建多长时间之后自动取消通知栏的通知。</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//setContentTitle 通知栏通知的标题</span></span><br><span class="line">builder.setContentTitle(<span class="string">"内容标题"</span>);</span><br><span class="line"><span class="comment">//setContentText  通知栏通知的详细内容</span></span><br><span class="line">builder.setContentText(<span class="string">"内容文本信息"</span>);</span><br><span class="line"><span class="comment">//setAutoCancel 点击通知的清除按钮是否清除该消息（true/false）</span></span><br><span class="line">builder.setAutoCancel(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//setLargeIcon  通知消息上的大图标</span></span><br><span class="line">builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));</span><br><span class="line"><span class="comment">//setSmallIcon  通知上面的小图标</span></span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher);<span class="comment">//小图标</span></span><br><span class="line"><span class="comment">//创建一个意图</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://www.baidu.com"</span>));</span><br><span class="line">PendingIntent pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//setContentIntent  将意图设置到通知上</span></span><br><span class="line">builder.setContentIntent(pIntent);</span><br><span class="line"><span class="comment">//通知默认的声音 震动 呼吸灯</span></span><br><span class="line">builder.setDefaults(NotificationCompat.DEFAULT_ALL);</span><br><span class="line"><span class="comment">//构建通知</span></span><br><span class="line">Notification notification = builder.build();</span><br><span class="line"><span class="comment">//将构建好的通知添加到通知管理器中，执行通知</span></span><br><span class="line">mNotificationManager.notify(<span class="number">0</span>, notification);</span><br></pre></td></tr></table></figure>
+<p>效果图:</p>
+<p><img src="/images/android-o-notification-channel-1.png" alt="android-o-notification-channel-1"></p>
+<p>向右滑动通知消息，可以显示延迟本条消息显示和设置选项</p>
+<p><img src="/images/android-o-notification-channel-2.png" alt="android-o-notification-channel-2"></p>
+<p>点击左边的延迟本条消息显示的时间</p>
+<p><img src="/images/android-o-notification-channel-3.png" alt="android-o-notification-channel-3"></p>
+<p>点击右边的设置选项，可以显示进入操作通知的设置入口</p>
+<p><img src="/images/android-o-notification-channel-4.png" alt="android-o-notification-channel-4"></p>
+<p>在桌面上的快捷方式上会显示角标</p>
+<p><img src="/images/android-o-notification-channel-6.png" alt="android-o-notification-channel-6"></p>
+<p>长按快捷方式，会在快捷方式旁边弹出通知栏窗口，显示通知栏消息等信息。</p>
+<p><img src="/images/android-o-notification-channel-7.png" alt="android-o-notification-channel-7"></p>
+<h3 id="移除通知渠道"><a href="#移除通知渠道" class="headerlink" title="移除通知渠道"></a>移除通知渠道</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    mNotificationManager.deleteNotificationChannel(<span class="string">"通知渠道ID"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="跳转到通知渠道设置"><a href="#跳转到通知渠道设置" class="headerlink" title="跳转到通知渠道设置"></a>跳转到通知渠道设置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);</span><br><span class="line">    intent.putExtra(Settings.EXTRA_CHANNEL_ID, <span class="string">"通知渠道ID"</span>);</span><br><span class="line">    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());</span><br><span class="line">    startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/android-o-notification-channel-5.png" alt="android-o-notification-channel-5"></p>
+<h3 id="创建通知渠道组"><a href="#创建通知渠道组" class="headerlink" title="创建通知渠道组"></a>创建通知渠道组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    mNotificationManager.createNotificationChannelGroup(<span class="keyword">new</span> NotificationChannelGroup(<span class="string">"通知渠道组ID"</span>, <span class="string">"通知渠道组名称"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="绑定通知渠道组"><a href="#绑定通知渠道组" class="headerlink" title="绑定通知渠道组"></a>绑定通知渠道组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    channel.setGroup(<span class="string">"通知渠道组ID"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本文只是简要的总结了通知渠道的基本用法，还有更多的使用方法，请参考<a href="https://developer.android.google.cn/reference/android/app/NotificationChannel.html" target="_blank" rel="noopener">Android官方文档-NotificationChannel</a>。关于本文如有不足之处，欢迎指正，谢谢。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得本文对您有用，请随意 ¥打赏支持 ！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechat-reward-image/wechat-reward-image.png" alt="Shoewann WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay-reward-image/alipay-reward-image.jpg" alt="Shoewann Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Notification-Channels/" rel="tag"># Notification Channels</a>
+          
+            <a href="/tags/Android-O/" rel="tag"># Android O</a>
+          
+            <a href="/tags/通知渠道/" rel="tag"># 通知渠道</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/01/about-android-windowmanager-behavior-changes/" rel="next" title="关于Android WindowManager行为变化">
+                <i class="fa fa-chevron-left"></i> 关于Android WindowManager行为变化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/07/android-studio-switching-to-d8-dexer/" rel="prev" title="Android Studio 切换到D8 dexer">
+                Android Studio 切换到D8 dexer <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Shoewann">
+            
+              <p class="site-author-name" itemprop="name">Shoewann</p>
+              <p class="site-description motion-element" itemprop="description">Android Developer & Google Fans</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">123</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/shoewann0402" title="GitHub &rarr; https://github.com/shoewann0402" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:xuwang0402@gmail.com" title="E-Mail &rarr; mailto:xuwang0402@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/Shoewann" title="Weibo &rarr; https://weibo.com/Shoewann" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://plus.google.com/u/0/105335827263542549191" title="Google &rarr; https://plus.google.com/u/0/105335827263542549191" rel="noopener" target="_blank"><i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/f556edce86df418" title="Twitter &rarr; https://twitter.com/f556edce86df418" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.facebook.com/profile.php?id=100007875337753" title="FB Page &rarr; https://www.facebook.com/profile.php?id=100007875337753" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developers.google.cn" title="https://developers.google.cn" rel="noopener" target="_blank">Google Developers</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://chinagdg.org/" title="http://chinagdg.org/" rel="noopener" target="_blank">China GDG</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yangbo.tech/" title="https://yangbo.tech/" rel="noopener" target="_blank">Geek Dev</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/287008" title="http://weibo.com/287008" rel="noopener" target="_blank">Google谷歌爱好者</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.pixcn.cn/" title="http://www.pixcn.cn/" rel="noopener" target="_blank">Pixel 中文网</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本示例"><span class="nav-number">1.</span> <span class="nav-text">基本示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差异复现"><span class="nav-number">2.</span> <span class="nav-text">差异复现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SDK-lt-8-0-API-26"><span class="nav-number">2.1.</span> <span class="nav-text">SDK &lt; 8.0(API 26)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDK-gt-8-0-API-26"><span class="nav-number">2.2.</span> <span class="nav-text">SDK &gt; = 8.0(API 26)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容代码"><span class="nav-number">3.</span> <span class="nav-text">兼容代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建通知渠道"><span class="nav-number">3.1.</span> <span class="nav-text">创建通知渠道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移除通知渠道"><span class="nav-number">3.2.</span> <span class="nav-text">移除通知渠道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跳转到通知渠道设置"><span class="nav-number">3.3.</span> <span class="nav-text">跳转到通知渠道设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建通知渠道组"><span class="nav-number">3.4.</span> <span class="nav-text">创建通知渠道组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定通知渠道组"><span class="nav-number">3.5.</span> <span class="nav-text">绑定通知渠道组</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shoewann</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1259071960&web_id=1259071960"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

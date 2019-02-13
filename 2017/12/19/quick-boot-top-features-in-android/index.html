@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="原文来自：Quick Boot &amp;amp; the Top Features in the Android Emulator  今天我们很高兴的宣布Android模拟器快速启动。使用快速启动，您能在6秒内启动模拟器。快速启动通过快照模拟器会话来工作，因此您能够在几秒钟内重新加载。快速启动是在Android Studio 3.0 canary更新通道首次发布，我们很高兴的的在今天的更新中将这一个功">
+<meta name="keywords" content="Android Studio,Android,Android Emulator">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 模拟器快速启动和主要功能">
+<meta property="og:url" content="https://shoewann0402.github.io/2017/12/19/quick-boot-top-features-in-android/index.html">
+<meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
+<meta property="og:description" content="原文来自：Quick Boot &amp;amp; the Top Features in the Android Emulator  今天我们很高兴的宣布Android模拟器快速启动。使用快速启动，您能在6秒内启动模拟器。快速启动通过快照模拟器会话来工作，因此您能够在几秒钟内重新加载。快速启动是在Android Studio 3.0 canary更新通道首次发布，我们很高兴的的在今天的更新中将这一个功">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://shoewann0402.github.io/images/image3.png">
+<meta property="og:updated_time" content="2017-12-19T10:50:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 模拟器快速启动和主要功能">
+<meta name="twitter:description" content="原文来自：Quick Boot &amp;amp; the Top Features in the Android Emulator  今天我们很高兴的宣布Android模拟器快速启动。使用快速启动，您能在6秒内启动模拟器。快速启动通过快照模拟器会话来工作，因此您能够在几秒钟内重新加载。快速启动是在Android Studio 3.0 canary更新通道首次发布，我们很高兴的的在今天的更新中将这一个功">
+<meta name="twitter:image" content="https://shoewann0402.github.io/images/image3.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://shoewann0402.github.io/2017/12/19/quick-boot-top-features-in-android/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android 模拟器快速启动和主要功能 | Shoewann's Personal Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shoewann's Personal Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Love Google Technology , Just Do It !</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/shoewann0402" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2017/12/19/quick-boot-top-features-in-android/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shoewann">
+      <meta itemprop="description" content="Android Developer & Google Fans">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shoewann's Personal Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android 模拟器快速启动和主要功能
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-12-19 11:13:19 / Modified: 18:50:42" itemprop="dateCreated datePublished" datetime="2017-12-19T11:13:19+08:00">2017-12-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/Android-Emulator/" itemprop="url" rel="index"><span itemprop="name">Android Emulator</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2017/12/19/quick-boot-top-features-in-android/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/12/19/quick-boot-top-features-in-android/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="/images/image3.png" rel="gallery_cjs2y8ruj005ag8jxknlyy54f" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/image3.png" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <blockquote>
+<p>原文来自：<a href="https://android-developers.googleblog.com/2017/12/quick-boot-top-features-in-android.html" target="_blank" rel="noopener">Quick Boot &amp; the Top Features in the Android Emulator</a></p>
+</blockquote>
+<p>今天我们很高兴的宣布Android模拟器快速启动。使用快速启动，您能在6秒内启动模拟器。快速启动通过快照模拟器会话来工作，因此您能够在几秒钟内重新加载。快速启动是在Android Studio 3.0 canary更新通道首次发布，我们很高兴的的在今天的更新中将这一个功能作为稳定版本发布。</p>
+<a id="more"></a>
+<p>除了这个新功能以外，我们也想突出显示最近发布的一些主要功能，自从<a href="https://android-developers.googleblog.com/2015/12/android-studio-20-preview-android.html" target="_blank" rel="noopener">两年前</a>对Android模拟器进行了改造，我们继续将焦点放在改善速度、兼容性和添加一些丰富的功能，加速您的应用程序开发和测试。随着最近所有的变化，今天绝对值得去更新Android模拟器到最新版并使用它。</p>
+<h2 id="主要的5个功能"><a href="#主要的5个功能" class="headerlink" title="主要的5个功能"></a>主要的5个功能</h2><blockquote>
+<ul>
+<li><strong>快速启动</strong> —— 今天作为一个稳定功能发布，快速启动允许您在6秒之内恢复您的Android模拟器会话。首次您开始启动Android模拟器的Android虚拟设备，它必须执行冷启动(就像启动设备一样)，但是随后的启动速度很快，系统将会恢复在您最后关闭模拟器时的状态(像唤醒设备一样)。我们通过完全重新设计旧式仿真器快照架构，使用虚拟传感器和GPU加速工作来完成了这个。无需额外的请求，因为快速启动在Android模拟器v27.0.2版本上是默认开启的。</li>
+</ul>
+</blockquote>
+<p><img src="/images/image2.gif" alt="image2.gif"></p>
+<blockquote>
+<ul>
+<li><strong>Android CTS 兼容性</strong> —— 每发布一个版本的Android SDK，我们都将确保Android模拟器已经为您的应用程序做好了需要的开发准备，从测试向后兼容的Android KitKat到集成了最新APIs的开发者预览版。对于增加模拟器系统镜像产品的质量和可靠性，我们现在从Android Nougat (API 24) 或者更高的对<a href="https://source.android.com/compatibility/" target="_blank" rel="noopener">Android 兼容性的测试套件</a>(CTS)构建有资格的最终版Android系统镜像 — 相同的测试套件官方Android物理设备必须通过。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Google Play支持</strong> —— 我们知道大多数的应用程序开发者使用Google play 服务，在Android模拟器系统镜像上是很难保持服务的最新。为了解决这个问题，我们现在提供的Android系统镜像包括了Play商店的应用程序。Google Play 服务现开始从Android Nougat (API 24)可以使用了。这些新的模拟器镜像，您可以从您模拟器里面的Play 应用商店里面更新Google Play服务，正如您会在物理设备上操作的一样。还有就是，您现在能够使用Google Play应用商店测试结束到结束安装、更新和购买流程。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>性能提高</strong> —— 使模拟器更快速以及性能是我们团队正在进行的一个目标。我们持续的观察运行在您的开发机器上的模拟器对性能的影响，尤其是内存使用情况。使用最新版的Android模拟器，我们现在按需求分配RAM(内存)，而不是在您的AVD中定义最大的内存大小去分配和固定内存。对于Linux (KVM) 、macOS® (Hypervisor.内核)我们通过挖掘本地虚拟管理程序来实现这个，以及对Microsoft® Windows®增强Intel® HAXM (v6.2.1 或者更高版本)，它使用新的按需要分配内存。</li>
+</ul>
+</blockquote>
+<p>额外的还有，再过去的几个版本中，我们有改善CPU和I/O性能，同时增强了GPU的性能，包括了对OpenGL ES 3.0的支持。看一下像ADB推送这样常见的任务，突出了Android CPU和I/O管道的改进：</p>
+<p><img src="/images/image5.png" alt="image5.png"></p>
+<p>对于GPU性能，我们创建了一个简单的<a href="https://github.com/google/gpu-emulation-stress-test" target="_blank" rel="noopener">GPU仿真压力测试应用程序</a>去测量时间的推移。我们发现最最新版本的模拟器能够渲染比之前更高速的帧率，它是少数模拟器之一能够准确的按照Android规范去渲染OpenGL ES。</p>
+<p><img src="/images/image1.gif" alt="image1.gif"></p>
+<p><img src="/images/gpu_emulator_stress_test_chart.png" alt="gpu_emulator_stress_test_chart.png"></p>
+<h2 id="更多的功能点"><a href="#更多的功能点" class="headerlink" title="更多的功能点"></a>更多的功能点</h2><p>除了这些主要的功能以外，这儿还有一大堆额外的功能，我们在过去的一年中已经添加到了Android 模拟器，您可能还不知道：</p>
+<blockquote>
+<ul>
+<li><strong>Wi-Fi支持</strong> —— 从API 24的系统镜像开始，您能创建一个包含了连接到一个虚拟的数据网络和一个虚拟的Wi-Fi访问点的AVD</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Google cast 的支持</strong> —— 当使用一个Google Play 系统镜像，您能够在相同的Wi-Fi网络下够投屏幕和音频内容到Chromecast设备。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>拖拽APKs和文件</strong> —— 简单的拖拽一个apk到Android模拟器的窗口去触发一个app应用程序的安装。您也能够拖拽任意其它文件，并在您的Android虚拟设备里的/Downloads文件夹下发现它们。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>主机复制&amp;粘贴</strong> —— 您能够复制&amp;粘贴文本在Android模拟器和您的开发机器之间。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>虚拟的两个手指捏&amp;缩放</strong> —— 当您的应用程序像集成了Google Maps，按下Ctrl键(在Microsoft® Windows®或者Linux上)或者⌘ (在macOS®上)，并在屏幕上出现手指叠加以帮助捏和缩放操作。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>GPS位置</strong> —— 手动选择一个GPS点或者在Android模拟器的位置下选项卡下设置GPS点。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>虚拟传感器</strong> —— 在扩展控制面板上是一个支持传感器专用的页面，包括了加速度，方向，接近度以及更多</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>摄像头支持</strong> —— 您能够使用一个摄像头或者您的笔记本内置的摄像头作为一个在AVD里面虚拟的摄像头。在AVD设置页面里面的高级设置页面验证您的相机设置。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>主机键盘</strong> —— 您能够使用您真实的键盘去输入文本内容到Android虚拟设备。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>虚拟短信和拨号</strong> —— 在扩展控制面板，您能够触发一个虚拟的短信或者拨号的去测试您应用里电话的依赖。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>屏幕缩放</strong> —— 在主工具栏，点击放大镜图标进入放大模式，然后选择一个您需要检测的屏幕区域。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>窗口重置大小</strong> —— 简单的拖拽Android模拟器窗口的一个角去改变您想要的大小</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>网络代理的支持</strong> —— 通过到代理选项卡下的设置页面，添加一个自定义的HTTP代理到您的Android模拟器会话。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Bug 报告</strong> —— 您能够通过使用在扩展控制面板的Bug报告部分，快速的为您的应用程序生成一个bug报告，并分享到您的团队或者发送反馈到Google</li>
+</ul>
+</blockquote>
+<p>了解更多关于Android模拟器的内容，参考<a href="https://developer.android.com/studio/run/emulator.html" target="_blank" rel="noopener">模拟器文档</a></p>
+<h2 id="从这里开始"><a href="#从这里开始" class="headerlink" title="从这里开始"></a>从这里开始</h2><p>这些所有的功能和改善都可以使用了，去下载并现在使用Android 模拟器v27.0.2+，您能够从Android Studio中的SDK Manager里面获得。对于一个快速的体验，我们建议您创建和运行x86版本的模拟器系统镜像，使用最新版本的Android 模拟器，安装 Intel® HAXM(如果适用)和显卡驱动。</p>
+<p>我们感谢您反馈任何您喜欢的意见建议，问题或者您希望看到的功能。如果您发现了一个bug、issue或者有一个功能请求随时<a href="https://developer.android.com/studio/report-bugs.html#emulator-bugs" target="_blank" rel="noopener">提出问题</a>,我们无疑没有完成，但是我们希望您对到目前为止的改进感到兴奋。</p>
+<blockquote>
+<p>以上是对Google官网博客文章的翻译，如果不足，欢迎指正，谢谢</p>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得本文对您有用，请随意 ¥打赏支持 ！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechat-reward-image/wechat-reward-image.png" alt="Shoewann WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay-reward-image/alipay-reward-image.jpg" alt="Shoewann Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Android-Emulator/" rel="tag"># Android Emulator</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/18/gdd-china-2017-in-shanghai-trip-record/" rel="next" title="GDD China 2017之旅">
+                <i class="fa fa-chevron-left"></i> GDD China 2017之旅
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/01/about-android-windowmanager-behavior-changes/" rel="prev" title="关于Android WindowManager行为变化">
+                关于Android WindowManager行为变化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Shoewann">
+            
+              <p class="site-author-name" itemprop="name">Shoewann</p>
+              <p class="site-description motion-element" itemprop="description">Android Developer & Google Fans</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">123</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/shoewann0402" title="GitHub &rarr; https://github.com/shoewann0402" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:xuwang0402@gmail.com" title="E-Mail &rarr; mailto:xuwang0402@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/Shoewann" title="Weibo &rarr; https://weibo.com/Shoewann" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://plus.google.com/u/0/105335827263542549191" title="Google &rarr; https://plus.google.com/u/0/105335827263542549191" rel="noopener" target="_blank"><i class="fa fa-fw fa-google"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/f556edce86df418" title="Twitter &rarr; https://twitter.com/f556edce86df418" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.facebook.com/profile.php?id=100007875337753" title="FB Page &rarr; https://www.facebook.com/profile.php?id=100007875337753" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://developers.google.cn" title="https://developers.google.cn" rel="noopener" target="_blank">Google Developers</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://chinagdg.org/" title="http://chinagdg.org/" rel="noopener" target="_blank">China GDG</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yangbo.tech/" title="https://yangbo.tech/" rel="noopener" target="_blank">Geek Dev</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://weibo.com/287008" title="http://weibo.com/287008" rel="noopener" target="_blank">Google谷歌爱好者</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.pixcn.cn/" title="http://www.pixcn.cn/" rel="noopener" target="_blank">Pixel 中文网</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要的5个功能"><span class="nav-number">1.</span> <span class="nav-text">主要的5个功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多的功能点"><span class="nav-number">2.</span> <span class="nav-text">更多的功能点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从这里开始"><span class="nav-number">3.</span> <span class="nav-text">从这里开始</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shoewann</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1259071960&web_id=1259071960"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
