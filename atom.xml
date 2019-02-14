@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Shoewann&#39;s Personal Blog</title>
-  <icon>https://www.gravatar.com/avatar/7c21c39eee5be8a3437916ad72e65bb5</icon>
+  
   <subtitle>Love Google Technology , Just Do It !</subtitle>
   <link href="/atom.xml" rel="self"/>
   
@@ -11,7 +11,7 @@
   
   <author>
     <name>Shoewann</name>
-    <email>xuwang0402@gmail.com</email>
+    
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
