@@ -170,8 +170,8 @@
       </categories>
       <tags>
         <tag>Android O</tag>
-        <tag>AndroidO</tag>
         <tag>Developer Preview</tag>
+        <tag>AndroidO</tag>
         <tag>Android O Developer Preview</tag>
         <tag>DP4</tag>
       </tags>
@@ -201,8 +201,8 @@
         <category>IoT</category>
       </categories>
       <tags>
-        <tag>Developer Preview</tag>
         <tag>Android Things</tag>
+        <tag>Developer Preview</tag>
         <tag>IoT</tag>
       </tags>
   </entry>
@@ -247,8 +247,8 @@
       </categories>
       <tags>
         <tag>AndroidO</tag>
-        <tag>Security</tag>
         <tag>Safe Browsing</tag>
+        <tag>Security</tag>
       </tags>
   </entry>
   <entry>
@@ -265,10 +265,10 @@
         <tag>Android O</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
+        <tag>Developer Preview</tag>
         <tag>android o apis</tag>
         <tag>AndroidO</tag>
         <tag>API</tag>
-        <tag>Developer Preview</tag>
         <tag>Project Treble</tag>
       </tags>
   </entry>
@@ -716,8 +716,8 @@
       <tags>
         <tag>Android</tag>
         <tag>Featured</tag>
-        <tag>Apps</tag>
         <tag>Google I/O</tag>
+        <tag>Apps</tag>
       </tags>
   </entry>
   <entry>
