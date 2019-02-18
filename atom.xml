@@ -105,9 +105,9 @@
       <category term="Notification" scheme="https://shoewann0402.github.io/categories/Android/Notification/"/>
     
     
-      <category term="Notification Channels" scheme="https://shoewann0402.github.io/tags/Notification-Channels/"/>
-    
       <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
+    
+      <category term="Notification Channels" scheme="https://shoewann0402.github.io/tags/Notification-Channels/"/>
     
       <category term="通知渠道" scheme="https://shoewann0402.github.io/tags/%E9%80%9A%E7%9F%A5%E6%B8%A0%E9%81%93/"/>
     
@@ -135,9 +135,9 @@
       <category term="WindowManager" scheme="https://shoewann0402.github.io/categories/Android/WindowManager/"/>
     
     
-      <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
-    
       <category term="WindowManager" scheme="https://shoewann0402.github.io/tags/WindowManager/"/>
+    
+      <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
     
       <category term="Android M" scheme="https://shoewann0402.github.io/tags/Android-M/"/>
     
@@ -393,9 +393,9 @@
     
       <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
     
-      <category term="AndroidO" scheme="https://shoewann0402.github.io/tags/AndroidO/"/>
-    
       <category term="Developer Preview" scheme="https://shoewann0402.github.io/tags/Developer-Preview/"/>
+    
+      <category term="AndroidO" scheme="https://shoewann0402.github.io/tags/AndroidO/"/>
     
       <category term="Android O Developer Preview" scheme="https://shoewann0402.github.io/tags/Android-O-Developer-Preview/"/>
     
@@ -461,9 +461,9 @@
       <category term="IoT" scheme="https://shoewann0402.github.io/categories/Android/AndroidThings/IoT/"/>
     
     
-      <category term="Developer Preview" scheme="https://shoewann0402.github.io/tags/Developer-Preview/"/>
-    
       <category term="Android Things" scheme="https://shoewann0402.github.io/tags/Android-Things/"/>
+    
+      <category term="Developer Preview" scheme="https://shoewann0402.github.io/tags/Developer-Preview/"/>
     
       <category term="IoT" scheme="https://shoewann0402.github.io/tags/IoT/"/>
     
@@ -597,13 +597,13 @@
     
       <category term="Featured" scheme="https://shoewann0402.github.io/tags/Featured/"/>
     
+      <category term="Developer Preview" scheme="https://shoewann0402.github.io/tags/Developer-Preview/"/>
+    
       <category term="android o apis" scheme="https://shoewann0402.github.io/tags/android-o-apis/"/>
     
       <category term="AndroidO" scheme="https://shoewann0402.github.io/tags/AndroidO/"/>
     
       <category term="API" scheme="https://shoewann0402.github.io/tags/API/"/>
-    
-      <category term="Developer Preview" scheme="https://shoewann0402.github.io/tags/Developer-Preview/"/>
     
       <category term="Project Treble" scheme="https://shoewann0402.github.io/tags/Project-Treble/"/>
     
