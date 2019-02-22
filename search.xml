@@ -40,8 +40,8 @@
         <category>Notification</category>
       </categories>
       <tags>
-        <tag>Android O</tag>
         <tag>Notification Channels</tag>
+        <tag>Android O</tag>
         <tag>通知渠道</tag>
       </tags>
   </entry>
@@ -54,8 +54,8 @@
         <category>WindowManager</category>
       </categories>
       <tags>
-        <tag>WindowManager</tag>
         <tag>Android O</tag>
+        <tag>WindowManager</tag>
         <tag>Android M</tag>
       </tags>
   </entry>
@@ -262,9 +262,9 @@
         <category>Google I/O 2017</category>
       </categories>
       <tags>
-        <tag>Android O</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
+        <tag>Android O</tag>
         <tag>Developer Preview</tag>
         <tag>android o apis</tag>
         <tag>AndroidO</tag>
@@ -319,9 +319,9 @@
       <tags>
         <tag>Android</tag>
         <tag>Android Go</tag>
-        <tag>Android O</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
+        <tag>Android O</tag>
         <tag>Developer Preview</tag>
         <tag>Google I/O</tag>
         <tag>Android TV</tag>
