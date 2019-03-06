@@ -55,8 +55,8 @@
         <category>Notification</category>
       </categories>
       <tags>
-        <tag>Android O</tag>
         <tag>Notification Channels</tag>
+        <tag>Android O</tag>
         <tag>通知渠道</tag>
       </tags>
   </entry>
@@ -69,8 +69,8 @@
         <category>WindowManager</category>
       </categories>
       <tags>
-        <tag>WindowManager</tag>
         <tag>Android O</tag>
+        <tag>WindowManager</tag>
         <tag>Android M</tag>
       </tags>
   </entry>
@@ -185,8 +185,8 @@
       </categories>
       <tags>
         <tag>Android O</tag>
-        <tag>Developer Preview</tag>
         <tag>AndroidO</tag>
+        <tag>Developer Preview</tag>
         <tag>Android O Developer Preview</tag>
         <tag>DP4</tag>
       </tags>
@@ -216,8 +216,8 @@
         <category>IoT</category>
       </categories>
       <tags>
-        <tag>Android Things</tag>
         <tag>Developer Preview</tag>
+        <tag>Android Things</tag>
         <tag>IoT</tag>
       </tags>
   </entry>
@@ -280,10 +280,10 @@
         <tag>Android O</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
-        <tag>Developer Preview</tag>
         <tag>android o apis</tag>
         <tag>AndroidO</tag>
         <tag>API</tag>
+        <tag>Developer Preview</tag>
         <tag>Project Treble</tag>
       </tags>
   </entry>
