@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android Jetpack WorkManager 稳定发布]]></title>
+    <url>%2F2019%2F03%2F06%2Fandroid-jetpack-workmanager-stable%2F</url>
+    <content type="text"><![CDATA[原文来自: Android Jetpack WorkManager Stable Release 使用WorkManager的方式简化您的后台管理 今天我们非常高兴的宣布Android Jetpack WorkManager 1.0 稳定版发布。我们想感谢许多在我们开发社区的您，一路上为我们给予反馈和bug记录 —— 我们到达了这里，感谢您的帮助！ 当我们通过开发者看到面临的主要问题时，我们看见了做可靠的后台处理和友好的电量管理是一个巨大的挑战。这意味着定期刷新内容或者上传您的日志是复杂的。不同的Android版本为工作提供了不同的工具，它们每一个都有自己怪异的API。比如说，监听网络或者存储可用性以及自动重试您的任务涉及到大量工作。 我们对于这些挑战的回答是WorkManager。在Google I/O 2018上，我们介绍了Android Jetpack WorkManager库的预览,并且从那之后在它上面迭代了额外的功能核和bug修复，感谢您宝贵的意见。 WorkManager的目标就是为了您操作后台使其简单。WorkManager考虑到了像电量优化、存储或者网络可用性的约束，同事当满足适当的条件它只能运行它的任务。它也知道去重试或者重新调度您的工作——即使您的设备或者app重启了。 我们相信ＷOrkManager是友好的，亲切的API,能够处理好Android最复杂的部分之一，您可以将焦点放在让您的App独特代码上。 ＷorkManager 亮点这里是WorkManager一些关键点： 让您设置约束，比如网络状态或者充电状态、任务在运行时 支持异步一次性和周期性 支持带输入和输出的链式任务 确保任务执行，及时APP或者设备重启 支持Android 4.0+ (API 14+) 观看和阅读下面去学习在您的APP里面什么时候以及如何使用WorkManager去简化管理后台工作 Android Jetpack: 介绍WorkManager 何时使用 WorkManagerWorkManager是针对于能够被延期任务的最佳套件，但是即使是应用程序或者设备重启(比如: 使用后端服务定期同步数据以及上传日志或者分析数据) 也是仍然有望运行 对于像需要立即运行去发送即时消息或者APP在退出之后不需要立即运行的任务，去看看后台处理向导 了解哪一种解决方案满足您的需求。 如何使用 WorkManager开始使用WorkManager API, 添加在Google’s Maven repository上WorkManager可用的Java或者Kotlin依赖到您应用程序的build.gradle文件: 123456789dependencies &#123; def work_version = 1.0.0 // Java implementation "android.arch.work:work-runtime:$work_version" // Kotlin KTX + coroutines implementation "android.arch.work:work-runtime-ktx:$work_version" &#125; 现在，只需要将Worker子类化并利用doWork()实现您的后台工作，并用WorkManager加入列队。 123456789101112131415161718192021class MyWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, params) &#123; override fun WorkerResult doWork() &#123; //在这里完成一些需要在后台处理的工作 ..... return Result.success() &#125;&#125;// 可选, 添加像电源、网络可用性的约束val constraints: Constraints = Constraints.Builder() .setRequiresCharging(true) .setRequiredNetworkType(NetworkType.CONNECTED) .build()val myWork = OneTimeWorkRequestBuilder&lt;MyWorker&gt;() .setConstraints(constraints).build()// 现在，列队您的工作WorkManager.getInstance().enqueue(myWork) WorkManager当识别到您的设备正在充电且网络是可用时，它将负责运行您的任务。 为何使用 WorkManager向后兼容WorkManager将利用正确的调度API:它使用了JobScheduler API在Android 6.0+ (API 23+)并且结合了之前版本上的AlarmManager和BroadcastReceiver 它也力求最佳行为，这样它就符合了在较新的Android API版本中引入系统优化去最大化电量和强制执行良好的APP行为。 比如说，当系统是进入了Doze 模式时，对于Android 6.0+(API 23+)的设备，WorkManager将在维护窗口期间调度后台工作， 可靠的调度利用WorkManager,您能够简单的添加像网络可用性或者充电状态的约束。当约束满足您的工作将会运行，并且如果在运行的过程中它们失败了将会自动重试。比如说，如果您的任务要求网络可用，当网络不再可用时任务将会停止并且之后重试。 您也能够使用LiveData监控工作状态和检索工作结果。当您的任务完成时，这样可以通知您的UI。 您的工作失败了的情况下，您可用通过配置backoff(退避)的处理方式来控制您的工作重试方式 WorkManager也能够重新调度您的工作，如果一个应用程序或者设备重启发生了，使用本地数据库记录您的工作。 控制您的工作方式我们明白每一个APP有不同的需求，您的任务也如此——甚至是在同一个APP内。WorkManager提供了简单但高度灵活的API表面，可以帮助您配置您的工作和运行它的方式。 利用OneTimeWorkRequest一次性调度或者PeriodicWorkRequest周期性调度 您也能够链接您的一次工作请求以按顺序或并行运行。如果任意链接工作失败，WorkManager力求确保剩下的工作链不会运行。阅读更多关于链接工作请求这里 如果您需要更多灵活性的WorkManager并行化方式以及消息工作，检出我们高级线程向导 开发者必须说什么redBus ，最大在线巴士票务平台，分享他们使用WorkManager的经验，以简化他们在Android应用中收集用户反馈的方式： “随着我们扩展到其他国家，反馈对于readBus至关重要。一个用户给予了关于在redBus应用程序中功能至关重要的反馈，但是当应用程序尝试去上传反馈到后端，这儿或许没有足够的网络覆盖或者电量WorkManager简化了redBus应用程序向后端提供信息的方式。WorkManager库处理像网络连接、电量参数的能力以及使用像AlarmManager或者JobScheduler适当的处理程序，使我们能够专注于构建业务逻辑并将执行复杂性卸载到WorkManager —— Dinesh Shanmugam Android Lead, redBus.in 开始使用 WorkManager根据您后台任务的需要，检出我们开始使用向导和codelab动手去使用WorkManager库 我们欣赏您的反馈，包括您喜欢的新功能以及您希望看到的新功能 如果您发现了一个bug或者issue,随时提出问题 以上是对Android官网博客文章的翻译，如果不足，欢迎指正，谢谢]]></content>
+      <categories>
+        <category>Android</category>
+        <category>Jetpack</category>
+        <category>WorkManager</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Jetpack</tag>
+        <tag>WorkManager</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android P 默认通过TLS保护用户]]></title>
     <url>%2F2018%2F04%2F11%2Fprotecting-users-with-tls-by-default-in%2F</url>
     <content type="text"><![CDATA[原文来自：Protecting users with TLS by default in Android P Android承诺去保持用户他们的设备和数据安全。保持数据安全之一的方式是,通过保护Android设备在进入或者离开中转传输层安全（TLS）的所有数据。正如我们在Android P开发者预览版中宣布的那样，我们将进一步改善这些保护，通过阻止目标版本是Android P的应用程序来自默认允许未加密的连接。 这是我们为保护Android用户，多年来做出的各种改变。去阻止偶发的未加密连接，在Android Marshmallow(6.0)中我们介绍了android:usesCleartextTraffic清单属性。在Android Nougat(7.0),我们通过创建Network Security Config(网络安全配置)功能特性去扩展了这个属性，允许应用程序去表明它们不打算在没有加密的情况下发送网络流量。在Android Nougat(7.0)和Android Oreo(8.0)，我们仍然允许明文连接。 我怎么更新我的应用程序？如果你的应用程序对于所有的连接都使用了TLS，然后你不需要做什么了。如果你还没有，就去使用TLS去加密所有的连接更新你的应用程序。如果你仍然需要去使用明文进行连接,继续去阅读一下最佳做法。 为什么我应该使用TLS？Android考虑到所有的网络可能有敌意，因此加密流量应该在所有时间对于所有的连接都被使用。移动设备尤其面临风险，因为它们经常会连接到许多不同的网络，比如在咖啡店的Wi-Fi 所有的流量应该被加密，无论内容是什么。作为任意一种未加密的连接能够注入内容被使用，对于那些可能弱势的客户端代码增加攻击面，或者攻击用户。更多信息，看我们过去的博客文章和开发者高峰论坛 TLS是不是很慢？不，它不是 我如何在我的应用程序中使用TLS ?只要你的服务器支持TLS, 只需要在你的应用程序和服务器响应中把URLs 从http://改变成https:// 。你的HTTP栈处理TLS握手，无需其他更多操作。 如果你是自己制作的Socket,使用SSLSocketFactory去替代SocketFactory要格外小心去正确使用作为SSLSocket的socket，它不会去验证主机。你的应用程序需要做的是它自己的主机验证。优选通过调用getDefaultHostnameVerifier())期望的主机名。进一步，谨防HostnameVerifier.verify())在发生异常时不会抛出错误，但是相反的會返回一个boolean的结果，你必须明确的检查。 我需要去使用一个明文去…当你应该对所有连接使用TLS，可能你需要去使用一个明文流量针对于遗留原因。比如连接到一些服务器。因此，改变你的应用程序的网络安全配置，以允许这些连接。 我们包括了一组示例配置，更多帮助查看network security config文档。 允许明文连接到一个具体的域，你可以使用如下的配置作为一个向导：123456&lt;network-security-config&gt; &lt;domain-config cleartextTrafficPermitted="true"&gt; &lt;domain includeSubdomains="true"&gt;insecure.example.com&lt;/domain&gt; &lt;domain includeSubdomains="true"&gt;insecure.cdn.example.com&lt;/domain&gt; &lt;/domain-config&gt;&lt;/network-security-config&gt; 允许连接到任意不安全的域如果你的应用程序支持打开任意来自不安全URLs的内容，当支持明文连接到任意主机，你应该禁用明文连接到你自己的服务器。记住，对于这些通过不安全连接接收到的数据你应该谨慎，它能够在传输的过程当中被篡改。 1234567&lt;network-security-config&gt; &lt;domain-config cleartextTrafficPermitted="false"&gt; &lt;domain includeSubdomains="true"&gt;example.com&lt;/domain&gt; &lt;domain includeSubdomains="true"&gt;cdn.example2.com&lt;/domain&gt; &lt;/domain-config&gt; &lt;base-config cleartextTrafficPermitted="true" /&gt;&lt;/network-security-config&gt; 我应该怎么更新我的库？如果你的库是直接创建安全/不安全的连接，确保它在打开任意明文连接之前通过检查isCleartextTrafficPermitted)来尊重应用程序明文设置。 以上是对Android官网博客文章的翻译，如果不足，欢迎指正，谢谢]]></content>
@@ -40,8 +55,8 @@
         <category>Notification</category>
       </categories>
       <tags>
-        <tag>Notification Channels</tag>
         <tag>Android O</tag>
+        <tag>Notification Channels</tag>
         <tag>通知渠道</tag>
       </tags>
   </entry>
@@ -54,8 +69,8 @@
         <category>WindowManager</category>
       </categories>
       <tags>
-        <tag>Android O</tag>
         <tag>WindowManager</tag>
+        <tag>Android O</tag>
         <tag>Android M</tag>
       </tags>
   </entry>
@@ -170,8 +185,8 @@
       </categories>
       <tags>
         <tag>Android O</tag>
-        <tag>Developer Preview</tag>
         <tag>AndroidO</tag>
+        <tag>Developer Preview</tag>
         <tag>Android O Developer Preview</tag>
         <tag>DP4</tag>
       </tags>
@@ -201,8 +216,8 @@
         <category>IoT</category>
       </categories>
       <tags>
-        <tag>Android Things</tag>
         <tag>Developer Preview</tag>
+        <tag>Android Things</tag>
         <tag>IoT</tag>
       </tags>
   </entry>
@@ -262,13 +277,13 @@
         <category>Google I/O 2017</category>
       </categories>
       <tags>
+        <tag>Android O</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
-        <tag>Android O</tag>
-        <tag>Developer Preview</tag>
         <tag>android o apis</tag>
         <tag>AndroidO</tag>
         <tag>API</tag>
+        <tag>Developer Preview</tag>
         <tag>Project Treble</tag>
       </tags>
   </entry>
@@ -319,9 +334,9 @@
       <tags>
         <tag>Android</tag>
         <tag>Android Go</tag>
+        <tag>Android O</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
-        <tag>Android O</tag>
         <tag>Developer Preview</tag>
         <tag>Google I/O</tag>
         <tag>Android TV</tag>
@@ -716,8 +731,8 @@
       <tags>
         <tag>Android</tag>
         <tag>Featured</tag>
-        <tag>Apps</tag>
         <tag>Google I/O</tag>
+        <tag>Apps</tag>
       </tags>
   </entry>
   <entry>
