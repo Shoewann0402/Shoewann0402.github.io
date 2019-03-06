@@ -117,7 +117,7 @@
 <meta property="og:description" content="原文来自: Android Jetpack WorkManager Stable Release">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/workMangerxx.png">
-<meta property="og:updated_time" content="2019-03-06T09:37:38.348Z">
+<meta property="og:updated_time" content="2019-03-06T19:35:26.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Jetpack WorkManager 稳定发布">
 <meta name="twitter:description" content="原文来自: Android Jetpack WorkManager Stable Release">
@@ -459,12 +459,24 @@
                 
               
 
-              <time title="创建时间：2019-03-06 15:37:35 / 修改时间：17:37:38" itemprop="dateCreated datePublished" datetime="2019-03-06T15:37:35+08:00">2019-03-06</time>
+              <time title="创建时间：2019-03-06 15:37:35" itemprop="dateCreated datePublished" datetime="2019-03-06T15:37:35+08:00">2019-03-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-07 03:35:26" itemprop="dateModified" datetime="2019-03-07T03:35:26+08:00">2019-03-07</time>
               
             
           </span>
@@ -596,7 +608,7 @@
 <p>利用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWR4L3dvcmsvT25lVGltZVdvcmtSZXF1ZXN0Lmh0bWw=" title="https://developer.android.com/reference/androidx/work/OneTimeWorkRequest.html">OneTimeWorkRequest<i class="fa fa-external-link"></i></span>一次性调度或者<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWR4L3dvcmsvUGVyaW9kaWNXb3JrUmVxdWVzdA==" title="https://developer.android.com/reference/androidx/work/PeriodicWorkRequest">PeriodicWorkRequest<i class="fa fa-external-link"></i></span>周期性调度</p>
 <p>您也能够链接您的一次工作请求以按顺序或并行运行。如果任意链接工作失败，WorkManager力求确保剩下的工作链不会运行。阅读更多关于链接工作请求<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdG9waWMvbGlicmFyaWVzL2FyY2hpdGVjdHVyZS93b3JrbWFuYWdlci9ob3ctdG8vY2hhaW4td29yay5tZA==" title="https://developer.android.com/topic/libraries/architecture/workmanager/how-to/chain-work.md">这里<i class="fa fa-external-link"></i></span></p>
 <p>如果您需要更多灵活性的WorkManager并行化方式以及消息工作，检出我们<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdG9waWMvbGlicmFyaWVzL2FyY2hpdGVjdHVyZS93b3JrbWFuYWdlci9hZHZhbmNlZC90aHJlYWRpbmcubWQ=" title="https://developer.android.com/topic/libraries/architecture/workmanager/advanced/threading.md">高级线程向导<i class="fa fa-external-link"></i></span></p>
-<h2 id="开发者必须说什么"><a href="#开发者必须说什么" class="headerlink" title="开发者必须说什么"></a>开发者必须说什么</h2><p><span class="exturl" data-url="aHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWluLnJlZGJ1cy5hbmRyb2lk" title="https://play.google.com/store/apps/details?id=in.redbus.android">redBus<i class="fa fa-external-link"></i></span> ，最大在线巴士票务平台，分享他们使用WorkManager的经验，以简化他们在Android应用中收集用户反馈的方式：</p>
+<h2 id="开发者有说什么"><a href="#开发者有说什么" class="headerlink" title="开发者有说什么"></a>开发者有说什么</h2><p><span class="exturl" data-url="aHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWluLnJlZGJ1cy5hbmRyb2lk" title="https://play.google.com/store/apps/details?id=in.redbus.android">redBus<i class="fa fa-external-link"></i></span> ，最大在线巴士票务平台，分享他们使用WorkManager的经验，以简化他们在Android应用中收集用户反馈的方式：</p>
 <blockquote>
 <p><em>“随着我们扩展到其他国家，反馈对于readBus至关重要。一个用户给予了关于在redBus应用程序中功能至关重要的反馈，但是当应用程序尝试去上传反馈到后端，这儿或许没有足够的网络覆盖或者电量</em><br><em>WorkManager简化了redBus应用程序向后端提供信息的方式。WorkManager库处理像网络连接、电量参数的能力以及使用像AlarmManager或者JobScheduler适当的处理程序，使我们能够专注于构建业务逻辑并将执行复杂性卸载到WorkManager</em></p>
 </blockquote>
@@ -1329,7 +1341,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WorkManager-亮点"><span class="nav-number">1.</span> <span class="nav-text">ＷorkManager 亮点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#何时使用-WorkManager"><span class="nav-number">2.</span> <span class="nav-text">何时使用 WorkManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用-WorkManager"><span class="nav-number">3.</span> <span class="nav-text">如何使用 WorkManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为何使用-WorkManager"><span class="nav-number">4.</span> <span class="nav-text">为何使用 WorkManager</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向后兼容"><span class="nav-number">4.1.</span> <span class="nav-text">向后兼容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠的调度"><span class="nav-number">4.2.</span> <span class="nav-text">可靠的调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制您的工作方式"><span class="nav-number">4.3.</span> <span class="nav-text">控制您的工作方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发者必须说什么"><span class="nav-number">5.</span> <span class="nav-text">开发者必须说什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始使用-WorkManager"><span class="nav-number">6.</span> <span class="nav-text">开始使用 WorkManager</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WorkManager-亮点"><span class="nav-number">1.</span> <span class="nav-text">ＷorkManager 亮点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#何时使用-WorkManager"><span class="nav-number">2.</span> <span class="nav-text">何时使用 WorkManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用-WorkManager"><span class="nav-number">3.</span> <span class="nav-text">如何使用 WorkManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为何使用-WorkManager"><span class="nav-number">4.</span> <span class="nav-text">为何使用 WorkManager</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向后兼容"><span class="nav-number">4.1.</span> <span class="nav-text">向后兼容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可靠的调度"><span class="nav-number">4.2.</span> <span class="nav-text">可靠的调度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制您的工作方式"><span class="nav-number">4.3.</span> <span class="nav-text">控制您的工作方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发者有说什么"><span class="nav-number">5.</span> <span class="nav-text">开发者有说什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始使用-WorkManager"><span class="nav-number">6.</span> <span class="nav-text">开始使用 WorkManager</span></a></li></ol></div>
             
 
           </div>
