@@ -117,7 +117,7 @@
 <meta property="og:description" content="原文来自: Android Jetpack WorkManager Stable Release">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/workManger.png">
-<meta property="og:updated_time" content="2019-03-06T08:04:30.568Z">
+<meta property="og:updated_time" content="2019-03-06T08:10:38.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Jetpack WorkManager 稳定发布">
 <meta name="twitter:description" content="原文来自: Android Jetpack WorkManager Stable Release">
@@ -459,7 +459,7 @@
                 
               
 
-              <time title="创建时间：2019-03-06 15:37:35 / 修改时间：16:04:30" itemprop="dateCreated datePublished" datetime="2019-03-06T15:37:35+08:00">2019-03-06</time>
+              <time title="创建时间：2019-03-06 15:37:35 / 修改时间：16:10:38" itemprop="dateCreated datePublished" datetime="2019-03-06T15:37:35+08:00">2019-03-06</time>
             
 
             
@@ -587,7 +587,7 @@
 <p>WorkManager当识别到您的设备正在充电且网络是可用时，它将负责运行您的任务。</p>
 <h2 id="为何使用-WorkManager"><a href="#为何使用-WorkManager" class="headerlink" title="为何使用 WorkManager"></a>为何使用 WorkManager</h2><h3 id="向后兼容"><a href="#向后兼容" class="headerlink" title="向后兼容"></a>向后兼容</h3><p>WorkManager将利用正确的调度API:它使用了<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL2pvYi9Kb2JTY2hlZHVsZXI=" title="https://developer.android.com/reference/android/app/job/JobScheduler">JobScheduler API<i class="fa fa-external-link"></i></span>在Android 6.0+ (API 23+)并且结合了之前版本上的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL0FsYXJtTWFuYWdlcg==" title="https://developer.android.com/reference/android/app/AlarmManager">AlarmManager<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9Ccm9hZGNhc3RSZWNlaXZlcg==" title="https://developer.android.com/reference/android/content/BroadcastReceiver">BroadcastReceiver<i class="fa fa-external-link"></i></span></p>
 <p>它也力求最佳行为，这样它就符合了在较新的Android API版本中引入系统优化去最大化电量和强制执行良好的APP行为。</p>
-<p>比如说，当系统是进入了Doze 模式时，对于Android 6.0+(API 23+)的设备，WorkManager将在维护窗口期间调度后台工作，</p>
+<p>比如说，当系统是进入了Doze 模式时，对于Android 6.0+(API 23+)的设备，WorkManager将在维护窗口期间调度后台工作。</p>
 <h3 id="可靠的调度"><a href="#可靠的调度" class="headerlink" title="可靠的调度"></a>可靠的调度</h3><p>利用WorkManager,您能够简单的添加像网络可用性或者充电状态的约束。当约束满足您的工作将会运行，并且如果在运行的过程中它们失败了将会自动重试。比如说，如果您的任务要求网络可用，当网络不再可用时任务将会停止并且之后重试。</p>
 <p>您也能够使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdG9waWMvbGlicmFyaWVzL2FyY2hpdGVjdHVyZS9saXZlZGF0YQ==" title="https://developer.android.com/topic/libraries/architecture/livedata">LiveData<i class="fa fa-external-link"></i></span>监控工作状态和检索工作结果。当您的任务完成时，这样可以通知您的UI。</p>
 <p>您的工作失败了的情况下，您可用通过配置<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWR4L3dvcmsvQmFja29mZlBvbGljeQ==" title="https://developer.android.com/reference/androidx/work/BackoffPolicy">backoff(退避)<i class="fa fa-external-link"></i></span>的处理方式来控制您的工作重试方式</p>
