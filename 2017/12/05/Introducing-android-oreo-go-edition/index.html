@@ -536,7 +536,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/android-oreo-go-edition-840x472.jpg" rel="gallery_cjsx0efwh001swujx8ohm4z5y" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/android-oreo-go-edition-840x472.jpg" rel="gallery_cjsx0mz9j001sjfjxi0o7x132" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/android-oreo-go-edition-840x472.jpg" itemprop="contentUrl">
               </a>
             
@@ -1836,9 +1836,14 @@
               })
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
             
           }
         })
