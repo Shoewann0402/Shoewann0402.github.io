@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="GPvp8NXPYxNlQOz9NarDxF5wMu2GpoiC6_txrpmFAVo">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2736746584497864",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+  <meta name="description" content="上一篇讲到了Android 7.1的预览版发布，今天这篇来说说其中的App Shortcut的使用。  Android 7.1允许在你的应用中定义具体动作的快捷键，这些快捷键能够被支持显示到launcher桌面上。比如说Nexus 和Pixel设备上已经提供了这个了。快捷键能让你的用户快速在你的应用中开始一个通用的或者建议的任务。">
+<meta name="keywords" content="Android 7.1,App Shortcuts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 7.1 应用快捷键详解">
+<meta property="og:url" content="https://shoewann0402.github.io/2016/10/21/android71-dev-preview-app-shortcuts/index.html">
+<meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
+<meta property="og:description" content="上一篇讲到了Android 7.1的预览版发布，今天这篇来说说其中的App Shortcut的使用。  Android 7.1允许在你的应用中定义具体动作的快捷键，这些快捷键能够被支持显示到launcher桌面上。比如说Nexus 和Pixel设备上已经提供了这个了。快捷键能让你的用户快速在你的应用中开始一个通用的或者建议的任务。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://shoewann0402.github.io/images/set-shortcuts-logo.png">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 7.1 应用快捷键详解">
+<meta name="twitter:description" content="上一篇讲到了Android 7.1的预览版发布，今天这篇来说说其中的App Shortcut的使用。  Android 7.1允许在你的应用中定义具体动作的快捷键，这些快捷键能够被支持显示到launcher桌面上。比如说Nexus 和Pixel设备上已经提供了这个了。快捷键能让你的用户快速在你的应用中开始一个通用的或者建议的任务。">
+<meta name="twitter:image" content="https://shoewann0402.github.io/images/set-shortcuts-logo.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Shoewann's Personal Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://shoewann0402.github.io/2016/10/21/android71-dev-preview-app-shortcuts/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android 7.1 应用快捷键详解 | Shoewann's Personal Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/favicon.ico" alt="Shoewann's Personal Blog">
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shoewann's Personal Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">【" OK Google "】</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">125</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Nob2V3YW5uMDQwMg==" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2016/10/21/android71-dev-preview-app-shortcuts/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shoewann">
+      <meta itemprop="description" content="Android Developer & Google Fans">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shoewann's Personal Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android 7.1 应用快捷键详解
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-10-21 21:48:41" itemprop="dateCreated datePublished" datetime="2016-10-21T21:48:41+08:00">2016-10-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-11 17:33:32" itemprop="dateModified" datetime="2019-03-11T17:33:32+08:00">2019-03-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2016/10/21/android71-dev-preview-app-shortcuts/" class="leancloud_visitors" data-flag-title="Android 7.1 应用快捷键详解">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="/images/set-shortcuts-logo.png" rel="gallery_cjt46gvzz003metjxrlnlq8eh" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/set-shortcuts-logo.png" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <blockquote>
+<p>上一篇讲到了Android 7.1的预览版发布，今天这篇来说说其中的App Shortcut的使用。</p>
+</blockquote>
+<p>Android 7.1允许在你的应用中定义具体动作的快捷键，这些快捷键能够被支持显示到launcher桌面上。比如说Nexus 和Pixel设备上已经提供了这个了。快捷键能让你的用户快速在你的应用中开始一个通用的或者建议的任务。</p>
+<a id="more"></a>
+<p>每一个快捷键引用了一个或者更多的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vZ3VpZGUvY29tcG9uZW50cy9pbnRlbnRzLWZpbHRlcnMuaHRtbA==" title="https://developer.android.com/guide/components/intents-filters.html">intent<i class="fa fa-external-link"></i></span>,当用户在你的应用中选择了快捷键，每一个都会启动一个具体的动作。你能够表现出来的动作示例包括如下这些：</p>
+<blockquote>
+<ul>
+<li>在一款地图类应用中导航用户去一个特定的位置</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>在一款社交类应用中发送消息给一个朋友</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>在一款媒体类应用中播放下一集电视剧</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>在一款游戏类应用中加载最后一次保存的游戏进度</li>
+</ul>
+</blockquote>
+<p>你能够在你的应用中发布两种不同类型的快捷键：</p>
+<blockquote>
+<ul>
+<li>静态快捷键定义在一个资源文件中，打包到一个APK中，因此，你必须等到你的应用直到更新升级整个应用，才能去改变这些静态快捷键的详细内容。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>动态快捷键在运行时使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9wbS9TaG9ydGN1dE1hbmFnZXIuaHRtbA==" title="https://developer.android.com/reference/android/content/pm/ShortcutManager.html">ShortcutManager API<i class="fa fa-external-link"></i></span>发布，在运行的过程中，你可以去发布、更新、移除它的快捷键。</li>
+</ul>
+</blockquote>
+<p>你能够在你的应用中一个时间里发布5个快捷键（静态快捷键和动态快捷键结合在一起）。用户，然而，能够复制应用的快捷键到launcher桌面上，创建一个<em>固定的快捷键</em>。用户能够在你的应用中创建和访问一个没有限制数量大小的固定快捷键和触发动作。你的应用不能够移除这些快捷键，但是能够禁用它们。</p>
+<blockquote>
+<p>注意： 虽然其他的应用不能够访问在你快捷键中的元数据，launcher桌面它自己能访问这个数据，因此，这些元数据应该隐藏敏感的用户信息。</p>
+</blockquote>
+<h2 id="静态快捷键"><a href="#静态快捷键" class="headerlink" title="静态快捷键"></a>静态快捷键</h2><p>静态快捷键应该在你的应用内部提供一个链接去生成动作，这些动作应该和你应用的当前版本的生活时间保持一致。对于静态快捷键较好的候选包括查看已发送的信息、设置一个闹钟和显示一个用户一天的锻炼活动。<br>对于创建一个静态的快捷键，完成如下的顺序步骤:</p>
+<p>1、在你应用的manifest文件(AndroidManifest.xml)中找到一个activity的intent filtes，action是设置的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9JbnRlbnQuaHRtbCNBQ1RJT05fTUFJTg==" title="https://developer.android.com/reference/android/content/Intent.html#ACTION_MAIN">andorid.intent.action.MAIN<i class="fa fa-external-link"></i></span>并且category是设置的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9JbnRlbnQuaHRtbCNDQVRFR09SWV9MQVVOQ0hFUg==" title="https://developer.android.com/reference/android/content/Intent.html#CATEGORY_LAUNCHER">android.intent.category.LAUNCHER<i class="fa fa-external-link"></i></span></p>
+<p>2、添加一个<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vZ3VpZGUvdG9waWNzL21hbmlmZXN0L21ldGEtZGF0YS1lbGVtZW50Lmh0bWw=" title="https://developer.android.com/guide/topics/manifest/meta-data-element.html"><meta-data></meta-data><i class="fa fa-external-link"></i></span>节点到这个activity，引用在应用中定义的快捷键资源文件:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 添加如下代码 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:name</span>=<span class="string">"android.app.shortcuts"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:resource</span>=<span class="string">"@xml/shortcuts"</span> /&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--添加如上代码--&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3、创建一个新的资源文件（res/xml/shortcuts.xml）,这个文件就是定义在应用的manifest的快捷键</p>
+<p>4、在这个新的资源文件中，添加一个<strong><shortcuts></shortcuts></strong>根节点，包含了一个<strong><shortcut></shortcut></strong>的list集合节点。每一个<strong><shortcut></shortcut></strong>节点中包含了关于一个静态快捷键的信息，包括它的图标、它的描述、和它在应用内部启动的intent意图:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">shortcuts</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">shortcut</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:shortcutId</span>=<span class="string">"id0"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:shortcutShortLabel</span>=<span class="string">"@string/shortcutShortLabel"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:shortcutLongLabel</span>=<span class="string">"@string/shortcutLongLabel"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:shortcutDisabledMessage</span>=<span class="string">"@string/shortcutDisabledMessage"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">intent</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:action</span>=<span class="string">"android.intent.action.VIEW"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:targetPackage</span>=<span class="string">"com.xw.appshortcuts"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:targetClass</span>=<span class="string">"com.xw.appshortcuts.MainActivity"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">categories</span> <span class="attr">android:name</span>=<span class="string">"android.shortcut.conversation"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">shortcut</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这里指定更多的快捷键 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shortcuts</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以下是对上面的shortcut标签相关属性的解释：</p>
+<blockquote>
+<ul>
+<li>shortcutId, 表示唯一的id</li>
+<li>enabled, 表示这个shortcut是否可用</li>
+<li>shortcutShortLabel, 这里是配置的短名称, 下面还会有长名称, 如果长名称显示不下, 就显示短名称</li>
+<li>shortcutLongLabel, 这里是配置的长名称, launcher会优先选择长名称显示</li>
+<li>shortcutDisabledMessage, 这个配置是在我们选择一个不可用的shortcut时给用户的一个提示</li>
+</ul>
+</blockquote>
+<h2 id="动态快捷键"><a href="#动态快捷键" class="headerlink" title="动态快捷键"></a>动态快捷键</h2><p>动态的快捷应该在你的应用内部提供一个具体的链接，上下文敏感动作。这些动作能够在用户使用你的应用中进行改变，并且他们甚至能够在当你的应用运行的时候进行改变。对于动态快捷键较好的候选包括打电话给某一个人、导航到一个固定的位置、和查看一款固定游戏当前的分数。</p>
+<p>这个<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9wbS9TaG9ydGN1dE1hbmFnZXIuaHRtbA==" title="https://developer.android.com/reference/android/content/pm/ShortcutManager.html">ShortcutManager<i class="fa fa-external-link"></i></span> API允许你完成如下的动态快捷键操作:</p>
+<blockquote>
+<ul>
+<li>发布：使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9wbS9TaG9ydGN1dE1hbmFnZXIuaHRtbCNzZXREeW5hbWljU2hvcnRjdXRzKGphdmEudXRpbC5MaXN0Jmx0O2FuZHJvaWQuY29udGVudC5wbS5TaG9ydGN1dEluZm8=" title="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#setDynamicShortcuts(java.util.List&lt;android.content.pm.ShortcutInfo">setDynamicShortcuts(List)<i class="fa fa-external-link"></i></span>)去重新定义动态快捷键实体类集合，或者使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9wbS9TaG9ydGN1dE1hbmFnZXIuaHRtbCNhZGREeW5hbWljU2hvcnRjdXRzKGphdmEudXRpbC5MaXN0Jmx0O2FuZHJvaWQuY29udGVudC5wbS5TaG9ydGN1dEluZm8=" title="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#addDynamicShortcuts(java.util.List&lt;android.content.pm.ShortcutInfo">addDynamicShortcuts(List)<i class="fa fa-external-link"></i></span>)去增加一个已经存在的动态快捷键集合。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>更新：使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9wbS9TaG9ydGN1dE1hbmFnZXIuaHRtbCN1cGRhdGVTaG9ydGN1dHMoamF2YS51dGlsLkxpc3QmbHQ7YW5kcm9pZC5jb250ZW50LnBtLlNob3J0Y3V0SW5mbw==" title="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#updateShortcuts(java.util.List&lt;android.content.pm.ShortcutInfo">updateShortcuts(List)<i class="fa fa-external-link"></i></span>)方法。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>移除：移除一个设置的动态快捷键使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9wbS9TaG9ydGN1dE1hbmFnZXIuaHRtbCNyZW1vdmVEeW5hbWljU2hvcnRjdXRzKGphdmEudXRpbC5MaXN0Jmx0O2phdmEubGFuZy5TdHJpbmc=" title="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#removeDynamicShortcuts(java.util.List&lt;java.lang.String">removeDynamicShortcuts(List)<i class="fa fa-external-link"></i></span>)，或者使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9wbS9TaG9ydGN1dE1hbmFnZXIuaHRtbCNyZW1vdmVBbGxEeW5hbWljU2hvcnRjdXRzKA==" title="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#removeAllDynamicShortcuts(">removeAllDynamicShortcuts()<i class="fa fa-external-link"></i></span>)方法去移除所有的动态快捷键。</li>
+</ul>
+</blockquote>
+<p>具体示例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xw.appshortcuts;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.content.pm.ShortcutInfo;</span><br><span class="line"><span class="keyword">import</span> android.content.pm.ShortcutManager;</span><br><span class="line"><span class="keyword">import</span> android.graphics.drawable.Icon;</span><br><span class="line"><span class="keyword">import</span> android.net.Uri;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MainActivity"</span>;</span><br><span class="line">    <span class="keyword">private</span> List&lt;ShortcutInfo&gt; shortcutInfos;<span class="comment">//快捷键集合</span></span><br><span class="line">    <span class="keyword">private</span> String[] shortLabel = <span class="keyword">null</span>;<span class="comment">//每个快捷键的短名称</span></span><br><span class="line">    <span class="keyword">private</span> String[] longLabel = <span class="keyword">null</span>;<span class="comment">//每个快捷键的长名称</span></span><br><span class="line">    <span class="keyword">private</span> String[] url = <span class="keyword">null</span>;<span class="comment">//每个快捷键的意图跳转域名</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] icon = <span class="keyword">null</span>;<span class="comment">//每个快捷键的图标</span></span><br><span class="line">    <span class="comment">//============================================</span></span><br><span class="line">    <span class="keyword">private</span> ShortcutManager shortcutManager = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> Button setDynamicShortcuts = <span class="keyword">null</span>;<span class="comment">//加载动态快捷键的按钮</span></span><br><span class="line">    <span class="keyword">private</span> Button disableShortcuts = <span class="keyword">null</span>;<span class="comment">//禁用移除快捷键的按钮</span></span><br><span class="line">    <span class="keyword">private</span> Button updateShortcuts = <span class="keyword">null</span>;<span class="comment">//更新快捷键的按钮</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        initView();</span><br><span class="line">        initData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  初始化视图</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.updateShortcuts = (Button) findViewById(R.id.updateShortcuts);</span><br><span class="line">        <span class="keyword">this</span>.disableShortcuts = (Button) findViewById(R.id.disableShortcuts);</span><br><span class="line">        <span class="keyword">this</span>.setDynamicShortcuts = (Button) findViewById(R.id.setDynamicShortcuts);</span><br><span class="line">        <span class="keyword">this</span>.updateShortcuts.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.disableShortcuts.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.setDynamicShortcuts.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 初始化数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        shortcutManager = getSystemService(ShortcutManager.class);</span><br><span class="line">        shortLabel = <span class="keyword">new</span> String[]&#123;<span class="string">"Google"</span>, <span class="string">"Youtube"</span>, <span class="string">"Facebook"</span>, <span class="string">"Twitter"</span>&#125;;</span><br><span class="line">        longLabel = <span class="keyword">new</span> String[]&#123;<span class="string">"Open Google"</span>, <span class="string">"Open Youtube"</span>, <span class="string">"Open Facebook"</span>, <span class="string">"Open Twitter"</span>&#125;;</span><br><span class="line">        url = <span class="keyword">new</span> String[]&#123;<span class="string">"https://www.google.com/"</span>, <span class="string">"https://www.youtube.com/"</span>, <span class="string">"https://www.facebook.com/"</span>, <span class="string">"https://www.twitter.com/"</span>&#125;;</span><br><span class="line">        icon = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;R.mipmap.ic_google,R.mipmap.ic_youtube,R.mipmap.ic_facebook,R.mipmap.ic_twitter&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置动态快捷键</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setDynamicShortcuts</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        shortcutInfos = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; shortLabel.length; i++) &#123;</span><br><span class="line">            ShortcutInfo shortcut = <span class="keyword">new</span> ShortcutInfo.Builder(<span class="keyword">this</span>, String.valueOf(i))</span><br><span class="line">                    .setShortLabel(shortLabel[i])</span><br><span class="line">                    .setLongLabel(longLabel[i])</span><br><span class="line">                    .setIcon(Icon.createWithResource(<span class="keyword">this</span>, icon[i]))</span><br><span class="line">                    .setIntent(<span class="keyword">new</span> Intent(Intent.ACTION_VIEW,</span><br><span class="line">                            Uri.parse(url[i])))</span><br><span class="line">                    .build();</span><br><span class="line">            shortcutInfos.add(shortcut);</span><br><span class="line">        &#125;</span><br><span class="line">        shortcutManager.setDynamicShortcuts(shortcutInfos);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 禁用并移除快捷键</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">disableShortcuts</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List&lt;ShortcutInfo&gt; list = shortcutManager.getPinnedShortcuts();</span><br><span class="line">        <span class="keyword">if</span> (list != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (ShortcutInfo info : list) &#123;</span><br><span class="line"> 	       <span class="comment">//移除下标为0的快捷键</span></span><br><span class="line">                <span class="keyword">if</span> (info.getId().equals(<span class="string">"0"</span>)) &#123;</span><br><span class="line">                    shortcutManager.disableShortcuts(Collections.singletonList(info.getId()), <span class="string">"快捷方式已无效,请手动删除"</span>);</span><br><span class="line">                    shortcutManager.removeDynamicShortcuts(Collections.singletonList(info.getId()));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新快捷键</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">updateShortcuts</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        ShortcutInfo info = <span class="keyword">new</span> ShortcutInfo.Builder(<span class="keyword">this</span>, String.valueOf(index))</span><br><span class="line">                .setShortLabel(<span class="string">"GitHub"</span>)</span><br><span class="line">                .setLongLabel(<span class="string">"Open GitHub"</span>)</span><br><span class="line">                .setIcon(Icon.createWithResource(<span class="keyword">this</span>, R.mipmap.ic_github))</span><br><span class="line">                .setIntent(<span class="keyword">new</span> Intent(Intent.ACTION_VIEW,</span><br><span class="line">                        Uri.parse(<span class="string">"https://www.github.com"</span>)))</span><br><span class="line">                .build();</span><br><span class="line">        shortcutManager.updateShortcuts(Collections.singletonList(info));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 点击事件</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> view</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (view.getId()) &#123;</span><br><span class="line">            <span class="keyword">case</span> R.id.setDynamicShortcuts:</span><br><span class="line">                setDynamicShortcuts();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> R.id.disableShortcuts:</span><br><span class="line">                disableShortcuts();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> R.id.updateShortcuts:</span><br><span class="line">                updateShortcuts(<span class="number">0</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>运行效果：</p>
+<p>动态增加快捷键:</p>
+<p>(长按图标弹出)</p>
+<p><img src="/images/set-shortcuts-1.png" alt="set-shortcuts-1.png"></p>
+<p>(将每一个快捷键拖出来固定到桌面)</p>
+<p><img src="/images/set-shortcuts-2.png" alt="set-shortcuts-2.png"></p>
+<p>(固定到桌面的和快捷键集合弹出)</p>
+<p><img src="/images/set-shortcuts-3.png" alt="set-shortcuts-3.png"></p>
+<p>动态更新快捷键:</p>
+<p>(更新Google为==&gt;GitHub)</p>
+<p><img src="/images/update-shortcuts.png" alt="update-shortcuts.png"></p>
+<p>动态禁用移除快捷键:</p>
+<p>(禁用GitHub)</p>
+<p><img src="/images/disabled-shortcut.png" alt="disabled-shortcut.png"></p>
+<h2 id="系统代码结构"><a href="#系统代码结构" class="headerlink" title="系统代码结构"></a>系统代码结构</h2><p><img src="/images/shortcutshierarchyviewer1.png" alt="shortcutshierarchyviewer1.png"></p>
+<p>通过sdk下的hierarchyviewer工具，可以看到长按桌面图标弹出的部分是一个<strong>DeepShortcutsContainer</strong>,其中包括了一个白色箭头的<strong>View</strong>和显示每一个快捷键的条目<strong>DeepShortcutsView</strong>组成。每一个<strong>DeepShortcutsView</strong>快捷键item又是由一个显示图标的<strong>View</strong>和一个<strong>DeepshortcutsTextView</strong>组成。</p>
+<p><img src="/images/shortcutshierarchyviewer2.png" alt="shortcutshierarchyviewer2.png"></p>
+<blockquote>
+<p>以上就是简单的对Android 7.1上面App Shortcut方面的概括总结，部分内容源于官方文档，如有不足，欢迎指正，谢谢。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>if (本文对您有用) { Pay (请随意¥打赏) || Click Ad (点击下广告) } else { Commit feedback (底部评论区提交建议、反馈) } 感谢支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechat-reward-image/wechat-reward-image.png" alt="Shoewann 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay-reward-image/alipay-reward-image.jpg" alt="Shoewann 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Shoewann</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://shoewann0402.github.io/2016/10/21/android71-dev-preview-app-shortcuts/" title="Android 7.1 应用快捷键详解">https://shoewann0402.github.io/2016/10/21/android71-dev-preview-app-shortcuts/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-7-1/" rel="tag"># Android 7.1</a>
+          
+            <a href="/tags/App-Shortcuts/" rel="tag"># App Shortcuts</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/20/android71-dev-preview-available/" rel="next" title="现在可用：Android 7.1开发者预览版">
+                <i class="fa fa-chevron-left"></i> 现在可用：Android 7.1开发者预览版
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/03/support-ended-for-eclipse-android/" rel="prev" title="终止Eclipse作为Android开发工具的支持">
+                终止Eclipse作为Android开发工具的支持 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+          </div>
+          
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2736746584497864" data-ad-slot="4936302539"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjYzNC8xOTE4MQ=="></div>
+    </div>
+
+  
+  	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 文字广告和展示广告1 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2736746584497864" data-ad-slot="4544462438" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Shoewann">
+            
+              <p class="site-author-name" itemprop="name">Shoewann</p>
+              <p class="site-description motion-element" itemprop="description">Android Developer & Google Fans</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">125</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Nob2V3YW5uMDQwMg==" title="GitHub &rarr; https://github.com/shoewann0402"><i class="fa fa-fw fa-github"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="bWFpbHRvOnh1d2FuZzA0MDJAZ21haWwuY29t" title="E-Mail &rarr; mailto:xuwang0402@gmail.com"><i class="fa fa-fw fa-envelope"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vU2hvZXdhbm4=" title="Weibo &rarr; https://weibo.com/Shoewann"><i class="fa fa-fw fa-weibo"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vdS8wLzEwNTMzNTgyNzI2MzU0MjU0OTE5MQ==" title="Google &rarr; https://plus.google.com/u/0/105335827263542549191"><i class="fa fa-fw fa-google"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9mNTU2ZWRjZTg2ZGY0MTg=" title="Twitter &rarr; https://twitter.com/f556edce86df418"><i class="fa fa-fw fa-twitter"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAwNzg3NTMzNzc1Mw==" title="FB Page &rarr; https://www.facebook.com/profile.php?id=100007875337753"><i class="fa fa-fw fa-facebook"></i></span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jbg==" title="https://developers.google.cn">Google Developers</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL2NoaW5hZ2RnLm9yZy8=" title="http://chinagdg.org/">China GDG</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS8yODcwMDg=" title="http://weibo.com/287008">Google谷歌爱好者</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dmaW5n" title="https://blog.csdn.net/wfing">王玉成(IOT GDE)</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly95YW5nYm8udGVjaC8=" title="https://yangbo.tech/">杨波(WEB GDE)</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3d3dy53amRpYW5rb25nLmNuLw==" title="http://www.wjdiankong.cn/">尼古拉斯赵四</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3d3dy5waXhjbi5jbi8=" title="http://www.pixcn.cn/">Pixel 中文网</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态快捷键"><span class="nav-number">1.</span> <span class="nav-text">静态快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态快捷键"><span class="nav-number">2.</span> <span class="nav-text">动态快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统代码结构"><span class="nav-number">3.</span> <span class="nav-text">系统代码结构</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=c5a15952a6450d42add71651a17eab4a619bede3c63194238dcede3442dd850c"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Google技术分享交流" title="Google技术分享交流"></a>
+<div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shoewann</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Muse</span> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    var cnzz_s_tag = document.createElement('script');
+    cnzz_s_tag.type = 'text/javascript';
+    cnzz_s_tag.async = true;
+    cnzz_s_tag.charset = 'utf-8';
+    cnzz_s_tag.src = 'http://w.cnzz.com/c.php?id=1259071960&async=1';
+    var root_s = document.getElementsByTagName('script')[0];
+    root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2016/10/21/android71-dev-preview-app-shortcuts/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'ACMTtyiajBtyriIPCjgyQbkW-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'ACMTtyiajBtyriIPCjgyQbkW-gzGzoHsz',
+                'X-LC-Key': '6DCk5HyLXFUQI3gFXrBR7b1z',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Linkedin,Mailto,Reddit,Delicious,StumbleUpon,Pinterest,Facebook,GooglePlus,Slashdot,Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "default";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Linkedin,Mailto,Reddit,Delicious,StumbleUpon,Pinterest,Facebook,GooglePlus,Slashdot,Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/exturl.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>

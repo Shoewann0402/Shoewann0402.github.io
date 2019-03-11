@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="GPvp8NXPYxNlQOz9NarDxF5wMu2GpoiC6_txrpmFAVo">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2736746584497864",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+  <meta name="description" content="原文来自:  Android Studio 3.0 Canary 1    正巧赶上Google I / O 2017，我们提供了Android Studio 3.0 抢先看—— 今天可以在我们的Canary发行频道上下载。Android Studio是我们的官方IDE,专为Android设计，我们不断增加投资,Android Studio中的功能集中在加速您的应用程序开发流程，并提供为Andr">
+<meta name="keywords" content="Android Studio 3.0,Develop,Featured,Canary">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio 3.0 Canary 1">
+<meta property="og:url" content="https://shoewann0402.github.io/2017/05/19/android-studio-3-0-canary1/index.html">
+<meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
+<meta property="og:description" content="原文来自:  Android Studio 3.0 Canary 1    正巧赶上Google I / O 2017，我们提供了Android Studio 3.0 抢先看—— 今天可以在我们的Canary发行频道上下载。Android Studio是我们的官方IDE,专为Android设计，我们不断增加投资,Android Studio中的功能集中在加速您的应用程序开发流程，并提供为Andr">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://shoewann0402.github.io/images/Android%20Logo.png">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.642Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Studio 3.0 Canary 1">
+<meta name="twitter:description" content="原文来自:  Android Studio 3.0 Canary 1    正巧赶上Google I / O 2017，我们提供了Android Studio 3.0 抢先看—— 今天可以在我们的Canary发行频道上下载。Android Studio是我们的官方IDE,专为Android设计，我们不断增加投资,Android Studio中的功能集中在加速您的应用程序开发流程，并提供为Andr">
+<meta name="twitter:image" content="https://shoewann0402.github.io/images/Android%20Logo.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Shoewann's Personal Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://shoewann0402.github.io/2017/05/19/android-studio-3-0-canary1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android Studio 3.0 Canary 1 | Shoewann's Personal Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/favicon.ico" alt="Shoewann's Personal Blog">
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shoewann's Personal Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">【" OK Google "】</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">125</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Nob2V3YW5uMDQwMg==" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2017/05/19/android-studio-3-0-canary1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shoewann">
+      <meta itemprop="description" content="Android Developer & Google Fans">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shoewann's Personal Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android Studio 3.0 Canary 1
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-19 08:08:21" itemprop="dateCreated datePublished" datetime="2017-05-19T08:08:21+08:00">2017-05-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-11 17:33:32" itemprop="dateModified" datetime="2019-03-11T17:33:32+08:00">2019-03-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/Android-O/" itemprop="url" rel="index"><span itemprop="name">Android O</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/Android-O/Android-Studio/" itemprop="url" rel="index"><span itemprop="name">Android Studio</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/Android-O/Android-Studio/Google-I-O-2017/" itemprop="url" rel="index"><span itemprop="name">Google I/O 2017</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2017/05/19/android-studio-3-0-canary1/" class="leancloud_visitors" data-flag-title="Android Studio 3.0 Canary 1">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="/images/Android Logo.png" rel="gallery_cjt46gvzl0035etjxaixeocyw" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/Android Logo.png" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <blockquote>
+<p>原文来自: <span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8wNS9hbmRyb2lkLXN0dWRpby0zLTAtY2FuYXJ5MS5odG1s" title="https://android-developers.googleblog.com/2017/05/android-studio-3-0-canary1.html"> Android Studio 3.0 Canary 1<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<p>  正巧赶上Google I / O 2017，我们提供了Android Studio 3.0 抢先看—— 今天可以在我们的Canary发行频道上<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvaW5kZXguaHRtbA==" title="https://developer.android.com/studio/preview/index.html">下载<i class="fa fa-external-link"></i></span>。Android Studio是我们的官方IDE,专为Android设计，我们不断增加投资,Android Studio中的功能集中在加速您的应用程序开发流程，并提供为Android平台构建的最新工具。</p>
+<a id="more"></a>
+<p>为了加速您的开发流程，Android Studio 3.0包括三个主要功能：</p>
+<blockquote>
+<ul>
+<li>一套新的应用程序性能分析工具,可快速诊断性能问题</li>
+<li>支持Kotlin编程语言</li>
+<li>为大型应用程序项目增加Gradle构建速度</li>
+</ul>
+</blockquote>
+<p>Android Studio 3.0还与Android平台开发紧密集成，具有以下附加功能：</p>
+<blockquote>
+<ul>
+<li>支持即时应用开发</li>
+<li>在Android O模拟器系统图像中包含Google Play商店</li>
+<li>为Android O开发新的向导</li>
+</ul>
+</blockquote>
+<p>总的来说，这款Android Studio 3.0的第一款Canary版本具有20多种新功能。</p>
+<p>作为Android Studio 2.4 Canaries的一部分，我们一直在静静地迭代这些功能。今天，我们在认识到我们添加了许多重要功能之后，将版本重新编号为Android Studio 3.0，我们必须在Android Gradle Plugin中引入一个罕见的变化，以提高可扩展性和构建时间。如果您要定位<span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5nb29nbGVibG9nLmNvbS8yMDE3LzA1L3doYXRzLW5ldy1pbi1hbmRyb2lkLW8tZGV2ZWxvcGVyLmh0bWw=" title="http://android-developers.googleblog.com/2017/05/whats-new-in-android-o-developer.html">Android O<i class="fa fa-external-link"></i></span>，请创建<span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5nb29nbGVibG9nLmNvbS8yMDE3LzA1L2FuZHJvaWQtaW5zdGFudC1hcHBzLWlzLW9wZW4tdG8tYWxsLmh0bWw=" title="http://android-developers.googleblog.com/2017/05/android-instant-apps-is-open-to-all.html">即时应用程序<i class="fa fa-external-link"></i></span>，开始使用<span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5nb29nbGVibG9nLmNvbS8yMDE3LzA1L2FuZHJvaWQtYW5ub3VuY2VzLXN1cHBvcnQtZm9yLWtvdGxpbi5odG1s" title="http://android-developers.googleblog.com/2017/05/android-announces-support-for-kotlin.html">Kotlin语言开发<i class="fa fa-external-link"></i></span>，或使用最新的Android应用程序性能工具来提高应用程序质量，然后您应该今天下载Android Studio 3.0 Canary 1。</p>
+<p><img src="/images/android-studio-3-0-canary1.png" alt="android-studio-3-0-canary1.png"></p>
+<center><span class="exturl" data-url="aHR0cHM6Ly95b3V0dS5iZS9ySGlBNjZ6VXY4Yw==" title="https://youtu.be/rHiA66zUv8c">Android DevByte - What’s New in Android Studio 3.0 Canary 1<i class="fa fa-external-link"></i></span></center>
+
+<p>请查看下面列出的组织成关键的开发人员流程，以了解Android Studio 3.0的第一个经典版本的新功能的详细信息。</p>
+<h1 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h1><h2 id="Kotlin程序语言"><a href="#Kotlin程序语言" class="headerlink" title="Kotlin程序语言"></a>Kotlin程序语言</h2><p>根据受欢迎的要求，Android Studio 3.0现在包括对Kotlin的支持。通过这种新的语言支持，您可以将现有Android应用程序代码旁边的Kotlin代码无缝添加，并可以访问Android Studio中发现的所有优秀开发工具。您可以选择使用<strong>Code → Convert Java File to Kotlin File</strong>内置的转换工具将Kotlin添加到您的项目中，或者您选择使用新建项目向导创建启用Kotlin的项目。在Android和<span class="exturl" data-url="aHR0cHM6Ly9kLmFuZHJvaWQuY29tL2tvdGxpbi9nZXQtc3RhcnRlZC5odG1s" title="https://d.android.com/kotlin/get-started.html">Android Studio<i class="fa fa-external-link"></i></span>中更多地关注<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20va290bGlu" title="https://developer.android.com/kotlin">Kotlin语言支持<i class="fa fa-external-link"></i></span>。</p>
+<p><img src="/images/ScreenShot2017-05-16at5.24.36PM.png" alt="Screen Shot 2017-05-16 at 5.24.36 PM.png"></p>
+<center>Kotlin Language Conversion in Android Studio</center>
+
+<h2 id="Java-8语言功能"><a href="#Java-8语言功能" class="headerlink" title="Java 8语言功能"></a>Java 8语言功能</h2><p>我们正在不断发展对Java 8语言特性和API的支持。随着<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8wMy9mdXR1cmUtb2YtamF2YS04LWxhbmd1YWdlLWZlYXR1cmUuaHRtbA==" title="https://android-developers.googleblog.com/2017/03/future-of-java-8-language-feature.html">杰克工具链的最新淘汰<i class="fa fa-external-link"></i></span>和迁移到基于javac的工具链，您可以访问Android Studio中使用Java 8语言功能的项目的即时运行功能。要更新项目以支持新的Java 8语言工具链，只需在“项目结构”对话框中将“源”和“目标”兼容级别更新为1.8。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvZmVhdHVyZXMvamF2YTgtc3VwcG9ydC5odG1s" title="https://developer.android.com/studio/preview/features/java8-support.html">学到更多<i class="fa fa-external-link"></i></span>。</p>
+<p><img src="/images/ScreenShot2017-05-16at5.32.42PM.png" alt="Screen Shot 2017-05-16 at 5.32.42 PM.png"></p>
+<center>Update Project Structure Dialogue for Java 8 Language</center>
+
+<h2 id="布局编辑器"><a href="#布局编辑器" class="headerlink" title="布局编辑器"></a>布局编辑器</h2><p>使用这个Android Studio版本，您会发现布局编辑器的其他增强功能。我们已经使用更好的拖放视图插入更新了组件树，与ConstraintLayout的更新配合，布局编辑器还支持创建视图障碍，创建组，并增强链创建。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3dyaXRlL2xheW91dC1lZGl0b3IuaHRtbA==" title="https://developer.android.com/studio/write/layout-editor.html">学到更多<i class="fa fa-external-link"></i></span>。</p>
+<p><img src="/images/ScreenShot2017-05-16at5.40.30PM.png" alt="Screen Shot 2017-05-16 at 5.40.30 PM.png"></p>
+<center>Layout Editor Component Tree &amp; Warning Panel</center>
+
+<h2 id="自适应图标向导"><a href="#自适应图标向导" class="headerlink" title="自适应图标向导"></a>自适应图标向导</h2><p>Android O引入了自适应启动器图标，可以在不同的Android设备上显示不同的形状。新的自适应启动器图标向导创建新的和遗留的启动器图标资源，并提供您的自适应图标如何在不同的启动器屏幕图标蒙版上的预览。通过右键单击项目中的/ res文件夹创建一个新的资源，然后导航到<strong>→ New → Image Asset → Launcher Icons (Adaptive and Legacy)</strong>,<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9hZGFwdGl2ZS1pY29ucy5odG1s" title="https://developer.android.com/preview/features/adaptive-icons.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/ScreenShot2017-05-16at5.49.59PM.png" alt="Screen Shot 2017-05-16 at 5.49.59 PM.png"></p>
+<center>Adaptive Icon Wizard</center>
+
+<h2 id="XML字体和可下载的字体"><a href="#XML字体和可下载的字体" class="headerlink" title="XML字体和可下载的字体"></a>XML字体和可下载的字体</h2><p>在Android Studio中使用XML字体预览和字体选择工具，现在可以将自定义字体添加到应用程序中（在定位Android O时可用）。您还可以为您的应用创建可下载的字体资源。使用可下载的字体，您可以在应用程序中使用自定义字体，同时避免将字体资源捆绑到您的APK中。 要使用可下载的字体，请确保您的设备或模拟器正在运行Google Play Services v11.2.63或更高版本。 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy93b3JraW5nLXdpdGgtZm9udHMuaHRtbA==" title="https://developer.android.com/preview/features/working-with-fonts.html">学习更多<i class="fa fa-external-link"></i></span>。</p>
+<p><img src="/images/ScreenShot2017-05-16at5.54.53PM.png" alt="Screen Shot 2017-05-16 at 5.54.53 PM.png"></p>
+<center>Downloadable Fonts Resource Picker</center>
+
+<p><img src="/images/ScreenShot2017-05-16at6.00.17PM.png" alt="Screen Shot 2017-05-16 at 6.00.17 PM.png"></p>
+<center>XML Fonts Preview</center>
+
+<h2 id="Android-Things的支持"><a href="#Android-Things的支持" class="headerlink" title="Android Things的支持"></a>Android Things的支持</h2><p>用Android Studio 3.0，您可以在“新建项目”向导和“新建模块”向导中，使用新的一组模板开始开发Android Things。Android Things可让您将Android开发知识扩展到物联网（IoT）设备类别。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdGhpbmdzL2luZGV4Lmh0bWw=" title="https://developer.android.com/things/index.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/ScreenShot2017-05-16at6.09.13PM.png" alt="Screen Shot 2017-05-16 at 6.09.13 PM.png"></p>
+<center>Android Things New Module Wizard </center>
+
+
+<h2 id="IntelliJ平台更新"><a href="#IntelliJ平台更新" class="headerlink" title="IntelliJ平台更新"></a>IntelliJ平台更新</h2><p>Android Studio 3.0 Canary 1包括IntelliJ 2017.1版本，其具有Java 8语言重构，参数提示，语义突出，可拖动断点，增强版本控制搜索等功能。<span class="exturl" data-url="aHR0cHM6Ly93d3cuamV0YnJhaW5zLmNvbS9pZGVhL3doYXRzbmV3LyN2MjAxNy0x" title="https://www.jetbrains.com/idea/whatsnew/#v2017-1">学习更多<i class="fa fa-external-link"></i></span></p>
+<h1 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h1><h2 id="即时应用支持"><a href="#即时应用支持" class="headerlink" title="即时应用支持"></a>即时应用支持</h2><p>使用Android Studio 3.0，您可以在项目中创建<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdG9waWMvaW5zdGFudC1hcHBzL2luZGV4Lmh0bWw=" title="https://developer.android.com/topic/instant-apps/index.html">Instant Apps<i class="fa fa-external-link"></i></span>。Instant Apps是您的用户可以立即运行而不安装的轻量级Android应用。为了支持这一点，Android Studio引入了两种新的模块类型：即时应用和功能,结合新的“模块化”重构动作和App Links助手,Android Studio可以帮助您将应用程序扩展到即时应用程序,要使用，您可以使用新建模块向导或右键单击一个类并导航到<strong>Refactor → Modularize</strong>,<span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5nb29nbGVibG9nLmNvbS8yMDE3LzA1L2FuZHJvaWQtaW5zdGFudC1hcHBzLWlzLW9wZW4tdG8tYWxsLmh0bWw=" title="http://android-developers.googleblog.com/2017/05/android-instant-apps-is-open-to-all.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document8.png" alt="Untitled_document8.png"></p>
+<center>Instant App Module Wizard</center>
+
+<h2 id="建立速度改进"><a href="#建立速度改进" class="headerlink" title="建立速度改进"></a>建立速度改进</h2><p>我们正在继续投资，使建造速度更快。对于此版本，我们专注于提高具有多个模块的项目的速度。为了实现这些速度改进并支持未来的增强，我们已经对Android Studio使用的Android Gradle插件进行了<em>破坏的AP</em>I更改，如果您依赖于以前插件提供的API，则应验证与新插件的兼容性并迁移适用的API。要测试，请更新您的build.gradle文件中的插件版本。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvZmVhdHVyZXMvbmV3LWFuZHJvaWQtcGx1Z2luLmh0bWw=" title="https://developer.android.com/studio/preview/features/new-android-plugin.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p>build.gradle</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">   <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:3.0.0-alpha1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Google’s-Maven-资源库"><a href="#Google’s-Maven-资源库" class="headerlink" title="Google’s Maven 资源库"></a>Google’s Maven 资源库</h2><p>此外，根据受欢迎的要求，我们现在在全新的Maven存储库中分发Android SDK Manager外的Android支持库maven依赖项。对于使用持续集成（CI）系统开发的用户，这将使Maven依赖关系管理变得更加容易。与最新的命令行<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2ludHJvL3VwZGF0ZS5odG1sI2Rvd25sb2FkLXdpdGgtZ3JhZGxl" title="https://developer.android.com/studio/intro/update.html#download-with-gradle">SDK Manager工具<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2ludHJvL3VwZGF0ZS5odG1sI2Rvd25sb2FkLXdpdGgtZ3JhZGxl" title="https://developer.android.com/studio/intro/update.html#download-with-gradle">Gradle<i class="fa fa-external-link"></i></span>结合使用，使用Google的Maven存储库更易于管理CI构建。要使用新的Maven位置，请将以下URL添加到应用程序模块的build.gradle文件中。<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9zdHVkaW8vYnVpbGQvZGVwZW5kZW5jaWVzLmh0bWwjZ29vZ2xlLW1hdmVu" title="http://developer.android.com/studio/build/dependencies.html#google-maven">学习更多<i class="fa fa-external-link"></i></span></p>
+<p>build.gradle<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repositories</span> &#123;</span><br><span class="line">   maven &#123;</span><br><span class="line">       url <span class="string">"https://maven.google.com"</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="测试-amp-调试"><a href="#测试-amp-调试" class="headerlink" title="测试 &amp; 调试"></a>测试 &amp; 调试</h1><h2 id="Google-Play系统镜像"><a href="#Google-Play系统镜像" class="headerlink" title="Google Play系统镜像"></a>Google Play系统镜像</h2><p>随着对Android O Beta版本的更新，我们更新了Android Emulator O系统映像以包含Google Play商店。在Google Play商店中捆绑，您可以使用Google Play对应用进行端到端的测试，并提供了一种方便的方法来在Android虚拟设备（AVD）中保持最新的Google Play服务。就像Google Play服务在物理设备上进行更新一样，您可以在AVD上触发相同的更新。</p>
+<p><img src="/images/Untitled_document9.png" alt="Untitled_document9.png"></p>
+<center>Google Play Store in Android Emulator</center>
+
+<p><img src="/images/Untitled_document10.png" alt="Untitled_document10.png"></p>
+<center>Update Google Play Services in Android Emulator</center>
+
+<p>确保应用程序的安全性和一致的体验，包含Google Play商店的模拟器系统映像都使用发行键签名。这意味着您将无法获得提升的权限。如果您需要提升的权限（root）来帮助应用程序进行故障排除，则可以使用不包括Google应用或服务的Android开源项目（AOSP）仿真器系统映像。要开始使用，请确保使用Android Emulator v26.1 +，最新的系统映像API 24+，然后在设备定义旁边创建一个带有Google Play图标的新AVD。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3J1bi9lbXVsYXRvci5odG1s" title="https://developer.android.com/studio/run/emulator.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document11.png" alt="Untitled_document11.png"></p>
+<center>Android Virtual Device Manager with Google Play Store Support </center>
+
+<h2 id="Android模拟器中的OpenGL-ES-3-0支持"><a href="#Android模拟器中的OpenGL-ES-3-0支持" class="headerlink" title="Android模拟器中的OpenGL ES 3.0支持"></a>Android模拟器中的OpenGL ES 3.0支持</h2><p>作为我们持续投资的一部分，使您的开发经验更快，Android模拟器的最新版本具有OpenGL ES 3.0对Android O系统映像的支持，同时显着改进了OpenGL ES 2.0图形性能，适用于较旧的仿真器系统映像。所有操作系统上的大多数现代显卡支持OpenGL ES 2.0加速。要使用OpenGL ES 3.0与Android模拟器，您的开发机器需要一个支持OpenGL 3.2或更高版本的Microsoft®Windows®或Linux（随着AppleMacOS®支持将来推出）的主机GPU显卡。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3J1bi9lbXVsYXRvci1hY2NlbGVyYXRpb24uaHRtbA==" title="https://developer.android.com/studio/run/emulator-acceleration.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document12.png" alt="Untitled_document12.png"></p>
+<center>OpenGL ES 3.0 in Android Emulator</center>
+
+<h2 id="Android模拟器中的应用程序Bug-Reporter"><a href="#Android模拟器中的应用程序Bug-Reporter" class="headerlink" title="Android模拟器中的应用程序Bug Reporter"></a>Android模拟器中的应用程序Bug Reporter</h2><p>为了帮助记录您的应用程序中的错误，我们添加了一种更简单的方法来生成错误报告，其中包含所有必要的配置设置和空间来捕获您的重复步骤。此外，如果您想与Android团队分享一个特定的模拟器错误，我们还添加了一个链接，以便在Android问题跟踪器上快速生成错误。要使用此功能，请导航到<strong>Emulator Tool Bar → Extended Controls → Help → Emulator Help → File a Bug</strong>。</p>
+<p><img src="/images/Untitled_document13.png" alt="Untitled_document13.png"></p>
+<center>App Bug Reporting in Android Emulator</center>
+
+<h2 id="Android中的代理支持"><a href="#Android中的代理支持" class="headerlink" title="Android中的代理支持*"></a>Android中的代理支持*</h2><p>对于需要使用HTTP代理访问Internet的用户，我们添加了一个用户界面来管理仿真器使用的代理设置。默认情况下，Android模拟器现在将使用Android Studio的设置，但您可以覆盖网络设置的这些设置。配置导航到<strong>Extended Controls → Settings → Proxy.</strong></p>
+<p><img src="/images/Untitled_document14.png" alt="Untitled_document14.png"></p>
+<center>Android Emulator Proxy Settings</center>
+
+
+<h2 id="Android模拟器中的Android-Wear旋转控件"><a href="#Android模拟器中的Android-Wear旋转控件" class="headerlink" title="Android模拟器中的Android Wear旋转控件"></a>Android模拟器中的Android Wear旋转控件</h2><p>Android模拟器现在支持Android Wear 2.0仿真器系统映像的旋转控制。现在，您可以更轻松地测试目标Android Wear设备（包括旋转输入滚动）的应用。要启用，请创建一个针对Android Wear的模拟器AVD，“旋转输入”面板应显示在扩展控件下。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdHJhaW5pbmcvd2VhcmFibGVzL3VpL3JvdGFyeS1pbnB1dC5odG1sI2VtdWxhdG9y" title="https://developer.android.com/training/wearables/ui/rotary-input.html#emulator">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document15.png" alt="Untitled_document15.png"></p>
+<center>Rotary input in Android Emulator</center>
+
+<h2 id="APK调试"><a href="#APK调试" class="headerlink" title="APK调试"></a>APK调试</h2><p>对于那些只想在Android Studio中构建您的项目即可调试APK的用户，Android Studio 3.0版本现在可以调试任意的APK。这在功能上对于在另一个开发环境中开发Android C ++代码,但对Android Studio上下文中的APK进行调试和分析的人尤其有用。只要你有一个可调试版本的APK，你可以使用新的APK调试功能来分析，配置和调试APK。此外，如果您可以访问APK的来源，您可以将源连接到APK调试流程，以实现更高保真的调试过程。通过从Android Studio欢迎屏幕或<strong>File → Profile or debug APK</strong>中简单地选择<strong>Profile or debug APK</strong>开始。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvZmVhdHVyZXMvYXBrLWRlYnVnZ2VyLmh0bWw=" title="https://developer.android.com/studio/preview/features/apk-debugger.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document16.png" alt="Untitled_document16.png"></p>
+<center>Profile or Debug an APK</center>
+
+<p><img src="/images/Untitled_document17.png" alt="Untitled_document17.png"></p>
+<center>APK Debugging</center>
+
+
+<h2 id="布局检查员"><a href="#布局检查员" class="headerlink" title="布局检查员"></a>布局检查员</h2><p>您会发现，Layout Inspector在Android Studio 3.0中有一些额外的增强功能，可以更轻松地调试应用程序布局中的问题。一些增强功能包括将属性更好地分组成常见类别，以及查看树和属性面板中的搜索功能。当应用程序正在运行时，通过<strong>Tools → Android → Layout Inspector</strong>.<span class="exturl" data-url="aHR0cDovL3Rvb2xzLmFuZHJvaWQuY29tL3RlY2gtZG9jcy9sYXlvdXQtaW5zcGVjdG9y" title="http://tools.android.com/tech-docs/layout-inspector">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document18.png" alt="Untitled_document18.png"></p>
+<center>Layout Inspector</center>
+
+<h2 id="设备文件资源管理器"><a href="#设备文件资源管理器" class="headerlink" title="设备文件资源管理器"></a>设备文件资源管理器</h2><p>通过流行的需求从DDMS移植到Android Studio，新的设备文件资源管理器允许您查看Android设备或模拟器的文件和目录结构。在测试您的应用程序时，您现在可以在Android Studio中直接快速预览和修改应用数据文件。</p>
+<p><img src="/images/Untitled_document19.png" alt="Untitled_document19.png"></p>
+<center>Device File Explorer</center>
+
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><h2 id="Android-Profiler"><a href="#Android-Profiler" class="headerlink" title="Android Profiler"></a>Android Profiler</h2><p>Android Studio 3.0包含一套全新的工具，帮助您调试应用程序中的性能问题。我们完全重写了前一组Android监视器工具，并将其替换为Android Profiler。一旦你将应用程序部署到正在运行的设备或模拟器后，单击“<strong>Android Profiler</strong>”选项卡，现在可以访问您的应用程序的CPU，内存和网络活动的实时统一视图。每个性能事件都映射到UI事件时间轴，突出显示触摸事件，按键和活动更改，以便您在某个事件发生的时间和原因方面有更多的上下文。点击每个时间轴，挖掘您的应用程序的每个性能方面。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvZmVhdHVyZXMvYW5kcm9pZC1wcm9maWxlci5odG1s" title="https://developer.android.com/studio/preview/features/android-profiler.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document20.png" alt="Untitled_document20.png"></p>
+<center>Android Profiler - Combined timeline view.</center>
+
+<h2 id="CPU-Profiler"><a href="#CPU-Profiler" class="headerlink" title="CPU Profiler"></a>CPU Profiler</h2><p>不必要的CPU处理和负载峰值是应用程序性能差的症状。使用CPU Profiler，您可以通过触发采样或仪表化的CPU跟踪来分析应用程序的CPU线程使用情况。此时，您可以使用CPU Profiler中内置的各种数据视图和过滤器来解决CPU性能问题。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3Byb2ZpbGUvY3B1LXByb2ZpbGVyLmh0bWw=" title="https://developer.android.com/studio/profile/cpu-profiler.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document21.png" alt="Untitled_document21.png"></p>
+<center>CPU Profiler</center>
+
+<h2 id="Memory-Profiler"><a href="#Memory-Profiler" class="headerlink" title="Memory Profiler"></a>Memory Profiler</h2><p>无效率地使用内存可能导致许多设备问题，从janky UI到低内存事件。内存分析器将先前的堆查看器和分配跟踪器的功能集成在一个丰富的界面中，以帮助调试应用程序中的内存使用问题。您可以通过分析内存分配，堆转储等来诊断一系列内存问题。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3Byb2ZpbGUvbWVtb3J5LXByb2ZpbGVyLmh0bWw=" title="https://developer.android.com/studio/profile/memory-profiler.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document22.png" alt="Untitled_document22.png"></p>
+<center>Memory Profiler</center>
+
+<h2 id="Network-Profiler"><a href="#Network-Profiler" class="headerlink" title="Network Profiler"></a>Network Profiler</h2><p>优化您的应用程序的前台和后台网络使用可以导致更高效的应用程序和更低的应用程序数据使用。网络分析器允许您监视应用程序的网络活动，检查每个网络请求的有效负载，并链接到生成网络请求的源代码行。目前，网络分析器与HttpURLConnection，OkHttp和Volley网络库协同工作。网络分析器是通过在“运行配置”框中的“分析”选项卡中选择启用高级分析功能，可以在Android O设备和仿真器之前启用的高级分析功能。 除了启用网络请求和有效载荷分析外，此复选框还可以启用顶层的事件收集，内存对象计数和内存垃圾回收。对于基于Android O的设备和模拟器，只需部署您的应用程序。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3Byb2ZpbGUvbmV0d29yay1wcm9maWxlci5odG1s" title="https://developer.android.com/studio/profile/network-profiler.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document23.png" alt="Untitled_document23.png"></p>
+<center>Network Profiler</center>
+
+<p><img src="/images/Untitled_document24.png" alt="Untitled_document24.png"></p>
+<center>Network Profiler Setup for Pre- Android O Devices</center>
+
+<h2 id="APK分析仪改进"><a href="#APK分析仪改进" class="headerlink" title="APK分析仪改进"></a>APK分析仪改进</h2><p>在Android Studio 3.0中，我们为APK分析工具添加了一些其他增强功能，可帮助您进一步优化APK的大小。通过此功能更新，您现在可以分析Instant App zip文件和AAR，并查看类和方法的dex字节码。还可以生成Proguard配置规则，并在dex查看器中加载Proguard映射文件。<br><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2J1aWxkL2Fway1hbmFseXplci5odG1s" title="https://developer.android.com/studio/build/apk-analyzer.html">学习更多<i class="fa fa-external-link"></i></span></p>
+<p><img src="/images/Untitled_document25.png" alt="Untitled_document25.png"></p>
+<center>APK Analyzer</center>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>要介绍一下，Android Studio 3.0 Canary 1包括这些新的主要功能：</p>
+<h2 id="开发-1"><a href="#开发-1" class="headerlink" title="开发"></a>开发</h2><blockquote>
+<ul>
+<li><span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5nb29nbGVibG9nLmNvbS8yMDE3LzA1L2FuZHJvaWQtYW5ub3VuY2VzLXN1cHBvcnQtZm9yLWtvdGxpbi5odG1s" title="http://android-developers.googleblog.com/2017/05/android-announces-support-for-kotlin.html">Kotlin语言<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvZmVhdHVyZXMvamF2YTgtc3VwcG9ydC5odG1s" title="https://developer.android.com/studio/preview/features/java8-support.html">Java 8语言<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3dyaXRlL2xheW91dC1lZGl0b3IuaHRtbA==" title="https://developer.android.com/studio/write/layout-editor.html">布局编辑器改进<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9hZGFwdGl2ZS1pY29ucy5odG1s" title="https://developer.android.com/preview/features/adaptive-icons.html">自适应图标向导<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy93b3JraW5nLXdpdGgtZm9udHMuaHRtbA==" title="https://developer.android.com/preview/features/working-with-fonts.html">XML字体和可下载的字体<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdGhpbmdzL2luZGV4Lmh0bWw=" title="https://developer.android.com/things/index.html">Android Things<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamV0YnJhaW5zLmNvbS9pZGVhL3doYXRzbmV3LyN2MjAxNy0x" title="https://www.jetbrains.com/idea/whatsnew/#v2017-1">Intellij平台更新2017.1<i class="fa fa-external-link"></i></span></li>
+</ul>
+</blockquote>
+<h2 id="构建-1"><a href="#构建-1" class="headerlink" title="构建"></a>构建</h2><blockquote>
+<ul>
+<li><span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5nb29nbGVibG9nLmNvbS8yMDE3LzA1L2FuZHJvaWQtaW5zdGFudC1hcHBzLWlzLW9wZW4tdG8tYWxsLmh0bWw=" title="http://android-developers.googleblog.com/2017/05/android-instant-apps-is-open-to-all.html">即时应用支持<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvZmVhdHVyZXMvbmV3LWFuZHJvaWQtcGx1Z2luLmh0bWw=" title="https://developer.android.com/studio/preview/features/new-android-plugin.html">建立速度改进<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9zdHVkaW8vYnVpbGQvZGVwZW5kZW5jaWVzLmh0bWwjZ29vZ2xlLW1hdmVu" title="http://developer.android.com/studio/build/dependencies.html#google-maven">Google的Maven Repo更改<i class="fa fa-external-link"></i></span></li>
+</ul>
+</blockquote>
+<h2 id="测试-amp-调试-1"><a href="#测试-amp-调试-1" class="headerlink" title="测试 &amp; 调试"></a>测试 &amp; 调试</h2><blockquote>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3J1bi9lbXVsYXRvci5odG1s" title="https://developer.android.com/studio/run/emulator.html">模拟器Google Play系统映像<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3J1bi9lbXVsYXRvci1hY2NlbGVyYXRpb24uaHRtbA==" title="https://developer.android.com/studio/run/emulator-acceleration.html">模拟器OpenGL ES 3.0支持<i class="fa fa-external-link"></i></span></li>
+<li>模拟器代理支持</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2RlYnVnL2J1Zy1yZXBvcnQuaHRtbA==" title="https://developer.android.com/studio/debug/bug-report.html">应用程序Bug Reporter<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdHJhaW5pbmcvd2VhcmFibGVzL3VpL3JvdGFyeS1pbnB1dC5odG1sI2VtdWxhdG9y" title="https://developer.android.com/training/wearables/ui/rotary-input.html#emulator">Android Wear Rotatory<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvZmVhdHVyZXMvYXBrLWRlYnVnZ2VyLmh0bWw=" title="https://developer.android.com/studio/preview/features/apk-debugger.html">APK调试<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3Rvb2xzLmFuZHJvaWQuY29tL3RlY2gtZG9jcy9sYXlvdXQtaW5zcGVjdG9y" title="http://tools.android.com/tech-docs/layout-inspector">布局检查员<i class="fa fa-external-link"></i></span></li>
+<li>设备文件资源管理器</li>
+</ul>
+</blockquote>
+<h2 id="优化-1"><a href="#优化-1" class="headerlink" title="优化"></a>优化</h2><blockquote>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvZmVhdHVyZXMvYW5kcm9pZC1wcm9maWxlci5odG1s" title="https://developer.android.com/studio/preview/features/android-profiler.html">CPU Profiler<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3Byb2ZpbGUvbWVtb3J5LXByb2ZpbGVyLmh0bWw=" title="https://developer.android.com/studio/profile/memory-profiler.html">Memory Profiler<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3Byb2ZpbGUvbmV0d29yay1wcm9maWxlci5odG1s" title="https://developer.android.com/studio/profile/network-profiler.html">Network Profiler<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2J1aWxkL2Fway1hbmFseXplci5odG1s" title="https://developer.android.com/studio/build/apk-analyzer.html">APK分析仪改进<i class="fa fa-external-link"></i></span></li>
+</ul>
+</blockquote>
+<p>查看<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9zdHVkaW8vcHJldmlldy9mZWF0dXJlcy9pbmRleC5odG1s" title="http://developer.android.com/studio/preview/features/index.html">发行说明<i class="fa fa-external-link"></i></span>了解更多详情。</p>
+<h1 id="开始获取"><a href="#开始获取" class="headerlink" title="开始获取"></a>开始获取</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>如果您使用的是以前版本的Android Studio，则<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvaW5zdGFsbC1wcmV2aWV3Lmh0bWw=" title="https://developer.android.com/studio/preview/install-preview.html">可以和稳定版本一起<i class="fa fa-external-link"></i></span>安装Android Studio 3.0 Canary 1。你可以从官方的Android Studio Preview<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvaW5kZXguaHRtbA==" title="https://developer.android.com/studio/preview/index.html">下载页面<i class="fa fa-external-link"></i></span>下载这个升级。正如本博客中提到的，有一些突破性的Gradle插件API更改来支持IDE中的新功能。因此，您还应该将当前项目中的Android Gradle插件版本更新为3.0.0-alpha1，以测试和验证您的应用程序项目设置。</p>
+<p>我们感谢您喜欢的任何反馈意见、您希望看到的问题或功能。如果您发现错误或问题，请随时<span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2UuYW5kcm9pZC5jb20vc291cmNlL3JlcG9ydC1idWdzI2RldmVsb3Blci10b29scw==" title="https://source.android.com/source/report-bugs#developer-tools">提出问题<i class="fa fa-external-link"></i></span>。在我们的<span class="exturl" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vMTAzMzQyNTE1ODMwMzkwMTg2MjU1" title="https://plus.google.com/103342515830390186255">Google+<i class="fa fa-external-link"></i></span>专页或<span class="exturl" data-url="aHR0cDovL3d3dy50d2l0dGVyLmNvbS9hbmRyb2lkc3R1ZGlv" title="http://www.twitter.com/androidstudio">Twitter<i class="fa fa-external-link"></i></span>上与我们联系——Android Studio开发小组。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>if (本文对您有用) { Pay (请随意¥打赏) || Click Ad (点击下广告) } else { Commit feedback (底部评论区提交建议、反馈) } 感谢支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechat-reward-image/wechat-reward-image.png" alt="Shoewann 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay-reward-image/alipay-reward-image.jpg" alt="Shoewann 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Shoewann</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://shoewann0402.github.io/2017/05/19/android-studio-3-0-canary1/" title="Android Studio 3.0 Canary 1">https://shoewann0402.github.io/2017/05/19/android-studio-3-0-canary1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio-3-0/" rel="tag"># Android Studio 3.0</a>
+          
+            <a href="/tags/Develop/" rel="tag"># Develop</a>
+          
+            <a href="/tags/Featured/" rel="tag"># Featured</a>
+          
+            <a href="/tags/Canary/" rel="tag"># Canary</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/19/whats-new-in-android-o-developer/" rel="next" title="Android的新功能：Android O开发者预览版2以及更多">
+                <i class="fa fa-chevron-left"></i> Android的新功能：Android O开发者预览版2以及更多
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/19/android-announces-support-for-kotlin/" rel="prev" title="Android 宣布支持Kotlin">
+                Android 宣布支持Kotlin <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+          </div>
+          
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2736746584497864" data-ad-slot="4936302539"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjYzNC8xOTE4MQ=="></div>
+    </div>
+
+  
+  	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 文字广告和展示广告1 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2736746584497864" data-ad-slot="4544462438" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Shoewann">
+            
+              <p class="site-author-name" itemprop="name">Shoewann</p>
+              <p class="site-description motion-element" itemprop="description">Android Developer & Google Fans</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">125</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Nob2V3YW5uMDQwMg==" title="GitHub &rarr; https://github.com/shoewann0402"><i class="fa fa-fw fa-github"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="bWFpbHRvOnh1d2FuZzA0MDJAZ21haWwuY29t" title="E-Mail &rarr; mailto:xuwang0402@gmail.com"><i class="fa fa-fw fa-envelope"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vU2hvZXdhbm4=" title="Weibo &rarr; https://weibo.com/Shoewann"><i class="fa fa-fw fa-weibo"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vdS8wLzEwNTMzNTgyNzI2MzU0MjU0OTE5MQ==" title="Google &rarr; https://plus.google.com/u/0/105335827263542549191"><i class="fa fa-fw fa-google"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9mNTU2ZWRjZTg2ZGY0MTg=" title="Twitter &rarr; https://twitter.com/f556edce86df418"><i class="fa fa-fw fa-twitter"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAwNzg3NTMzNzc1Mw==" title="FB Page &rarr; https://www.facebook.com/profile.php?id=100007875337753"><i class="fa fa-fw fa-facebook"></i></span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jbg==" title="https://developers.google.cn">Google Developers</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL2NoaW5hZ2RnLm9yZy8=" title="http://chinagdg.org/">China GDG</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS8yODcwMDg=" title="http://weibo.com/287008">Google谷歌爱好者</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dmaW5n" title="https://blog.csdn.net/wfing">王玉成(IOT GDE)</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly95YW5nYm8udGVjaC8=" title="https://yangbo.tech/">杨波(WEB GDE)</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3d3dy53amRpYW5rb25nLmNuLw==" title="http://www.wjdiankong.cn/">尼古拉斯赵四</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3d3dy5waXhjbi5jbi8=" title="http://www.pixcn.cn/">Pixel 中文网</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开发"><span class="nav-number">1.</span> <span class="nav-text">开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin程序语言"><span class="nav-number">1.1.</span> <span class="nav-text">Kotlin程序语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-8语言功能"><span class="nav-number">1.2.</span> <span class="nav-text">Java 8语言功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局编辑器"><span class="nav-number">1.3.</span> <span class="nav-text">布局编辑器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自适应图标向导"><span class="nav-number">1.4.</span> <span class="nav-text">自适应图标向导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML字体和可下载的字体"><span class="nav-number">1.5.</span> <span class="nav-text">XML字体和可下载的字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Things的支持"><span class="nav-number">1.6.</span> <span class="nav-text">Android Things的支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IntelliJ平台更新"><span class="nav-number">1.7.</span> <span class="nav-text">IntelliJ平台更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构建"><span class="nav-number">2.</span> <span class="nav-text">构建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#即时应用支持"><span class="nav-number">2.1.</span> <span class="nav-text">即时应用支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立速度改进"><span class="nav-number">2.2.</span> <span class="nav-text">建立速度改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Google’s-Maven-资源库"><span class="nav-number">2.3.</span> <span class="nav-text">Google’s Maven 资源库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试-amp-调试"><span class="nav-number">3.</span> <span class="nav-text">测试 &amp; 调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Google-Play系统镜像"><span class="nav-number">3.1.</span> <span class="nav-text">Google Play系统镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android模拟器中的OpenGL-ES-3-0支持"><span class="nav-number">3.2.</span> <span class="nav-text">Android模拟器中的OpenGL ES 3.0支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android模拟器中的应用程序Bug-Reporter"><span class="nav-number">3.3.</span> <span class="nav-text">Android模拟器中的应用程序Bug Reporter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android中的代理支持"><span class="nav-number">3.4.</span> <span class="nav-text">Android中的代理支持*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android模拟器中的Android-Wear旋转控件"><span class="nav-number">3.5.</span> <span class="nav-text">Android模拟器中的Android Wear旋转控件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APK调试"><span class="nav-number">3.6.</span> <span class="nav-text">APK调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局检查员"><span class="nav-number">3.7.</span> <span class="nav-text">布局检查员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设备文件资源管理器"><span class="nav-number">3.8.</span> <span class="nav-text">设备文件资源管理器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-number">4.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Profiler"><span class="nav-number">4.1.</span> <span class="nav-text">Android Profiler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-Profiler"><span class="nav-number">4.2.</span> <span class="nav-text">CPU Profiler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-Profiler"><span class="nav-number">4.3.</span> <span class="nav-text">Memory Profiler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Profiler"><span class="nav-number">4.4.</span> <span class="nav-text">Network Profiler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#APK分析仪改进"><span class="nav-number">4.5.</span> <span class="nav-text">APK分析仪改进</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发-1"><span class="nav-number">5.1.</span> <span class="nav-text">开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建-1"><span class="nav-number">5.2.</span> <span class="nav-text">构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试-amp-调试-1"><span class="nav-number">5.3.</span> <span class="nav-text">测试 &amp; 调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-1"><span class="nav-number">5.4.</span> <span class="nav-text">优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始获取"><span class="nav-number">6.</span> <span class="nav-text">开始获取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">6.1.</span> <span class="nav-text">下载</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=c5a15952a6450d42add71651a17eab4a619bede3c63194238dcede3442dd850c"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Google技术分享交流" title="Google技术分享交流"></a>
+<div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shoewann</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Muse</span> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    var cnzz_s_tag = document.createElement('script');
+    cnzz_s_tag.type = 'text/javascript';
+    cnzz_s_tag.async = true;
+    cnzz_s_tag.charset = 'utf-8';
+    cnzz_s_tag.src = 'http://w.cnzz.com/c.php?id=1259071960&async=1';
+    var root_s = document.getElementsByTagName('script')[0];
+    root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2017/05/19/android-studio-3-0-canary1/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'ACMTtyiajBtyriIPCjgyQbkW-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'ACMTtyiajBtyriIPCjgyQbkW-gzGzoHsz',
+                'X-LC-Key': '6DCk5HyLXFUQI3gFXrBR7b1z',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Linkedin,Mailto,Reddit,Delicious,StumbleUpon,Pinterest,Facebook,GooglePlus,Slashdot,Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "default";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Linkedin,Mailto,Reddit,Delicious,StumbleUpon,Pinterest,Facebook,GooglePlus,Slashdot,Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/exturl.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>

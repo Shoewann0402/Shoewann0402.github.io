@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="GPvp8NXPYxNlQOz9NarDxF5wMu2GpoiC6_txrpmFAVo">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2736746584497864",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+  <meta name="description" content="(…..咳咳, 别点了，上面这个只是一个截图而已. @_@! )  原文来自：Google Android developer by lan Lake —— Tasks and the Back Stack  当我们点击了launcher桌面上App应用程序实际上发生了什么呢？如果你说“我的应用程序启动起来了”，你在技术上是正确的，也是在所有回答类别中最佳的一个.如果我们在深入一点，我们利用返回这">
+<meta name="keywords" content="task,stack,任务,返回栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android浅谈任务和返回栈">
+<meta property="og:url" content="https://shoewann0402.github.io/2016/05/17/Android浅谈任务和返回栈/index.html">
+<meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
+<meta property="og:description" content="(…..咳咳, 别点了，上面这个只是一个截图而已. @_@! )  原文来自：Google Android developer by lan Lake —— Tasks and the Back Stack  当我们点击了launcher桌面上App应用程序实际上发生了什么呢？如果你说“我的应用程序启动起来了”，你在技术上是正确的，也是在所有回答类别中最佳的一个.如果我们在深入一点，我们利用返回这">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://shoewann0402.github.io/images/task_and_the_Back_Stack.png">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android浅谈任务和返回栈">
+<meta name="twitter:description" content="(…..咳咳, 别点了，上面这个只是一个截图而已. @_@! )  原文来自：Google Android developer by lan Lake —— Tasks and the Back Stack  当我们点击了launcher桌面上App应用程序实际上发生了什么呢？如果你说“我的应用程序启动起来了”，你在技术上是正确的，也是在所有回答类别中最佳的一个.如果我们在深入一点，我们利用返回这">
+<meta name="twitter:image" content="https://shoewann0402.github.io/images/task_and_the_Back_Stack.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Shoewann's Personal Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://shoewann0402.github.io/2016/05/17/Android浅谈任务和返回栈/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android浅谈任务和返回栈 | Shoewann's Personal Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/favicon.ico" alt="Shoewann's Personal Blog">
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shoewann's Personal Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">【" OK Google "】</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">125</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">45</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">73</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Nob2V3YW5uMDQwMg==" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2016/05/17/Android浅谈任务和返回栈/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shoewann">
+      <meta itemprop="description" content="Android Developer & Google Fans">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shoewann's Personal Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android浅谈任务和返回栈
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-17 09:31:15" itemprop="dateCreated datePublished" datetime="2016-05-17T09:31:15+08:00">2016-05-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-11 17:33:32" itemprop="dateModified" datetime="2019-03-11T17:33:32+08:00">2019-03-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2016/05/17/Android浅谈任务和返回栈/" class="leancloud_visitors" data-flag-title="Android浅谈任务和返回栈">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="/images/task_and_the_Back_Stack.png" rel="gallery_cjt46gvy10011etjxhd9apk7v" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="/images/task_and_the_Back_Stack.png" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <p>(…..咳咳, 别点了，上面这个只是一个截图而已. @_@! )</p>
+<blockquote>
+<p>原文来自：Google Android developer by lan Lake —— <span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2dvb2dsZS1kZXZlbG9wZXJzL3Rhc2tzLWFuZC10aGUtYmFjay1zdGFjay1kYmI3YzNiMGY2ZDQj" title="https://medium.com/google-developers/tasks-and-the-back-stack-dbb7c3b0f6d4#">Tasks and the Back Stack<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<p>当我们点击了launcher桌面上App应用程序实际上发生了什么呢？如果你说“我的应用程序启动起来了”，你在技术上是正确的，也是在所有回答类别中最佳的一个.如果我们在深入一点，我们利用返回这件小事情去看看，它对我们理解什么是<strong>任务</strong>以及它是如何去交互的会有帮助的</p>
+<a id="more"></a>
+<h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><p>一个任务是围绕着一个活动栈元数据和信息的集合（你可以查看<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL0FjdGl2aXR5TWFuYWdlci5SZWNlbnRUYXNrSW5mby5odG1s" title="https://developer.android.com/reference/android/app/ActivityManager.RecentTaskInfo.html">RecentTaskInfo<i class="fa fa-external-link"></i></span>类获取更准确的数据）。</p>
+<p>所以当你点击了launcher桌面上你的App应用程序，系统其实会开始去上一个已经存在的任务（通过Intent意图和Activity活动来指向确定) 去恢复—— 然你回到你该回到的地方.如果任务中没有存在可以被发现，然后利用最新启动的Activity作为基类Activity，一个新的任务就在任务的返回栈里被创建了。</p>
+<h2 id="返回栈"><a href="#返回栈" class="headerlink" title="返回栈"></a>返回栈</h2><p>你或许会想象，返回键一个任务的返回栈是捆绑在一起的，但是它是双向的，当你开始利用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9jb250ZW50L0NvbnRleHQuaHRtbA==" title="http://developer.android.com/reference/android/content/Context.html">startActivity()<i class="fa fa-external-link"></i></span>启动一个新的activity,将会（默认情况下）推送出一个新的activity在你的任务之上，原因是上一个Activity 已经被暂停了（如果这个新的activity完全掩盖了上一个activity，就被停止了）。</p>
+<p><img src="/images/1-zItbFvFydIR63z_37ya1Iw.png" alt="a simple back stack"></p>
+<p>当操作返回键时（默认情况下）然后会‘抛出’任务，在最顶端的activity将会调用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9hcHAvQWN0aXZpdHkuaHRtbA==" title="http://developer.android.com/reference/android/app/Activity.html">finish()<i class="fa fa-external-link"></i></span>,销毁它并且从返回栈中移除，同时带你返回上一个activity。重复这样操作直到在返回栈中不会留下任何东西了，你也就将回到launcher桌面上了。</p>
+<h2 id="返回栈和Fragments"><a href="#返回栈和Fragments" class="headerlink" title="返回栈和Fragments"></a>返回栈和Fragments</h2><p>返回栈不是仅仅用于activity上：它也应用于<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9ndWlkZS9jb21wb25lbnRzL2ZyYWdtZW50cy5odG1s" title="http://developer.android.com/guide/components/fragments.html">fragments<i class="fa fa-external-link"></i></span>。当你提供一个<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9ndWlkZS9jb21wb25lbnRzL2ZyYWdtZW50cy5odG1s" title="http://developer.android.com/guide/components/fragments.html">fragment transaction<i class="fa fa-external-link"></i></span>从你的用户界面去添加，替换，或者移除一个fragment，你能够使用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9GcmFnbWVudFRyYW5zYWN0aW9uLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/FragmentTransaction.html">addToBackStack()<i class="fa fa-external-link"></i></span>去有效添加<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9GcmFnbWVudFRyYW5zYWN0aW9uLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/FragmentTransaction.html">FragmentTransaction<i class="fa fa-external-link"></i></span>到你的返回栈</p>
+<p>当你使用这种方式，返回键被点击中，FragmentTransaction 将会被反向（一个添加的fragment被移除，一个替换的fragment被还原，或者一个被移除掉的fragment被重新添加）。每一个事务被添加到返回栈是被反向翻转的，直到默认的activity被finish结束的那个时候，它们所有才会被移除，再次放进来将会重复表现。</p>
+<h2 id="返回不是唯一的导航键"><a href="#返回不是唯一的导航键" class="headerlink" title="返回不是唯一的导航键"></a>返回不是唯一的导航键</h2><p>当然，在一个现代化的Android设备里（我们不去过多的讨论有关<span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5ibG9nc3BvdC5jb20vMjAxMi8wMS9zYXktZ29vZGJ5ZS10by1tZW51LWJ1dHRvbi5odG1s" title="http://android-developers.blogspot.com/2012/01/say-goodbye-to-menu-button.html">menu button<i class="fa fa-external-link"></i></span>相关的东西）返回键不是唯一的导航键。</p>
+<p>home 键可能是最简单的，它是单焦点：它放置当前任务到后台，然后带着你回到你的launcher桌面上。</p>
+<blockquote>
+<p><strong>笔记</strong>:移动你的任务到后台，不会杀死你的任务（虽然最顶端的activity肯定被暂停+被停止）: 它将一直存活直到<strong>Process(进程)</strong>被杀死。在‘<span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2dvb2dsZS1kZXZlbG9wZXJzL3doby1saXZlcy1hbmQtd2hvLWRpZXMtcHJvY2Vzcy1wcmlvcml0aWVzLW9uLWFuZHJvaWQtY2IxNTFmMzkwNDRm" title="https://medium.com/google-developers/who-lives-and-who-dies-process-priorities-on-android-cb151f39044f">Who lives and who dies ?(谁活着，谁灭亡？)<i class="fa fa-external-link"></i></span>这篇博客优先学习更多有关进程和什么时候你的app应用会被杀死。</p>
+</blockquote>
+<p>overview 键(最近任务)，带领你，你或许会想象，对于<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9ndWlkZS9jb21wb25lbnRzL3JlY2VudHMuaHRtbA==" title="http://developer.android.com/guide/components/recents.html">Overview screen<i class="fa fa-external-link"></i></span>,这是在Android世界里的’应用程序切换器’—— 在这儿你将会看到你最近的任务，也能够选择其中的一个带它返回到前台。</p>
+<p>##好了，就是它们这些了，没有更多可以看的了<br>梳理一下，startActivity()或addToBackStack()返回键默认的特性。这儿没有什么特别的，但没有任何混淆 —— 这些对称，一致的行为作为默认。在多数情况下，<strong>你应该使用这些默认的特性</strong></p>
+<p>在你直接运行和复写<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9hcHAvQWN0aXZpdHkuaHRtbA==" title="http://developer.android.com/reference/android/app/Activity.html">onBackPressd()<i class="fa fa-external-link"></i></span>之前，这儿有一些特殊的情况你或许要去是考虑一下：</p>
+<h3 id="防止返回键疲劳过度"><a href="#防止返回键疲劳过度" class="headerlink" title="防止返回键疲劳过度"></a>防止返回键疲劳过度</h3><p>当然，当你需要按10+次走出你在哪里，返回按钮会失去了一些光泽，另一种情况，当你启动的是当前同一个activity，这是很容易避免的，</p>
+<p>创建一个任务多个复制相同Activity,（无论是从内存压力还是返回键疲劳过度都一起减少了）你的Activity能够在AndroidManifest使用<strong>launchMode=”singleTop”</strong>或者你能够在你的Intent意图里添加<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9jb250ZW50L0ludGVudC5odG1s" title="http://developer.android.com/reference/android/content/Intent.html">Intent.FLAG_ACTIVITY_SINGLE_TOP<i class="fa fa-external-link"></i></span></p>
+<p>在顶部返回栈防止同一个activity拷贝多个副本，利用new Intent 和任意的extras你将会在<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9hcHAvQWN0aXZpdHkuaHRtbA==" title="http://developer.android.com/reference/android/app/Activity.html">onNewIntent()<i class="fa fa-external-link"></i></span>中得到一个回调。</p>
+<blockquote>
+<p><strong>笔记:</strong>在读onNewIntent()文档时小心：<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9hcHAvQWN0aXZpdHkuaHRtbA==" title="http://developer.android.com/reference/android/app/Activity.html">getIntent()<i class="fa fa-external-link"></i></span>将一直返回原始的Intent除非你使用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9hcHAvQWN0aXZpdHkuaHRtbA==" title="http://developer.android.com/reference/android/app/Activity.html">setIntent()<i class="fa fa-external-link"></i></span>去重写它</p>
+</blockquote>
+<h3 id="返回栈和通知"><a href="#返回栈和通知" class="headerlink" title="返回栈和通知"></a>返回栈和通知</h3><p>如果你将在你的应用里构建一个通知指定一个Activity，这里有一种情况要避免:点击返回键直接回到launcher桌面上。当你利用一个基本的activity提供一个PendingIntent开启一个新的任务会出现这种情况，除非你的通知是打开你的启动activity,这不是你想要的。<strong>如果它们作为导航到应用本身重新的那一部分，用户应该是明确目标地点的</strong>，你的通知仅仅是保存了它们的中间步骤。</p>
+<p>对于某些事情是如此的重要，有一个类它将会为你完成所有的任务这将是非常好的。进入<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9UYXNrU3RhY2tCdWlsZGVyLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/TaskStackBuilder.html">TaskStackBuilder<i class="fa fa-external-link"></i></span>: 一个处理标志和返回栈的特殊类，对于你对于这种情况：</p>
+<pre><code class="bash">// Construct the Intent you want to end up at
+
+Intent detailActivity = new Intent(this, DetailActivity.this);
+
+// Construct the PendingIntent <span class="keyword">for</span> your Notification
+
+TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+
+// This uses android:parentActivityName and
+
+// android.support.PARENT_ACTIVITY meta-data by default
+
+stackBuilder.addNextIntentWithParentStack(detailActivity);
+
+PendingIntent pendingIntent = stackBuilder
+
+  .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+</code></pre>
+<p>你将在使用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9UYXNrU3RhY2tCdWlsZGVyLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/TaskStackBuilder.html">addNextIntentWithParentStack()<i class="fa fa-external-link"></i></span>方法时注意 —— 这个方法在正常Intent意图，你将创建了一个PendingIntent去构建一个完整的任务栈刚好通过的捷径。虽然它有一个要求：每一个activity需要有一个它的父activity定义在Androidmanifest(从<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS90cmFpbmluZy9ub3RpZnktdXNlci9uYXZpZ2F0aW9uLmh0bWw=" title="http://developer.android.com/training/notify-user/navigation.html">这篇文档中看示例代码<i class="fa fa-external-link"></i></span>)。</p>
+<p>如果在你情况下默认不工作，你不需要抛出TaskStackBuilder:<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9UYXNrU3RhY2tCdWlsZGVyLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/TaskStackBuilder.html">editIntentAt()<i class="fa fa-external-link"></i></span>允许你回收一个特殊的Intent意图并设置action动作，设置data URL数据地址，或者add extras传一个值。如果你需要甚至更多的定制，你可以放弃使用*ParentStack()方法完全直接使用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9UYXNrU3RhY2tCdWlsZGVyLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/TaskStackBuilder.html"> addNextIntent()<i class="fa fa-external-link"></i></span>添加确切你需要的Intent到你的具体情况</p>
+<blockquote>
+<p><strong>笔记</strong>:如上所述在<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS90cmFpbmluZy9ub3RpZnktdXNlci9uYXZpZ2F0aW9uLmh0bWw=" title="http://developer.android.com/training/notify-user/navigation.html">文档<i class="fa fa-external-link"></i></span>里,对于其他类型的activity你或许从一个特殊的notification通知(i.e，没有在你正常的应用重新流程下的一个通知)去启动。这个或许是一个例子，环聊的（Hangout’s）直接回复像一个activity在Android N之前。这些acitivities是通常半透明 —— 你能看到其他的app应用程序在你的activity下面 —— 同时一般没有任何返回栈合成或者新的任务和它们关联。</p>
+</blockquote>
+<h2 id="任务和返回栈，一起工作"><a href="#任务和返回栈，一起工作" class="headerlink" title="任务和返回栈，一起工作"></a>任务和返回栈，一起工作</h2><p>记住这个部分已经被预测很重要，如果将是使用你的返回栈乱搞，请确保测试非常彻底，以确保最佳的用户体验。</p>
+<p><img src="/images/1-S6K7IYkWhCzkS6YAgxLfXw.png" alt="android developer patterns"></p>
+<blockquote>
+<p>翻译有限，不足之处，欢迎指正</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>if (本文对您有用) { Pay (请随意¥打赏) || Click Ad (点击下广告) } else { Commit feedback (底部评论区提交建议、反馈) } 感谢支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/path/to/wechat-reward-image/wechat-reward-image.png" alt="Shoewann 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/path/to/alipay-reward-image/alipay-reward-image.jpg" alt="Shoewann 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Shoewann</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://shoewann0402.github.io/2016/05/17/Android浅谈任务和返回栈/" title="Android浅谈任务和返回栈">https://shoewann0402.github.io/2016/05/17/Android浅谈任务和返回栈/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/task/" rel="tag"># task</a>
+          
+            <a href="/tags/stack/" rel="tag"># stack</a>
+          
+            <a href="/tags/任务/" rel="tag"># 任务</a>
+          
+            <a href="/tags/返回栈/" rel="tag"># 返回栈</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/16/Google官方Android开源库-FlexboxLayout/" rel="next" title="Google官方Android开源库--FlexboxLayout">
+                <i class="fa fa-chevron-left"></i> Google官方Android开源库--FlexboxLayout
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/19/IO-2016-Android-更新了什么？/" rel="prev" title="IO-2016-Android-更新了什么？">
+                IO-2016-Android-更新了什么？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+          </div>
+          
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2736746584497864" data-ad-slot="4936302539"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjYzNC8xOTE4MQ=="></div>
+    </div>
+
+  
+  	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 文字广告和展示广告1 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2736746584497864" data-ad-slot="4544462438" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Shoewann">
+            
+              <p class="site-author-name" itemprop="name">Shoewann</p>
+              <p class="site-description motion-element" itemprop="description">Android Developer & Google Fans</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">125</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Nob2V3YW5uMDQwMg==" title="GitHub &rarr; https://github.com/shoewann0402"><i class="fa fa-fw fa-github"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="bWFpbHRvOnh1d2FuZzA0MDJAZ21haWwuY29t" title="E-Mail &rarr; mailto:xuwang0402@gmail.com"><i class="fa fa-fw fa-envelope"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vU2hvZXdhbm4=" title="Weibo &rarr; https://weibo.com/Shoewann"><i class="fa fa-fw fa-weibo"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vdS8wLzEwNTMzNTgyNzI2MzU0MjU0OTE5MQ==" title="Google &rarr; https://plus.google.com/u/0/105335827263542549191"><i class="fa fa-fw fa-google"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9mNTU2ZWRjZTg2ZGY0MTg=" title="Twitter &rarr; https://twitter.com/f556edce86df418"><i class="fa fa-fw fa-twitter"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAwNzg3NTMzNzc1Mw==" title="FB Page &rarr; https://www.facebook.com/profile.php?id=100007875337753"><i class="fa fa-fw fa-facebook"></i></span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jbg==" title="https://developers.google.cn">Google Developers</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL2NoaW5hZ2RnLm9yZy8=" title="http://chinagdg.org/">China GDG</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS8yODcwMDg=" title="http://weibo.com/287008">Google谷歌爱好者</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dmaW5n" title="https://blog.csdn.net/wfing">王玉成(IOT GDE)</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly95YW5nYm8udGVjaC8=" title="https://yangbo.tech/">杨波(WEB GDE)</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3d3dy53amRpYW5rb25nLmNuLw==" title="http://www.wjdiankong.cn/">尼古拉斯赵四</span>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cDovL3d3dy5waXhjbi5jbi8=" title="http://www.pixcn.cn/">Pixel 中文网</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#任务"><span class="nav-number">1.</span> <span class="nav-text">任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回栈"><span class="nav-number">2.</span> <span class="nav-text">返回栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回栈和Fragments"><span class="nav-number">3.</span> <span class="nav-text">返回栈和Fragments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回不是唯一的导航键"><span class="nav-number">4.</span> <span class="nav-text">返回不是唯一的导航键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#防止返回键疲劳过度"><span class="nav-number">4.1.</span> <span class="nav-text">防止返回键疲劳过度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回栈和通知"><span class="nav-number">4.2.</span> <span class="nav-text">返回栈和通知</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务和返回栈，一起工作"><span class="nav-number">5.</span> <span class="nav-text">任务和返回栈，一起工作</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=c5a15952a6450d42add71651a17eab4a619bede3c63194238dcede3442dd850c"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Google技术分享交流" title="Google技术分享交流"></a>
+<div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shoewann</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Muse</span> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    var cnzz_s_tag = document.createElement('script');
+    cnzz_s_tag.type = 'text/javascript';
+    cnzz_s_tag.async = true;
+    cnzz_s_tag.charset = 'utf-8';
+    cnzz_s_tag.src = 'http://w.cnzz.com/c.php?id=1259071960&async=1';
+    var root_s = document.getElementsByTagName('script')[0];
+    root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+    <script>
+  window.livereOptions = {
+    refer: '2016/05/17/Android浅谈任务和返回栈/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log(`Failed to save Visitor num, with error message: ${responseJSON.error}`);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log(`LeanCloud Counter Error: ${responseJSON.code} ${responseJSON.error}`);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'ACMTtyiajBtyriIPCjgyQbkW-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'ACMTtyiajBtyriIPCjgyQbkW-gzGzoHsz',
+                'X-LC-Key': '6DCk5HyLXFUQI3gFXrBR7b1z',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Linkedin,Mailto,Reddit,Delicious,StumbleUpon,Pinterest,Facebook,GooglePlus,Slashdot,Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "default";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Linkedin,Mailto,Reddit,Delicious,StumbleUpon,Pinterest,Facebook,GooglePlus,Slashdot,Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  <script src="/js/src/exturl.js?v=7.0.0"></script>
+
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+</body>
+</html>
