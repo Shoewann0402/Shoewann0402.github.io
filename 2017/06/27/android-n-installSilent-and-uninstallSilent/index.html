@@ -117,7 +117,7 @@
 <meta property="og:description" content="最近在做静默安装和卸载功能的时候，应用程序放到系统分区(/system/priv-app/)执行pm命令实现静默安装和卸载的方式在7.0上安装、卸载失败。Google 在N上加强了安全权限，对此用本文来记录如何解决7.0上的静默安装和静默卸载。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android_nougat.png">
-<meta property="og:updated_time" content="2017-06-28T08:55:46.000Z">
+<meta property="og:updated_time" content="2019-03-11T09:12:52.608Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android N 静默安装和卸载">
 <meta name="twitter:description" content="最近在做静默安装和卸载功能的时候，应用程序放到系统分区(/system/priv-app/)执行pm命令实现静默安装和卸载的方式在7.0上安装、卸载失败。Google 在N上加强了安全权限，对此用本文来记录如何解决7.0上的静默安装和静默卸载。">
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2017-06-28 16:55:46" itemprop="dateModified" datetime="2017-06-28T16:55:46+08:00">2017-06-28</time>
+                <time title="修改时间：2019-03-11 17:12:52" itemprop="dateModified" datetime="2019-03-11T17:12:52+08:00">2019-03-11</time>
               
             
           </span>
@@ -548,7 +548,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/android_nougat.png" rel="gallery_cjt3sx923002t0jjxce1ame3j" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/android_nougat.png" rel="gallery_cjt44ql8t005l16jxbicm94tr" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/android_nougat.png" itemprop="contentUrl">
               </a>
             
@@ -602,7 +602,7 @@
 <h2 id="解决错误-1"><a href="#解决错误-1" class="headerlink" title="解决错误"></a>解决错误</h2><p>我们现在来看上面静默安装(#源码部分)的第一张图，看到第<strong>01522</strong>行，命令显示的是:<strong>pm uninstall [-k] [–user USER_ID] PACKAGE</strong></p>
 <p>确定我们的判断是没有问题的，在7.0上执行pm指令的时候，都需要跟上<strong>[–user USER_ID]</strong></p>
 <p><img src="/images/Screenshot20170627202038.png" alt="Screenshot20170627202038.png"></p>
-<p>注：其中<strong>[-k]</strong>是代表时候需要保留需要卸载应用包名的数据</p>
+<p>注：其中<strong>[-k]</strong>是代表是否需要保留需要卸载应用包名的数据</p>
 <p>因此，我们修改执行命令，同静默安装一样增加<strong>–user 0</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">06-27 20:28:59.893 D/MainActivity: onClick: com.ifeng.news2</span><br><span class="line">06-27 20:28:59.899 D/PackageUtils: Enter----&gt;&gt;&gt;uninstallSilent()</span><br><span class="line">06-27 20:28:59.899 D/PackageUtils: command---&gt;&gt;&gt;LD_LIBRARY_PATH=/vendor/lib*:/system/lib* pm uninstall -k --user 0 com.ifeng.news2</span><br><span class="line">06-27 20:29:01.006 D/PackageUtils: commandResult---&gt;&gt;&gt;com.wt.testshortcut.ShellUtils$CommandResult@67c71a1</span><br><span class="line">06-27 20:29:01.019 E/PackageUtils: uninstallSilent successMsg:, ErrorMsg:Exception occurred while dumping:java.lang.NullPointerException	at com.android.internal.util.Preconditions.checkNotNull(Preconditions.java:94)	at com.android.server.AppOpsService.checkPackage(AppOpsService.java:999)	at android.app.AppOpsManager.checkPackage(AppOpsManager.java:1682)	at com.android.server.pm.PackageInstallerService.uninstall(PackageInstallerService.java:879)	at com.android.server.pm.PackageManagerShellCommand.runUninstall(PackageManagerShellCommand.java:792)	at com.android.server.pm.PackageManagerShellCommand.onCommand(PackageManagerShellCommand.java:118)	at android.os.ShellCommand.exec(ShellCommand.java:94)	at com.android.server.pm.PackageManagerService.onShellCommand(PackageManagerService.java:18747)	at android.os.Binder.shellCommand(Binder.java:468)	at android.os.Binder.onTransact(Binder.java:367)	at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:2387)	at com.android.server.pm.PackageManagerService.onTransact(PackageManagerService.java:3197)	at android.os.Binder.execTransact(Binder.java:565)	at java.lang.reflect.Method.invoke(Native Method)	at com.qihoo360.mobilesafe.loadedmgr.b.s.a(SourceFile:287)	at com.qihoo360.mobilesafe.loaded.SystemServerJar$FilterInstance.filterExecTransact(SourceFile:463)	at com.qihoo360.mobilesafe.loadednative.NativeManager.execTransact(SourceFile:203)</span><br></pre></td></tr></table></figure></p>
 <p>通过以上的log分析出，是在执行到<strong>Preconditions.checkNotNull()</strong>方法的时候抛出了异常的。</p>
 <p>下面我们一起来看看这个流程，逆向倒推：</p>
@@ -631,7 +631,7 @@
 <p>但是上面的这种方式在Android N上也没有任何效果了。</p>
 <p>针对上面静默卸载的方式，大家有兴趣再分析看看有没有其他的解决办法。</p>
 <blockquote>
-<p>本文为原创文章，转载请注明出处，如有不足，欢迎指正，感谢你的阅读。</p>
+<p>本文为原创文章，转载请注明出处，如有不足，欢迎指正，感谢您的阅读。</p>
 </blockquote>
 
       
