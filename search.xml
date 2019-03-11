@@ -55,8 +55,8 @@
         <category>Notification</category>
       </categories>
       <tags>
-        <tag>Android O</tag>
         <tag>Notification Channels</tag>
+        <tag>Android O</tag>
         <tag>通知渠道</tag>
       </tags>
   </entry>
@@ -69,8 +69,8 @@
         <category>WindowManager</category>
       </categories>
       <tags>
-        <tag>WindowManager</tag>
         <tag>Android O</tag>
+        <tag>WindowManager</tag>
         <tag>Android M</tag>
       </tags>
   </entry>
@@ -482,8 +482,8 @@
         <category>Testing</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Firebase</tag>
+        <tag>Android</tag>
         <tag>Google Cloud</tag>
         <tag>Testing</tag>
       </tags>
@@ -498,8 +498,8 @@
         <category>Testing</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Firebase</tag>
+        <tag>Android</tag>
         <tag>Google Cloud</tag>
         <tag>Testing</tag>
       </tags>
@@ -592,8 +592,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Web</tag>
         <tag>Android</tag>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -798,8 +798,8 @@
         <category>Google cloud</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Firebase</tag>
+        <tag>Android</tag>
         <tag>Google Cloud</tag>
       </tags>
   </entry>
