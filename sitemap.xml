@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/05/13/%E5%88%A9%E7%94%A8Dex-In-Process-%E4%BD%BFAndroid-Studio-%E7%BC%96%E8%AF%91%E6%9B%B4%E5%BF%AB/</loc>
+    <loc>https://shoewann0402.github.io/2019/03/14/introducing-android-q-beta/</loc>
+    
+    <lastmod>2019-03-14T02:16:29.575Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2017/06/24/whats-new-in-webview-security/</loc>
     
     <lastmod>2019-03-11T09:33:32.666Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/06/24/whats-new-in-webview-security/</loc>
+    <loc>https://shoewann0402.github.io/2016/05/13/%E5%88%A9%E7%94%A8Dex-In-Process-%E4%BD%BFAndroid-Studio-%E7%BC%96%E8%AF%91%E6%9B%B4%E5%BF%AB/</loc>
     
     <lastmod>2019-03-11T09:33:32.666Z</lastmod>
     
@@ -23,14 +30,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/11/03/support-ended-for-eclipse-android/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.662Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2017/06/24/start-android-things-way/</loc>
+    <loc>https://shoewann0402.github.io/2016/08/23/taking-final-wrapper-off-of-nougat/</loc>
     
     <lastmod>2019-03-11T09:33:32.662Z</lastmod>
     
@@ -44,21 +44,21 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/08/23/taking-final-wrapper-off-of-nougat/</loc>
+    <loc>https://shoewann0402.github.io/2017/06/24/start-android-things-way/</loc>
     
     <lastmod>2019-03-11T09:33:32.662Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/12/19/quick-boot-top-features-in-android/</loc>
+    <loc>https://shoewann0402.github.io/2016/11/03/support-ended-for-eclipse-android/</loc>
     
-    <lastmod>2019-03-11T09:33:32.658Z</lastmod>
+    <lastmod>2019-03-11T09:33:32.662Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/06/10/security-crypto-provider-deprecated-in-android-n/</loc>
+    <loc>https://shoewann0402.github.io/2018/04/11/protecting-users-with-tls-by-default-in/</loc>
     
     <lastmod>2019-03-11T09:33:32.658Z</lastmod>
     
@@ -66,6 +66,13 @@
   
   <url>
     <loc>https://shoewann0402.github.io/2016/07/28/protecting-android-with-more-linux/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.658Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2017/12/19/quick-boot-top-features-in-android/</loc>
     
     <lastmod>2019-03-11T09:33:32.658Z</lastmod>
     
@@ -93,16 +100,9 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2018/04/11/protecting-users-with-tls-by-default-in/</loc>
+    <loc>https://shoewann0402.github.io/2016/06/10/security-crypto-provider-deprecated-in-android-n/</loc>
     
     <lastmod>2019-03-11T09:33:32.658Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2016/12/04/gvr-unity-sdk-create-vr-skyboxes/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.654Z</lastmod>
     
   </url>
   
@@ -121,7 +121,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/12/10/gvr-unity-sdk-call-android-sameple/</loc>
+    <loc>https://shoewann0402.github.io/2016/12/04/gvr-unity-sdk-create-vr-skyboxes/</loc>
     
     <lastmod>2019-03-11T09:33:32.654Z</lastmod>
     
@@ -143,6 +143,13 @@
   
   <url>
     <loc>https://shoewann0402.github.io/2017/12/18/gdd-china-2017-in-shanghai-trip-record/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.654Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/12/10/gvr-unity-sdk-call-android-sameple/</loc>
     
     <lastmod>2019-03-11T09:33:32.654Z</lastmod>
     
@@ -184,13 +191,6 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/10/20/android71-dev-preview-available/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.646Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2016/10/21/android71-dev-preview-app-shortcuts/</loc>
     
     <lastmod>2019-03-11T09:33:32.646Z</lastmod>
@@ -219,6 +219,20 @@
   </url>
   
   <url>
+    <loc>https://shoewann0402.github.io/2016/10/20/android71-dev-preview-available/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.646Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2017/06/09/android-o-apis-are-final-get-your-apps/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.642Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shoewann0402.github.io/2018/04/07/android-studio-switching-to-d8-dexer/</loc>
     
     <lastmod>2019-03-11T09:33:32.642Z</lastmod>
@@ -227,13 +241,6 @@
   
   <url>
     <loc>https://shoewann0402.github.io/2017/05/19/android-studio-3-0-canary1/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.642Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2017/06/09/android-o-apis-are-final-get-your-apps/</loc>
     
     <lastmod>2019-03-11T09:33:32.642Z</lastmod>
     
@@ -254,28 +261,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/06/27/android-n-installSilent-and-uninstallSilent/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.634Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2016/11/05/android-dev-preview-in-firebase-test-lab/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.634Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2016/06/28/android-mobile-vision-text-api/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.634Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2019/03/06/android-jetpack-workmanager-stable/</loc>
     
     <lastmod>2019-03-11T09:33:32.634Z</lastmod>
     
@@ -289,14 +275,35 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/05/19/android-announces-support-for-kotlin/</loc>
+    <loc>https://shoewann0402.github.io/2016/11/05/android-dev-preview-in-firebase-test-lab/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.634Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2017/06/27/android-n-installSilent-and-uninstallSilent/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.634Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2019/03/06/android-jetpack-workmanager-stable/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.634Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2017/05/15/android-O-does-not-require-permission-for-SMS-verification/</loc>
     
     <lastmod>2019-03-11T09:33:32.630Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/10/12/android-71-developer-preview/</loc>
+    <loc>https://shoewann0402.github.io/2017/05/19/android-announces-support-for-kotlin/</loc>
     
     <lastmod>2019-03-11T09:33:32.630Z</lastmod>
     
@@ -310,7 +317,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/05/15/android-O-does-not-require-permission-for-SMS-verification/</loc>
+    <loc>https://shoewann0402.github.io/2016/10/12/android-71-developer-preview/</loc>
     
     <lastmod>2019-03-11T09:33:32.630Z</lastmod>
     
@@ -373,13 +380,6 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/08/18/Flutter-get-started/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.618Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2016/05/16/Google%E5%AE%98%E6%96%B9Android%E5%BC%80%E6%BA%90%E5%BA%93-FlexboxLayout/</loc>
     
     <lastmod>2019-03-11T09:33:32.618Z</lastmod>
@@ -387,14 +387,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/08/17/Flutter-setup/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.618Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2016/05/17/Android%E6%B5%85%E8%B0%88%E4%BB%BB%E5%8A%A1%E5%92%8C%E8%BF%94%E5%9B%9E%E6%A0%88/</loc>
+    <loc>https://shoewann0402.github.io/2016/08/18/Flutter-get-started/</loc>
     
     <lastmod>2019-03-11T09:33:32.618Z</lastmod>
     
@@ -409,6 +402,20 @@
   
   <url>
     <loc>https://shoewann0402.github.io/2016/06/06/Crash-reporting-in-Firebase/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.618Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/05/17/Android%E6%B5%85%E8%B0%88%E4%BB%BB%E5%8A%A1%E5%92%8C%E8%BF%94%E5%9B%9E%E6%A0%88/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.618Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/08/17/Flutter-setup/</loc>
     
     <lastmod>2019-03-11T09:33:32.618Z</lastmod>
     
@@ -457,28 +464,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/05/11/Android-Material-Design-%E2%80%94Snackbar/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.610Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2016/06/08/Android-Wear-create-first-demo/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.610Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2016/09/20/Android-Studio-2-2/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.610Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2016/05/20/Android-Studio-2-2-%E9%A2%84%E8%A7%88%E7%89%88-%E2%80%94%E2%80%94-%E6%96%B0%E7%9A%84UI%E8%AE%BE%E8%AE%A1%E5%99%A8%E5%92%8C%E7%BA%A6%E6%9D%9F%E5%B8%83%E5%B1%80/</loc>
+    <loc>https://shoewann0402.github.io/2016/05/12/Android-Notification-%E9%80%9A%E7%9F%A5%E6%A0%B7%E5%BC%8F%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2019-03-11T09:33:32.610Z</lastmod>
     
@@ -492,7 +478,21 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/05/12/Android-Notification-%E9%80%9A%E7%9F%A5%E6%A0%B7%E5%BC%8F%E6%80%BB%E7%BB%93/</loc>
+    <loc>https://shoewann0402.github.io/2016/05/20/Android-Studio-2-2-%E9%A2%84%E8%A7%88%E7%89%88-%E2%80%94%E2%80%94-%E6%96%B0%E7%9A%84UI%E8%AE%BE%E8%AE%A1%E5%99%A8%E5%92%8C%E7%BA%A6%E6%9D%9F%E5%B8%83%E5%B1%80/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.610Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/09/20/Android-Studio-2-2/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.610Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/06/08/Android-Wear-create-first-demo/</loc>
     
     <lastmod>2019-03-11T09:33:32.610Z</lastmod>
     
@@ -500,6 +500,13 @@
   
   <url>
     <loc>https://shoewann0402.github.io/2016/05/31/Activity%E5%A4%9A%E7%BA%A7%E8%B7%B3%E8%BD%AC%E5%B8%A6%E8%BF%94%E5%9B%9E%E5%80%BC/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.610Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/05/11/Android-Material-Design-%E2%80%94Snackbar/</loc>
     
     <lastmod>2019-03-11T09:33:32.610Z</lastmod>
     
