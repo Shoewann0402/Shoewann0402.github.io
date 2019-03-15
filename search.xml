@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[关于 Android Q Location 定位]]></title>
     <url>%2F2019%2F03%2F15%2Fabout-android-q-beta-location%2F</url>
-    <content type="text"><![CDATA[Android Q Location 的简单总结 以往情况 Android API &lt; 23 : 无需动态请求，直接注册使用位置权限 Android API &gt; = 23 &amp;&amp; API &lt; = 28: 需要动态请求权限，并允许/拒绝权限 从之前来看，用户只有一个控件允许或拒绝应用程序访问设备位置，包括应用程序在使用时和不使用时的位置使用情况。 在Android Q上，Android团队对控件进行了改进 有何变化从Android Q开始，用户有一个新选项，只有在使用该应用时才能让应用访问该位置; 换句话说，当应用程序在前台时。这意味着用户可以选择三种选项来为应用提供位置： All the time - 意味着APP任何时候都能访问到位置 While in use - 意味着APP只有当在使用的时候才能访问到位置 Deny - 意味着APP无法访问到位置 从Android Q Beta 1开始，此更改具有以下属性： 如果您在后台请求访问用户的位置，则会影响您的应用 通过使用新权限在后台访问位置并在没有后台位置更新的情况下确保优雅降级来进行缓解 Android Q上始终启用行为 如何开始1234&lt;manifest&gt; &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt; &lt;uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /&gt;&lt;/manifest&gt; 如果您的应用具有需要“始终”权限的功能 target version Q : 您需要为清单文件添加新的ACCESS_BACKGROUND_LOCATION权限 target version &lt; = Android 9 (API level 28) : 如果您请求ACCESS_FINE_LOCATION或ACCESS_COARSE_LOCATION中的任何一个，系统将会自动为您添加ACCESS_BACKGROUND_LOCATION权限 用户可以随时通过“设置”决定提供或删除这些位置权限。 要保持良好的用户体验，请将应用程序设计为在应用程序没有后台位置权限或没有任何位置访问权限时进行优雅处理。 示例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586package com.xw.androidqtestimport android.Manifestimport android.content.pm.PackageManagerimport androidx.appcompat.app.AppCompatActivityimport android.os.Bundleimport android.util.Logimport androidx.core.app.ActivityCompatimport kotlinx.android.synthetic.main.activity_location.*class LocationActivity : AppCompatActivity() &#123; private val tag: String = LocationActivity::class.java.simpleName companion object &#123; const val REQUEST_CODE_FOREGROUND = 1 const val REQUEST_CODE_BACKGROUND = 2 &#125; override fun onCreate(savedInstanceState: Bundle?) &#123; super.onCreate(savedInstanceState) setContentView(R.layout.activity_location) btnForeground.setOnClickListener &#123; requestPermission() &#125; btnBackground.setOnClickListener &#123; requestBackgroundPermission() &#125; &#125; override fun onRequestPermissionsResult(requestCode: Int, permissions: Array&lt;out String&gt;, grantResults: IntArray) &#123; when (requestCode) &#123; REQUEST_CODE_FOREGROUND -&gt; handlePermissionForForeground() &#125; super.onRequestPermissionsResult(requestCode, permissions, grantResults) &#125; private fun requestPermission() &#123; val permissionAccessCoarseLocationApproved = ActivityCompat .checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED if (permissionAccessCoarseLocationApproved) &#123; handlePermissionForForeground() &#125; else &#123; ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), REQUEST_CODE_FOREGROUND) &#125; &#125; private fun requestBackgroundPermission() &#123; val permissionAccessCoarseLocationApproved = ActivityCompat .checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED if (permissionAccessCoarseLocationApproved) &#123; val backgroundLocationPermissionApproved = ActivityCompat .checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED if (backgroundLocationPermissionApproved) &#123; // App can access location both in the foreground and in the background. // Start your service that doesn't have a foreground service type // defined. &#125; else &#123; // App can only access location in the foreground. Display a dialog // warning the user that your app must have all-the-time access to // location in order to function properly. Then, request background // location. ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), REQUEST_CODE_BACKGROUND) &#125; &#125; else &#123; // App doesn't have access to the user's location at all. Make full request // for permission. ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION), REQUEST_CODE_BACKGROUND) &#125; &#125; private fun handlePermissionForForeground() &#123; Log.d(tag,"handlePermissionForForeground called") &#125;&#125; 以上是对Android Q 位置变化的简单总结，更多使用方法请参阅官方文档]]></content>
+    <content type="text"><![CDATA[Android Q Location 的简单总结 以往情况 Android API &lt; 23 : 无需动态请求，直接注册使用位置权限 Android API &gt; = 23 &amp;&amp; API &lt; = 28: 需要动态请求权限，并允许/拒绝权限 从之前来看，用户只有一个控件允许或拒绝应用程序访问设备位置，包括应用程序在使用时和不使用时的位置使用情况。 在Android Q上，Android团队对控件进行了改进 有何变化从Android Q开始，用户有一个新选项，只有在使用该应用时才能让应用访问该位置; 换句话说，当应用程序在前台时。这意味着用户可以选择三种选项来为应用提供位置： All the time - 意味着APP任何时候都能访问到位置 While in use - 意味着APP只有当在使用的时候才能访问到位置 Deny - 意味着APP无法访问到位置 从Android Q Beta 1开始，此更改具有以下属性： 如果您在后台请求访问用户的位置，则会影响您的应用 通过使用新权限在后台访问位置并在没有后台位置更新的情况下确保优雅降级来进行缓解 Android Q上始终启用行为 如何开始1234&lt;manifest&gt; &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt; &lt;uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /&gt;&lt;/manifest&gt; 如果您的应用具有需要“始终”权限的功能 target version Q : 您需要为清单文件添加新的ACCESS_BACKGROUND_LOCATION权限 target version &lt;= Android 9 (API 28) : 如果您请求ACCESS_FINE_LOCATION或ACCESS_COARSE_LOCATION中的任何一个，系统将会自动为您添加ACCESS_BACKGROUND_LOCATION权限 用户可以随时通过设置决定提供或删除这些位置权限。 要保持良好的用户体验，请将应用程序设计为在应用程序没有后台位置权限或没有任何位置访问权限时进行优雅处理。 注意：虽然您的应用可以请求并接收ACCESS_BACKGROUND_LOCATION，但用户可以通过选择您的应用仅应在前台访问位置信息来撤消此权限。 示例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586package com.xw.androidqtestimport android.Manifestimport android.content.pm.PackageManagerimport androidx.appcompat.app.AppCompatActivityimport android.os.Bundleimport android.util.Logimport androidx.core.app.ActivityCompatimport kotlinx.android.synthetic.main.activity_location.*class LocationActivity : AppCompatActivity() &#123; private val tag: String = LocationActivity::class.java.simpleName companion object &#123; const val REQUEST_CODE_FOREGROUND = 1 const val REQUEST_CODE_BACKGROUND = 2 &#125; override fun onCreate(savedInstanceState: Bundle?) &#123; super.onCreate(savedInstanceState) setContentView(R.layout.activity_location) btnForeground.setOnClickListener &#123; requestPermission() &#125; btnBackground.setOnClickListener &#123; requestBackgroundPermission() &#125; &#125; override fun onRequestPermissionsResult(requestCode: Int, permissions: Array&lt;out String&gt;, grantResults: IntArray) &#123; when (requestCode) &#123; REQUEST_CODE_FOREGROUND -&gt; handlePermissionForForeground() &#125; super.onRequestPermissionsResult(requestCode, permissions, grantResults) &#125; private fun requestPermission() &#123; val permissionAccessCoarseLocationApproved = ActivityCompat .checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED if (permissionAccessCoarseLocationApproved) &#123; handlePermissionForForeground() &#125; else &#123; ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), REQUEST_CODE_FOREGROUND) &#125; &#125; private fun requestBackgroundPermission() &#123; val permissionAccessCoarseLocationApproved = ActivityCompat .checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED if (permissionAccessCoarseLocationApproved) &#123; val backgroundLocationPermissionApproved = ActivityCompat .checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED if (backgroundLocationPermissionApproved) &#123; // App can access location both in the foreground and in the background. // Start your service that doesn't have a foreground service type // defined. &#125; else &#123; // App can only access location in the foreground. Display a dialog // warning the user that your app must have all-the-time access to // location in order to function properly. Then, request background // location. ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), REQUEST_CODE_BACKGROUND) &#125; &#125; else &#123; // App doesn't have access to the user's location at all. Make full request // for permission. ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION), REQUEST_CODE_BACKGROUND) &#125; &#125; private fun handlePermissionForForeground() &#123; Log.d(tag,"handlePermissionForForeground called") &#125;&#125; 以上是对Android Q 位置变化的简单总结，更多使用方法请参阅官方文档]]></content>
       <categories>
         <category>Android</category>
         <category>Android Q</category>
@@ -510,8 +510,8 @@
         <category>Testing</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Firebase</tag>
+        <tag>Android</tag>
         <tag>Google Cloud</tag>
         <tag>Testing</tag>
       </tags>
@@ -526,8 +526,8 @@
         <category>Testing</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Firebase</tag>
+        <tag>Android</tag>
         <tag>Google Cloud</tag>
         <tag>Testing</tag>
       </tags>
@@ -620,8 +620,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Web</tag>
         <tag>Android</tag>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -826,8 +826,8 @@
         <category>Google cloud</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Firebase</tag>
+        <tag>Android</tag>
         <tag>Google Cloud</tag>
       </tags>
   </entry>
