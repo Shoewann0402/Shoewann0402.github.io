@@ -117,7 +117,7 @@
 <meta property="og:description" content="本文针对Android Q 后台启动Activity简单总结">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android-q-log.png">
-<meta property="og:updated_time" content="2019-03-16T03:13:49.072Z">
+<meta property="og:updated_time" content="2019-03-16T03:16:19.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Q 后台启动Activity限制">
 <meta name="twitter:description" content="本文针对Android Q 后台启动Activity简单总结">
@@ -459,7 +459,7 @@
                 
               
 
-              <time title="创建时间：2019-03-16 10:40:22 / 修改时间：11:13:49" itemprop="dateCreated datePublished" datetime="2019-03-16T10:40:22+08:00">2019-03-16</time>
+              <time title="创建时间：2019-03-16 10:40:22 / 修改时间：11:16:19" itemprop="dateCreated datePublished" datetime="2019-03-16T10:40:22+08:00">2019-03-16</time>
             
 
             
@@ -562,7 +562,7 @@
 <li>系统向应用程序发送一个广播，如<code>SECRET_CODE_ACTION</code>到应用程序。只有特定的广播，应用程序预计在UI启动时才会被豁免。</li>
 </ul>
 </blockquote>
-<p>【注】出于活动启动的目的，前台服务不将应用程序限定在前台。</p>
+<p>【注】出于Activity启动的目的，前台服务不将应用程序限定在前台。</p>
 <h1 id="影响"><a href="#影响" class="headerlink" title="影响"></a>影响</h1><p>这个行为变化影响到所有运行在Android Q上的应用程序，即使是那些target版本是Android 9(API 28) 或者更低的，即使您的应用程序的target版本是Android 9或更低版本，并且最初安装在运行Android 9或更低版本的设备上，在设备升级到Android Q之后，行为更改仍然会生效。</p>
 <p>但是，只要您的应用程序作为用户交互的直接结果启动Actvity，您的应用程序就很可能不会受到此更改的影响。</p>
 <h1 id="警告信息"><a href="#警告信息" class="headerlink" title="警告信息"></a>警告信息</h1><p>在Beta 1中，如果你的应用程序运行在Android Q上，并试图从后台启动某个活动，平台允许该活动启动，但它会向logcat发送一条警告消息，并显示以下警告toast消息:</p>
