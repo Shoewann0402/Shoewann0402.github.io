@@ -117,7 +117,7 @@
 <meta property="og:description" content="Android Q 系统, 对应用存储空间访问进行了限制。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android-q-log.png">
-<meta property="og:updated_time" content="2019-03-17T09:08:24.474Z">
+<meta property="og:updated_time" content="2019-03-17T09:10:06.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Q 独立存储">
 <meta name="twitter:description" content="Android Q 系统, 对应用存储空间访问进行了限制。">
@@ -459,7 +459,7 @@
                 
               
 
-              <time title="创建时间：2019-03-17 12:42:37 / 修改时间：17:08:24" itemprop="dateCreated datePublished" datetime="2019-03-17T12:42:37+08:00">2019-03-17</time>
+              <time title="创建时间：2019-03-17 12:42:37 / 修改时间：17:10:06" itemprop="dateCreated datePublished" datetime="2019-03-17T12:42:37+08:00">2019-03-17</time>
             
 
             
@@ -613,7 +613,7 @@
 <p>【注意】如果您的应用程序是用户默认的照片管理应用程序，平台将会自动给予您应用程序访问照片中的位置信息。</p>
 <p>如果您的应用程序需要访问一个照片的位置，需要完成如下步骤</p>
 <p>1.添加新的权限<code>ACCESS_MEDIA_LOCATION</code>到您应用程序的清单中<br>2.从您的MediaStore对象，调用setRequireOriginal()，传入照片的URI</p>
-<h2 id="展示用户图库照片"><a href="#展示用户图库照片" class="headerlink" title="展示用户图库照片"></a>展示用户图库照片</h2><p>如果您的应用程序是一个相机应用，它无法直接访问保存在<code>图片&amp;视频</code>共享集合中的照片，除非它是默认的照片管理应用，要将用户引导到图库应用程序，请使用<code>ACTION_REVIEW</code> intent意图。</p>
+<h2 id="展示用户图库照片"><a href="#展示用户图库照片" class="headerlink" title="展示用户图库照片"></a>展示用户图库照片</h2><p>如果您的应用程序是一个相机应用，它无法直接访问保存在<strong>图片&amp;视频</strong>共享集合中的照片，除非它是默认的照片管理应用，要将用户引导到图库应用程序，请使用<code>ACTION_REVIEW</code> intent意图。</p>
 <h1 id="处理其他应用程序的文件"><a href="#处理其他应用程序的文件" class="headerlink" title="处理其他应用程序的文件"></a>处理其他应用程序的文件</h1><p>这个环节解释应用程序如何与存储在共享集合中的其他应用程序的文件进行交互。</p>
 <h2 id="访问其他应用创建的文件"><a href="#访问其他应用创建的文件" class="headerlink" title="访问其他应用创建的文件"></a>访问其他应用创建的文件</h2><p>在一个外部存储设备上，访问和读取其他应用程序的已经保存的媒体文件，分为以下几步：</p>
 <p>1.请求必要的权限，基于包含您要访问的文件的共享集合。<br>2.使用<code>ContentResolver</code>对象去查找并打开文件</p>
