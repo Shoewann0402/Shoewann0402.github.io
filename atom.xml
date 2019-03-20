@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Shoewann&#39;s Personal Blog</title>
   
-  <subtitle>【&quot; OK Google &quot;】</subtitle>
+  <subtitle>【声明:页面内容含有谷歌广告，若内容有影响您，请立即离开/设置屏蔽/忽略，莫投诉！】</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shoewann0402.github.io/"/>
@@ -340,9 +340,9 @@
       <category term="Notification" scheme="https://shoewann0402.github.io/categories/Android/Notification/"/>
     
     
-      <category term="Notification Channels" scheme="https://shoewann0402.github.io/tags/Notification-Channels/"/>
-    
       <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
+    
+      <category term="Notification Channels" scheme="https://shoewann0402.github.io/tags/Notification-Channels/"/>
     
       <category term="通知渠道" scheme="https://shoewann0402.github.io/tags/%E9%80%9A%E7%9F%A5%E6%B8%A0%E9%81%93/"/>
     
@@ -370,9 +370,9 @@
       <category term="WindowManager" scheme="https://shoewann0402.github.io/categories/Android/WindowManager/"/>
     
     
-      <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
-    
       <category term="WindowManager" scheme="https://shoewann0402.github.io/tags/WindowManager/"/>
+    
+      <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
     
       <category term="Android M" scheme="https://shoewann0402.github.io/tags/Android-M/"/>
     

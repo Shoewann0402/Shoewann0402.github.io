@@ -149,8 +149,8 @@
         <category>Notification</category>
       </categories>
       <tags>
-        <tag>Notification Channels</tag>
         <tag>Android O</tag>
+        <tag>Notification Channels</tag>
         <tag>通知渠道</tag>
       </tags>
   </entry>
@@ -163,8 +163,8 @@
         <category>WindowManager</category>
       </categories>
       <tags>
-        <tag>Android O</tag>
         <tag>WindowManager</tag>
+        <tag>Android O</tag>
         <tag>Android M</tag>
       </tags>
   </entry>
