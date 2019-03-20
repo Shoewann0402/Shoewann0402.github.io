@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shoewann0402.github.io/"/>
-  <updated>2019-03-19T10:27:20.376Z</updated>
+  <updated>2019-03-20T00:47:23.077Z</updated>
   <id>https://shoewann0402.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Q 应用切换WiFi开关的限制</title>
+    <link href="https://shoewann0402.github.io/2019/03/20/android-q-beta-enable-and-disable-wifi/"/>
+    <id>https://shoewann0402.github.io/2019/03/20/android-q-beta-enable-and-disable-wifi/</id>
+    <published>2019-03-20T00:34:49.000Z</published>
+    <updated>2019-03-20T00:47:23.077Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Android Q 不允许应用程序开/关WIFI</p></blockquote><hr><a id="more"></a><h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>Android Q 将切断应用对Wi-Fi设置的访问权限，防止恶意软件滥用系统功能的访问权限。</p><h1 id="变化"><a href="#变化" class="headerlink" title="变化"></a>变化</h1><p>运行在Q上的应用程序将无法启用/禁用WIFI, <code>WifiManager.setWifiEnabled()</code>方法始将终返回false,该方法不被允许</p><h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xw.androidqtest</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context</span><br><span class="line"><span class="keyword">import</span> android.net.wifi.WifiManager</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle</span><br><span class="line"><span class="keyword">import</span> android.util.Log</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WifiActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> tag: String = WifiActivity::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>.<span class="title">simpleName</span></span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> wifiManager: WifiManager? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_wifi)</span><br><span class="line">        wifiManager = <span class="keyword">this</span>.getSystemService(Context.WIFI_SERVICE) <span class="keyword">as</span> WifiManager?</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">val</span> isWifiEnabled = wifiManager!!.isWifiEnabled</span><br><span class="line">        Log.d(tag, <span class="string">"[默认状态]是否开启 :<span class="variable">$isWifiEnabled</span>"</span>)</span><br><span class="line">        <span class="keyword">when</span> (isWifiEnabled) &#123;</span><br><span class="line">            <span class="literal">true</span> -&gt; &#123;</span><br><span class="line">                Log.d(tag, <span class="string">"[关闭]WiFi，设置WiFi状态为: false"</span>)</span><br><span class="line">                wifiManager!!.isWifiEnabled = <span class="literal">false</span></span><br><span class="line">                <span class="keyword">val</span> result = wifiManager!!.isWifiEnabled</span><br><span class="line">                Log.d(tag, <span class="string">"当前状态:<span class="variable">$result</span>"</span>)</span><br><span class="line">                <span class="keyword">if</span> (result) &#123;</span><br><span class="line">                    Log.d(tag, <span class="string">"检查到当前是true[开启状态], 关闭WiFi: [失败]"</span>)</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    Log.d(tag, <span class="string">"检查到当前是false[关闭状态], 关闭WiFi: [成功]"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> -&gt; &#123;</span><br><span class="line">                Log.d(tag, <span class="string">"[开启]WiFi，设置WiFi状态为: true"</span>)</span><br><span class="line">                wifiManager!!.isWifiEnabled = <span class="literal">true</span></span><br><span class="line">                <span class="keyword">val</span> result = wifiManager!!.isWifiEnabled</span><br><span class="line">                Log.d(tag, <span class="string">"当前状态:<span class="variable">$result</span>"</span>)</span><br><span class="line">                <span class="keyword">if</span> (result) &#123;</span><br><span class="line">                    Log.d(tag, <span class="string">"检查当前是true[开启状态], 开启WiFi: [成功]"</span>)</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    Log.d(tag, <span class="string">"检查当前是false[关闭状态], 开启WiFi: [失败]"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><ul><li>当WiFi默认是开启的情况下，需要代码关闭WiFi，输出日志:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2019-03-20 08:24:51.741 1213-1650/? I/ActivityTaskManager: START u0 &#123;cmp=com.xw.androidqtest/.WifiActivity&#125; from uid 10505</span><br><span class="line">2019-03-20 08:24:51.779 11562-11562/? D/WifiActivity: [默认状态]是否开启 :true</span><br><span class="line">2019-03-20 08:24:51.779 11562-11562/? D/WifiActivity: [关闭]WiFi，设置WiFi状态为: false</span><br><span class="line">2019-03-20 08:24:51.781 1213-1650/? I/WifiService: setWifiEnabled not allowed for uid=10505</span><br><span class="line">2019-03-20 08:24:51.781 11562-11562/? D/WifiActivity: 当前状态:true</span><br><span class="line">2019-03-20 08:24:51.781 11562-11562/? D/WifiActivity: 检查到当前是true[开启状态], 关闭WiFi: [失败]</span><br></pre></td></tr></table></figure></li></ul></blockquote><blockquote><ul><li>当WiFi默认是关闭的情况下，需要代码开启WiFi，输出日志:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2019-03-20 08:27:00.212 1213-3863/? I/ActivityTaskManager: START u0 &#123;cmp=com.xw.androidqtest/.WifiActivity&#125; from uid 10505</span><br><span class="line">2019-03-20 08:27:00.245 11562-11562/? D/WifiActivity: [默认状态]是否开启 :false</span><br><span class="line">2019-03-20 08:27:00.245 11562-11562/? D/WifiActivity: [开启]WiFi，设置WiFi状态为: true</span><br><span class="line">2019-03-20 08:27:00.245 1213-5152/? I/WifiService: setWifiEnabled not allowed for uid=10505</span><br><span class="line">2019-03-20 08:27:00.245 11562-11562/? D/WifiActivity: 当前状态:false</span><br><span class="line">2019-03-20 08:27:00.245 11562-11562/? D/WifiActivity: 检查当前是false[关闭状态], 开启WiFi: [失败]</span><br></pre></td></tr></table></figure></li></ul></blockquote><p>通过以上的示例可以看到，不论是开启还是关闭WiFi都没有效果，系统都将返回<code>false</code>，并输出<code>setWifiEnabled</code>不被允许的日志信息:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setWifiEnabled not allowed for uid= xxxx</span><br></pre></td></tr></table></figure><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>使用设置面板提示用户启用和禁用Wi-Fi，<br>调用<code>Settings.Panel.ACTION_INTERNET_CONNECTIVITY</code><br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startActivity(Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY))</span><br></pre></td></tr></table></figure></p><blockquote><p>本文参考官方文档简单总结，感谢您的阅读。如有不足，欢迎指正</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Android Q 不允许应用程序开/关WIFI&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="https://shoewann0402.github.io/categories/Android/"/>
+    
+      <category term="Android Q" scheme="https://shoewann0402.github.io/categories/Android/Android-Q/"/>
+    
+    
+      <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
+    
+      <category term="Android Q" scheme="https://shoewann0402.github.io/tags/Android-Q/"/>
+    
+      <category term="WIFI" scheme="https://shoewann0402.github.io/tags/WIFI/"/>
+    
+      <category term="setWifiEnabled" scheme="https://shoewann0402.github.io/tags/setWifiEnabled/"/>
+    
+      <category term="Settings Panel" scheme="https://shoewann0402.github.io/tags/Settings-Panel/"/>
+    
+  </entry>
   
   <entry>
     <title>Android Q 设置面板</title>
@@ -633,39 +668,6 @@
       <category term="IoT" scheme="https://shoewann0402.github.io/tags/IoT/"/>
     
       <category term="hackster" scheme="https://shoewann0402.github.io/tags/hackster/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Things 控制台开发者预览版</title>
-    <link href="https://shoewann0402.github.io/2017/06/29/android-things-console-developer-preview/"/>
-    <id>https://shoewann0402.github.io/2017/06/29/android-things-console-developer-preview/</id>
-    <published>2017-06-29T00:56:37.000Z</published>
-    <updated>2019-03-11T09:33:32.646Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>原文来自: <span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8wNi9hbmRyb2lkLXRoaW5ncy1jb25zb2xlLWRldmVsb3Blci1wcmV2aWV3Lmh0bWw=" title="https://android-developers.googleblog.com/2017/06/android-things-console-developer-preview.html">Android Things Console developer preview<i class="fa fa-external-link"></i></span></p></blockquote><p>今天我们启动了<span class="exturl" data-url="aHR0cHM6Ly9wYXJ0bmVyLmFuZHJvaWQuY29tL3RoaW5ncy9jb25zb2xl" title="https://partner.android.com/things/console">Android Things 控制台<i class="fa fa-external-link"></i></span>开发者预览版，这个控制台允许开发者去管理在他们的Android Things IoT设备上运行的软件，包括创建工厂镜像，以及升级操作系统和开发者提供的APK。设备需要运行一个来源于Android Things 控制台下载的系统镜像，为了未来接收更新升级，比如即将到来的开发者预览版5。Google为over-the-air(OTA)空中升级提供了所有的基础设施，因此，开发者能够着重于它们具体的应用,不必去建立自己的实现 —— 使得它们的物联网设备会比之前更快更安全的进入市场。</p><a id="more"></a><p>让我们来逛一圈控制台，看看它提供了哪些功能：</p><h1 id="产品创建和产品设置"><a href="#产品创建和产品设置" class="headerlink" title="产品创建和产品设置"></a>产品创建和产品设置</h1><p>开发者首先定义一个产品，包括选择设备依赖的名称以及System-on-Moule(SoM)系统对模块的类型。大多数的开发者当他们在构建物联网设备的时候希望使用Google Play服务，在这里作为可选的功能被配置，OEM分区的大小也被配置，必须有足够巨大去包括任意一个APK未来增长的大小</p><p><img src="/images/product_creation_and_product_settings_image1.png" alt="product_creation_and_product_settings_image1.png"></p><h1 id="工厂镜像"><a href="#工厂镜像" class="headerlink" title="工厂镜像"></a>工厂镜像</h1><p>一部设备需要初始化基本固件，才能从你的控制台上接收正确产品的未来更新升级。对于初学者，你能够简单的使用“创建构建配置”去构建具有你的产品配置的空包的默认工厂镜像。这个工厂镜像然后能够被下载，并刷入到你的设备，你能够通过sideloading一个APK文件开始在它上面开发。</p><p>稍候，一旦你有准备你将要部署到你的产品中的所有设备的应用程序，你能够上传捆绑到控制台。这个捆绑是一个ZIP压缩文件包含了一个主要的APK文件，用户空间驱动程序在一个APK文件中作为一个服务，任意一个额外的APK文件通过主要的APK文件被启动。一个<span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2UuYW5kcm9pZC5jb20vZGV2aWNlcy90ZWNoL290YS9kZXZpY2VfY29kZSNib290LWFuaW1hdGlvbg==" title="https://source.android.com/devices/tech/ota/device_code#boot-animation">启动动画.zip<i class="fa fa-external-link"></i></span>文件也是被支持的，将会在系统启动过程中被展示。上传的捆绑ZIP文件用于生成完整系统映像能够部署到设备。更多有关于捆绑ZIP文件内容的信息在<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdGhpbmdzL2NvbnNvbGUvYXBwX2J1bmRsZS5odG1s" title="https://developer.android.com/things/console/app_bundle.html">文档<i class="fa fa-external-link"></i></span>中可用。</p><p><img src="/images/product_creation_and_product_settings_image2.png" alt="product_creation_and_product_settings_image2.png"></p><h1 id="OTA升级"><a href="#OTA升级" class="headerlink" title="OTA升级"></a>OTA升级</h1><p>这个选项卡允许开发者去选择:应将哪个系统镜像推送到产品设备的队列。开发者选择了一个，然后“推送到设备”开始这个流程，然后将更新升级安全的推送到了所有的设备上，安装到A/B分区中的一个，并在设备重启的时候进行激活。如果检测到任何故障，这个设备将会自动回滚到上一个已知版本，因此为你更新是一直是可能的。开发者将能够测试新的Android Things发布版，并决定设备是否应该自动更新。</p><p><img src="/images/product_creation_and_product_settings_image3.png" alt="product_creation_and_product_settings_image3.png"></p><h1 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h1><p>Android Things控制台当前是一个预览版，我们正在做很多功能和自定义的工作。我们鼓励所有的Android Things开发者去检出Android Things控制台并提供反馈。你能够提交<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLmdvb2dsZS5jb20vcC9hbmRyb2lkL2lzc3Vlcy9lbnRyeT90ZW1wbGF0ZT1BbmRyb2lkJTIwVGhpbmdzJTIwYnVnJTIwcmVwb3J0" title="https://code.google.com/p/android/issues/entry?template=Android%20Things%20bug%20report">错误报告<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLmdvb2dsZS5jb20vcC9hbmRyb2lkL2lzc3Vlcy9lbnRyeT90ZW1wbGF0ZT1BbmRyb2lkJTIwVGhpbmdzJTIwZmVhdHVyZSUyMHJlcXVlc3Q=" title="https://code.google.com/p/android/issues/entry?template=Android%20Things%20feature%20request">新功能请求<i class="fa fa-external-link"></i></span>,在<span class="exturl" data-url="aHR0cDovL3N0YWNrb3ZlcmZsb3cuY29tL3F1ZXN0aW9ucy90YWdnZWQvYW5kcm9pZC10aGluZ3M=" title="http://stackoverflow.com/questions/tagged/android-things">Stack Overflow<i class="fa fa-external-link"></i></span>提出任何问题。对于学习更多有关于Android Things控制台,阅读详细<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdGhpbmdzL2NvbnNvbGUvaW5kZXguaHRtbA==" title="https://developer.android.com/things/console/index.html">文档<i class="fa fa-external-link"></i></span>，我们也鼓励每一个人去加入在Google+上面的<span class="exturl" data-url="aHR0cHM6Ly9nLmNvL2lvdGRldg==" title="https://g.co/iotdev">Google的物联网开发者交流社区<i class="fa fa-external-link"></i></span>，一个很棒的资源来获得更新和讨论想法。</p><blockquote><p>以上是对Anroid 官网博客文章的翻译，如果不足，欢迎指正，谢谢</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;原文来自: &lt;a href=&quot;https://android-developers.googleblog.com/2017/06/android-things-console-developer-preview.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Android Things Console developer preview&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;今天我们启动了&lt;a href=&quot;https://partner.android.com/things/console&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Android Things 控制台&lt;/a&gt;开发者预览版，这个控制台允许开发者去管理在他们的Android Things IoT设备上运行的软件，包括创建工厂镜像，以及升级操作系统和开发者提供的APK。设备需要运行一个来源于Android Things 控制台下载的系统镜像，为了未来接收更新升级，比如即将到来的开发者预览版5。Google为over-the-air(OTA)空中升级提供了所有的基础设施，因此，开发者能够着重于它们具体的应用,不必去建立自己的实现 —— 使得它们的物联网设备会比之前更快更安全的进入市场。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="https://shoewann0402.github.io/categories/Android/"/>
-    
-      <category term="AndroidThings" scheme="https://shoewann0402.github.io/categories/Android/AndroidThings/"/>
-    
-      <category term="IoT" scheme="https://shoewann0402.github.io/categories/Android/AndroidThings/IoT/"/>
-    
-    
-      <category term="Developer Preview" scheme="https://shoewann0402.github.io/tags/Developer-Preview/"/>
-    
-      <category term="Android Things" scheme="https://shoewann0402.github.io/tags/Android-Things/"/>
-    
-      <category term="IoT" scheme="https://shoewann0402.github.io/tags/IoT/"/>
     
   </entry>
   
