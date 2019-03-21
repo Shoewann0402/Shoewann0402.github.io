@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Shoewann&#39;s Personal Blog</title>
   
-  <subtitle>【声明:页面内容含有谷歌广告，若内容有影响您，请立即离开/设置屏蔽/忽略，莫投诉！】</subtitle>
+  <subtitle>【声明:若页面包含的谷歌广告内容不当，影响到您，请立即离开/设置屏蔽/忽略，勿投诉本站！】</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shoewann0402.github.io/"/>
@@ -43,11 +43,11 @@
     
       <category term="Android Q" scheme="https://shoewann0402.github.io/tags/Android-Q/"/>
     
+      <category term="Settings Panel" scheme="https://shoewann0402.github.io/tags/Settings-Panel/"/>
+    
       <category term="WIFI" scheme="https://shoewann0402.github.io/tags/WIFI/"/>
     
       <category term="setWifiEnabled" scheme="https://shoewann0402.github.io/tags/setWifiEnabled/"/>
-    
-      <category term="Settings Panel" scheme="https://shoewann0402.github.io/tags/Settings-Panel/"/>
     
   </entry>
   
@@ -109,13 +109,13 @@
     
       <category term="Android Q" scheme="https://shoewann0402.github.io/tags/Android-Q/"/>
     
-      <category term="Permission" scheme="https://shoewann0402.github.io/tags/Permission/"/>
-    
       <category term="scoped" scheme="https://shoewann0402.github.io/tags/scoped/"/>
     
       <category term="sandbox" scheme="https://shoewann0402.github.io/tags/sandbox/"/>
     
       <category term="Shared collections" scheme="https://shoewann0402.github.io/tags/Shared-collections/"/>
+    
+      <category term="Permission" scheme="https://shoewann0402.github.io/tags/Permission/"/>
     
       <category term="File" scheme="https://shoewann0402.github.io/tags/File/"/>
     
@@ -185,9 +185,9 @@
     
       <category term="Android Q" scheme="https://shoewann0402.github.io/tags/Android-Q/"/>
     
-      <category term="Location" scheme="https://shoewann0402.github.io/tags/Location/"/>
-    
       <category term="Permission" scheme="https://shoewann0402.github.io/tags/Permission/"/>
+    
+      <category term="Location" scheme="https://shoewann0402.github.io/tags/Location/"/>
     
   </entry>
   
@@ -340,9 +340,9 @@
       <category term="Notification" scheme="https://shoewann0402.github.io/categories/Android/Notification/"/>
     
     
-      <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
-    
       <category term="Notification Channels" scheme="https://shoewann0402.github.io/tags/Notification-Channels/"/>
+    
+      <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
     
       <category term="通知渠道" scheme="https://shoewann0402.github.io/tags/%E9%80%9A%E7%9F%A5%E6%B8%A0%E9%81%93/"/>
     
@@ -370,9 +370,9 @@
       <category term="WindowManager" scheme="https://shoewann0402.github.io/categories/Android/WindowManager/"/>
     
     
-      <category term="WindowManager" scheme="https://shoewann0402.github.io/tags/WindowManager/"/>
-    
       <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
+    
+      <category term="WindowManager" scheme="https://shoewann0402.github.io/tags/WindowManager/"/>
     
       <category term="Android M" scheme="https://shoewann0402.github.io/tags/Android-M/"/>
     
@@ -665,9 +665,9 @@
     
       <category term="Android Things" scheme="https://shoewann0402.github.io/tags/Android-Things/"/>
     
-      <category term="IoT" scheme="https://shoewann0402.github.io/tags/IoT/"/>
-    
       <category term="hackster" scheme="https://shoewann0402.github.io/tags/hackster/"/>
+    
+      <category term="IoT" scheme="https://shoewann0402.github.io/tags/IoT/"/>
     
   </entry>
   

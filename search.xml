@@ -11,9 +11,9 @@
       <tags>
         <tag>Android</tag>
         <tag>Android Q</tag>
+        <tag>Settings Panel</tag>
         <tag>WIFI</tag>
         <tag>setWifiEnabled</tag>
-        <tag>Settings Panel</tag>
       </tags>
   </entry>
   <entry>
@@ -41,10 +41,10 @@
       <tags>
         <tag>Android</tag>
         <tag>Android Q</tag>
-        <tag>Permission</tag>
         <tag>scoped</tag>
         <tag>sandbox</tag>
         <tag>Shared collections</tag>
+        <tag>Permission</tag>
         <tag>File</tag>
         <tag>external storage</tag>
         <tag>behavior change</tag>
@@ -77,8 +77,8 @@
       <tags>
         <tag>Android</tag>
         <tag>Android Q</tag>
-        <tag>Location</tag>
         <tag>Permission</tag>
+        <tag>Location</tag>
       </tags>
   </entry>
   <entry>
@@ -149,8 +149,8 @@
         <category>Notification</category>
       </categories>
       <tags>
-        <tag>Android O</tag>
         <tag>Notification Channels</tag>
+        <tag>Android O</tag>
         <tag>通知渠道</tag>
       </tags>
   </entry>
@@ -163,8 +163,8 @@
         <category>WindowManager</category>
       </categories>
       <tags>
-        <tag>WindowManager</tag>
         <tag>Android O</tag>
+        <tag>WindowManager</tag>
         <tag>Android M</tag>
       </tags>
   </entry>
@@ -296,8 +296,8 @@
       </categories>
       <tags>
         <tag>Android Things</tag>
-        <tag>IoT</tag>
         <tag>hackster</tag>
+        <tag>IoT</tag>
       </tags>
   </entry>
   <entry>
