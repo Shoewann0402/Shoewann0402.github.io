@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shoewann0402.github.io/"/>
-  <updated>2019-03-20T00:47:23.077Z</updated>
+  <updated>2019-03-27T09:28:32.091Z</updated>
   <id>https://shoewann0402.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Q 访问剪切板数据</title>
+    <link href="https://shoewann0402.github.io/2019/03/27/android-q-beta-access-clipboard-data/"/>
+    <id>https://shoewann0402.github.io/2019/03/27/android-q-beta-access-clipboard-data/</id>
+    <published>2019-03-27T09:08:34.000Z</published>
+    <updated>2019-03-27T09:28:32.091Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>本节内容测试Android Q对剪切板数据的访问 </p></blockquote><hr><a id="more"></a><h1 id="变化"><a href="#变化" class="headerlink" title="变化"></a>变化</h1><p>Android Q 对访问剪切板数据进行了限制，非系统默认输入法以及后台运行的程序是无法访问到剪切板数据</p><h1 id="测试示例-——-后台运行的程序访问剪切板"><a href="#测试示例-——-后台运行的程序访问剪切板" class="headerlink" title="测试示例 —— 后台运行的程序访问剪切板"></a>测试示例 —— 后台运行的程序访问剪切板</h1><p>测试之前我复制了本博客地址:<strong><a href="https://shoewann0402.github.io">https://shoewann0402.github.io</a></strong></p><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xw.clipboarddemo</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.ClipboardManager</span><br><span class="line"><span class="keyword">import</span> android.content.Context</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle</span><br><span class="line"><span class="keyword">import</span> android.util.Log</span><br><span class="line"><span class="keyword">import</span> kotlinx.android.synthetic.main.activity_main.*</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> tag: String = MainActivity::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>.<span class="title">simpleName</span></span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> cm: ClipboardManager? = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line"></span><br><span class="line">        cm = <span class="keyword">this</span>.getSystemService(Context.CLIPBOARD_SERVICE) <span class="keyword">as</span> ClipboardManager?</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.直接获取剪切板数据</span></span><br><span class="line">        getClipboardData()</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.点击按钮获取剪切板数据</span></span><br><span class="line">        btn_get_clipboard_data.setOnClickListener &#123;</span><br><span class="line">            getClipboardData()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取剪切板数据的方法</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">getClipboardData</span><span class="params">()</span></span> &#123;</span><br><span class="line">        Log.d(tag, getString(R.string.get_clipboard_data))</span><br><span class="line">        <span class="comment">//如果当前剪贴板上存在Copy返回True</span></span><br><span class="line">        <span class="keyword">val</span> hasPrimaryClip = cm!!.hasPrimaryClip()</span><br><span class="line">        Log.d(tag, <span class="string">"<span class="subst">$&#123;getString(R.string.hasPrimaryClip)&#125;</span><span class="variable">$hasPrimaryClip</span>"</span>)</span><br><span class="line">        <span class="keyword">if</span> (hasPrimaryClip) &#123;</span><br><span class="line">            <span class="keyword">val</span> abc = cm!!.primaryClip</span><br><span class="line">            <span class="keyword">if</span> (abc != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">val</span> item = abc.getItemAt(<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">val</span> text = item.text.toString()</span><br><span class="line">                Log.d(tag, <span class="string">"<span class="subst">$&#123;getString(R.string.clipboard_data)&#125;</span><span class="variable">$text</span>"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//对剪贴板文字的操作</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当应用加载成功，输出日志:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2019-03-27 17:17:17.127 26244-26244/com.xw.clipboarddemo D/MainActivity: 获取剪切板数据</span><br><span class="line">2019-03-27 17:17:17.128 26244-26244/com.xw.clipboarddemo D/MainActivity: 剪切板是否含有复制数据:false</span><br></pre></td></tr></table></figure><p>然后点击按钮，输出日志:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2019-03-27 17:17:18.924 26244-26244/com.xw.clipboarddemo D/MainActivity: 获取剪切板数据</span><br><span class="line">2019-03-27 17:17:18.924 26244-26244/com.xw.clipboarddemo D/MainActivity: 剪切板是否含有复制数据:true</span><br><span class="line">2019-03-27 17:17:18.925 26244-26244/com.xw.clipboarddemo D/MainActivity: [剪切板数据]:https://shoewann0402.github.io</span><br></pre></td></tr></table></figure><p>可见Android Q上只有当前应用获取了焦点，运行在前台才能访问到剪切板数据，在后台无法获取到剪切板的数据</p><p>针对默认键盘这种方式的，这里不做测试了</p><blockquote><p>本文参考<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9wcml2YWN5L2RhdGEtaWRlbnRpZmllcnMjY2xpcGJvYXJkLWRhdGE=" title="https://developer.android.com/preview/privacy/data-identifiers#clipboard-data">官方文档<i class="fa fa-external-link"></i></span>简单总结，感谢您的阅读。如有不足，欢迎指正</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本节内容测试Android Q对剪切板数据的访问 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="https://shoewann0402.github.io/categories/Android/"/>
+    
+      <category term="Android Q" scheme="https://shoewann0402.github.io/categories/Android/Android-Q/"/>
+    
+    
+      <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
+    
+      <category term="Android Q" scheme="https://shoewann0402.github.io/tags/Android-Q/"/>
+    
+      <category term="Clipboard" scheme="https://shoewann0402.github.io/tags/Clipboard/"/>
+    
+  </entry>
   
   <entry>
     <title>Android Q 应用切换WiFi开关的限制</title>
@@ -312,9 +343,9 @@
       <category term="Android Studio" scheme="https://shoewann0402.github.io/categories/Dex/Android-Studio/"/>
     
     
-      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
-    
       <category term="Dex" scheme="https://shoewann0402.github.io/tags/Dex/"/>
+    
+      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
     
   </entry>
   
@@ -401,9 +432,9 @@
       <category term="Android Emulator" scheme="https://shoewann0402.github.io/categories/Android/Android-Emulator/"/>
     
     
-      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
     
       <category term="Android Emulator" scheme="https://shoewann0402.github.io/tags/Android-Emulator/"/>
     
@@ -524,11 +555,11 @@
       <category term="Android" scheme="https://shoewann0402.github.io/categories/Android/"/>
     
     
-      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
     
       <category term="Develop" scheme="https://shoewann0402.github.io/tags/Develop/"/>
+    
+      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
     
       <category term="Android Instant Apps" scheme="https://shoewann0402.github.io/tags/Android-Instant-Apps/"/>
     
@@ -635,39 +666,6 @@
       <category term="Android O Developer Preview" scheme="https://shoewann0402.github.io/tags/Android-O-Developer-Preview/"/>
     
       <category term="DP4" scheme="https://shoewann0402.github.io/tags/DP4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Things Hackster社区</title>
-    <link href="https://shoewann0402.github.io/2017/07/01/android-things-hackster-community/"/>
-    <id>https://shoewann0402.github.io/2017/07/01/android-things-hackster-community/</id>
-    <published>2017-07-01T00:06:34.000Z</published>
-    <updated>2019-03-11T09:33:32.646Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>原文来自: <span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8wNi9hbmRyb2lkLXRoaW5ncy1oYWNrc3Rlci1jb21tdW5pdHkuaHRtbA==" title="https://android-developers.googleblog.com/2017/06/android-things-hackster-community.html">Android Things Hackster Community<i class="fa fa-external-link"></i></span></p></blockquote><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdGhpbmdzL2luZGV4Lmh0bWw=" title="https://developer.android.com/things/index.html">Android Things<i class="fa fa-external-link"></i></span>通过提供相同的Android开发工具、一流的Android框架和Google APIs使开发者在移动设备上取得成功，建立连接到嵌入式设备更加容易。自从12月初启动了预览版，社区已经将一些惊人的想法转变成了使用平台上面令人兴奋的原型。</p><a id="more"></a><p>对于使这些制作者和开发者能够使用Android Things去分享和相互学习，我们与<span class="exturl" data-url="aHR0cHM6Ly9oYWNrc3Rlci5pby8=" title="https://hackster.io/">Hackster.io<i class="fa fa-external-link"></i></span>合作去创建一个社区，有志向的物联网开发者能够去展示他们的项目并通过其他人的工作获得启发。Hackster.io是一个有20万工程师和开发者的社区，专门去构建硬件连接互联网的项目。他们也通过直播研讨会设计比赛寻求教育和挑战成员。</p><p>我们急切的想看到你提出来的项目。更重要的是，我们是很兴奋的去看到你的工作怎么样启发其他开发者用Android Things去创建一些很棒的东西。访问我们<span class="exturl" data-url="aHR0cHM6Ly9oYWNrc3Rlci5pby9nb29nbGU=" title="https://hackster.io/google">Hackster.io社区<i class="fa fa-external-link"></i></span>去看一下其他人已经构建好了的惊人的项目，并在今天加入社区！</p><p><img src="/images/android-things-hackster-io-page.png" alt="android-things-hackster-io-page.png"></p><h2 id="Android-Things-在线研讨会"><a href="#Android-Things-在线研讨会" class="headerlink" title="Android Things 在线研讨会"></a>Android Things 在线研讨会</h2><p>2017年7月7日上午10点，我们将和Hackster.io合作主持一场名为<strong>Android Things引导物联网产品</strong>的在线研讨会。在此期间，你将学习到我们如何设计Android Things，去解决尝试构建物联网产品的开发者遇到的许多痛苦的经历。你将也就机会去发送有关平台和生态系统的问题，<span class="exturl" data-url="aHR0cHM6Ly9hdHRlbmRlZS5nb3Rvd2ViaW5hci5jb20vcmVnaXN0ZXIvMzc3MjQ5OTU0NTA0OTE2NzEwNw==" title="https://attendee.gotowebinar.com/register/3772499545049167107">今天注册<i class="fa fa-external-link"></i></span>加入我们这个激动人心的活动！</p><blockquote><p>以上是对Anroid 官网博客文章的翻译，如果不足，欢迎指正，谢谢</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;原文来自: &lt;a href=&quot;https://android-developers.googleblog.com/2017/06/android-things-hackster-community.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Android Things Hackster Community&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://developer.android.com/things/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Android Things&lt;/a&gt;通过提供相同的Android开发工具、一流的Android框架和Google APIs使开发者在移动设备上取得成功，建立连接到嵌入式设备更加容易。自从12月初启动了预览版，社区已经将一些惊人的想法转变成了使用平台上面令人兴奋的原型。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="https://shoewann0402.github.io/categories/Android/"/>
-    
-      <category term="AndroidThings" scheme="https://shoewann0402.github.io/categories/Android/AndroidThings/"/>
-    
-      <category term="IoT" scheme="https://shoewann0402.github.io/categories/Android/AndroidThings/IoT/"/>
-    
-    
-      <category term="Android Things" scheme="https://shoewann0402.github.io/tags/Android-Things/"/>
-    
-      <category term="IoT" scheme="https://shoewann0402.github.io/tags/IoT/"/>
-    
-      <category term="hackster" scheme="https://shoewann0402.github.io/tags/hackster/"/>
     
   </entry>
   

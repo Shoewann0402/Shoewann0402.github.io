@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android Q 访问剪切板数据]]></title>
+    <url>%2F2019%2F03%2F27%2Fandroid-q-beta-access-clipboard-data%2F</url>
+    <content type="text"><![CDATA[本节内容测试Android Q对剪切板数据的访问 变化Android Q 对访问剪切板数据进行了限制，非系统默认输入法以及后台运行的程序是无法访问到剪切板数据 测试示例 —— 后台运行的程序访问剪切板测试之前我复制了本博客地址:https://shoewann0402.github.io 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748package com.xw.clipboarddemoimport android.content.ClipboardManagerimport android.content.Contextimport androidx.appcompat.app.AppCompatActivityimport android.os.Bundleimport android.util.Logimport kotlinx.android.synthetic.main.activity_main.*class MainActivity : AppCompatActivity() &#123; private val tag: String = MainActivity::class.java.simpleName private var cm: ClipboardManager? = null override fun onCreate(savedInstanceState: Bundle?) &#123; super.onCreate(savedInstanceState) setContentView(R.layout.activity_main) cm = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager? //1.直接获取剪切板数据 getClipboardData() //2.点击按钮获取剪切板数据 btn_get_clipboard_data.setOnClickListener &#123; getClipboardData() &#125; &#125; //获取剪切板数据的方法 private fun getClipboardData() &#123; Log.d(tag, getString(R.string.get_clipboard_data)) //如果当前剪贴板上存在Copy返回True val hasPrimaryClip = cm!!.hasPrimaryClip() Log.d(tag, "$&#123;getString(R.string.hasPrimaryClip)&#125;$hasPrimaryClip") if (hasPrimaryClip) &#123; val abc = cm!!.primaryClip if (abc != null) &#123; val item = abc.getItemAt(0) val text = item.text.toString() Log.d(tag, "$&#123;getString(R.string.clipboard_data)&#125;$text") &#125; //对剪贴板文字的操作 &#125; &#125;&#125; 当应用加载成功，输出日志: 122019-03-27 17:17:17.127 26244-26244/com.xw.clipboarddemo D/MainActivity: 获取剪切板数据2019-03-27 17:17:17.128 26244-26244/com.xw.clipboarddemo D/MainActivity: 剪切板是否含有复制数据:false 然后点击按钮，输出日志: 1232019-03-27 17:17:18.924 26244-26244/com.xw.clipboarddemo D/MainActivity: 获取剪切板数据2019-03-27 17:17:18.924 26244-26244/com.xw.clipboarddemo D/MainActivity: 剪切板是否含有复制数据:true2019-03-27 17:17:18.925 26244-26244/com.xw.clipboarddemo D/MainActivity: [剪切板数据]:https://shoewann0402.github.io 可见Android Q上只有当前应用获取了焦点，运行在前台才能访问到剪切板数据，在后台无法获取到剪切板的数据 针对默认键盘这种方式的，这里不做测试了 本文参考官方文档简单总结，感谢您的阅读。如有不足，欢迎指正]]></content>
+      <categories>
+        <category>Android</category>
+        <category>Android Q</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Android Q</tag>
+        <tag>Clipboard</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android Q 应用切换WiFi开关的限制]]></title>
     <url>%2F2019%2F03%2F20%2Fandroid-q-beta-enable-and-disable-wifi%2F</url>
     <content type="text"><![CDATA[Android Q 不允许应用程序开/关WIFI 目的Android Q 将切断应用对Wi-Fi设置的访问权限，防止恶意软件滥用系统功能的访问权限。 变化运行在Q上的应用程序将无法启用/禁用WIFI, WifiManager.setWifiEnabled()方法始将终返回false,该方法不被允许 示例12345678910111213141516171819202122232425262728293031323334353637383940414243444546package com.xw.androidqtestimport android.content.Contextimport android.net.wifi.WifiManagerimport androidx.appcompat.app.AppCompatActivityimport android.os.Bundleimport android.util.Logclass WifiActivity : AppCompatActivity() &#123; private val tag: String = WifiActivity::class.java.simpleName private var wifiManager: WifiManager? = null override fun onCreate(savedInstanceState: Bundle?) &#123; super.onCreate(savedInstanceState) setContentView(R.layout.activity_wifi) wifiManager = this.getSystemService(Context.WIFI_SERVICE) as WifiManager? val isWifiEnabled = wifiManager!!.isWifiEnabled Log.d(tag, "[默认状态]是否开启 :$isWifiEnabled") when (isWifiEnabled) &#123; true -&gt; &#123; Log.d(tag, "[关闭]WiFi，设置WiFi状态为: false") wifiManager!!.isWifiEnabled = false val result = wifiManager!!.isWifiEnabled Log.d(tag, "当前状态:$result") if (result) &#123; Log.d(tag, "检查到当前是true[开启状态], 关闭WiFi: [失败]") &#125; else &#123; Log.d(tag, "检查到当前是false[关闭状态], 关闭WiFi: [成功]") &#125; &#125; else -&gt; &#123; Log.d(tag, "[开启]WiFi，设置WiFi状态为: true") wifiManager!!.isWifiEnabled = true val result = wifiManager!!.isWifiEnabled Log.d(tag, "当前状态:$result") if (result) &#123; Log.d(tag, "检查当前是true[开启状态], 开启WiFi: [成功]") &#125; else &#123; Log.d(tag, "检查当前是false[关闭状态], 开启WiFi: [失败]") &#125; &#125; &#125; &#125;&#125; 当WiFi默认是开启的情况下，需要代码关闭WiFi，输出日志:1234562019-03-20 08:24:51.741 1213-1650/? I/ActivityTaskManager: START u0 &#123;cmp=com.xw.androidqtest/.WifiActivity&#125; from uid 105052019-03-20 08:24:51.779 11562-11562/? D/WifiActivity: [默认状态]是否开启 :true2019-03-20 08:24:51.779 11562-11562/? D/WifiActivity: [关闭]WiFi，设置WiFi状态为: false2019-03-20 08:24:51.781 1213-1650/? I/WifiService: setWifiEnabled not allowed for uid=105052019-03-20 08:24:51.781 11562-11562/? D/WifiActivity: 当前状态:true2019-03-20 08:24:51.781 11562-11562/? D/WifiActivity: 检查到当前是true[开启状态], 关闭WiFi: [失败] 当WiFi默认是关闭的情况下，需要代码开启WiFi，输出日志:1234562019-03-20 08:27:00.212 1213-3863/? I/ActivityTaskManager: START u0 &#123;cmp=com.xw.androidqtest/.WifiActivity&#125; from uid 105052019-03-20 08:27:00.245 11562-11562/? D/WifiActivity: [默认状态]是否开启 :false2019-03-20 08:27:00.245 11562-11562/? D/WifiActivity: [开启]WiFi，设置WiFi状态为: true2019-03-20 08:27:00.245 1213-5152/? I/WifiService: setWifiEnabled not allowed for uid=105052019-03-20 08:27:00.245 11562-11562/? D/WifiActivity: 当前状态:false2019-03-20 08:27:00.245 11562-11562/? D/WifiActivity: 检查当前是false[关闭状态], 开启WiFi: [失败] 通过以上的示例可以看到，不论是开启还是关闭WiFi都没有效果，系统都将返回false，并输出setWifiEnabled不被允许的日志信息: 1setWifiEnabled not allowed for uid= xxxx 解决方法使用设置面板提示用户启用和禁用Wi-Fi，调用Settings.Panel.ACTION_INTERNET_CONNECTIVITY1startActivity(Intent(Settings.Panel.ACTION_INTERNET_CONNECTIVITY)) 本文参考官方文档简单总结，感谢您的阅读。如有不足，欢迎指正]]></content>
@@ -136,8 +150,8 @@
         <category>Android Studio</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Dex</tag>
+        <tag>Android Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -177,8 +191,8 @@
         <category>Android Emulator</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>Android Emulator</tag>
       </tags>
   </entry>
@@ -233,9 +247,9 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
         <tag>Develop</tag>
+        <tag>Android Studio</tag>
         <tag>Android Instant Apps</tag>
         <tag>Play Console</tag>
         <tag>Studio</tag>
