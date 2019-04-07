@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Android Q 气泡]]></title>
+    <url>%2F2019%2F04%2F07%2Fandroid-q-beta2-bubbles%2F</url>
+    <content type="text"><![CDATA[本节内容测试Android Q新功能 —— 气泡 气泡是Android Q中的一项新功能。通过气泡，用户可以轻松地从设备上的任何位置进行多任务处理。 气泡内置于通知系统中。 它们会浮动在其他应用内容之上，并随时随地关注用户。 可以扩展气泡以显示应用程序功能和信息，并且可以在不使用时折叠。 当设备被锁定或始终显示处于活动状态时，气泡就会像通常那样出现。 气泡是一种选择退出功能。 当应用程序显示其第一个气泡时，会显示一个权限对话框，提供两个选项： 1.阻止您应用中的所有气泡 - 通知不会被阻止，但它们永远不会显示为气泡 2.允许来自您应用的所有气泡 - 使用BubbleMetaData发送的所有通知都将显示为气泡 Bubble API气泡是通过通知API创建的，您可以像往常一样发送通知。如果你想让它冒泡，你需要附加一些额外的数据到它。 气泡的展开视图是由您选择的Activity创建的。需要将Activity配置为适当显示为气泡。该Activity必须可调整大小、嵌入并始终以文档UI模式启动。如果它缺少这些要求中的任何一个，它将以通知的形式显示。 下面的代码演示了如何实现一个简单的气泡:12345678&lt;activity android:name=".bubbles.BubbleActivity" android:theme="@style/AppTheme.NoActionBar" android:label="@string/title_activity_bubble" android:allowEmbedded="true" android:documentLaunchMode="always" android:resizeableActivity="true"/&gt; 如果您的应用程序显示多个相同类型的气泡，比如多个联系人的聊天对话，则该活动必须能够启动多个实例。将documentLaunchMode设置为“always”。 要发送气泡，请遵循以下步骤: 1、像平常一样创建通知。 2、调用Notification.BubbleMetadata.Builder创建一个BubbleMetadata对象。 3、使用setBubbleMetadata将元数据添加到通知中。 1234567891011121314151617181920212223// Create bubble intentval target = Intent(context, BubbleActivity::class.java)val bubbleIntent = PendingIntent.getActivity(context, 0, target, 0 /* flags */)// Create bubble metadataval bubbleData = Notification.BubbleMetadata.Builder() .setDesiredHeight(600) // Note: although you can set the icon is not displayed in Q Beta 2 .setIcon(Icon.createWithResource(context, R.drawable.icon)) .setIntent(bubbleIntent) .build()// Create notificationval chatBot = Person.Builder() .setBot(true) .setName("BubbleBot") .setImportant(true) .build()val builder = Notification.Builder(context, CHANNEL_ID) .setContentIntent(contentIntent) .setSmallIcon(smallIcon) .setBubbleMetadata(bubbleData) 注意:第一次发送显示气泡的通知时，它必须位于IMPORTANCE_HIGH的通知通道中。这是因为气泡是由通知重要性管理器处理的。如果系统在用户有机会允许或阻止冒泡之前降低了通知的重要性，则通知将不会冒泡。 如果您的应用程序在发送气泡时位于前台，那么重要性将被忽略，并且您的气泡将始终显示(除非用户已经阻止了气泡或来自应用程序的通知)。 创建扩展的气泡您可以配置气泡以自动将其呈现为展开状态。 我们建议仅在用户执行可能导致冒泡的操作时使用此功能，例如点按按钮以开始新聊天。 在这种情况下，抑制创建气泡时发送的初始通知也是有意义的。 您可以使用一些方法来设置启用这些行为的标志：setAutoExpandBubble()和setSuppressInitialNotification 注意:虽然您可以在Android Q Beta 2中设置这些标志，但它们还没有任何效果。 123456val bubbleMetadata = Notification.BubbleMetadata.Builder() .setDesiredHeight(600) .setIntent(bubbleIntent) .setAutoExpandBubble(true) .setSuppressInitialNotification(true) .build() 最佳实践1、气泡占据了屏幕空间，并覆盖了其他应用程序内容。只有在非常重要的情况下(比如正在进行的通信)，或者用户明确要求某些内容使用冒泡时，才应该将通知作为冒泡发送。 2、注意，用户可以禁用气泡。在这种情况下，气泡通知显示为正常通知。您应该始终确保气泡通知与正常通知一样工作。 3、从气泡中启动的流程(如活动和对话框)出现在气泡容器中。这意味着一个气泡可以有一个任务堆栈。如果气泡中有很多功能或导航，事情就会变得复杂。我们建议保持功能尽可能的具体和轻量级。 测试示例创建BubbleActivity，在AndroidManifest.xml添加如下代码 123456&lt;activity android:name=".BubbleActivity" android:theme="@style/AppTheme.NoActionBar" android:label="@string/title_activity_bubble" android:allowEmbedded="true" android:documentLaunchMode="always" android:resizeableActivity="true"&gt; 其中AppTheme.NoActionBar主题代码 123456&lt;style name="AppTheme.NoActionBar"&gt; &lt;item name="windowActionBar"&gt;false&lt;/item&gt; &lt;item name="windowNoTitle"&gt;true&lt;/item&gt; &lt;item name="android:windowDrawsSystemBarBackgrounds"&gt;true&lt;/item&gt; &lt;item name="android:statusBarColor"&gt;@android:color/transparent&lt;/item&gt;&lt;/style&gt; 在MainActivity中，定义NotificatioManager对象 1private var notificationManager: NotificationManager? = null 并在onCreate方法初始化 1notificationManager = this@MainActivity.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager 定义常量 1234companion object &#123; private const val REQUEST_CONTENT = 1 private const val REQUEST_BUBBLE = 2 &#125; 定义显示Bubble气泡的方法 123456789101112131415161718192021222324252627282930313233343536373839404142private fun showBubble() &#123; Log.d(tag, "show bubble") //创建通知渠道 val channel = NotificationChannel("通知渠道ID", "通知渠道名称", NotificationManager.IMPORTANCE_HIGH) notificationManager!!.createNotificationChannel(channel) // val icon = Icon.createWithResource(this@MainActivity, R.mipmap.ic_launcher_round) // val person = Person.Builder() .setName("Person Name") .setIcon(icon) .build() val contentIntent = PendingIntent.getActivity( this@MainActivity,REQUEST_CONTENT, Intent(this@MainActivity, MainActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT) val bubbleIntent = PendingIntent.getActivity( this@MainActivity, REQUEST_BUBBLE, Intent(this@MainActivity, BubbleActivity::class.java), PendingIntent.FLAG_UPDATE_CURRENT) val bubbleMetadata = Notification.BubbleMetadata.Builder() .setDesiredHeight(400) .setIcon(icon) .setAutoExpandBubble(true) .setSuppressInitialNotification(true) .setIntent(bubbleIntent) .build() val builder = Notification.Builder(this@MainActivity, "通知渠道ID") .setContentTitle("Bubble") .setContentText("测试Android Q Bubble") .setContentIntent(contentIntent) .setSmallIcon(icon) .setBubbleMetadata(bubbleMetadata) .addPerson(person) .setShowWhen(true) notificationManager!!.notify(0, builder.build()); &#125; 在按钮的点击事件中调用showBubble方法，触发通知，并显示气泡 通知栏出现通知消息，屏幕右侧显示出了气泡（气泡好像没有图标，上文中有提到，即使设置了也不会在Q Beta 2上显示） 下拉通知栏，可以看到创建的通知消息 长按快捷方式的效果 点击气泡，会触发打开BubbleActivity并弹出窗口，可以看到右上角两个图标，左下角一个，右下角一个 首先我们看看左下角的图标，点击了会弹出两个选项，一个添加应用快捷方式，另一个设置壁纸 点击第一个添加应用快捷方式，可以列出当前设备安装的应用 随机点了两个，一个微信，一个支付宝，添加进去。添加完成之后，从此处点击过去，就能直接打开跳转到指定的应用程序 (添加进去还没测试如何移除，试过了清除数据和重新安装都没效果) 点击右上角箭头的的图标可以直接进入 —— MainActivity 点击右上角的齿轮，可以跳转的该应用的通知的设置 点击具体的一条通知渠道后面的齿轮，可以详细的进入具体的通知渠道设置 然后气泡右下角的图标，类似于快捷launcher桌面，可以直接访问桌面的所有应用程序，点击也是直接打开跳转到指定的应用程序中 最后，长按气泡图标，拖拽到底部指定区域，可以销毁气泡 判断是否允许了气泡的方法 1234fun canBubble(): Boolean &#123; val channel = notificationManager!!.getNotificationChannel("通知渠道ID") return notificationManager!!.areBubblesAllowed() &amp;&amp; channel.canBubble()&#125; 本文参考官方文档和官方示例简单总结，感谢您的阅读。如有不足，欢迎指正]]></content>
+      <categories>
+        <category>Android</category>
+        <category>Android Q</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>Android Q</tag>
+        <tag>Bubbles</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android Q 访问剪切板数据]]></title>
     <url>%2F2019%2F03%2F27%2Fandroid-q-beta-access-clipboard-data%2F</url>
     <content type="text"><![CDATA[本节内容测试Android Q对剪切板数据的访问 变化Android Q 对访问剪切板数据进行了限制，非系统默认输入法以及后台运行的程序是无法访问到剪切板数据 测试示例 —— 后台运行的程序访问剪切板测试之前我复制了本博客地址:https://shoewann0402.github.io 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748package com.xw.clipboarddemoimport android.content.ClipboardManagerimport android.content.Contextimport androidx.appcompat.app.AppCompatActivityimport android.os.Bundleimport android.util.Logimport kotlinx.android.synthetic.main.activity_main.*class MainActivity : AppCompatActivity() &#123; private val tag: String = MainActivity::class.java.simpleName private var cm: ClipboardManager? = null override fun onCreate(savedInstanceState: Bundle?) &#123; super.onCreate(savedInstanceState) setContentView(R.layout.activity_main) cm = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager? //1.直接获取剪切板数据 getClipboardData() //2.点击按钮获取剪切板数据 btn_get_clipboard_data.setOnClickListener &#123; getClipboardData() &#125; &#125; //获取剪切板数据的方法 private fun getClipboardData() &#123; Log.d(tag, getString(R.string.get_clipboard_data)) //如果当前剪贴板上存在Copy返回True val hasPrimaryClip = cm!!.hasPrimaryClip() Log.d(tag, "$&#123;getString(R.string.hasPrimaryClip)&#125;$hasPrimaryClip") if (hasPrimaryClip) &#123; val abc = cm!!.primaryClip if (abc != null) &#123; val item = abc.getItemAt(0) val text = item.text.toString() Log.d(tag, "$&#123;getString(R.string.clipboard_data)&#125;$text") &#125; //对剪贴板文字的操作 &#125; &#125;&#125; 当应用加载成功，输出日志: 122019-03-27 17:17:17.127 26244-26244/com.xw.clipboarddemo D/MainActivity: 获取剪切板数据2019-03-27 17:17:17.128 26244-26244/com.xw.clipboarddemo D/MainActivity: 剪切板是否含有复制数据:false 然后点击按钮，输出日志: 1232019-03-27 17:17:18.924 26244-26244/com.xw.clipboarddemo D/MainActivity: 获取剪切板数据2019-03-27 17:17:18.924 26244-26244/com.xw.clipboarddemo D/MainActivity: 剪切板是否含有复制数据:true2019-03-27 17:17:18.925 26244-26244/com.xw.clipboarddemo D/MainActivity: [剪切板数据]:https://shoewann0402.github.io 可见Android Q上只有当前应用获取了焦点，运行在前台才能访问到剪切板数据，在后台无法获取到剪切板的数据 针对默认键盘这种方式的，这里不做测试了 本文参考官方文档简单总结，感谢您的阅读。如有不足，欢迎指正]]></content>
@@ -150,8 +164,8 @@
         <category>Android Studio</category>
       </categories>
       <tags>
-        <tag>Dex</tag>
         <tag>Android Studio</tag>
+        <tag>Dex</tag>
       </tags>
   </entry>
   <entry>
@@ -191,8 +205,8 @@
         <category>Android Emulator</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Android Studio</tag>
+        <tag>Android</tag>
         <tag>Android Emulator</tag>
       </tags>
   </entry>
@@ -247,9 +261,9 @@
         <category>Android</category>
       </categories>
       <tags>
+        <tag>Android Studio</tag>
         <tag>Android</tag>
         <tag>Develop</tag>
-        <tag>Android Studio</tag>
         <tag>Android Instant Apps</tag>
         <tag>Play Console</tag>
         <tag>Studio</tag>
