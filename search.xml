@@ -88,9 +88,9 @@
         <category>Android Q</category>
       </categories>
       <tags>
+        <tag>Activity</tag>
         <tag>Android</tag>
         <tag>Android Q</tag>
-        <tag>Activity</tag>
         <tag>Background</tag>
       </tags>
   </entry>
@@ -164,8 +164,8 @@
         <category>Android Studio</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Dex</tag>
+        <tag>Android Studio</tag>
       </tags>
   </entry>
   <entry>
@@ -205,8 +205,8 @@
         <category>Android Emulator</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>Android Emulator</tag>
       </tags>
   </entry>
@@ -246,11 +246,11 @@
         <category>Architecture Components</category>
       </categories>
       <tags>
-        <tag>Develop</tag>
         <tag>Android Developer</tag>
         <tag>Announcements</tag>
         <tag>Architecture Components</tag>
         <tag>Best Practices</tag>
+        <tag>Develop</tag>
       </tags>
   </entry>
   <entry>
@@ -261,8 +261,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android Studio</tag>
         <tag>Android</tag>
+        <tag>Android Studio</tag>
         <tag>Develop</tag>
         <tag>Android Instant Apps</tag>
         <tag>Play Console</tag>
@@ -306,9 +306,9 @@
         <category>Android Studio</category>
       </categories>
       <tags>
-        <tag>Android O</tag>
-        <tag>AndroidO</tag>
         <tag>Developer Preview</tag>
+        <tag>AndroidO</tag>
+        <tag>Android O</tag>
         <tag>Android O Developer Preview</tag>
         <tag>DP4</tag>
       </tags>
@@ -324,8 +324,8 @@
       </categories>
       <tags>
         <tag>Android Things</tag>
-        <tag>IoT</tag>
         <tag>hackster</tag>
+        <tag>IoT</tag>
       </tags>
   </entry>
   <entry>
@@ -338,9 +338,9 @@
         <category>IoT</category>
       </categories>
       <tags>
-        <tag>Developer Preview</tag>
         <tag>Android Things</tag>
         <tag>IoT</tag>
+        <tag>Developer Preview</tag>
       </tags>
   </entry>
   <entry>
@@ -383,8 +383,8 @@
         <category>WebView</category>
       </categories>
       <tags>
-        <tag>AndroidO</tag>
         <tag>Security</tag>
+        <tag>AndroidO</tag>
         <tag>Safe Browsing</tag>
       </tags>
   </entry>
@@ -399,14 +399,14 @@
         <category>Google I/O 2017</category>
       </categories>
       <tags>
-        <tag>Android O</tag>
+        <tag>Developer Preview</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
-        <tag>android o apis</tag>
-        <tag>AndroidO</tag>
-        <tag>API</tag>
-        <tag>Developer Preview</tag>
         <tag>Project Treble</tag>
+        <tag>AndroidO</tag>
+        <tag>Android O</tag>
+        <tag>android o apis</tag>
+        <tag>API</tag>
       </tags>
   </entry>
   <entry>
@@ -421,9 +421,9 @@
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>Android Studio 3.0</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
+        <tag>Android Studio 3.0</tag>
         <tag>Kotlin</tag>
       </tags>
   </entry>
@@ -438,9 +438,9 @@
         <category>Google I/O 2017</category>
       </categories>
       <tags>
-        <tag>Android Studio 3.0</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
+        <tag>Android Studio 3.0</tag>
         <tag>Canary</tag>
       </tags>
   </entry>
@@ -456,11 +456,11 @@
       <tags>
         <tag>Android</tag>
         <tag>Android Go</tag>
-        <tag>Android O</tag>
+        <tag>Developer Preview</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
-        <tag>Developer Preview</tag>
         <tag>Google I/O</tag>
+        <tag>Android O</tag>
         <tag>Android TV</tag>
         <tag>Dashboard</tag>
         <tag>notifications</tag>
@@ -852,8 +852,8 @@
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>Featured</tag>
         <tag>Apps</tag>
+        <tag>Featured</tag>
         <tag>Google I/O</tag>
       </tags>
   </entry>
@@ -878,9 +878,9 @@
         <category>加密解密</category>
       </categories>
       <tags>
-        <tag>Android N</tag>
         <tag>Security</tag>
         <tag>encrypt</tag>
+        <tag>Android N</tag>
         <tag>加密解密</tag>
         <tag>网络安全</tag>
       </tags>
@@ -894,9 +894,9 @@
         <category>Notiification</category>
       </categories>
       <tags>
+        <tag>Android N</tag>
         <tag>Notification</tag>
         <tag>通知</tag>
-        <tag>Android N</tag>
       </tags>
   </entry>
   <entry>

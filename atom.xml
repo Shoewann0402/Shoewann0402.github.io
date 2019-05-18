@@ -211,11 +211,11 @@
       <category term="Android Q" scheme="https://shoewann0402.github.io/categories/Android/Android-Q/"/>
     
     
+      <category term="Activity" scheme="https://shoewann0402.github.io/tags/Activity/"/>
+    
       <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
     
       <category term="Android Q" scheme="https://shoewann0402.github.io/tags/Android-Q/"/>
-    
-      <category term="Activity" scheme="https://shoewann0402.github.io/tags/Activity/"/>
     
       <category term="Background" scheme="https://shoewann0402.github.io/tags/Background/"/>
     
@@ -374,9 +374,9 @@
       <category term="Android Studio" scheme="https://shoewann0402.github.io/categories/Dex/Android-Studio/"/>
     
     
-      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
-    
       <category term="Dex" scheme="https://shoewann0402.github.io/tags/Dex/"/>
+    
+      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
     
   </entry>
   
@@ -463,9 +463,9 @@
       <category term="Android Emulator" scheme="https://shoewann0402.github.io/categories/Android/Android-Emulator/"/>
     
     
-      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
     
       <category term="Android Emulator" scheme="https://shoewann0402.github.io/tags/Android-Emulator/"/>
     
@@ -553,8 +553,6 @@
       <category term="Architecture Components" scheme="https://shoewann0402.github.io/categories/Android/Architecture-Components/"/>
     
     
-      <category term="Develop" scheme="https://shoewann0402.github.io/tags/Develop/"/>
-    
       <category term="Android Developer" scheme="https://shoewann0402.github.io/tags/Android-Developer/"/>
     
       <category term="Announcements" scheme="https://shoewann0402.github.io/tags/Announcements/"/>
@@ -562,6 +560,8 @@
       <category term="Architecture Components" scheme="https://shoewann0402.github.io/tags/Architecture-Components/"/>
     
       <category term="Best Practices" scheme="https://shoewann0402.github.io/tags/Best-Practices/"/>
+    
+      <category term="Develop" scheme="https://shoewann0402.github.io/tags/Develop/"/>
     
   </entry>
   
@@ -586,9 +586,9 @@
       <category term="Android" scheme="https://shoewann0402.github.io/categories/Android/"/>
     
     
-      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
-    
       <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="https://shoewann0402.github.io/tags/Android-Studio/"/>
     
       <category term="Develop" scheme="https://shoewann0402.github.io/tags/Develop/"/>
     
