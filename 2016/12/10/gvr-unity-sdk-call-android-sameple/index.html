@@ -117,7 +117,7 @@
 <meta property="og:description" content="上一篇讲了《Gvr Unity SDK (五) —— 添加全景SkyBox》，在Unity的工作空间中如何为自定义添加全景SkyBox，本节学习如何使用Unity3d调用Android代码接口">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/googleDaydreamLogo.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.654Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gvr Unity SDK (六) —— Unity调用Android接口">
 <meta name="twitter:description" content="上一篇讲了《Gvr Unity SDK (五) —— 添加全景SkyBox》，在Unity的工作空间中如何为自定义添加全景SkyBox，本节学习如何使用Unity3d调用Android代码接口">
@@ -541,7 +541,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/googleDaydreamLogo.png" rel="gallery_cjvt5b8y900dwhgjxymlxku4o" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/googleDaydreamLogo.png" rel="gallery_cjx724umd0057bqjx53g4fuur" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/googleDaydreamLogo.png" itemprop="contentUrl">
               </a>
             
@@ -555,6 +555,7 @@
       
         <p>   上一篇讲了《Gvr Unity SDK (五) —— 添加全景SkyBox》，在Unity的工作空间中如何为自定义添加全景SkyBox，本节学习如何使用Unity3d调用Android代码接口</p>
 <a id="more"></a>
+
 <p>  Unity 调用Android的代码接口，需要将Android逻辑代码写好，然后打包成架包放到Unity3d中，提供给Unity3d调用，本节以一个简单的示例来说明。</p>
 <h2 id="Android-端"><a href="#Android-端" class="headerlink" title="Android 端"></a>Android 端</h2><h3 id="创建Android项目"><a href="#创建Android项目" class="headerlink" title="创建Android项目"></a>创建Android项目</h3><p>  首先打开Android Studio ，新建一个Android项目GvrSample</p>
 <p><img src="/images/gvr6-1.png" alt="gvr6-1.png"></p>
@@ -567,6 +568,8 @@
 <p>  这里，以Unity端4个Button点击，调用该类的4个方法，输出指定的信息为例</p>
 <p><img src="/images/gvr6-4.png" alt="gvr6-4.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//无参数无返回值的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Method_A</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_A: 调用=&gt;[无参数、无返回值]A方法"</span>);</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_A: 没有传递参数给我，不需要返回参数给Unity3d"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//无参数有返回值的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">Method_B</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_B: 调用=&gt;[无参数、有返回值的B方法"</span>);</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_B: 没有传递参数给我,需要返回特定的数据给Unity3d"</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"方法B中某特定返回值"</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//有参数无返回值的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Method_C</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_C: 调用=&gt;[有参数、无返回值]的C方法"</span>);</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_C: 有传递参数"</span>+a+<span class="string">"给我,不需要返回特定的数据给Unity3d"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//有参数有返回值的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">Method_D</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_D: 调用=&gt;[有参数、有返回值]的D方法"</span>);</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_D: 有传递参数"</span>+a+<span class="string">"，"</span>+b+<span class="string">"给我,需要返回特定的数据给Unity3d"</span>);</span><br><span class="line">      <span class="keyword">if</span> (a&gt;b)&#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="string">"方法D中，返回最大值："</span>+a;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"方法D中，返回最大值："</span>+b;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
 <p>  打开<strong>app</strong>下面的<strong>builde.gradle</strong>文件，更改<strong>apply com.android.application</strong>为<strong>com.android.library</strong>,之后，删除或者注释下面的 <strong>applicationId</strong>,点击右上角的<strong>Sync Now</strong>,最后,选择菜单栏<strong>Build</strong>==&gt;<strong>Build Apk</strong></p>
 <p><img src="/images/gvr6-5.png" alt="gvr6-5.png"></p>
 <p>  然后会在<strong>app/build/output/aar</strong>下面生成<strong>app-debug.aar</strong>文件</p>
@@ -618,24 +621,28 @@
 </ul>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class Button1 : MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">	public void CallAndroidMethod_A()&#123;</span><br><span class="line">		</span><br><span class="line">		AndroidJavaClass jc = new AndroidJavaClass (&quot;com.unity3d.player.UnityPlayer&quot;);</span><br><span class="line">		AndroidJavaObject jo = jc.GetStatic&lt;AndroidJavaObject&gt; (&quot;currentActivity&quot;);</span><br><span class="line">		jo.Call (&quot;Method_A&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <ul>
 <li>Button2，创建调用无参数有返回值的B方法</li>
 </ul>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class Button2 : MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">	public void CallAndroidMethod_B()&#123;</span><br><span class="line"></span><br><span class="line">		AndroidJavaClass jc = new AndroidJavaClass (&quot;com.unity3d.player.UnityPlayer&quot;);</span><br><span class="line">		AndroidJavaObject jo = jc.GetStatic&lt;AndroidJavaObject&gt; (&quot;currentActivity&quot;);</span><br><span class="line">		string getMethod_B=jo.Call&lt;string&gt; (&quot;Method_B&quot;);</span><br><span class="line">		Debug.Log (&quot;getMethod_B:==&gt;&quot; + getMethod_B);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <ul>
 <li>Button3，创建调用有参数无返回值的C方法</li>
 </ul>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class Button3 : MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">	public void CallAndroidMethod_C()&#123;</span><br><span class="line"></span><br><span class="line">		AndroidJavaClass jc = new AndroidJavaClass (&quot;com.unity3d.player.UnityPlayer&quot;);</span><br><span class="line">		AndroidJavaObject jo = jc.GetStatic&lt;AndroidJavaObject&gt; (&quot;currentActivity&quot;);</span><br><span class="line">		jo.Call(&quot;Method_C&quot;,1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <ul>
 <li>Button4，创建调用有参数有返回值的D方法</li>
 </ul>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class Button4 : MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">	public void CallAndroidMethod_D()&#123;</span><br><span class="line"></span><br><span class="line">		AndroidJavaClass jc = new AndroidJavaClass (&quot;com.unity3d.player.UnityPlayer&quot;);</span><br><span class="line">		AndroidJavaObject jo = jc.GetStatic&lt;AndroidJavaObject&gt; (&quot;currentActivity&quot;);</span><br><span class="line">		string getMethod_D=jo.Call&lt;string&gt; (&quot;Method_D&quot;,1,2);</span><br><span class="line">		Debug.Log (&quot;getMethod_D:==&gt;&quot; + getMethod_D);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="添加物理响应和事件触发"><a href="#添加物理响应和事件触发" class="headerlink" title="添加物理响应和事件触发"></a>添加物理响应和事件触发</h3><p>  为<strong>Main Camera</strong>添加<strong>Physics Raycaster</strong></p>
 <p><img src="/images/gvr6-26.png" alt="gvr6-26.png"></p>
 <p>  为<strong>Event System</strong>添加<strong>Gaze Input Module</strong>并移到<strong>standalone Input Module</strong>上面</p>

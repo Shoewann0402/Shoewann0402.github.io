@@ -117,7 +117,7 @@
 <meta property="og:description" content="(…..咳咳, 别点了，上面这个只是一个截图而已. @_@! )  Reto Meier - Faster Android Studio Builds with Dex In Process  Android Studio 2.1 开启了一个新的特性： Dex In Process, 它能极大地提高全面清理的速度构建以及改善Instant Run(瞬间运行)的性能">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/dexinprocess.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.666Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Dex In Process 使Android Studio 编译更快">
 <meta name="twitter:description" content="(…..咳咳, 别点了，上面这个只是一个截图而已. @_@! )  Reto Meier - Faster Android Studio Builds with Dex In Process  Android Studio 2.1 开启了一个新的特性： Dex In Process, 它能极大地提高全面清理的速度构建以及改善Instant Run(瞬间运行)的性能">
@@ -541,7 +541,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/dexinprocess.png" rel="gallery_cjvt5b8oy005ehgjxqly9rte7" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/dexinprocess.png" rel="gallery_cjx724una006zbqjxbmg8n1em" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/dexinprocess.png" itemprop="contentUrl">
               </a>
             
@@ -559,8 +559,10 @@
 </blockquote>
 <p>Android Studio 2.1 开启了一个新的特性： Dex In Process, 它能极大地提高全面清理的速度构建以及改善Instant Run(瞬间运行)的性能</p>
 <a id="more"></a>
+
 <p>要使用Dex In Process，你需要修改你的gradle.properties文件并且通过增加分配的内存量1GB到Gradle Daemon 虚拟机，对于一个最低额度为2GB的,使用org.gradle.jvmargs配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.gradle.jvmargs=-Xmx2048m</span><br></pre></td></tr></table></figure>
+
 <p><img src="/images/1-EW2HDBPACkHsJxb7kTgI8A.gif" alt="1-EW2HDBPACkHsJxb7kTgI8A"></p>
 <p><img src="/images/dexinprocess2.png" alt="dexinprocess2"></p>
 <blockquote>

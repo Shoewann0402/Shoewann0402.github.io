@@ -117,7 +117,7 @@
 <meta property="og:description" content="原文来自：Google releases source for Google I/O 2017 for Android  今天我们发布官方Google I/O 2017 Android应用程序源代码 今年这个应用基本上修改了现有的功能，并且添加了一些新的功能。它也利用了Firebase去拓展技术堆栈。在这篇文章中，我们将高亮在这个应用程序的几个显著变化，以及它们设计的注意实事项。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/google_io_2017_source.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.654Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google发布Google I&#x2F;O 2017 安卓源代码">
 <meta name="twitter:description" content="原文来自：Google releases source for Google I/O 2017 for Android  今天我们发布官方Google I/O 2017 Android应用程序源代码 今年这个应用基本上修改了现有的功能，并且添加了一些新的功能。它也利用了Firebase去拓展技术堆栈。在这篇文章中，我们将高亮在这个应用程序的几个显著变化，以及它们设计的注意实事项。">
@@ -548,7 +548,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/google_io_2017_source.png" rel="gallery_cjvt5b8o0003qhgjx5jbmsbyq" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/google_io_2017_source.png" rel="gallery_cjx724umc0053bqjx1ep0auke" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/google_io_2017_source.png" itemprop="contentUrl">
               </a>
             
@@ -563,9 +563,10 @@
         <blockquote>
 <p>原文来自：<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8wOC9nb29nbGUtcmVsZWFzZXMtc291cmNlLWZvci1nb29nbGUtaW8uaHRtbA==" title="https://android-developers.googleblog.com/2017/08/google-releases-source-for-google-io.html">Google releases source for Google I/O 2017 for Android<i class="fa fa-external-link"></i></span></p>
 </blockquote>
-<p>今天我们发布官方<span class="exturl" data-url="aHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWNvbS5nb29nbGUuc2FtcGxlcy5hcHBzLmlvc2NoZWQmYW1wO2hsPWVu" title="https://play.google.com/store/apps/details?id=com.google.samples.apps.iosched&amp;hl=en">Google I/O 2017<i class="fa fa-external-link"></i></span> Android应用程序<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZS9pb3NjaGVk" title="https://github.com/google/iosched">源代码<i class="fa fa-external-link"></i></span></p>
+<p>今天我们发布官方<span class="exturl" data-url="aHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWNvbS5nb29nbGUuc2FtcGxlcy5hcHBzLmlvc2NoZWQmaGw9ZW4=" title="https://play.google.com/store/apps/details?id=com.google.samples.apps.iosched&hl=en">Google I/O 2017<i class="fa fa-external-link"></i></span> Android应用程序<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZS9pb3NjaGVk" title="https://github.com/google/iosched">源代码<i class="fa fa-external-link"></i></span></p>
 <p>今年这个应用基本上修改了现有的功能，并且添加了一些新的功能。它也利用了<span class="exturl" data-url="aHR0cHM6Ly9maXJlYmFzZS5nb29nbGUuY29tLw==" title="https://firebase.google.com/">Firebase<i class="fa fa-external-link"></i></span>去拓展技术堆栈。在这篇文章中，我们将高亮在这个应用程序的几个显著变化，以及它们设计的注意实事项。</p>
 <a id="more"></a>
+
 <p>对于2017版本最多突出的新功能是事件<strong>约束</strong>系统，这样被设计有助于节省参会者的时间，并提供精简的会议体验。注册参会能够在之前预约会话并添加到等待列表中。在会议期间，一个预约提供了加快进入会议，而不用长时间去等待。预约的数据将会和参会者会议徽章同步，允许事件工作人员使用NFC手机验证预约，不仅仅是预约功能非常受欢迎，但是预约数据帮助了事件工作人员在I/O大会之前和之间改变会话室的大小，以次来适应实际的座位需求。</p>
 <p>预约的功能是使用<span class="exturl" data-url="aHR0cHM6Ly9maXJlYmFzZS5nb29nbGUuY29tL3Byb2R1Y3RzL2RhdGFiYXNlLw==" title="https://firebase.google.com/products/database/">Firebase实时数据库<i class="fa fa-external-link"></i></span>(RTDB)和<span class="exturl" data-url="aHR0cHM6Ly9maXJlYmFzZS5nb29nbGUuY29tL3Byb2R1Y3RzL2Z1bmN0aW9ucy8=" title="https://firebase.google.com/products/functions/">Firebase云功能<i class="fa fa-external-link"></i></span>实现的。RTDB提供了通过用户的设备简单的同步——我们仅仅是在我们的代码中实现了一个监听来接收更新数据库。RTDB也提供了开箱即用离线支持，允许会议数据当在旅行是面对间歇性网络连接也可以使用。云端功能在后台处理用户预约的请求过程，使用交易去确保状态的正确性(防止恶作剧用户抓住太多的座位！)并和事件系统徽章通信。</p>
 <p>对去年而言，我们使用了内容提供者(ContentProvider)作为一个抽象层覆盖所有应用数据，也就意味着我们必须指出如何使用内容提供者去整合RTDB数据。我们需要在有两个本地缓存数据之间进行协商：1）来源于内容提供者访问现存本地SQLite数据库，2）通过RTDB被创建的本地缓存去促进离线访问。我们决定在内容提供者之下整合所有的应用数据：无论何时在RTDB里用户预约的数据改变，我们将更新内容提供者，使它成为在任何时间应用程序数据的唯一真实来源。这就意味着我们需要去在一个唯一的屏幕对RTDB保持打开连接，会话详细信息界面，用户可能正在积极地管理他们的预约。预约数据通过内容提供着支持显示在应用程序的其他部分。在离线模式下，或者是在与RTDB的片断或延迟连接的情况下，我们能够从内容提供着获取用户的最后一个预约的已知状态。</p>
@@ -715,7 +716,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/12/the-google-assistant-can-help-control/" rel="prev" title="谷歌助理能够帮助您控制Android媒体应用程序">
+              <a href="/2017/10/11/the-google-assistant-can-help-control/" rel="prev" title="谷歌助理能够帮助您控制Android媒体应用程序">
                 谷歌助理能够帮助您控制Android媒体应用程序 <i class="fa fa-chevron-right"></i>
               </a>
             

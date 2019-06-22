@@ -117,7 +117,7 @@
 <meta property="og:description" content="上次学习总结了《Android性能优化之渲染篇》，间隔两个月了，今天抽空先简要的学习总结下第二篇部分内容，好了，废话不多说了。  为了优化你的代码，你需要理解系统如何运行代码。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android_performance.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.610Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android性能优化之Traceview">
 <meta name="twitter:description" content="上次学习总结了《Android性能优化之渲染篇》，间隔两个月了，今天抽空先简要的学习总结下第二篇部分内容，好了，废话不多说了。  为了优化你的代码，你需要理解系统如何运行代码。">
@@ -541,7 +541,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/android_performance.png" rel="gallery_cjvt5b8l30005hgjx89thvjhf" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/android_performance.png" rel="gallery_cjx724ujl000abqjx24ui8eoi" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/android_performance.png" itemprop="contentUrl">
               </a>
             
@@ -558,6 +558,7 @@
 </blockquote>
 <p>为了优化你的代码，你需要理解系统如何运行代码。</p>
 <a id="more"></a>
+
 <h2 id="缓慢的性能"><a href="#缓慢的性能" class="headerlink" title="缓慢的性能"></a>缓慢的性能</h2><p>缓慢的函数执行通常是由于两方面的问题造成的：<br>1、执行速度很慢的函数，这种函数很容易被发现，你的某些函数所花费的时间超过你的预期2倍、10倍数，甚至50倍。这种情况只要找到那些运行很慢的函数,查看代码，找到问题的所在，然后想办法解决就可以了。</p>
 <p><img src="/images/slow_function_1.png" alt="slow_function_1"></p>
 <p>2、更难发现的是第二种类型，想方设法都难以发现，每个函数所用的时间都额外增加了一毫秒，从而导致整个程序执行速度变慢数百毫秒。而且更难以解决，需要对每段细小的地方进行分析，这样可能会导致进度缓慢，影响效率。不过SDK有一些很不错的工具，帮助你找到这些有问题的代码部分。</p>

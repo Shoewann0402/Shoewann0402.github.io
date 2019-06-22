@@ -117,7 +117,7 @@
 <meta property="og:description" content="在2016年的Google IO大会上，Google 公布了若干有关Firebase有意思的新特性。全新的Firebase添加了全新的工具，将成为统一移动应用开发的平台，帮助开发者快速开发，提高应用的开发质量，吸引用户和从应用中盈利。你可以从Firebase新官网和YouTube视频查看更多。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/firebase_title.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.618Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Firebase特性之崩溃报告">
 <meta name="twitter:description" content="在2016年的Google IO大会上，Google 公布了若干有关Firebase有意思的新特性。全新的Firebase添加了全新的工具，将成为统一移动应用开发的平台，帮助开发者快速开发，提高应用的开发质量，吸引用户和从应用中盈利。你可以从Firebase新官网和YouTube视频查看更多。">
@@ -555,7 +555,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/firebase_title.png" rel="gallery_cjvt5b8mh0013hgjxve1pvy80" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/firebase_title.png" rel="gallery_cjx724uk60015bqjxiwiuemej" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/firebase_title.png" itemprop="contentUrl">
               </a>
             
@@ -569,6 +569,7 @@
       
         <p>在2016年的Google IO大会上，Google 公布了若干有关<strong>Firebase</strong>有意思的新特性。全新的<strong>Firebase</strong>添加了全新的工具，将成为统一移动应用开发的平台，帮助开发者快速开发，提高应用的开发质量，吸引用户和从应用中盈利。你可以从<strong>Firebase</strong><span class="exturl" data-url="aHR0cHM6Ly9maXJlYmFzZS5nb29nbGUuY29t" title="https://firebase.google.com">新官网<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vdXNlci9GaXJlYmFzZQ==" title="https://www.youtube.com/user/Firebase">YouTube视频<i class="fa fa-external-link"></i></span>查看更多。</p>
 <a id="more"></a>
+
 <p>在<strong>Firebase</strong>更新的一些新特性包括:</p>
 <blockquote>
 <ul>
@@ -608,10 +609,10 @@
 <p><img src="/images/firebase_create_step_five.png" alt="firebase_create_step_five"></p>
 <p><strong>SHAI</strong>的获取办法：</p>
 <blockquote>
-<p>keytool -exportcert -list -v \<br>-alias androiddebugkey -keystore %USERPROFILE%.android\debug.keystore   (Windows)</p>
+<p>keytool -exportcert -list -v <br>-alias androiddebugkey -keystore %USERPROFILE%.android\debug.keystore   (Windows)</p>
 </blockquote>
 <blockquote>
-<p>keytool -exportcert -list -v \<br>-alias androiddebugkey -keystore ~/.android/debug.keystore    （mac/linux）</p>
+<p>keytool -exportcert -list -v <br>-alias androiddebugkey -keystore ~/.android/debug.keystore    （mac/linux）</p>
 </blockquote>
 <p>我的系统环境是<strong>linux</strong>，故使用后者命令，在终端执行并获得SHAI：</p>
 <p><img src="/images/firebase_create_step_six.png" alt="firebase_create_step_six"></p>
@@ -621,11 +622,14 @@
 <p><img src="/images/firebase_create_step_eight.png" alt="firebase_create_step_eight"></p>
 <h2 id="添加SDK到应用"><a href="#添加SDK到应用" class="headerlink" title="添加SDK到应用"></a>添加SDK到应用</h2><p>你的应用中要使用<strong>Firebase</strong>,你需要添加和设置SDK到你的应用中去，首先，添加以下行到你的项目根下的<strong>builde.gradle</strong>文件中去:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">  dependencies &#123;</span><br><span class="line">    <span class="comment">// Add this line</span></span><br><span class="line">    classpath <span class="string">'com.google.gms:google-services:3.0.0'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后在你的app模块的<strong>build.gradle</strong>文件中，在文件的底部应用这个Google服务的插件<br>你的<strong>builde.gradle</strong>应该是这个样子的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.application'</span> </span><br><span class="line">android &#123; </span><br><span class="line">   <span class="comment">// ... </span></span><br><span class="line">&#125; </span><br><span class="line">dependencies &#123; </span><br><span class="line">   <span class="comment">// ... </span></span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// ADD THIS AT THE BOTTOM </span></span><br><span class="line">apply plugin: <span class="string">'com.google.gms.google-services'</span></span><br></pre></td></tr></table></figure>
+
 <p>然后点击<strong>Sync now</strong>同步一下文件</p>
 <h2 id="设置崩溃报告"><a href="#设置崩溃报告" class="headerlink" title="设置崩溃报告"></a>设置崩溃报告</h2><p>现在，到了设置崩溃报告了，你需要添加Firebase崩溃报告依赖，你需要到你模块的<strong>build.gradle</strong>文件中去添加如下行:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.google.firebase:firebase-crash:9.0.1'</span></span><br></pre></td></tr></table></figure>
+
 <p>那么你的<strong>build.gradle</strong>文件大概就是这个样子:</p>
 <pre><code class="java">apply plugin: <span class="string">'com.android.application'</span> 
 android { 
@@ -637,7 +641,6 @@ dependencies {
 } 
 <span class="comment">// ADD THIS AT THE BOTTOM </span>
 apply plugin: <span class="string">'com.google.gms.google-services'</span>
-
 </code></pre>
 <p>然后点击<strong>Sync now</strong>同步一下文件</p>
 <h2 id="创建一个崩溃报告"><a href="#创建一个崩溃报告" class="headerlink" title="创建一个崩溃报告"></a>创建一个崩溃报告</h2><p>以上的操作已经完成了所有的配置，现在我们来创建一个崩溃报告。</p>

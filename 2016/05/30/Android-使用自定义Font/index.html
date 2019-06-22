@@ -117,7 +117,7 @@
 <meta property="og:description" content="Android系统为我们提供的一些字体的同时，我们也可以自定义字体。  让我们来看一下是如何使用自定义字体的具体方法">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/custom_font_pic0.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.614Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 使用自定义Font">
 <meta name="twitter:description" content="Android系统为我们提供的一些字体的同时，我们也可以自定义字体。  让我们来看一下是如何使用自定义字体的具体方法">
@@ -541,7 +541,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/custom_font_pic0.png" rel="gallery_cjvt5b8l60007hgjxkg882j31" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/custom_font_pic0.png" rel="gallery_cjx724ujw000ibqjxk2b9filk" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/custom_font_pic0.png" itemprop="contentUrl">
               </a>
             
@@ -581,8 +581,7 @@
 <h2 id="Java-方式"><a href="#Java-方式" class="headerlink" title="Java 方式"></a>Java 方式</h2><p>你可以使用Java方式来自定义字体</p>
 <pre><code class="java">TextView textView=(TextView) findViewById(R.id.tv_custom_font);
 Typeface tf=Typeface.createFromAsset(getAssets(),<span class="string">"fonts/Roboto-Black.ttf"</span>);
-textView.setTypeface(tf);
-</code></pre>
+textView.setTypeface(tf);</code></pre>
 <p><img src="/images/custom_font_pic6.png" alt="custom_font_pic6"></p>
 <h2 id="XML-方式"><a href="#XML-方式" class="headerlink" title="XML  方式"></a>XML  方式</h2><p>你也可以使用XML的方式来自定义字体</p>
 <h3 id="创建一个自定义的TextView类"><a href="#创建一个自定义的TextView类" class="headerlink" title="创建一个自定义的TextView类"></a>创建一个自定义的TextView类</h3><pre><code class="java"><span class="comment">/**</span>
@@ -597,8 +596,7 @@ textView.setTypeface(tf);
 
         <span class="keyword">this</span>.setTypeface(Typeface.createFromAsset(context.getAssets(),<span class="string">"fonts/Roboto-Black.ttf"</span>));
     }
-}
-</code></pre>
+}</code></pre>
 <p>这个构造方法接受两个参数：</p>
 <blockquote>
 <ul>
@@ -615,8 +613,7 @@ textView.setTypeface(tf);
 <span class="tag"> <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">"@+id/activity_main"</span></span>
 <span class="tag"> <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"@+id/activity_main"</span></span>
 <span class="tag"> <span class="attr">app:layout_constraintRight_toRightOf</span>=<span class="string">"@+id/activity_main"</span></span>
-<span class="tag"> <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"@+id/activity_main"</span> /&gt;</span>
-</code></pre>
+<span class="tag"> <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"@+id/activity_main"</span> /&gt;</span></code></pre>
 <p><img src="/images/custom_font_pic7.png" alt="custom_font_pic7"></p>
 <h2 id="默认字体在哪儿呢？"><a href="#默认字体在哪儿呢？" class="headerlink" title="默认字体在哪儿呢？"></a>默认字体在哪儿呢？</h2><p>打开SDK下面的platforms文件夹，在下面你会看到你安装的Android API不同平台</p>
 <p><img src="/images/custom_font_pic8.png" alt="custom_font_pic8"></p>

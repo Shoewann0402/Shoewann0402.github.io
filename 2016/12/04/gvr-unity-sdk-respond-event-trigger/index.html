@@ -117,7 +117,7 @@
 <meta property="og:description" content="上一篇讲了《Gvr Unity SDK (三) —— 创建视觉焦点》，在Unity的工作空间中如何为已经创建GameObject对象创建视觉焦点，本节学习如何为创建视觉焦点的GameObject对象触发焦点事件">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/googleDaydreamLogo.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.658Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gvr Unity SDK (四) —— 焦点事件触发">
 <meta name="twitter:description" content="上一篇讲了《Gvr Unity SDK (三) —— 创建视觉焦点》，在Unity的工作空间中如何为已经创建GameObject对象创建视觉焦点，本节学习如何为创建视觉焦点的GameObject对象触发焦点事件">
@@ -541,7 +541,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/googleDaydreamLogo.png" rel="gallery_cjvt5b8o90042hgjxe8rsxofd" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/googleDaydreamLogo.png" rel="gallery_cjx724umn005obqjxpvy9elbj" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/googleDaydreamLogo.png" itemprop="contentUrl">
               </a>
             
@@ -555,12 +555,14 @@
       
         <p>   上一篇讲了《Gvr Unity SDK (三) —— 创建视觉焦点》，在Unity的工作空间中如何为已经创建GameObject对象创建视觉焦点，本节学习如何为创建视觉焦点的GameObject对象触发焦点事件</p>
    <a id="more"></a>
+
 <h2 id="创建C-脚本文件"><a href="#创建C-脚本文件" class="headerlink" title="创建C#脚本文件"></a>创建C#脚本文件</h2><p>   在Unity工作空间<strong>Project</strong>窗口下，为<strong>Asstes</strong>下的<strong>Sample</strong>创建一个<strong>Script</strong>文件夹，里面用来保存<strong>C#</strong>脚本，然后在里面创建一个叫做<strong>CubeScript</strong>的脚本，以此为<strong>Cube</strong>对象响应焦点事件</p>
 <p><img src="/images/gvr4-1.png" alt="gvr4-1.png"></p>
 <p>双击<strong>CubeScript</strong>打开编辑器进行编辑，根据配置不同，会有<strong>Microsoft Visual Studio</strong>和<strong>Mono Develop</strong>两种工具打开，本例是用<strong>Mono Develop</strong>进行编辑的。打开文件后，会生成默认的代码配置</p>
 <p><img src="/images/gvr4-2.png" alt="gvr4-2.png"></p>
 <h2 id="编辑C-脚本文件"><a href="#编辑C-脚本文件" class="headerlink" title="编辑C#脚本文件"></a>编辑C#脚本文件</h2><p>然后，进行脚本编辑，以下是一个简单的示例来说明:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class CubeScript : MonoBehaviour &#123;</span><br><span class="line">        </span><br><span class="line">        // 定义一个方法，传入boolean类型的参数 </span><br><span class="line">	public void SetGazedAt(bool gazedAt) &#123;</span><br><span class="line"></span><br><span class="line">                //通过传入的gazedAt值不同，通过三目运算符真假设置组件渲染材料颜色，true为蓝色、false为黄色</span><br><span class="line">		GetComponent&lt;Renderer&gt;().material.color = gazedAt ? Color.blue : Color.yellow;</span><br><span class="line">	&#125;</span><br><span class="line">        </span><br><span class="line">	//定义一个向上移动的方法</span><br><span class="line">	public void MoveUp() &#123;</span><br><span class="line">		//在U3d里用Vector3表示空间内的坐标，参数分别是(float x,float y,float z)</span><br><span class="line">                //通过每调用一次该方法，让组件向y轴方向位移1f的距离</span><br><span class="line">		transform.position += new Vector3 (0f, 1f, 0f);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//程序开始</span><br><span class="line">	void Start() &#123;</span><br><span class="line">                //调用设置渲染材料颜色的方法，默认设置参数为false</span><br><span class="line">		SetGazedAt(false);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//当焦点进入组件范围</span><br><span class="line">	public void OnGazeEnter() &#123;</span><br><span class="line">               ，设置渲染材料颜色的方法，设置参数为true</span><br><span class="line">		SetGazedAt(true);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">        //当焦点退出组件范围</span><br><span class="line">	public void OnGazeExit() &#123;</span><br><span class="line">		//设置渲染材料颜色的方法，设置参数为false</span><br><span class="line">		SetGazedAt(false);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//当点击组件时</span><br><span class="line">	public void OnGazeTrigger() &#123;</span><br><span class="line">                </span><br><span class="line">		//调用组件移动的方法</span><br><span class="line">		MoveUp();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="绑定C-脚本文件"><a href="#绑定C-脚本文件" class="headerlink" title="绑定C#脚本文件"></a>绑定C#脚本文件</h2><p>回到Unity工作空间，选中<strong>Cube</strong>对象，在<strong>Cube</strong>右侧<strong>Inspetor</strong>属性栏的底部，点击<strong>Add Component</strong>，在搜索栏里输入创建的脚本<strong>CubeScript</strong>,然后选中添加</p>
 <p><img src="/images/gvr4-3.png" alt="gvr4-3.png"></p>
 <p>添加完成后，点击<strong>CubeScript</strong>后面的小齿轮，将它<strong>Move Up</strong>到<strong>Event Trigger</strong>上面</p>

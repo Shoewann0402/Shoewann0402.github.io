@@ -117,7 +117,7 @@
 <meta property="og:description" content="在linux下开发安卓的时候，有时候在连接USB调试的时候，系统出现adb no permissions 的问题，导致没有权限去调试程序？这种情况该如何处理呢？   解决办法其实很简单，就是在终端执行下面几句adb命令即可">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/adb_permission_issue.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.622Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下adb出现no permissions问题">
 <meta name="twitter:description" content="在linux下开发安卓的时候，有时候在连接USB调试的时候，系统出现adb no permissions 的问题，导致没有权限去调试程序？这种情况该如何处理呢？   解决办法其实很简单，就是在终端执行下面几句adb命令即可">
@@ -548,7 +548,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/adb_permission_issue.png" rel="gallery_cjvt5b8mu001phgjxijqeqhsl" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/adb_permission_issue.png" rel="gallery_cjx724uki001vbqjxtxje0oyr" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/adb_permission_issue.png" itemprop="contentUrl">
               </a>
             
@@ -566,13 +566,17 @@
 <p> 解决办法其实很简单，就是在终端执行下面几句adb命令即可<a id="more"></a></p>
 <h2 id="打开终端"><a href="#打开终端" class="headerlink" title="打开终端"></a>打开终端</h2><p>Linux下用Ctrl+Alt+T,打开Temimal终端</p>
 <h2 id="执行sudo"><a href="#执行sudo" class="headerlink" title="执行sudo"></a>执行sudo</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo su</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>然后回车，输入<strong>root</strong>下的密码，此时输入的密码是看不见的（退格键也属于一个密码字符），只管输入，输入完成后，回车键，如果成功的情况下就会输出下一条提示，以<strong>root@</strong>开头且以<strong>#</strong>结尾，否则就会提示你<strong>root</strong>下的密码输入错误，请重试。</p>
 </blockquote>
 <h2 id="执行-adb-kill-server"><a href="#执行-adb-kill-server" class="headerlink" title="执行 adb kill-server"></a>执行 adb kill-server</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> adb <span class="built_in">kill</span>-server</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="执行-adb-start-server"><a href="#执行-adb-start-server" class="headerlink" title="执行 adb start-server"></a>执行 adb start-server</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> adb start-server</span></span><br></pre></td></tr></table></figure>
+
 <p>然后下面会输出:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* daemon not running. starting it now on port 5037 *</span><br><span class="line">* daemon started successfully *</span><br></pre></td></tr></table></figure>
+
 <p><img src="/images/adb_permission_solve.png" alt="adb_permission_issue"></p>
 <blockquote>
 <p>以上简单的介绍了如何处理Linux下adb出现no permissions问题的具体方法，如果不足，欢迎指正。</p>

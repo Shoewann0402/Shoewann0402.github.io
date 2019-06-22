@@ -140,7 +140,7 @@
 <meta property="og:image" content="https://shoewann0402.github.io/images/alignContent_center.png">
 <meta property="og:image" content="https://shoewann0402.github.io/images/alignContent_space_between.png">
 <meta property="og:image" content="https://shoewann0402.github.io/images/alignContent_space_around.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.618Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google官方Android开源库--FlexboxLayout">
 <meta name="twitter:description" content="原文来自：  Flexbox-layout   什么是Flexbox？Flexbox 布局模型宗旨是对于在一个flex容器平铺出flex项提供更多高效的方法，即使flex项的大小未知.因此，它提供了更有效的方法,利用已存在的布局去实现响应式用户界面.">
@@ -567,10 +567,13 @@
 </blockquote>
 <h2 id="什么是Flexbox？"><a href="#什么是Flexbox？" class="headerlink" title="什么是Flexbox？"></a>什么是Flexbox？</h2><p><strong>Flexbox</strong> 布局模型宗旨是对于在一个<strong>flex</strong>容器平铺出<strong>flex</strong>项提供更多高效的方法，即使<strong>flex</strong>项的大小未知.因此，它提供了更有效的方法,利用已存在的布局去实现响应式用户界面.</p>
 <a id="more"></a>
+
 <h2 id="布局模型"><a href="#布局模型" class="headerlink" title="布局模型"></a>布局模型</h2><p><img src="/images/flexbox-visual.png" alt="flexbox_visual"></p>
 <h2 id="安装Gradle依赖"><a href="#安装Gradle依赖" class="headerlink" title="安装Gradle依赖"></a>安装Gradle依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    compile <span class="string">'com.google.android:flexbox:0.1.2'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><strong>FlexboxLayout</strong>像LinearLayout和RelativeLayout一样继承了<strong>ViewGroup</strong>，你可以在一个<strong>XML</strong>中像这样指定属性:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;com.google.android.flexbox.FlexboxLayout</span><br><span class="line">    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">    app:flexWrap=<span class="string">"wrap"</span></span><br><span class="line">    app:alignItems=<span class="string">"stretch"</span></span><br><span class="line">    app:alignContent=<span class="string">"stretch"</span> &gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=<span class="string">"@+id/textview1"</span></span><br><span class="line">        android:layout_width=<span class="string">"120dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"80dp"</span></span><br><span class="line">        app:layout_flexBasisPercent=<span class="string">"50%"</span></span><br><span class="line">    /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=<span class="string">"@+id/textview2"</span></span><br><span class="line">        android:layout_width=<span class="string">"80dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"80dp"</span></span><br><span class="line">        app:layout_alignSelf=<span class="string">"center"</span></span><br><span class="line">    /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id=<span class="string">"@+id/textview3"</span></span><br><span class="line">        android:layout_width=<span class="string">"160dp"</span></span><br><span class="line">        android:layout_height=<span class="string">"80dp"</span></span><br><span class="line">        app:layout_alignSelf=<span class="string">"flex_end"</span></span><br><span class="line">    /&gt;</span><br><span class="line">&lt;/com.google.android.flexbox.FlexboxLayout&gt;</span><br></pre></td></tr></table></figure>
+
 <p>或者在<strong>代码</strong>中，像这样：</p>
 <pre><code class="bash">FlexboxLayout flexboxLayout = (FlexboxLayout) findViewById(R.id.flexbox_layout);
 
@@ -584,8 +587,7 @@ lp.order = -1;
 
 lp.flexGrow = 2;
 
-view.setLayoutParams(lp);
-</code></pre>
+view.setLayoutParams(lp);</code></pre>
 <h2 id="支持的属性"><a href="#支持的属性" class="headerlink" title="支持的属性"></a>支持的属性</h2><p>对于一个<strong>FlexboxLayout</strong>，你能指定以下的属性：</p>
 <p>1.flexDirection</p>
 <p>子项的方向是摆放在<strong>Flexbox</strong>布局里面的，它决定里主轴线的方向（和十字交叉轴，垂直于主轴线），可能的值是：</p>

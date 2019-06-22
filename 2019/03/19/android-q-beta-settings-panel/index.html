@@ -117,7 +117,7 @@
 <meta property="og:description" content="Android Q 引入了设置面板，它是一种API, 允许从应用程序上下文直接向用户展示设置。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android-q-log.png">
-<meta property="og:updated_time" content="2019-03-19T10:27:20.376Z">
+<meta property="og:updated_time" content="2019-03-19T10:27:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Q 设置面板">
 <meta name="twitter:description" content="Android Q 引入了设置面板，它是一种API, 允许从应用程序上下文直接向用户展示设置。">
@@ -536,7 +536,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/android-q-log.png" rel="gallery_cjvt5b8nc002ohgjxf083pikv" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/android-q-log.png" rel="gallery_cjx724ulk003lbqjxt5wkifc0" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/android-q-log.png" itemprop="contentUrl">
               </a>
             
@@ -553,10 +553,12 @@
 </blockquote>
 <hr>
 <a id="more"></a>
+
 <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>避免了用户为了使用应用程序而需要进入<strong>设置</strong>来更改<strong>NFC</strong>或<strong>移动数据</strong>等内容。</p>
 <h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>例如，假设用户在其设备处于飞行模式时打开Web浏览器。 在Android Q之前，该应用只能显示一条通用消息，要求用户打开“设置”以恢复连接。 使用Android Q，浏览器应用程序可以显示一个内联面板，显示关键的连接设置，如飞行模式，Wi-Fi（包括附近的网络）和移动数据。 使用此面板，用户无需离开应用即可恢复连接。</p>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>这一新功能目前暂提供了<code>网络连接</code>、<code>NFC</code>、<code>音量</code>三个<strong>设置面板</strong>,使我们可以访问这三个不同的设置面板，所有这些面板都可以通过简单的<code>startActivity()</code>调用启动。</p>
 <h2 id="网络连接"><a href="#网络连接" class="headerlink" title="网络连接"></a>网络连接</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings.Panel.ACTION_INTERNET_CONNECTIVITY</span><br></pre></td></tr></table></figure>
+
 <p><img src="/images/android-q-beta-settings-panel-wifi-1.png" alt="android-q-beta-settings-panel-wifi-1.png"></p>
 <p><img src="/images/android-q-beta-settings-panel-wifi-2.png" alt="android-q-beta-settings-panel-wifi-1.png"></p>
 <p>面板属性:</p>
@@ -570,6 +572,7 @@
 </ul>
 </blockquote>
 <h2 id="NFC"><a href="#NFC" class="headerlink" title="NFC"></a>NFC</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings.Panel.ACTION_NFC</span><br></pre></td></tr></table></figure>
+
 <p><img src="/images/android-q-beta-settings-panel-nfc.png" alt="android-q-beta-settings-panel-nfc.png"></p>
 <p>面板属性:</p>
 <blockquote>
@@ -578,6 +581,7 @@
 </ul>
 </blockquote>
 <h2 id="音量"><a href="#音量" class="headerlink" title="音量"></a>音量</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings.Panel.ACTION_VOLUME</span><br></pre></td></tr></table></figure>
+
 <p><img src="/images/android-q-beta-settings-panel-volume.png" alt="android-q-beta-settings-panel-volume.png"></p>
 <p>面板属性:</p>
 <blockquote>
@@ -589,6 +593,7 @@
 </ul>
 </blockquote>
 <h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xw.androidqtest</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Intent</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle</span><br><span class="line"><span class="keyword">import</span> android.provider.Settings</span><br><span class="line"><span class="keyword">import</span> android.util.Log</span><br><span class="line"><span class="keyword">import</span> kotlinx.android.synthetic.main.activity_settings_panel.*</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SettingsPanelActivity</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> tag: String = SettingsPanelActivity::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>.<span class="title">simpleName</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_settings_panel)</span><br><span class="line">        </span><br><span class="line">        btnConnectivity.setOnClickListener &#123;</span><br><span class="line">            openSettings(Settings.Panel.ACTION_INTERNET_CONNECTIVITY)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        btnNFC.setOnClickListener &#123;</span><br><span class="line">            openSettings(Settings.Panel.ACTION_NFC)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        btnVolume.setOnClickListener &#123;</span><br><span class="line">            openSettings(Settings.Panel.ACTION_VOLUME)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">openSettings</span><span class="params">(panel: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        Log.d(tag, <span class="string">"panel:<span class="variable">$panel</span>"</span>)</span><br><span class="line">        <span class="keyword">val</span> intent = Intent(panel)</span><br><span class="line">        startActivity(intent)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>本文参考<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcHJldmlldy9mZWF0dXJlcyNzZXR0aW5ncy1wYW5lbHM=" title="https://developer.android.google.cn/preview/features#settings-panels">官方文档<i class="fa fa-external-link"></i></span>及示例简单总结，感谢您的阅读。如有不足，欢迎指正</p>
 </blockquote>

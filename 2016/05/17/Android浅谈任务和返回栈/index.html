@@ -117,7 +117,7 @@
 <meta property="og:description" content="(…..咳咳, 别点了，上面这个只是一个截图而已. @_@! )  原文来自：Google Android developer by lan Lake —— Tasks and the Back Stack  当我们点击了launcher桌面上App应用程序实际上发生了什么呢？如果你说“我的应用程序启动起来了”，你在技术上是正确的，也是在所有回答类别中最佳的一个.如果我们在深入一点，我们利用返回这">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/task_and_the_Back_Stack.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.618Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android浅谈任务和返回栈">
 <meta name="twitter:description" content="(…..咳咳, 别点了，上面这个只是一个截图而已. @_@! )  原文来自：Google Android developer by lan Lake —— Tasks and the Back Stack  当我们点击了launcher桌面上App应用程序实际上发生了什么呢？如果你说“我的应用程序启动起来了”，你在技术上是正确的，也是在所有回答类别中最佳的一个.如果我们在深入一点，我们利用返回这">
@@ -541,7 +541,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/task_and_the_Back_Stack.png" rel="gallery_cjvt5b8xg00cohgjxd9t64oue" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/task_and_the_Back_Stack.png" rel="gallery_cjx724uk50011bqjxoousi8su" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/task_and_the_Back_Stack.png" itemprop="contentUrl">
               </a>
             
@@ -559,6 +559,7 @@
 </blockquote>
 <p>当我们点击了launcher桌面上App应用程序实际上发生了什么呢？如果你说“我的应用程序启动起来了”，你在技术上是正确的，也是在所有回答类别中最佳的一个.如果我们在深入一点，我们利用返回这件小事情去看看，它对我们理解什么是<strong>任务</strong>以及它是如何去交互的会有帮助的</p>
 <a id="more"></a>
+
 <h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><p>一个任务是围绕着一个活动栈元数据和信息的集合（你可以查看<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL0FjdGl2aXR5TWFuYWdlci5SZWNlbnRUYXNrSW5mby5odG1s" title="https://developer.android.com/reference/android/app/ActivityManager.RecentTaskInfo.html">RecentTaskInfo<i class="fa fa-external-link"></i></span>类获取更准确的数据）。</p>
 <p>所以当你点击了launcher桌面上你的App应用程序，系统其实会开始去上一个已经存在的任务（通过Intent意图和Activity活动来指向确定) 去恢复—— 然你回到你该回到的地方.如果任务中没有存在可以被发现，然后利用最新启动的Activity作为基类Activity，一个新的任务就在任务的返回栈里被创建了。</p>
 <h2 id="返回栈"><a href="#返回栈" class="headerlink" title="返回栈"></a>返回栈</h2><p>你或许会想象，返回键一个任务的返回栈是捆绑在一起的，但是它是双向的，当你开始利用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9jb250ZW50L0NvbnRleHQuaHRtbA==" title="http://developer.android.com/reference/android/content/Context.html">startActivity()<i class="fa fa-external-link"></i></span>启动一个新的activity,将会（默认情况下）推送出一个新的activity在你的任务之上，原因是上一个Activity 已经被暂停了（如果这个新的activity完全掩盖了上一个activity，就被停止了）。</p>
@@ -598,8 +599,7 @@ stackBuilder.addNextIntentWithParentStack(detailActivity);
 
 PendingIntent pendingIntent = stackBuilder
 
-  .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-</code></pre>
+  .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);</code></pre>
 <p>你将在使用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9UYXNrU3RhY2tCdWlsZGVyLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/TaskStackBuilder.html">addNextIntentWithParentStack()<i class="fa fa-external-link"></i></span>方法时注意 —— 这个方法在正常Intent意图，你将创建了一个PendingIntent去构建一个完整的任务栈刚好通过的捷径。虽然它有一个要求：每一个activity需要有一个它的父activity定义在Androidmanifest(从<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS90cmFpbmluZy9ub3RpZnktdXNlci9uYXZpZ2F0aW9uLmh0bWw=" title="http://developer.android.com/training/notify-user/navigation.html">这篇文档中看示例代码<i class="fa fa-external-link"></i></span>)。</p>
 <p>如果在你情况下默认不工作，你不需要抛出TaskStackBuilder:<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9UYXNrU3RhY2tCdWlsZGVyLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/TaskStackBuilder.html">editIntentAt()<i class="fa fa-external-link"></i></span>允许你回收一个特殊的Intent意图并设置action动作，设置data URL数据地址，或者add extras传一个值。如果你需要甚至更多的定制，你可以放弃使用*ParentStack()方法完全直接使用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9UYXNrU3RhY2tCdWlsZGVyLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/TaskStackBuilder.html"> addNextIntent()<i class="fa fa-external-link"></i></span>添加确切你需要的Intent到你的具体情况</p>
 <blockquote>

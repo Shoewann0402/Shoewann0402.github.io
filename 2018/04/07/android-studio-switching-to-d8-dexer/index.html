@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="原文来自：Android Studio switching to D8 dexer">
-<meta name="keywords" content="Dex,Android Studio">
+<meta name="keywords" content="Android Studio,Dex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio 切换到D8 dexer">
 <meta property="og:url" content="https://shoewann0402.github.io/2018/04/07/android-studio-switching-to-d8-dexer/index.html">
@@ -117,7 +117,7 @@
 <meta property="og:description" content="原文来自：Android Studio switching to D8 dexer">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/d8_dexer.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.642Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio 切换到D8 dexer">
 <meta name="twitter:description" content="原文来自：Android Studio switching to D8 dexer">
@@ -548,7 +548,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/d8_dexer.png" rel="gallery_cjvt5b8ne002shgjxa5zr2plx" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/d8_dexer.png" rel="gallery_cjx724ulq003vbqjxvigkfetx" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/d8_dexer.png" itemprop="contentUrl">
               </a>
             
@@ -564,13 +564,15 @@
 <p>原文来自：<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxOC8wNC9hbmRyb2lkLXN0dWRpby1zd2l0Y2hpbmctdG8tZDgtZGV4ZXIuaHRtbA==" title="https://android-developers.googleblog.com/2018/04/android-studio-switching-to-d8-dexer.html">Android Studio switching to D8 dexer<i class="fa fa-external-link"></i></span></p>
 </blockquote>
 <a id="more"></a>
+
 <h1 id="D8现在是默认的dex编译器"><a href="#D8现在是默认的dex编译器" class="headerlink" title="D8现在是默认的dex编译器"></a>D8现在是默认的dex编译器</h1><p>更快、更小的应用程序编译一直是Android工具团队的目标，那也是为什么我们此前宣布了<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8wOC9uZXh0LWdlbmVyYXRpb24tZGV4LWNvbXBpbGVyLW5vdy1pbi5odG1s" title="https://android-developers.googleblog.com/2017/08/next-generation-dex-compiler-now-in.html">D8<i class="fa fa-external-link"></i></span>,下一代的dex编译器。相比历史编译器-DX,D8运行更快并生成更小的.dex文件具有相当或者更佳的运行时性能。</p>
 <p>我们最近宣布了D8成为Android Studio 3.1中默认的编译器。如果你之前还没有去尝试D8，我们希望你在切换的时候注意到更佳、更快的dex编译。</p>
 <p>D8首次在Android Studio3.0中作为一个可选的功能被发出。除此之外我们自己也在严格测试，我们现在已经看到了它在各种各样的应用程序中良好的表现。最后，我们确信D8对于每一个开始在3.1中使用他的人来说都将良好运作。然而，如果你在使用的时候有什么问题，你现在能够通过在你的项目gradle.properties文件下一直设置如下还原到DX</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android.enableD8=<span class="keyword">false</span></span><br></pre></td></tr></table></figure>
-<p>如果你确实遇到什么问题导致你禁用了D8，请<span class="exturl" data-url="aHR0cHM6Ly9pc3N1ZXRyYWNrZXIuZ29vZ2xlLmNvbS9pc3N1ZXMvbmV3P2NvbXBvbmVudD0xOTI3MDgmYW1wO3RlbXBsYXRlPTg0MDUzMw==" title="https://issuetracker.google.com/issues/new?component=192708&amp;template=840533">让我们知道!<i class="fa fa-external-link"></i></span></p>
+
+<p>如果你确实遇到什么问题导致你禁用了D8，请<span class="exturl" data-url="aHR0cHM6Ly9pc3N1ZXRyYWNrZXIuZ29vZ2xlLmNvbS9pc3N1ZXMvbmV3P2NvbXBvbmVudD0xOTI3MDgmdGVtcGxhdGU9ODQwNTMz" title="https://issuetracker.google.com/issues/new?component=192708&template=840533">让我们知道!<i class="fa fa-external-link"></i></span></p>
 <h1 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h1><p>我们的目标是确保每一个人都能访问到快速、正确的dex编译器。因此避免冒着任一個用户的回归，我们将分为3个阶段去弃用DX</p>
-<p>第一阶段打算防止过早的弃用DX。在这个阶段期间，DX将仍然可以在studio中使用。我们将修复它的关键性问题，但是不会再有新的功能特性了。这个阶段将会持续至少6个月，期间我们将打开任何一个D8的错误去决定如果是回归，将会阻止一些用户使用D8替换DX。第一个阶段直到团队解决完全部的迁移阻滞者问题才会结束。在这个窗口中我们将会特别注意到错误追踪器，因此如果你遭遇任何回归，<span class="exturl" data-url="aHR0cHM6Ly9pc3N1ZXRyYWNrZXIuZ29vZ2xlLmNvbS9pc3N1ZXMvbmV3P2NvbXBvbmVudD0xOTI3MDgmYW1wO3RlbXBsYXRlPTg0MDUzMw==" title="https://issuetracker.google.com/issues/new?component=192708&amp;template=840533">请提出问题<i class="fa fa-external-link"></i></span>。</p>
+<p>第一阶段打算防止过早的弃用DX。在这个阶段期间，DX将仍然可以在studio中使用。我们将修复它的关键性问题，但是不会再有新的功能特性了。这个阶段将会持续至少6个月，期间我们将打开任何一个D8的错误去决定如果是回归，将会阻止一些用户使用D8替换DX。第一个阶段直到团队解决完全部的迁移阻滞者问题才会结束。在这个窗口中我们将会特别注意到错误追踪器，因此如果你遭遇任何回归，<span class="exturl" data-url="aHR0cHM6Ly9pc3N1ZXRyYWNrZXIuZ29vZ2xlLmNvbS9pc3N1ZXMvbmV3P2NvbXBvbmVudD0xOTI3MDgmdGVtcGxhdGU9ODQwNTMz" title="https://issuetracker.google.com/issues/new?component=192708&template=840533">请提出问题<i class="fa fa-external-link"></i></span>。</p>
 <p>一旦我们将查看6个月的窗口没有了D8替换DX的主要回归问题，我们将进入第二阶段。这个阶段将会至少是一年，打算确保那些即使是复杂的项目都有大量时间去进行迁移。在这个阶段期间，我们仍然保持着DX可用，但是我们将它视为完全弃用，我们将不会修复它的任何问题。</p>
 <p>再第三阶段也就是最后阶段，DX将会从Android Studio中移除。在此时，为了能继续使用DX去构建，你将需要使用一个legacy版本的Android Gradle插件。</p>
 <blockquote>
@@ -651,9 +653,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Dex/" rel="tag"># Dex</a>
-          
             <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
+          
+            <a href="/tags/Dex/" rel="tag"># Dex</a>
           
         </div>
       

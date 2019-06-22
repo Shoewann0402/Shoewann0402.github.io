@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="原文来自：Introducing Android Instant Apps SDK 1.1  自从我们在Google I/O上面公开启动,我们已经努力工作去提升开发者构建即时应用的体验。今天我们激动的宣布Android即时应用SDK1.1可用。一些高度请求的功能，像提升NDK的支持、配置APKs以此减少二进制的大小，以及一个全新的API，当用户从一个即时应用程序过渡到已安装好应用程序，去保持用户">
-<meta name="keywords" content="Android,Android Studio,Develop,Android Instant Apps,Play Console,Studio">
+<meta name="keywords" content="Android Studio,Android,Develop,Android Instant Apps,Play Console,Studio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="介绍Android即时应用SDK 1.1">
 <meta property="og:url" content="https://shoewann0402.github.io/2017/10/13/introducing-android-instant-apps-sdk-11/index.html">
@@ -117,7 +117,7 @@
 <meta property="og:description" content="原文来自：Introducing Android Instant Apps SDK 1.1  自从我们在Google I/O上面公开启动,我们已经努力工作去提升开发者构建即时应用的体验。今天我们激动的宣布Android即时应用SDK1.1可用。一些高度请求的功能，像提升NDK的支持、配置APKs以此减少二进制的大小，以及一个全新的API，当用户从一个即时应用程序过渡到已安装好应用程序，去保持用户">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android-instant-apps.jpg">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.658Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="介绍Android即时应用SDK 1.1">
 <meta name="twitter:description" content="原文来自：Introducing Android Instant Apps SDK 1.1  自从我们在Google I/O上面公开启动,我们已经努力工作去提升开发者构建即时应用的体验。今天我们激动的宣布Android即时应用SDK1.1可用。一些高度请求的功能，像提升NDK的支持、配置APKs以此减少二进制的大小，以及一个全新的API，当用户从一个即时应用程序过渡到已安装好应用程序，去保持用户">
@@ -541,7 +541,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/android-instant-apps.jpg" rel="gallery_cjvt5b8og004ahgjx85tr6dwh" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/android-instant-apps.jpg" rel="gallery_cjx724umo005tbqjxruu5qprb" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/android-instant-apps.jpg" itemprop="contentUrl">
               </a>
             
@@ -558,14 +558,15 @@
 </blockquote>
 <p>自从我们在Google I/O上面<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8wNS9hbmRyb2lkLWluc3RhbnQtYXBwcy1pcy1vcGVuLXRvLWFsbC5odG1s" title="https://android-developers.googleblog.com/2017/05/android-instant-apps-is-open-to-all.html">公开启动<i class="fa fa-external-link"></i></span>,我们已经努力工作去提升开发者构建即时应用的体验。今天我们激动的宣布Android即时应用SDK1.1可用。一些高度请求的功能，像提升NDK的支持、配置APKs以此减少二进制的大小，以及一个全新的API，当用户从一个即时应用程序过渡到已安装好应用程序，去保持用户的上下文。</p>
 <a id="more"></a>
+
 <h2 id="介绍配置APKs"><a href="#介绍配置APKs" class="headerlink" title="介绍配置APKs"></a>介绍配置APKs</h2><p>对于一个非常棒的即时应用体验，应用二进制需要精益和良好的结构。这也是为什么我们要介绍配置APKs</p>
 <p>配置APKs允许开发者隔离设备－验证资源和依赖在APKs里面的本地库。对于一个应用使用配置APKs,Android即时应用核心将只会加载资源和本地库相关的给用户的设备，从而减少即时应用程序在设备上的总大小。</p>
 <p>我们当前支持配置APKs的显示密度，CPU的体系结构(ABI),以及语言。这些，我们看到在已加载的二进制大小平均降低了10%。给定应用程序的实际节省依赖于资源文件数和本地库，能够被配置。</p>
 <p>以一个示例来说，一个用户在一部LDPI屏幕密度的ARM设备上设置了中文语言，接收与设备无关的代码和资源，然后只能获取配置APKs是ARM本地库、中文语言、以及LDPI资源。它们将不能够接收到其他任意的配置APKs，比如x86的库，西班牙语言的字符串，或者HDPI的资源。</p>
 <p>为你的应用设置配置APKs只需要简单的改变你的gradle文件的设置。跟随我们<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdG9waWMvaW5zdGFudC1hcHBzL2d1aWRlcy9jb25maWctc3BsaXRzLmh0bWw=" title="https://developer.android.com/topic/instant-apps/guides/config-splits.html">公开的文档<i class="fa fa-external-link"></i></span>步骤。</p>
 <h2 id="安装之后的持久化用户上下文"><a href="#安装之后的持久化用户上下文" class="headerlink" title="安装之后的持久化用户上下文"></a>安装之后的持久化用户上下文</h2><p>在Android奥尼奥，即时版本应用的内置存储可以直接用于安装版本应用程序。这次发布的SDK,我们能够在旧版本的Android核心上启用这个功能，包括棒棒糖、棉花糖、和牛轧糖的设备。</p>
-<p>提取即时应用程序的内置存储，安装应用程序现在能够调用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vYW5kcm9pZC9yZWZlcmVuY2UvY29tL2dvb2dsZS9hbmRyb2lkL2dtcy9pbnN0YW50YXBwcy9JbnN0YW50QXBwc0NsaWVudCNnZXRJbnN0YW50QXBwRGF0YSg=" title="https://developers.google.com/android/reference/com/google/android/gms/instantapps/InstantAppsClient#getInstantAppData(">InstantAppsClient.getInstantAppData()<i class="fa fa-external-link"></i></span>)使用即时应用程序Google Play服务API，以及获得一个即时应用程序内置存储的ZIP文件。</p>
-<p>检出我们<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZXNhbXBsZXMvYW5kcm9pZC1pbnN0YW50LWFwcHM=" title="https://github.com/googlesamples/android-instant-apps">示例代码<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vYW5kcm9pZC9yZWZlcmVuY2UvY29tL2dvb2dsZS9hbmRyb2lkL2dtcy9pbnN0YW50YXBwcy9JbnN0YW50QXBwc0NsaWVudCNnZXRJbnN0YW50QXBwRGF0YSg=" title="https://developers.google.com/android/reference/com/google/android/gms/instantapps/InstantAppsClient#getInstantAppData(">文档<i class="fa fa-external-link"></i></span>)获取如何使用这个API的更多详细。</p>
+<p>提取即时应用程序的内置存储，安装应用程序现在能够调用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vYW5kcm9pZC9yZWZlcmVuY2UvY29tL2dvb2dsZS9hbmRyb2lkL2dtcy9pbnN0YW50YXBwcy9JbnN0YW50QXBwc0NsaWVudCNnZXRJbnN0YW50QXBwRGF0YSgp" title="https://developers.google.com/android/reference/com/google/android/gms/instantapps/InstantAppsClient#getInstantAppData()">InstantAppsClient.getInstantAppData()<i class="fa fa-external-link"></i></span>使用即时应用程序Google Play服务API，以及获得一个即时应用程序内置存储的ZIP文件。</p>
+<p>检出我们<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZXNhbXBsZXMvYW5kcm9pZC1pbnN0YW50LWFwcHM=" title="https://github.com/googlesamples/android-instant-apps">示例代码<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vYW5kcm9pZC9yZWZlcmVuY2UvY29tL2dvb2dsZS9hbmRyb2lkL2dtcy9pbnN0YW50YXBwcy9JbnN0YW50QXBwc0NsaWVudCNnZXRJbnN0YW50QXBwRGF0YSgp" title="https://developers.google.com/android/reference/com/google/android/gms/instantapps/InstantAppsClient#getInstantAppData()">文档<i class="fa fa-external-link"></i></span>获取如何使用这个API的更多详细。</p>
 <h2 id="开始构建你的Android即时应用"><a href="#开始构建你的Android即时应用" class="headerlink" title="开始构建你的Android即时应用"></a>开始构建你的Android即时应用</h2><p>在最新版的SDK上构建你的即时应用程序是简单的，只需要在Android Studio里面打开SDK Manager，然后升级你的Instant App Development SDK到1.1.0。我们迫不及待的想看到你为即时应用程序构建这些新的功能特性。</p>
 <blockquote>
 <p>以上是对Anroid 官网博客文章的翻译，如果不足，欢迎指正，谢谢</p>
@@ -645,9 +646,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
             <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
             <a href="/tags/Develop/" rel="tag"># Develop</a>
           
@@ -688,7 +689,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/12/the-google-assistant-can-help-control/" rel="next" title="谷歌助理能够帮助您控制Android媒体应用程序">
+              <a href="/2017/10/11/the-google-assistant-can-help-control/" rel="next" title="谷歌助理能够帮助您控制Android媒体应用程序">
                 <i class="fa fa-chevron-left"></i> 谷歌助理能够帮助您控制Android媒体应用程序
               </a>
             

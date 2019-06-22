@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="原文来自: Android Developers Blog —— Notifications in Android N  Android 通知往往是在你的Android应用和用户之间制造或打破而相互作用。为了提供更好的用户体验，Android N上的通知已经接收到视觉的更新，对于自定义视图更好的支持，以及直接回复形式的扩展功能，一个全新的消息风格，和捆绑通知">
-<meta name="keywords" content="Android N,Notification,通知">
+<meta name="keywords" content="Notification,通知,Android N">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android N 中的 Notification 通知">
 <meta property="og:url" content="https://shoewann0402.github.io/2016/06/09/Notifications-In-Android-N/index.html">
@@ -117,7 +117,7 @@
 <meta property="og:description" content="原文来自: Android Developers Blog —— Notifications in Android N  Android 通知往往是在你的Android应用和用户之间制造或打破而相互作用。为了提供更好的用户体验，Android N上的通知已经接收到视觉的更新，对于自定义视图更好的支持，以及直接回复形式的扩展功能，一个全新的消息风格，和捆绑通知">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/notifications-in-android-n_pic1.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.626Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android N 中的 Notification 通知">
 <meta name="twitter:description" content="原文来自: Android Developers Blog —— Notifications in Android N  Android 通知往往是在你的Android应用和用户之间制造或打破而相互作用。为了提供更好的用户体验，Android N上的通知已经接收到视觉的更新，对于自定义视图更好的支持，以及直接回复形式的扩展功能，一个全新的消息风格，和捆绑通知">
@@ -548,7 +548,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/notifications-in-android-n_pic1.png" rel="gallery_cjvt5b8xk00crhgjxpvj0sb78" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/notifications-in-android-n_pic1.png" rel="gallery_cjx724ukn0026bqjxohd53bsp" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/notifications-in-android-n_pic1.png" itemprop="contentUrl">
               </a>
             
@@ -565,6 +565,7 @@
 </blockquote>
 <p>Android 通知往往是在你的Android应用和用户之间制造或打破而相互作用。为了提供更好的用户体验，Android N上的通知已经接收到视觉的更新，对于自定义视图更好的支持，以及直接回复形式的扩展功能，一个全新的消息风格，和捆绑通知</p>
 <a id="more"></a>
+
 <h2 id="相同的通知，新的面貌"><a href="#相同的通知，新的面貌" class="headerlink" title="相同的通知，新的面貌"></a>相同的通知，新的面貌</h2><p>首先最明显的变化就是通知的默认外观已经显著变化，许多被周围的通知扩散区域已经折叠到了一个新的标题里面，和你的应用的应用图标以及名字固定通知。这个变化确保了标题、文本和大图标被给予最大量的空间的可能性，并且其结果就是，现在的通知通常稍大了，更容易阅读。</p>
 <p><img src="/images/notifications-in-android-n_pic1.png" alt="notifications-in-android-n_pic1"></p>
 <p>鉴于单行标题，这是比以往的信息的有用性更重要，<strong>当你的目标是Android N 的时候，默认的情况下时间会被隐藏，不会显示出来</strong>—— 如果你有一个时间危机的通知，比如说是一个消息应用程序，你能够使用<strong>setShowWhen(true)</strong>重新开启它。此外，内容下面一小行的文字将会优先于你设置的任何内容信息:只有当你指定Android N 之前的早期版本才会同时出现。在所有的情况下，确保内容下面一小行的文字是符合标题且有用的——比如说，如果用户仅仅只有一个账户，不要添加一个账户邮箱地址作为你的内容下面一小行的文字。</p>
@@ -580,11 +581,14 @@
 <p>直接回复使用了相同的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvUmVtb3RlSW5wdXQuaHRtbA==" title="https://developer.android.com/reference/android/support/v4/app/RemoteInput.html">RemoteInput<i class="fa fa-external-link"></i></span>API——最初是在Android Wear里引人的——对于标记一个能够接受让用户直接输入。标记一个<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvTm90aWZpY2F0aW9uQ29tcGF0LkFjdGlvbi5odG1s" title="https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Action.html">动作(Action)<i class="fa fa-external-link"></i></span>作为能够直接接收来自用户的输入。</p>
 <p>该RemoteInput本身包含像将被用于以后检索的输入，和用户开始输入之前所显示的提示文本的关键信息。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Where should direct replies be put in the intent bundle (can be any string)</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String KEY_TEXT_REPLY = <span class="string">"key_text_reply"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create the RemoteInput specifying this key</span></span><br><span class="line">String replyLabel = getString(R.string.reply_label);</span><br><span class="line">RemoteInput remoteInput = <span class="keyword">new</span> RemoteInput.Builder(KEY_TEXT_REPLY)</span><br><span class="line">        .setLabel(replyLabel)</span><br><span class="line">        .build();</span><br></pre></td></tr></table></figure>
+
 <p>一旦你已经构建了RemoteInput,它可以通过适当命名的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvTm90aWZpY2F0aW9uQ29tcGF0LkFjdGlvbi5CdWlsZGVyLmh0bWw=" title="https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Action.Builder.html">addRemoteInput()<i class="fa fa-external-link"></i></span>方法连接到你的Action操作。你可能会考虑调用<strong>setAllowGeneratedReplies(true)</strong>方法去开启<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vd2Vhci9wcmV2aWV3L2luZGV4Lmh0bWw=" title="https://developer.android.com/wear/preview/index.html">Android Wear 2.0<i class="fa fa-external-link"></i></span>产生<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vd2Vhci9wcmV2aWV3L2FwaS1vdmVydmlldy5odG1s" title="https://developer.android.com/wear/preview/api-overview.html">Smart Reply(智能回复)<i class="fa fa-external-link"></i></span>的选择，当它可用的时候,能使用户更容易迅速作出反应。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Add to your action, enabling Direct Reply for it</span></span><br><span class="line">NotificationCompat.Action action =</span><br><span class="line">    <span class="keyword">new</span> NotificationCompat.Action.Builder(R.drawable.reply, replyLabel, pendingIntent)</span><br><span class="line">        .addRemoteInput(remoteInput)</span><br><span class="line">        .setAllowGeneratedReplies(<span class="keyword">true</span>)</span><br><span class="line">        .build();</span><br></pre></td></tr></table></figure>
+
 <p>请记住，<strong>pendingIntent</strong>被传递到你的Action动作应该是一个Activity，在Marshmallow以及更低版本的设备上是不支持直接回复功能(你将希望锁屏,开启一个<strong>Activity</strong>,有一个焦点输入框让用户可以直接在里面输入回复)，应该是一个<strong>Service</strong>（如果你需要这样做需要在一个另外的线程）或者是<strong>BroadcastReceiver</strong>（它运行在UI主线程）在Android N 设备上，因此，甚至从锁屏背景下的文本输入这么一个流程（这儿是一个另外的用户从系统设置中去控制一个被锁的设备直接回复启用/禁用）</p>
 <p>在你的Service或者BroadcastReceiver里提取文本输入，可以使用到的帮助:<br><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvUmVtb3RlSW5wdXQuaHRtbA==" title="https://developer.android.com/reference/android/support/v4/app/RemoteInput.html">RemoteInput.getResultsFromIntent() <i class="fa fa-external-link"></i></span>方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> CharSequence <span class="title">getMessageText</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">    Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);</span><br><span class="line">    <span class="keyword">if</span> (remoteInput != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> remoteInput.getCharSequence(KEY_TEXT_REPLY);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
 <p>之后你将处理文本，<strong>你必须更新通知</strong>，这个是隐藏UI直接回复，应该作为一种技术来确认用户他们答复接收和正确处理的触发。</p>
 <p>对于多数模板，这都应该涉及使用追加答复到通知的底部新的<strong>setRemoteInputHistory()</strong>方法，直到主要内容被更新的其他答复被追加到历史(比如说其他人回复)</p>
 <p><img src="/images/notifications-in-android-n_pic5.png" alt="notifications-in-android-n_pic5"></p>
@@ -596,6 +600,7 @@
 <p><img src="/images/notifications-in-android-n_pic6.png" alt="notifications-in-android-n_pic6"></p>
 <p>这个样式风格提供了内置的通过<strong>addMessage()</strong>返回添加多个消息格式的方法。每一个条消息支持传入文本本身，时间戳和消息的发送者（因此很容易支持群组对话）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">builder.setStyle(<span class="keyword">new</span> NotificationCompat.MessagingStyle(<span class="string">"Me"</span>)</span><br><span class="line">    .setConversationTitle(<span class="string">"Team lunch"</span>)</span><br><span class="line">    .addMessage(<span class="string">"Hi"</span>, timestampMillis1, <span class="keyword">null</span>) <span class="comment">// Pass in null for user.</span></span><br><span class="line">    .addMessage(<span class="string">"What's up?"</span>, timestampMillis2, <span class="string">"Coworker"</span>)</span><br><span class="line">    .addMessage(<span class="string">"Not much"</span>, timestampMillis3, <span class="keyword">null</span>)</span><br><span class="line">    .addMessage(<span class="string">"How about lunch?"</span>, timestampMillis4, <span class="string">"Coworker"</span>));</span><br></pre></td></tr></table></figure>
+
 <p>你将会注意到，这种风格对于具体的消息表示一流的支持从用户和他们填写的名字(使用”我”这种情况)，并设置一个可选的对话标题。当这个可以手动的使用一个<strong>BigTextStyle</strong>，通过Android Wear 2.0 使用这种风格的用户，将会获得直接内嵌的行来响应，抛弃了踢出来扩展通知来看，制造了一个无缝体验，而无须构建一个完整的可穿戴的应用程序。</p>
 <h2 id="捆绑通知"><a href="#捆绑通知" class="headerlink" title="捆绑通知"></a>捆绑通知</h2><p>一旦你使用了一个全新的视觉设计去构建一个伟大的通知，直接回复、信息风格、和<span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj0taW9nX2ZtbTZtRQ==" title="https://www.youtube.com/watch?v=-iog_fmm6mE">我们以前所有的最佳实践<i class="fa fa-external-link"></i></span>,考虑整体的通知体验是非常重要的,特别是如果你发布多个通知(说，每个正在进行会话或者每个新的电子邮件线程之间)</p>
 <p><img src="/images/notifications-in-android-n_pic7.png" alt="notifications-in-android-n_pic7"></p>
@@ -684,11 +689,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android-N/" rel="tag"># Android N</a>
-          
             <a href="/tags/Notification/" rel="tag"># Notification</a>
           
             <a href="/tags/通知/" rel="tag"># 通知</a>
+          
+            <a href="/tags/Android-N/" rel="tag"># Android N</a>
           
         </div>
       

@@ -112,12 +112,12 @@
 <meta name="keywords" content="SMS,createAppSpecificSmsToken">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android O中对于短信验证无需请求权限">
-<meta property="og:url" content="https://shoewann0402.github.io/2017/05/15/android-O-does-not-require-permission-for-SMS-verification/index.html">
+<meta property="og:url" content="https://shoewann0402.github.io/2017/05/14/android-O-does-not-require-permission-for-SMS-verification/index.html">
 <meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
 <meta property="og:description" content="Android O 针对SMS（短信）认证的方式进行了改进，引入了专门的API。应用程序可以使用它们来检索应用程序通过SMS（短信）发出去的验证码，因此，Android O中的应用程序请求SMS将不再需要权限">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android-O.jpg">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.630Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android O中对于短信验证无需请求权限">
 <meta name="twitter:description" content="Android O 针对SMS（短信）认证的方式进行了改进，引入了专门的API。应用程序可以使用它们来检索应用程序通过SMS（短信）发出去的验证码，因此，Android O中的应用程序请求SMS将不再需要权限">
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://shoewann0402.github.io/2017/05/15/android-O-does-not-require-permission-for-SMS-verification/">
+  <link rel="canonical" href="https://shoewann0402.github.io/2017/05/14/android-O-does-not-require-permission-for-SMS-verification/">
 
 
 
@@ -416,7 +416,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2017/05/15/android-O-does-not-require-permission-for-SMS-verification/">
+    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2017/05/14/android-O-does-not-require-permission-for-SMS-verification/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shoewann">
@@ -515,7 +515,7 @@
 
           
           
-            <span id="/2017/05/15/android-O-does-not-require-permission-for-SMS-verification/" class="leancloud_visitors" data-flag-title="Android O中对于短信验证无需请求权限">
+            <span id="/2017/05/14/android-O-does-not-require-permission-for-SMS-verification/" class="leancloud_visitors" data-flag-title="Android O中对于短信验证无需请求权限">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -548,7 +548,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/android-O.jpg" rel="gallery_cjvt5b8mz0020hgjxiwkx1ki3" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/android-O.jpg" rel="gallery_cjx724uku002ibqjx6co0nuyk" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/android-O.jpg" itemprop="contentUrl">
               </a>
             
@@ -564,6 +564,7 @@
 <p>Android O 针对SMS（短信）认证的方式进行了改进，引入了专门的API。应用程序可以使用它们来检索应用程序通过SMS（短信）发出去的验证码，因此，Android O中的应用程序请求SMS将不再需要权限</p>
 </blockquote>
 <a id="more"></a>
+
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>短信验证也被称为”<strong>短信认证</strong>“，是为了验证用户的合法性。现在国内很多应用都使用了手机验证码作为注册、登录的首选方式，其次就是使用邮箱和第三方的方式。</p>
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>当一部Android设备输入了手机号码，发出了请求验证码操作，后台服务器就会向客户端发送包含密码字串的短信，然后客户端输入该字串，发送到服务器进行验证。如果成功通过了服务器的验证，客户端就成功的完成了短信验证，进入到指定的功能界面。</p>
 <h1 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h1><p>客户端接收到服务器下发的短信，主要有两种可能的解决方案来管理短信</p>
@@ -593,7 +594,7 @@
 </ul>
 </blockquote>
 <p>这意味着不需要手动输入验证码或token令牌值进入，甚至没有必要有通过读取短信来自动检测代码这个过程。有了这个新的API，我们可以直接得到我们的应用程序的回调。</p>
-<p><em>“”Create a single use app specific incoming SMS request for the the calling package. This method returns a token that if included in a subsequent incoming SMS message will cause intent to be sent with the SMS data. The token is only good for one use, after an SMS has been received containing the token all subsequent SMS messages with the token will be routed as normal. An app can only have one request at a time, if the app already has a request pending it will be replaced with a new request. “”</em></p>
+<p>*””Create a single use app specific incoming SMS request for the the calling package. This method returns a token that if included in a subsequent incoming SMS message will cause intent to be sent with the SMS data. The token is only good for one use, after an SMS has been received containing the token all subsequent SMS messages with the token will be routed as normal. An app can only have one request at a time, if the app already has a request pending it will be replaced with a new request. “”*</p>
 <p><strong>为呼叫包创建一个单一的应用程序特定的传入请求短信。这个方法返回一个token，如果包含在后续传入的短信中，将会导致短信数据意图被发送。这个token仅适合一次使用，在收到一条包含了token的短信后，token的所有后续SMS短信消息将正常路由。一个应用程序一次只能有一个请求，如果这个应用程序已经有了一个请求等待，它将被替换为一个新的请求。</strong></p>
 <h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>使用此API最大的好处是不需要任何READ_SMS权限。此外，消息的内容也将直接发送到我们应用程序的意图中。该方法的另一个积极点是短信将不再显示在消息历史中，这特别提高了用户数据的安全性，因为没有其他应用程序将能够读取内容。</p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>应用程序请求SMS将不再需要权限,这实际上是Android O中一个很不错的功能，很高兴看到Google继续添加这样的功能。大家觉得如何呢？</p>
@@ -659,7 +660,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://shoewann0402.github.io/2017/05/15/android-O-does-not-require-permission-for-SMS-verification/" title="Android O中对于短信验证无需请求权限">https://shoewann0402.github.io/2017/05/15/android-O-does-not-require-permission-for-SMS-verification/</a>
+    <a href="https://shoewann0402.github.io/2017/05/14/android-O-does-not-require-permission-for-SMS-verification/" title="Android O中对于短信验证无需请求权限">https://shoewann0402.github.io/2017/05/14/android-O-does-not-require-permission-for-SMS-verification/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
@@ -717,7 +718,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/19/whats-new-in-android-o-developer/" rel="prev" title="Android的新功能：Android O开发者预览版2以及更多">
+              <a href="/2017/05/18/whats-new-in-android-o-developer/" rel="prev" title="Android的新功能：Android O开发者预览版2以及更多">
                 Android的新功能：Android O开发者预览版2以及更多 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -1520,7 +1521,7 @@
   
     <script>
   window.livereOptions = {
-    refer: '2017/05/15/android-O-does-not-require-permission-for-SMS-verification/'
+    refer: '2017/05/14/android-O-does-not-require-permission-for-SMS-verification/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];

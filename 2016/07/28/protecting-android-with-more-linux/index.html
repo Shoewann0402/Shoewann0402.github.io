@@ -117,7 +117,7 @@
 <meta property="og:description" content="原文来自: Android Developers Blog —— Protecting Android with more Linux kernel defenses  Android主要依赖于Linux内核的安全​​模式执行。为了更好的保护好内核，我们在Android内启用了一系列的机制，在较高的等级下这些保护在一个组中被划分为两类——内存保护和减少攻击面。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android-kernel.jpg">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.658Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用更多的Linux内核防御保护Android">
 <meta name="twitter:description" content="原文来自: Android Developers Blog —— Protecting Android with more Linux kernel defenses  Android主要依赖于Linux内核的安全​​模式执行。为了更好的保护好内核，我们在Android内启用了一系列的机制，在较高的等级下这些保护在一个组中被划分为两类——内存保护和减少攻击面。">
@@ -555,7 +555,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/android-kernel.jpg" rel="gallery_cjvt5b8oj004fhgjxkzuvgz02" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/android-kernel.jpg" rel="gallery_cjx724ums005ybqjxqf8c60v3" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/android-kernel.jpg" itemprop="contentUrl">
               </a>
             
@@ -572,6 +572,7 @@
 </blockquote>
 <p>Android主要依赖于Linux内核的安全​​模式执行。为了更好的保护好内核，我们在Android内启用了一系列的机制，在较高的等级下这些保护在一个组中被划分为两类——内存保护和减少攻击面。</p>
 <a id="more"></a>
+
 <h2 id="内存保护"><a href="#内存保护" class="headerlink" title="内存保护"></a>内存保护</h2><p>通过内核提供的主要安全功能之一，是对于用户空间进程在地址空间分离的形式进行内存保护。不像用户空间进程，内核的各种任务生活在一个地址空间，并且一个漏洞无论在内核的任意位置，可以潜在的影响到系统存储器的无关部分。内核内存保护是保持内核的完整性，不管漏洞而被设计。</p>
 <h3 id="标记内存为只读-不执行"><a href="#标记内存为只读-不执行" class="headerlink" title="标记内存为只读/不执行"></a>标记内存为只读/不执行</h3><p>这个功能细分内核内存到逻辑部分，并设置在每一个部分的限制页面访问权限。代码标记为只读+执行。数据片段被标记为不执行，并且进一步分段成只读和读写片段。这个功能特性利用配置选项CONFIG_DEBUG_RODATA进行启用。它是通过Kees Cook一起输入，是基于由Brad Spengler的<span class="exturl" data-url="aHR0cHM6Ly9ncnNlY3VyaXR5Lm5ldC8=" title="https://grsecurity.net/">Grsecurity<i class="fa fa-external-link"></i></span>的KENRNEXE功能的一个子集和Larry Bassel和Laura Abbott的高通的CONFIG_STRICT_MEMORY_RWX feature功能。CONFIG_DEBUG_RODATA在内核上游登陆对于arm/arm64,并且已经回迁到Android的3.18+arm/<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8xNzQ5NDcv" title="https://android-review.googlesource.com/#/c/174947/">arm64<i class="fa fa-external-link"></i></span>常见的内核。</p>
 <h3 id="RESTRICT内核访问到用户空间"><a href="#RESTRICT内核访问到用户空间" class="headerlink" title="RESTRICT内核访问到用户空间"></a>RESTRICT内核访问到用户空间</h3><p>这个功能通过防止它直接访问用户空间内存来提高内核的保护。它能够使一系列的攻击变得更加困难，因为攻击者在内核内存有显著较少的控制可以去执行，尤其是利用CONFIG_DEBUG_RODATA启用。类似的功能已经存在，最早存在的是Grsecurity的UDEREF。这个功能可以利用配置选项CONFIG_CPU_SW_DOMAIN_PAN被启用，并且对于ARMv7是通过Russell King被实施，回迁到<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvcS90b3BpYzpzd19QQU4=" title="https://android-review.googlesource.com/#/q/topic:sw_PAN">Android的4.1<i class="fa fa-external-link"></i></span>内核通过Kees Cook.</p>

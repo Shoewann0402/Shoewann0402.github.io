@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="原文来自: Android Developers Blog —— Security “Crypto” provider deprecated in Android N  如果你的安卓应用程序使用的是SHA1PRNG算法从加密提供者那里取得的密钥，你必须开始使用一个真正的密钥导出函数,然后可能需要重新加密你的数据。">
-<meta name="keywords" content="Security,encrypt,Android N,加密解密,网络安全">
+<meta name="keywords" content="Android N,Security,encrypt,加密解密,网络安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android N对安全加密提供者已弃用">
 <meta property="og:url" content="https://shoewann0402.github.io/2016/06/10/security-crypto-provider-deprecated-in-android-n/index.html">
@@ -117,7 +117,7 @@
 <meta property="og:description" content="原文来自: Android Developers Blog —— Security “Crypto” provider deprecated in Android N  如果你的安卓应用程序使用的是SHA1PRNG算法从加密提供者那里取得的密钥，你必须开始使用一个真正的密钥导出函数,然后可能需要重新加密你的数据。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/security-crypto-provider.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.658Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android N对安全加密提供者已弃用">
 <meta name="twitter:description" content="原文来自: Android Developers Blog —— Security “Crypto” provider deprecated in Android N  如果你的安卓应用程序使用的是SHA1PRNG算法从加密提供者那里取得的密钥，你必须开始使用一个真正的密钥导出函数,然后可能需要重新加密你的数据。">
@@ -548,7 +548,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/security-crypto-provider.png" rel="gallery_cjvt5b8on004nhgjxmyutxmbe" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/security-crypto-provider.png" rel="gallery_cjx724umy006abqjxurn9qjtp" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/security-crypto-provider.png" itemprop="contentUrl">
               </a>
             
@@ -565,12 +565,16 @@
 </blockquote>
 <p>如果你的安卓应用程序使用的是SHA1PRNG算法从加密提供者那里取得的密钥，你必须开始使用一个真正的<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvS2V5X2Rlcml2YXRpb25fZnVuY3Rpb24=" title="https://en.wikipedia.org/wiki/Key_derivation_function">密钥导出函数<i class="fa fa-external-link"></i></span>,然后可能需要重新加密你的数据。</p>
 <a id="more"></a>
+
 <p>Java加密体系结构允许开发者创建像密码一样的一个类的实例，或者是生成伪随机数，像这样去调用它:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SomeClass.getInstance(<span class="string">"SomeAlgorithm"</span>, <span class="string">"SomeProvider"</span>);</span><br></pre></td></tr></table></figure>
+
 <p>或者更简单通熟些:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SomeClass.getInstance(<span class="string">"SomeAlgorithm"</span>);</span><br></pre></td></tr></table></figure>
+
 <p>对于这个实例，</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cipher.getInstance(“AES/CBC/PKCS5PADDING”); </span><br><span class="line">SecureRandom.getInstance(“SHA1PRNG”);</span><br></pre></td></tr></table></figure>
+
 <p>在Android上，我们不建议指定提供者。一般来说,任意调用Java加密扩展(JCE)API指定一个提供者，如果这个提供者是包括在应用程序里，或者说这个应用程序能够处理可能出现的ProviderNotException异常，也应该仅仅能完成这些。</p>
 <p>不幸的是，很多应用程序都依赖于现在已经被移除了的”加密”提供者，对于一个密钥派生出来的反模式</p>
 <p>这个提供者只能被提供一些为SecureRandom实例去实现的“SHA1PRNG”算法接口，问题是SHA1PRNG算法不是强加密，<span class="exturl" data-url="aHR0cDovL3dlYnBhZ2VzLnVuY2MuZWR1L3lvbndhbmcvcGFwZXJzL2xpbGVzb3JpY3MucGRm" title="http://webpages.uncc.edu/yonwang/papers/lilesorics.pdf">在使用基于PHP和Debian OpenSSL的伪随机序列和实验的统计距离的测试<i class="fa fa-external-link"></i></span>,8.1那部分，Yongge Want 和 Tony Nicol，指出该”随机”数列,以二进制形式考虑,朝0偏移返回，而且该偏移恶化的程度取决于种子。</p>
@@ -582,13 +586,16 @@
 <p>如果你是通过从磁盘上读取一个AES的密钥，只是存储实际的密钥，你可以从通过使用执行字节AES生成SecretKey密钥：</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SecretKey key = <span class="keyword">new</span> SecretKeySpec(keyBytes, <span class="string">"AES"</span>);</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>如果您使用密码来获得一个密钥，参照<span class="exturl" data-url="aHR0cDovL25lbGVua292LmJsb2dzcG90LmNvbS8yMDEyLzA0L3VzaW5nLXBhc3N3b3JkLWJhc2VkLWVuY3J5cHRpb24tb24uaHRtbA==" title="http://nelenkov.blogspot.com/2012/04/using-password-based-encryption-on.html">Nikolay Elenkovd的这篇优秀教程<i class="fa fa-external-link"></i></span>，一个好的经验法制是腌制的大小应该和密钥输出的大小一致，它看上去就像是这样:</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* User types in their password: */</span> </span><br><span class="line">String password = <span class="string">"password"</span>; </span><br><span class="line"></span><br><span class="line"> <span class="comment">/* Store these things on disk used to derive key later: */</span> </span><br><span class="line"><span class="keyword">int</span> iterationCount = <span class="number">1000</span>; </span><br><span class="line"><span class="keyword">int</span> saltLength = <span class="number">32</span>; <span class="comment">// bytes; should be the same size</span></span><br><span class="line">           <span class="function">as the <span class="title">output</span> <span class="params">(<span class="number">256</span> / <span class="number">8</span> = <span class="number">32</span>)</span>  </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> keyLength </span>= <span class="number">256</span>; <span class="comment">// 256-bits for AES-256, 128-bits for AES-128, etc </span></span><br><span class="line"><span class="keyword">byte</span>[] salt; <span class="comment">// Should be of saltLength </span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* When first creating the key, obtain a salt with this: */</span> </span><br><span class="line">SecureRandom random = <span class="keyword">new</span> SecureRandom(); </span><br><span class="line"><span class="keyword">byte</span>[] salt = <span class="keyword">new</span> <span class="keyword">byte</span>[saltLength]; </span><br><span class="line">random.nextBytes(salt); </span><br><span class="line"></span><br><span class="line"><span class="comment">/* Use this to derive the key from the password: */</span> </span><br><span class="line">KeySpec keySpec = <span class="keyword">new</span> PBEKeySpec(password.toCharArray(), salt, </span><br><span class="line">              iterationCount, keyLength);  </span><br><span class="line">SecretKeyFactory keyFactory = SecretKeyFactory </span><br><span class="line">              .getInstance(<span class="string">"PBKDF2WithHmacSHA1"</span>);  </span><br><span class="line"><span class="keyword">byte</span>[] keyBytes = keyFactory.generateSecret(keySpec).getEncoded();</span><br><span class="line">SecretKey key = <span class="keyword">new</span> SecretKeySpec(keyBytes, <span class="string">"AES"</span>);</span><br></pre></td></tr></table></figure>
+
 <p>就是这样，你也不需要做其他的任何事情。</p>
 <p>为了使过渡数据更容易，我们覆盖开发者的情况，有一个不安全的密钥加密的数据，它是每次从一个密码那里派生出来的。你可以在<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLmdvb2dsZXNvdXJjZS5jb20vcGxhdGZvcm0vZGV2ZWxvcG1lbnQvKy9tYXN0ZXIvc2FtcGxlcy9Ccm9rZW5LZXlEZXJpdmF0aW9u" title="https://android.googlesource.com/platform/development/+/master/samples/BrokenKeyDerivation">示例应用程序<i class="fa fa-external-link"></i></span>中使用帮助类<strong>InsecureSHA1PRNGKeyDerivator</strong>去派生出密钥:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> SecretKey <span class="title">deriveKeyInsecurely</span><span class="params">(String password, <span class="keyword">int</span></span></span></span><br><span class="line"><span class="function"><span class="params">keySizeInBytes)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">byte</span>[] passwordBytes = password.getBytes(StandardCharsets.US_ASCII);</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> SecretKeySpec(</span><br><span class="line">           InsecureSHA1PRNGKeyDerivator.deriveInsecureKey(  </span><br><span class="line">                    passwordBytes, keySizeInBytes),  </span><br><span class="line">           <span class="string">"AES"</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后，你可以使用安全的派生出的密钥按照上面的所述的重新加密数据，并从此过上幸福的生活。</p>
 <p><strong>注意1</strong>:作为一个临时的措施去维持应用重新工作，我们决定了在目标SDK版本为Mashmallow(API23)及其低版本还是为应用程序创建示例，请不要在Android SDK中存在依赖加密提供者，我们的计划是在未来会将其完全删除。<br><strong>注意2</strong>:因为该系统很多部分都承担了SHA1PRNG算法的存在，当一个SHA1PRNG实例请求和提供者没有指定，我们将返回一个OpenSSLRandom的实例，这是从OpenSSL的衍生出随机数的一个强有力的来源。</p>
 <blockquote>
@@ -669,11 +676,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Android-N/" rel="tag"># Android N</a>
+          
             <a href="/tags/Security/" rel="tag"># Security</a>
           
             <a href="/tags/encrypt/" rel="tag"># encrypt</a>
-          
-            <a href="/tags/Android-N/" rel="tag"># Android N</a>
           
             <a href="/tags/加密解密/" rel="tag"># 加密解密</a>
           

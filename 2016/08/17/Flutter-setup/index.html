@@ -117,7 +117,7 @@
 <meta property="og:description" content="Google的Git源码库出现了一种新的开源操作系统叫Fuchsia,该系统的UI用户界面层使用的是Dart语言开发的Flutter，渲染器是Escher，应用程序框架是Mojo。那么我们先来了解一下这个Flutter  Flutter，是一个帮助开发者从一个单一的代码库，去构建ios和Android上高性能、高保真的移动设备应用新项目。 本节向导将描述如何搭建你的开发环境，在ios或者Andr">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/flutter_logo.png">
-<meta property="og:updated_time" content="2019-03-11T09:33:32.618Z">
+<meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter开发之搭建篇">
 <meta name="twitter:description" content="Google的Git源码库出现了一种新的开源操作系统叫Fuchsia,该系统的UI用户界面层使用的是Dart语言开发的Flutter，渲染器是Escher，应用程序框架是Mojo。那么我们先来了解一下这个Flutter  Flutter，是一个帮助开发者从一个单一的代码库，去构建ios和Android上高性能、高保真的移动设备应用新项目。 本节向导将描述如何搭建你的开发环境，在ios或者Andr">
@@ -548,7 +548,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="/images/flutter_logo.png" rel="gallery_cjvt5b8mn001ehgjxqemhluqh" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="/images/flutter_logo.png" rel="gallery_cjx724ukb001dbqjxncfq7mvp" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="/images/flutter_logo.png" itemprop="contentUrl">
               </a>
             
@@ -566,6 +566,7 @@
 <p><span class="exturl" data-url="aHR0cHM6Ly9mbHV0dGVyLmlv" title="https://flutter.io">Flutter<i class="fa fa-external-link"></i></span>，是一个帮助开发者从一个单一的代码库，去构建<code>ios</code>和<code>Android</code>上高性能、高保真的移动设备应用新项目。</p>
 <p>本节向导将描述如何搭建你的开发环境，在<code>ios</code>或者<code>Android</code>上运行Flutter应用</p>
 <a id="more"></a>
+
 <h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><p>要安装和运行Flutter，你的开发环境必须满足这些最低要求：</p>
 <blockquote>
 <ul>
@@ -573,9 +574,13 @@
 <li><strong>工具</strong>：Flutter在你的环境中依靠这些命令行工具才可以使用.<code>bash</code>,<code>mkdir</code>,<code>rm</code>,<code>git</code>,<code>curl</code>,<code>unzip</code></li>
 </ul>
 </blockquote>
-<h2 id="获取-Flutter-SDK"><a href="#获取-Flutter-SDK" class="headerlink" title="获取 Flutter SDK"></a>获取 Flutter SDK</h2><p>对于获取Flutter,使用<code>git</code>去clone仓库，然后添加<code>flutter</code>工具到你的path：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/flutter/flutter.git -b alpha</span><br><span class="line">$ <span class="built_in">export</span> PATH=`<span class="built_in">pwd</span>`/flutter/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="获取-Flutter-SDK"><a href="#获取-Flutter-SDK" class="headerlink" title="获取 Flutter SDK"></a>获取 Flutter SDK</h2><p>对于获取Flutter,使用<code>git</code>去clone仓库，然后添加<code>flutter</code>工具到你的path：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/flutter/flutter.git -b alpha</span><br><span class="line">$ <span class="built_in">export</span> PATH=`<span class="built_in">pwd</span>`/flutter/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+
 <p><img src="/images/flutter_setup_1.png" alt="flutter_setup_1.png"></p>
-<p>运行以下命令来看看是否有您需要安装完成设置任何依赖关系：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flutter doctor</span><br></pre></td></tr></table></figure></p>
+<p>运行以下命令来看看是否有您需要安装完成设置任何依赖关系：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flutter doctor</span><br></pre></td></tr></table></figure>
+
 <p><img src="/images/flutter_setup_2.png" alt="flutter_setup_2.png"></p>
 <p>在第一次运行<code>flutter</code>命令的时候,它将会下载它的依赖并且自己编译，后续运行的时候应该会快</p>
 <p>一旦你已经安装任何缺少的依赖，再一次运行<code>flutter doctor</code>命令，来验证是否已正确设置一切。</p>
@@ -589,7 +594,9 @@
 <p>3、依赖于的你的机器屏幕大小进行开发，根据开发该机的屏幕尺寸，模拟高密度的ios设备可能会溢出屏幕，在模拟器中设置设备的缩放，在Window下&gt;Scale菜单中。</p>
 <h3 id="部署到ios设备"><a href="#部署到ios设备" class="headerlink" title="部署到ios设备"></a>部署到ios设备</h3><p>对于部署你的Flutter应用到一个物理的ios设备，你将需要一些额外的工具：</p>
 <p>1、安装<span class="exturl" data-url="aHR0cDovL2JyZXcuc2gv" title="http://brew.sh/">homebrew<i class="fa fa-external-link"></i></span></p>
-<p>2、打开终端。对于在ios设备上部署Flutter应用，运行这些命令去安装工具。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew tap flutter/flutter</span><br><span class="line">$ brew install ideviceinstaller ios-deploy</span><br></pre></td></tr></table></figure></p>
+<p>2、打开终端。对于在ios设备上部署Flutter应用，运行这些命令去安装工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew tap flutter/flutter</span><br><span class="line">$ brew install ideviceinstaller ios-deploy</span><br></pre></td></tr></table></figure>
+
 <p>您还需要建立一个供应配置文件为您的开发者账户。要了解如何设置您的个人资料,请查阅<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYXBwbGUuY29tL2xpYnJhcnkvaW9zL2RvY3VtZW50YXRpb24vSURFcy9Db25jZXB0dWFsL0FwcERpc3RyaWJ1dGlvbkd1aWRlL01haW50YWluaW5nUHJvZmlsZXMvTWFpbnRhaW5pbmdQcm9maWxlcy5odG1s" title="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingProfiles/MaintainingProfiles.html"> Apple’s official documentation<i class="fa fa-external-link"></i></span></p>
 <h2 id="Android环境设置"><a href="#Android环境设置" class="headerlink" title="Android环境设置"></a>Android环境设置</h2><p><em>这步是可选的，对于在Android中使用Flutter开发之前，在任何时间都是可以被执行的</em><br>对于在Android上开发Flutter应用，你能够使用一个Mac或者一个linux(64位)的机器：</p>
 <p>1、安装<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc2RrL2luZGV4Lmh0bWw=" title="https://developer.android.com/sdk/index.html">Android Studio<i class="fa fa-external-link"></i></span><br>2、Android Studio，安装最新版的Android SDK和Android SDK Platform-Tools，如<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc2RrL2luc3RhbGxpbmcvYWRkaW5nLXBhY2thZ2VzLmh0bWw=" title="https://developer.android.com/sdk/installing/adding-packages.html">Adding SDK Packages<i class="fa fa-external-link"></i></span>所述</p>
@@ -732,7 +739,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/18/Flutter-get-started/" rel="prev" title="Flutter开发之入门篇">
+              <a href="/2016/08/17/Flutter-get-started/" rel="prev" title="Flutter开发之入门篇">
                 Flutter开发之入门篇 <i class="fa fa-chevron-right"></i>
               </a>
             
