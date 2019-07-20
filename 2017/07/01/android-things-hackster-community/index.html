@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -103,7 +107,7 @@
 </script>
 
   <meta name="description" content="原文来自: Android Things Hackster Community  Android Things通过提供相同的Android开发工具、一流的Android框架和Google APIs使开发者在移动设备上取得成功，建立连接到嵌入式设备更加容易。自从12月初启动了预览版，社区已经将一些惊人的想法转变成了使用平台上面令人兴奋的原型。">
-<meta name="keywords" content="Android Things,IoT,hackster">
+<meta name="keywords" content="Android Things,hackster,IoT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Things Hackster社区">
 <meta property="og:url" content="https://shoewann0402.github.io/2017/07/01/android-things-hackster-community/index.html">
@@ -566,7 +570,7 @@
 
 <p>对于使这些制作者和开发者能够使用Android Things去分享和相互学习，我们与<span class="exturl" data-url="aHR0cHM6Ly9oYWNrc3Rlci5pby8=" title="https://hackster.io/">Hackster.io<i class="fa fa-external-link"></i></span>合作去创建一个社区，有志向的物联网开发者能够去展示他们的项目并通过其他人的工作获得启发。Hackster.io是一个有20万工程师和开发者的社区，专门去构建硬件连接互联网的项目。他们也通过直播研讨会设计比赛寻求教育和挑战成员。</p>
 <p>我们急切的想看到你提出来的项目。更重要的是，我们是很兴奋的去看到你的工作怎么样启发其他开发者用Android Things去创建一些很棒的东西。访问我们<span class="exturl" data-url="aHR0cHM6Ly9oYWNrc3Rlci5pby9nb29nbGU=" title="https://hackster.io/google">Hackster.io社区<i class="fa fa-external-link"></i></span>去看一下其他人已经构建好了的惊人的项目，并在今天加入社区！</p>
-<p><img src="/images/android-things-hackster-io-page.png" alt="android-things-hackster-io-page.png"></p>
+<p><img alt="android-things-hackster-io-page.png" data-src="/images/android-things-hackster-io-page.png"></p>
 <h2 id="Android-Things-在线研讨会"><a href="#Android-Things-在线研讨会" class="headerlink" title="Android Things 在线研讨会"></a>Android Things 在线研讨会</h2><p>2017年7月7日上午10点，我们将和Hackster.io合作主持一场名为<strong>Android Things引导物联网产品</strong>的在线研讨会。在此期间，你将学习到我们如何设计Android Things，去解决尝试构建物联网产品的开发者遇到的许多痛苦的经历。你将也就机会去发送有关平台和生态系统的问题，<span class="exturl" data-url="aHR0cHM6Ly9hdHRlbmRlZS5nb3Rvd2ViaW5hci5jb20vcmVnaXN0ZXIvMzc3MjQ5OTU0NTA0OTE2NzEwNw==" title="https://attendee.gotowebinar.com/register/3772499545049167107">今天注册<i class="fa fa-external-link"></i></span>加入我们这个激动人心的活动！</p>
 <blockquote>
 <p>以上是对Anroid 官网博客文章的翻译，如果不足，欢迎指正，谢谢</p>
@@ -660,9 +664,9 @@
           
             <a href="/tags/Android-Things/" rel="tag"><i class="fa fa-tag"></i> Android Things</a>
           
-            <a href="/tags/IoT/" rel="tag"><i class="fa fa-tag"></i> IoT</a>
-          
             <a href="/tags/hackster/" rel="tag"><i class="fa fa-tag"></i> hackster</a>
+          
+            <a href="/tags/IoT/" rel="tag"><i class="fa fa-tag"></i> IoT</a>
           
         </div>
       
@@ -1447,7 +1451,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1455,6 +1463,8 @@
   
 
 
+
+  
 
 
 
@@ -1472,10 +1482,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1526,6 +1545,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

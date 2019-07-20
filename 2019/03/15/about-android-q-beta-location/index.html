@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -569,7 +573,7 @@
 </blockquote>
 <p>从之前来看，用户只有一个控件<code>允许</code>或<code>拒绝</code>应用程序访问设备位置，包括应用程序在使用时和不使用时的位置使用情况。</p>
 <p>在Android Q上，Android团队对控件进行了改进</p>
-<h2 id="有何变化"><a href="#有何变化" class="headerlink" title="有何变化"></a>有何变化</h2><p><img src="/images/android_q_location_test.png" alt="android_q_location_test.png"></p>
+<h2 id="有何变化"><a href="#有何变化" class="headerlink" title="有何变化"></a>有何变化</h2><p><img alt="android_q_location_test.png" data-src="/images/android_q_location_test.png"></p>
 <p>从Android Q开始，用户有一个新选项，只有在使用该应用时才能让应用访问该位置; 换句话说，当应用程序在前台时。这意味着用户可以选择三种选项来为应用提供位置：</p>
 <blockquote>
 <ul>
@@ -1486,7 +1490,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1494,6 +1502,8 @@
   
 
 
+
+  
 
 
 
@@ -1511,10 +1521,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1565,6 +1584,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

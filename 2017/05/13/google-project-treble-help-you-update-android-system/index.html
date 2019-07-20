@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -557,7 +561,7 @@
 <a id="more"></a>
 
 <h1 id="目前的升级方式"><a href="#目前的升级方式" class="headerlink" title="目前的升级方式"></a>目前的升级方式</h1><p>  先来看看目前一个Android系统版本发行的生命流程</p>
-<p>  <img src="/images/treble_image_1_flowchart.png" alt="Life of an Android Release"></p>
+<p>  <img alt="Life of an Android Release" data-src="/images/treble_image_1_flowchart.png"></p>
 <blockquote>
 <ul>
 <li>1、Google向全球开放最新的代码</li>
@@ -569,20 +573,20 @@
 </blockquote>
 <p>  有此可见，以上这5步释放周期很慢。</p>
 <p>  Google表示通过Treble项目，重新设计Android，使制造商将设备更新到更新，更便宜，成本更低，从而将设备更新到新版本的Android。</p>
-<h1 id="介绍Treble项目"><a href="#介绍Treble项目" class="headerlink" title="介绍Treble项目"></a>介绍Treble项目</h1><h2 id="概念核心"><a href="#概念核心" class="headerlink" title="概念核心"></a>概念核心</h2><p>   <img src="/images/treble_image1.png" alt="treble_image1"></p>
+<h1 id="介绍Treble项目"><a href="#介绍Treble项目" class="headerlink" title="介绍Treble项目"></a>介绍Treble项目</h1><h2 id="概念核心"><a href="#概念核心" class="headerlink" title="概念核心"></a>概念核心</h2><p>   <img alt="treble_image1" data-src="/images/treble_image1.png"></p>
 <p>   将供应商实施（由芯片制造商大部分编写的器件特定的低级软件）从Android OS Framework中分离出来，这是通过在Android OS框架和供应商实现之间引入新的供应商界面来实现的。新的供应商接口由供应商测试套件（VTS）验证，类似于CTS，以确保供应商实现的前向兼容性。</p>
 <h2 id="新旧对比"><a href="#新旧对比" class="headerlink" title="新旧对比"></a>新旧对比</h2><blockquote>
 <ul>
 <li>传统方式：没有正式的供应商界面，当设备移动到较新版本的Android时，需要更新Android版本上的大量代码</li>
 </ul>
 </blockquote>
-<p>  <img src="/images/treble_image2.png" alt="treble_image2"></p>
+<p>  <img alt="treble_image2" data-src="/images/treble_image2.png"></p>
 <blockquote>
 <ul>
 <li>Treble方式：通过稳定的供应商界面，可以访问Android的硬件特定部分，设备制造商可以通过更新Android操作系统框架来选择向消费者提供新的Android版本，无需芯片制造商提供任何其他工作</li>
 </ul>
 </blockquote>
-<p>  <img src="/images/treble_image3.png" alt="treble_image3"></p>
+<p>  <img alt="treble_image3" data-src="/images/treble_image3.png"></p>
 <h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>  Google表示推出的Treble项目将会在Android O及其更高版本上使用（事实上在Android O 预览版上已经在使用Treble项目）。</p>
 <p>  除此之外，Google还直接与设备制造商直接将其任何代码更改直接实现为通用的ASOP代码库。这意味着当Android O发布时，这些代码更改将不需要被这些公司修补。将会在今年夏天将推出O的同时在<span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2UuYW5kcm9pZC5jb20=" title="https://source.android.com">source.android.com<i class="fa fa-external-link"></i></span>上发布Project Treble的完整文档。</p>
 <p>  希望谷歌能通过这个Treble项目改善主要问题，并提供更快的市场上所有的智能手机的更新。</p>
@@ -1459,7 +1463,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1467,6 +1475,8 @@
   
 
 
+
+  
 
 
 
@@ -1484,10 +1494,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1538,6 +1557,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

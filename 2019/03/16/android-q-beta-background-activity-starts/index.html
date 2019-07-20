@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -587,7 +591,7 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2019-03-16 10:03:10.599 1192-7709/? I/ActivityTaskManager: START u0 &#123;cmp=com.xw.androidqtest/.BackgroundActivity&#125; from uid 10505</span><br><span class="line">2019-03-16 10:03:10.600 1192-7709/? W/ActivityTaskManager: Background activity start [callingPackage: com.xw.androidqtest; callingUid: 10505; isCallingUidForeground: false; isCallingUidPersistentSystemProcess: false; realCallingUid: 10505; isRealCallingUidForeground: false; isRealCallingUidPersistentSystemProcess: false; originatingPendingIntent: null; isBgStartWhitelisted: false; intent: Intent &#123; cmp=com.xw.androidqtest/.BackgroundActivity &#125;; callerApp: ProcessRecord&#123;b6f89ff 29017:com.xw.androidqtest/u0a505&#125;]</span><br><span class="line">2019-03-16 10:03:10.619 29017-29017/com.xw.androidqtest W/ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@8611b07</span><br><span class="line">2019-03-16 10:03:10.700 1192-1238/? I/ActivityTaskManager: Displayed com.xw.androidqtest/.BackgroundActivity: +96ms</span><br></pre></td></tr></table></figure>
 
 <p>界面弹出了警告消息</p>
-<p><img src="/images/warningMsg.png" alt="warningMsg"></p>
+<p><img alt="warningMsg" data-src="/images/warningMsg.png"></p>
 <p>参考<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcHJldmlldy9wcml2YWN5L2JhY2tncm91bmQtYWN0aXZpdHktc3RhcnQ=" title="https://developer.android.google.cn/preview/privacy/background-activity-start">官方文档<i class="fa fa-external-link"></i></span>，做如下处理</p>
 <h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><p>创建<strong>前台服务</strong>类，并在<code>onStartCommand</code>方法中创建一个<strong>前台通知</strong>,</p>
 <p>以下是<strong>完整代码</strong></p>
@@ -603,7 +607,7 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2019-03-16 10:25:22.308 9112-9112/com.xw.androidqtest D/ForegroundService: ForegroundService OnCreate called</span><br><span class="line">2019-03-16 10:25:22.309 9112-9112/com.xw.androidqtest D/ForegroundService: ForegroundService onStartCommand called</span><br></pre></td></tr></table></figure>
 
 <p>通知栏收到了发出的通知</p>
-<p><img src="/images/warningMsgFix.png" alt="warningMsgFix"></p>
+<p><img alt="warningMsgFix" data-src="/images/warningMsgFix.png"></p>
 <p>点击通知进入了需要后台启动的<code>BackgroundActivity</code><br>日志内容 ：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2019-03-16 10:29:04.074 1192-4994/? I/ActivityTaskManager: START u0 &#123;cmp=com.xw.androidqtest/.BackgroundActivity&#125; from uid 10505</span><br><span class="line">2019-03-16 10:29:04.074 1192-4994/? W/ActivityTaskManager: startActivity called from non-Activity context; forcing Intent.FLAG_ACTIVITY_NEW_TASK for: Intent &#123; cmp=com.xw.androidqtest/.BackgroundActivity &#125;</span><br><span class="line">2019-03-16 10:29:04.082 9112-9112/com.xw.androidqtest W/ActivityThread: handleWindowVisibility: no activity for token android.os.BinderProxy@46d3c48</span><br><span class="line">2019-03-16 10:29:04.084 1192-1251/? W/WindowManager: TaskSnapshotSurface.create: Failed to find main window for token=AppWindowToken&#123;6b40830 token=Token&#123;fb2f173 ActivityRecord&#123;7d079e2 u0 com.xw.androidqtest/.BackgroundActivity t800&#125;&#125;&#125;</span><br><span class="line">2019-03-16 10:29:04.143 1192-1238/? I/ActivityTaskManager: Displayed com.xw.androidqtest/.BackgroundActivity: +69ms</span><br></pre></td></tr></table></figure>
 
@@ -617,7 +621,7 @@
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell settings put global background_activity_starts_enabled <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="模拟测试"><a href="#模拟测试" class="headerlink" title="模拟测试"></a>模拟测试</h2><p>将代码还原成直接调用从后台启动Activity，设置好如上所叙述的操作，测试<br>效果图</p>
-<p><img src="/images/warningQMsg.png" alt="warningQMsg"></p>
+<p><img alt="warningQMsg" data-src="/images/warningQMsg.png"></p>
 <p>与文章一开始测试不同之处就是: <strong>目前在Q Beta1上默认还是会启动起后台的Activity展示并显示toast消息，这次测试模拟了最终完全屏蔽的情况，不会调起后台的Activity</strong></p>
 <blockquote>
 <p>本文参考<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcHJldmlldy9wcml2YWN5L2JhY2tncm91bmQtYWN0aXZpdHktc3RhcnQ=" title="https://developer.android.google.cn/preview/privacy/background-activity-start">官方文档<i class="fa fa-external-link"></i></span>进行简单总结，感谢您的阅读。如有不足，欢迎指正</p>
@@ -1500,7 +1504,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1508,6 +1516,8 @@
   
 
 
+
+  
 
 
 
@@ -1525,10 +1535,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1579,6 +1598,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

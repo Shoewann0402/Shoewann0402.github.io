@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -628,20 +632,20 @@
 <p>运行效果：</p>
 <p>动态增加快捷键:</p>
 <p>(长按图标弹出)</p>
-<p><img src="/images/set-shortcuts-1.png" alt="set-shortcuts-1.png"></p>
+<p><img alt="set-shortcuts-1.png" data-src="/images/set-shortcuts-1.png"></p>
 <p>(将每一个快捷键拖出来固定到桌面)</p>
-<p><img src="/images/set-shortcuts-2.png" alt="set-shortcuts-2.png"></p>
+<p><img alt="set-shortcuts-2.png" data-src="/images/set-shortcuts-2.png"></p>
 <p>(固定到桌面的和快捷键集合弹出)</p>
-<p><img src="/images/set-shortcuts-3.png" alt="set-shortcuts-3.png"></p>
+<p><img alt="set-shortcuts-3.png" data-src="/images/set-shortcuts-3.png"></p>
 <p>动态更新快捷键:</p>
 <p>(更新Google为==&gt;GitHub)</p>
-<p><img src="/images/update-shortcuts.png" alt="update-shortcuts.png"></p>
+<p><img alt="update-shortcuts.png" data-src="/images/update-shortcuts.png"></p>
 <p>动态禁用移除快捷键:</p>
 <p>(禁用GitHub)</p>
-<p><img src="/images/disabled-shortcut.png" alt="disabled-shortcut.png"></p>
-<h2 id="系统代码结构"><a href="#系统代码结构" class="headerlink" title="系统代码结构"></a>系统代码结构</h2><p><img src="/images/shortcutshierarchyviewer1.png" alt="shortcutshierarchyviewer1.png"></p>
+<p><img alt="disabled-shortcut.png" data-src="/images/disabled-shortcut.png"></p>
+<h2 id="系统代码结构"><a href="#系统代码结构" class="headerlink" title="系统代码结构"></a>系统代码结构</h2><p><img alt="shortcutshierarchyviewer1.png" data-src="/images/shortcutshierarchyviewer1.png"></p>
 <p>通过sdk下的hierarchyviewer工具，可以看到长按桌面图标弹出的部分是一个<strong>DeepShortcutsContainer</strong>,其中包括了一个白色箭头的<strong>View</strong>和显示每一个快捷键的条目<strong>DeepShortcutsView</strong>组成。每一个<strong>DeepShortcutsView</strong>快捷键item又是由一个显示图标的<strong>View</strong>和一个<strong>DeepshortcutsTextView</strong>组成。</p>
-<p><img src="/images/shortcutshierarchyviewer2.png" alt="shortcutshierarchyviewer2.png"></p>
+<p><img alt="shortcutshierarchyviewer2.png" data-src="/images/shortcutshierarchyviewer2.png"></p>
 <blockquote>
 <p>以上就是简单的对Android 7.1上面App Shortcut方面的概括总结，部分内容源于官方文档，如有不足，欢迎指正，谢谢。</p>
 </blockquote>
@@ -1519,7 +1523,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1527,6 +1535,8 @@
   
 
 
+
+  
 
 
 
@@ -1544,10 +1554,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1598,6 +1617,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

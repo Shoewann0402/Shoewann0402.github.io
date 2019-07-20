@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -557,27 +561,27 @@
 </ul>
 </blockquote>
 <h2 id="设计-vs-性能"><a href="#设计-vs-性能" class="headerlink" title="设计 vs 性能"></a>设计 vs 性能</h2><p>现在众多开发APP的公司，为了让App达到很炫丽的视觉冲击效果，会需要在界面上层叠很多的视图组件，很多开发者在开发中注重的基本上都是达到这样的功能效果仅此而已，大多数可能都不会去关心性能是如何的？ 只要App功能正常不出异常，那么这款App差不多就OK了，但是往往这样缺乏性能优化的App在用户的手上使用时，回出现各种卡顿、黑屏的情况，致使用户最终不得不卸载你的这款应用。所以我们在开发一款应用的时候，不仅要实现它的功能，性能也不要忽视。</p>
-<p><img src="/images/rebder_1.png" alt="rebder_1"></p>
+<p><img alt="rebder_1" data-src="/images/rebder_1.png"></p>
 <p>系统会每隔16s重新绘制一次activity，1000ms/60hz=16.666ms/frame</p>
-<p><img src="/images/rebder_2.png" alt="rebder_2"></p>
+<p><img alt="rebder_2" data-src="/images/rebder_2.png"></p>
 <p>如果在1000/60=16.67ms内没有办法把这一帧的任务执行完毕，就会发生丢帧的现象。丢帧越多，用户感受到的卡顿情况就越严重。</p>
 <h2 id="Android-CPU-和-GPU"><a href="#Android-CPU-和-GPU" class="headerlink" title="Android CPU 和 GPU"></a>Android CPU 和 GPU</h2><p>导致卡顿的第一个原因就是：<strong>渲染</strong></p>
 <p>渲染操作通常依赖于两个核心组件：<strong>CPU</strong> 和 <strong>GPU</strong></p>
-<p><img src="/images/rebder_3.png" alt="rebder_3"></p>
+<p><img alt="rebder_3" data-src="/images/rebder_3.png"></p>
 <p><strong>CPU方面的因素</strong>：不必要的布局和失效 ，这些内容必须在视图层次结构中进行测量、清除并重新创建。一方面，重建显示列表的次数太多，另一方面花费太多的时间在作废视图层并进行不必要的重绘，使更新显示列表或者其他缓存资源时导致cpu工作过度，出现了卡顿。</p>
-<p><img src="/images/rebder_4.png" alt="rebder_4"></p>
+<p><img alt="rebder_4" data-src="/images/rebder_4.png"></p>
 <p><strong>GPU方面的因素</strong>：像素着色过程中，通过其他工具进行后去着色时浪费里GPU处理时间。</p>
-<p><img src="/images/rebder_5.png" alt="rebder_5"></p>
+<p><img alt="rebder_5" data-src="/images/rebder_5.png"></p>
 <h2 id="Activity的显示？"><a href="#Activity的显示？" class="headerlink" title="Activity的显示？"></a>Activity的显示？</h2><blockquote>
 <p>colt 说： 要想开发一款性能优越的应用，你必须了解底层是如何运行的。</p>
 </blockquote>
 <p>Activity是如何绘制到屏幕上的？复杂的XML布局文件和标记语言是如何转化成用户能看懂的图像的？</p>
 <p>答案是：<strong>‘格栅化’</strong>操作</p>
-<p><img src="/images/rebder_6.png" alt="rebder_6"></p>
+<p><img alt="rebder_6" data-src="/images/rebder_6.png"></p>
 <p><strong>格栅化</strong>：将字符串、按钮、路径或者形状等拆分到不同的像素上在屏幕上进行显示。==&gt; <strong>GPU</strong> 完成这一操作</p>
-<p><img src="/images/rebder_7.png" alt="rebder_7"></p>
+<p><img alt="rebder_7" data-src="/images/rebder_7.png"></p>
 <p><strong>GPU</strong>使用一些指令的<strong>基础指令集</strong>，主要是多边形和纹理，也就是图片</p>
-<p><img src="/images/rebder_8.png" alt="rebder_8"></p>
+<p><img alt="rebder_8" data-src="/images/rebder_8.png"></p>
 <p><strong>CPU</strong>在屏幕上绘制图像前，会向<strong>GPU</strong>输入这些指令，这一过程通常使用的API就是Android的<strong>OpengGL ES</strong></p>
 <blockquote>
 <p><strong>UI对象 =&gt; CPU转换为多边形或者纹理 ==&gt; GPU格栅化</strong></p>
@@ -589,9 +593,9 @@
 <h2 id="过度绘制"><a href="#过度绘制" class="headerlink" title="过度绘制"></a>过度绘制</h2><blockquote>
 <p>定义：指的是屏幕上的<strong>某个像素</strong>点在<strong>同一帧</strong>的时间里被<strong>绘制</strong>里<strong>多次</strong></p>
 </blockquote>
-<p><img src="/images/rebder_9.png" alt="rebder_9"></p>
+<p><img alt="rebder_9" data-src="/images/rebder_9.png"></p>
 <p>工具：开发者选项 =&gt; “Debug GPU overdraw” ==&gt; show </p>
-<p><img src="/images/overdraw_options_view.png" alt="overdraw_options_view"></p>
+<p><img alt="overdraw_options_view" data-src="/images/overdraw_options_view.png"></p>
 <p>（1x （这个像素点被绘制了2次） 是蓝色，然后还有2x 3x 4x）</p>
 <p>蓝色，淡绿，淡红，深红代表了4种不同程度的Overdraw情况，我们的目标就是尽量减少红色Overdraw，看到更多的蓝色区域。</p>
 <p>两种清除过度绘制的方法：</p>
@@ -609,9 +613,9 @@
 <p>定义： Android需要把XML布局文件转换成GPU能够识别并绘制的对象。这个操作是在DisplayList的帮助下完成的，持有所有要交给GPU绘制到屏幕上的数据信息列表</p>
 </blockquote>
 <p><strong>请注意</strong>：任何时候View的绘制内容发生了变化，都需要重新执行DisplayList，并重新执行指令更新到屏幕上，渲染DisplayList，更新到屏幕上等一系列操作。这个流程的表现性能取决于你的View的复杂程度，View的状态变化以及渲染管道的执行性能。</p>
-<h2 id="Hierarchy-Viewer"><a href="#Hierarchy-Viewer" class="headerlink" title="Hierarchy Viewer"></a>Hierarchy Viewer</h2><p><img src="/images/rebder_10.png" alt="rebder_10"></p>
+<h2 id="Hierarchy-Viewer"><a href="#Hierarchy-Viewer" class="headerlink" title="Hierarchy Viewer"></a>Hierarchy Viewer</h2><p><img alt="rebder_10" data-src="/images/rebder_10.png"></p>
 <p>打开步骤：Android Studio =&gt; Tools =&gt; Android =&gt; Android Devices Monitor </p>
-<p><img src="/images/rebder_11.png" alt="rebder_11"></p>
+<p><img alt="rebder_11" data-src="/images/rebder_11.png"></p>
 <p>Hierarchy的好用之处：它能帮助你从Android的角度去理解你的用户界面的结构，同时可以帮助你确定哪些视图是多余的</p>
 <p>Venn图形图标,绿黄红三种颜色的圆点表示了渲染速度的快慢,最左边的圆点代表渲染管道的测量阶段，中间的表示布局阶段，最右边的表示渲染管道的绘制阶段</p>
 <h2 id="层级扁平化"><a href="#层级扁平化" class="headerlink" title="层级扁平化"></a>层级扁平化</h2><p>提升布局性能的关键点是尽量保持布局层级的扁平化，避免出现重复的嵌套布局。</p>
@@ -1492,7 +1496,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1500,6 +1508,8 @@
   
 
 
+
+  
 
 
 
@@ -1517,10 +1527,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1571,6 +1590,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

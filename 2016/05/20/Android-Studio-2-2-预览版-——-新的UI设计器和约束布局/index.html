@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -620,53 +624,53 @@
 <li>UI生成器能够编辑菜单和系统偏好文件.</li>
 </ul>
 </blockquote>
-<p><img src="/images/studio_22_hero_image.png" alt="studio_22_hero_image.png"></p>
+<p><img alt="studio_22_hero_image.png" data-src="/images/studio_22_hero_image.png"></p>
 <p>(Android Studio 2.2 Preview 里新的布局编辑器)</p>
-<p><img src="/images/menu_editing.png" alt="menu_editing.png"></p>
+<p><img alt="menu_editing.png" data-src="/images/menu_editing.png"></p>
 <p>(新布局编辑器里的菜单编辑)</p>
 <h4 id="约束布局"><a href="#约束布局" class="headerlink" title="约束布局"></a>约束布局</h4><p>这种全新的布局对于你的应用来说是一个灵活的布局管理器，它允许你动态创建多个无嵌套的用户界面。它作为一个支持库分布在Android Studio中, 且支持API 9向后兼容。</p>
 <p>乍一看，约束有点内类似于RelativeLayout. 然后，约束布局被设计在Studio中使用，它能够有效的表现出你的应用程序的设计，因此依靠较少的去使用像LinearLayout, FrameLayout, TableLayout,或者GridLayout的布局。最后，它还内置了自动约束引擎。你可以根据你直接的偏好去随时设计你的用户界面,让Android Studio努力工作起来</p>
 <p>为了帮助你开始，在Android Studio 2.2 预览版中，新建项目向导的时候，现在内置模板能生成一个约束布局。或者，你可以在一个新的布局编辑器里右键任意布局，然后选择Convert to ConstraintLayout 选项。</p>
 <p>这是一个早期预览版的UI设计器和约束布局，我们将加大速度在即将发布的版本中增加附件的东西，在Android Studio <span class="exturl" data-url="aHR0cDovL3Rvb2xzLmFuZHJvaWQuY29tL3RlY2gtZG9jcy9sYXlvdXQtZWRpdG9y" title="http://tools.android.com/tech-docs/layout-editor">工具<i class="fa fa-external-link"></i></span>站点查看更多。</p>
-<p><img src="/images/constraint_layout_capture.png" alt="constraint_layout_capture"></p>
+<p><img alt="constraint_layout_capture" data-src="/images/constraint_layout_capture.png"></p>
 <p>(约束布局)</p>
 <h4 id="审查布局"><a href="#审查布局" class="headerlink" title="审查布局"></a>审查布局</h4><p>对于一个新的和已经存在的布局，很多时间你或许想要调试你的应用程序用户界面，以确定是否按照预期的布局呈现出来.利用新的布局审查工具，你能够深入到你的应用程序的视图层级下，分析屏幕上UI的每一个组件的属性。</p>
-<p><img src="/images/Layout_Inspector_Start.png" alt="Layout_Inspector_Start"></p>
+<p><img alt="Layout_Inspector_Start" data-src="/images/Layout_Inspector_Start.png"></p>
 <p>(开始一个布局的审查)</p>
-<p><img src="/images/layout_inspector.png" alt="layout_inspector"></p>
+<p><img alt="layout_inspector" data-src="/images/layout_inspector.png"></p>
 <p>(布局审查)</p>
 <h3 id="开发-1"><a href="#开发-1" class="headerlink" title="开发"></a>开发</h3><h4 id="Firebase-插件"><a href="#Firebase-插件" class="headerlink" title="Firebase 插件"></a>Firebase 插件</h4><p><span class="exturl" data-url="aHR0cHM6Ly9maXJlYmFzZS5nb29nbGUuY29tLw==" title="https://firebase.google.com/">firebase<i class="fa fa-external-link"></i></span>是一个开发者服务新套装，能够帮助你开发高质量的应用程序 ，让你的用户数据库增长，并且赚更多的钱。在Android Studio里面，你利用新的助理窗口添加了Firebase到一个全新的或者已经存在的Android应用程序中。对于访问Firebase功能特征在点击菜单<strong>Tools</strong>然后选择<strong>Firebase</strong>.你会希望先设置好全新的Firebase分析,为你探索其他Firebase服务像Firebase云消息或者Firebase崩溃报告添加到你的应用重新作为基础。学习更多有关Android Studio整合Firebase的信息看<span class="exturl" data-url="aHR0cDovL3Rvb2xzLmFuZHJvaWQuY29tL3RlY2gtZG9jcy9maXJlYmFzZS1wbHVnaW4=" title="http://tools.android.com/tech-docs/firebase-plugin">这里<i class="fa fa-external-link"></i></span></p>
-<p><img src="/images/firebase_studio.png" alt="firebase_studio"></p>
+<p><img alt="firebase_studio" data-src="/images/firebase_studio.png"></p>
 <p>(为Android Studio 整合的Firebase插件)</p>
 <h4 id="代码示例浏览器"><a href="#代码示例浏览器" class="headerlink" title="代码示例浏览器"></a>代码示例浏览器</h4><p>除了导入Android Studio 是示例代码，代码示例浏览器在Androdi Studio 2.2 Preview里面是一个菜单选项，允许你依靠高质量，Google 提供的Android 代码样本示例中高亮的代码片段添加到你的项目中去。对于使用这个功能特性,高亮的变量、类型和方法在你的代码中，然后右键显示一个菜单去查找示例代码。</p>
-<p><img src="/images/find_sample_code.png" alt="find_sample_code"></p>
+<p><img alt="find_sample_code" data-src="/images/find_sample_code.png"></p>
 <p>(代码样本浏览器)</p>
 <h3 id="构建-1"><a href="#构建-1" class="headerlink" title="构建"></a>构建</h3><h4 id="CMake-和-NDK-Build"><a href="#CMake-和-NDK-Build" class="headerlink" title="CMake 和 NDK-Build"></a>CMake 和 NDK-Build</h4><p>对于那写使用过NDK的，现在Android Studio通过现有的Gradle支持CMake和NDK-Build Android应用程序项目在你存在的构建文件，一旦你添加了你的CMake或者NDK-Build项目到你的Gradle,Android Studio将会自动的打开你的Android相关代码在Studio里面进行编辑和调试。</p>
 <p>对于CMake用户，仅仅是在你的Gradle文件的externalNativeBuild部分添加你的CMList.txt文件路径:</p>
-<p><img src="/images/CMake_config.png" alt="CMake_config"></p>
+<p><img alt="CMake_config" data-src="/images/CMake_config.png"></p>
 <p>(在Android Studio中的CMake)</p>
 <p>对于NDK-Build用户，仅仅是在你的Gradle文件externalNativeBuild部分添加你的*.mk文件路径:</p>
-<p><img src="/images/ndk-build_config.png" alt="ndk-build_config"></p>
+<p><img alt="ndk-build_config" data-src="/images/ndk-build_config.png"></p>
 <p>(在Android Studio中的CMake)</p>
 <h4 id="Jack-工具的增强"><a href="#Jack-工具的增强" class="headerlink" title="Jack 工具的增强"></a>Jack 工具的增强</h4><p>新的<span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2UuYW5kcm9pZC5jb20vc291cmNlL2phY2suaHRtbA==" title="https://source.android.com/source/jack.html">Jack编译器<i class="fa fa-external-link"></i></span>编译你的Java语言源文件到Android dex字节码.<br>Jack 编译器允许一些Java 8 语言的特性，像lanmbdas,在Android所有版本中都能够使用.此版本增加了增量构建和完全支持注释处理，所以你能够使用Java 8 语言特性到你已经存在的项目资源中</p>
 <p>如下在你的build.gradle文件中使用Jack增量编译:</p>
-<p><img src="/images/jack_incremental.png" alt="jack_incremental"></p>
+<p><img alt="jack_incremental" data-src="/images/jack_incremental.png"></p>
 <p>(启用Jack增量编译选项)</p>
 <p>Jack 将会自动应用注解处理器在类路径中，要使用在编译时注释处理器，而无需在APK捆绑它，利用全新的注解处理器依赖范围:</p>
-<p><img src="/images/jack_annotation.png" alt="jack_annotation"></p>
+<p><img alt="jack_annotation" data-src="/images/jack_annotation.png"></p>
 <p>(启用Jack注解处理器)</p>
 <h4 id="Manifest-合并查看器"><a href="#Manifest-合并查看器" class="headerlink" title="Manifest 合并查看器"></a>Manifest 合并查看器</h4><p>弄清楚你的项目依赖基于编译类型等是如何合入AndroidManifest，现在利用Android Studio就很简单了，导航到你AndroidManifest.xml，然后点击合并后的新的清单底部标签，探索你AndroidManifest上的解析每一个节点如何与不同项目依赖</p>
-<p><img src="/images/merged_manifest_viewer.png" alt="merged_manifest_viewer"></p>
+<p><img alt="merged_manifest_viewer" data-src="/images/merged_manifest_viewer.png"></p>
 <p>(清单合并查看器)</p>
 <h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><h4 id="Espresso-测试记录器"><a href="#Espresso-测试记录器" class="headerlink" title="Espresso 测试记录器"></a>Espresso 测试记录器</h4><p>有的时候写一个用户界面测试是很乏味的，利用<span class="exturl" data-url="aHR0cHM6Ly9nb29nbGUuZ2l0aHViLmlvL2FuZHJvaWQtdGVzdGluZy1zdXBwb3J0LWxpYnJhcnkvZG9jcy9lc3ByZXNzby9pbmRleC5odG1s" title="https://google.github.io/android-testing-support-library/docs/espresso/index.html">Espresso UI 测试<i class="fa fa-external-link"></i></span>记录功能，创建测试现在和使用你的应用程序一样简单了，Android Studio 将会捕获你所有的UI交互，并将其转换为一个完全可以重用的Espresso测试，你可以在本地或者甚至在<span class="exturl" data-url="aHR0cHM6Ly9maXJlYmFzZS5nb29nbGUuY29tL2RvY3MvdGVzdC1sYWIv" title="https://firebase.google.com/docs/test-lab/">Firebase 测试实验室<i class="fa fa-external-link"></i></span>上去运行它们，要使用记录器，转到<strong>Run</strong>菜单，选择<strong>Record Espresso Test</strong></p>
-<p><img src="/images/test_recorder.png" alt="test_recorder"><br>(Espresso 测试记录器)</p>
+<p><img alt="test_recorder" data-src="/images/test_recorder.png"><br>(Espresso 测试记录器)</p>
 <h4 id="APK-分析器"><a href="#APK-分析器" class="headerlink" title="APK 分析器"></a>APK 分析器</h4><p>新的APK分析器可以帮助您了解您的APK内容、不同组件的大小。你也可以用它来避免你的Dex文件<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2J1aWxkL211bHRpZGV4Lmh0bWw=" title="https://developer.android.com/studio/build/multidex.html">64K参考方法的限制<i class="fa fa-external-link"></i></span>的问题，诊断ProGuard的配置问题，鉴于合并AndroidManifest.xml文件，并检查编译资源文件（resources.arsc）。这可以帮助你减少你的APK大小，并确保您的APK包含的东西，正是你期待的事情。</p>
 <p>该APK分析器显示你的原始文件的大小以及在下载你的APK后各种组成部分的大小。预计当用户下载存放APK在Google Play服务器上的大小，这些信息可以帮助你优先考虑哪些地方需要集中去减少占用量。</p>
 <p>要使用这项新功能，单击<strong>Build</strong>菜单上，选择分析<strong>Analyze APK…</strong>然后，选择要分析的APK。</p>
-<p><img src="/images/apk_analyzer.png" alt="apk_analyzer"><br>(APK分析器)</p>
+<p><img alt="apk_analyzer" data-src="/images/apk_analyzer.png"><br>(APK分析器)</p>
 <h4 id="Java-察觉-C-调试器"><a href="#Java-察觉-C-调试器" class="headerlink" title="Java-察觉 C++ 调试器"></a>Java-察觉 C++ 调试器</h4><p>当你运行在N或者更高的目标版本上调试C++代码，你现在可以使用一个单一的调试器，Java语言能够感知lldb实例.这个调试器继续大大的支持lldb功能，如快速的步骤和内存观测点，也允许你停止对Java语言的断点，并查看你的Java语言内存上的内容</p>
 <h4 id="自动调试选择"><a href="#自动调试选择" class="headerlink" title="自动调试选择"></a>自动调试选择</h4><p>Android Studio 现在能够使用 “自动” 调试器调试应用，这里将会自动的启动相应的调试器,如果启用了其他C++项目混合调试器，Java语言是能够感知C++调试器的。</p>
-<p><img src="/images/C_plus_debugger.png" alt="C_plus_debugger"></p>
+<p><img alt="C_plus_debugger" data-src="/images/C_plus_debugger.png"></p>
 <p>(为C++启用自动调试器)</p>
 <h2 id="接下来做什么"><a href="#接下来做什么" class="headerlink" title="接下来做什么"></a>接下来做什么</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>如果你是用的之前上一个版本的Android Studio，你可以在菜单导航栏Canary通道使用检查更新(Help–&gt;Check for Update(Windows/Linux)，Android Studio–&gt;Check for Updates(OSX))，这个升级将会下载一个全新的版本，没有增量更新到你已经存在的Android Studio中，你也可以从<span class="exturl" data-url="aHR0cDovL3Rvb2xzLmFuZHJvaWQuY29tL2Rvd25sb2FkL3N0dWRpby9jYW5hcnk=" title="http://tools.android.com/download/studio/canary">Canary发布站点<i class="fa fa-external-link"></i></span>下载Android Studio 2.2 Preview</p>
 <p>对于Android Studio 2.2 Preview，我们建议你在运行新的Canary版本的同时，也运行一个Stable稳定版本的Android Studio ,到<span class="exturl" data-url="aHR0cDovL3Rvb2xzLmFuZHJvaWQuY29tL3RpcHMvdXNpbmctbXVsdGlwbGUtYW5kcm9pZC1zdHVkaW8tdmVyc2lvbnM=" title="http://tools.android.com/tips/using-multiple-android-studio-versions">工具站点<i class="fa fa-external-link"></i></span>检出如何在同一时间运行两个版本的Android Studio</p>
@@ -1543,7 +1547,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1551,6 +1559,8 @@
   
 
 
+
+  
 
 
 
@@ -1568,10 +1578,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1622,6 +1641,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

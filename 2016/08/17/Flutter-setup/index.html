@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -568,11 +572,11 @@
 <h2 id="获取-Flutter-SDK"><a href="#获取-Flutter-SDK" class="headerlink" title="获取 Flutter SDK"></a>获取 Flutter SDK</h2><p>对于获取Flutter,使用<code>git</code>去clone仓库，然后添加<code>flutter</code>工具到你的path：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/flutter/flutter.git -b alpha</span><br><span class="line">$ <span class="built_in">export</span> PATH=`<span class="built_in">pwd</span>`/flutter/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/flutter_setup_1.png" alt="flutter_setup_1.png"></p>
+<p><img alt="flutter_setup_1.png" data-src="/images/flutter_setup_1.png"></p>
 <p>运行以下命令来看看是否有您需要安装完成设置任何依赖关系：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flutter doctor</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/flutter_setup_2.png" alt="flutter_setup_2.png"></p>
+<p><img alt="flutter_setup_2.png" data-src="/images/flutter_setup_2.png"></p>
 <p>在第一次运行<code>flutter</code>命令的时候,它将会下载它的依赖并且自己编译，后续运行的时候应该会快</p>
 <p>一旦你已经安装任何缺少的依赖，再一次运行<code>flutter doctor</code>命令，来验证是否已正确设置一切。</p>
 <h2 id="Google-Analytics（分析）"><a href="#Google-Analytics（分析）" class="headerlink" title="Google Analytics（分析）"></a>Google Analytics（分析）</h2><p>Flutter 工具使用了Google Analytics进行使用情况的数据统计报告功能和基本崩溃报。随着时间的推移，这些数据能够帮助提高Flutter工具。为了禁用报告，在终端输入<code>flutter config --no-analytics</code>，对于要显示出当前analytics分析报告的状态，在终端输入<code>flutter config</code></p>
@@ -602,11 +606,11 @@
 <li>你应该能看到Flutter包已经显示出来了，点击按钮进行安装这个包</li>
 </ul>
 </blockquote>
-<p><img src="/images/flutter_setup_3.png" alt="flutter_setup_3.png"></p>
+<p><img alt="flutter_setup_3.png" data-src="/images/flutter_setup_3.png"></p>
 <p>3、打开<strong>Packages &gt; Flutter &gt; Packages Settings</strong>，设置<strong>FLUTTER_ROOT</strong>区域为你安装Flutter SDK的根目录的路径</p>
-<p><img src="/images/flutter_setup_4.png" alt="flutter_setup_4.png"></p>
+<p><img alt="flutter_setup_4.png" data-src="/images/flutter_setup_4.png"></p>
 <p>4、打开<strong>Packages &gt; Dart &gt; Packages Settings</strong>，设置Dart SDK Location 区域为你Flutter SDK的根文件夹<code>bin/cache/dart-sdk</code>目录的路径</p>
-<p><img src="/images/flutter_setup_5.png" alt="flutter_setup_5.png"></p>
+<p><img alt="flutter_setup_5.png" data-src="/images/flutter_setup_5.png"></p>
 <p>5、如果你在Mac上使用Atom，你应该安装<code>atom</code>和<code>apm</code>shell命令。从菜单栏这样操作，点击<code>Atom</code><strong>&gt;</strong><code>Install Shell Commands</code></p>
 <p>以上操作就完成了<code>Flutter</code>的环境搭建操作，下一篇来学习<code>Flutter入门</code></p>
 <blockquote>
@@ -1484,7 +1488,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1492,6 +1500,8 @@
   
 
 
+
+  
 
 
 
@@ -1509,10 +1519,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1563,6 +1582,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

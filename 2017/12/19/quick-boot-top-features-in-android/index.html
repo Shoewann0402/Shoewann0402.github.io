@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -563,7 +567,7 @@
 <li><strong>快速启动</strong> —— 今天作为一个稳定功能发布，快速启动允许您在6秒之内恢复您的Android模拟器会话。首次您开始启动Android模拟器的Android虚拟设备，它必须执行冷启动(就像启动设备一样)，但是随后的启动速度很快，系统将会恢复在您最后关闭模拟器时的状态(像唤醒设备一样)。我们通过完全重新设计旧式仿真器快照架构，使用虚拟传感器和GPU加速工作来完成了这个。无需额外的请求，因为快速启动在Android模拟器v27.0.2版本上是默认开启的。</li>
 </ul>
 </blockquote>
-<p><img src="/images/image2.gif" alt="image2.gif"></p>
+<p><img alt="image2.gif" data-src="/images/image2.gif"></p>
 <blockquote>
 <ul>
 <li><strong>Android CTS 兼容性</strong> —— 每发布一个版本的Android SDK，我们都将确保Android模拟器已经为您的应用程序做好了需要的开发准备，从测试向后兼容的Android KitKat到集成了最新APIs的开发者预览版。对于增加模拟器系统镜像产品的质量和可靠性，我们现在从Android Nougat (API 24) 或者更高的对<span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2UuYW5kcm9pZC5jb20vY29tcGF0aWJpbGl0eS8=" title="https://source.android.com/compatibility/">Android 兼容性的测试套件<i class="fa fa-external-link"></i></span>(CTS)构建有资格的最终版Android系统镜像 — 相同的测试套件官方Android物理设备必须通过。</li>
@@ -580,10 +584,10 @@
 </ul>
 </blockquote>
 <p>额外的还有，再过去的几个版本中，我们有改善CPU和I/O性能，同时增强了GPU的性能，包括了对OpenGL ES 3.0的支持。看一下像ADB推送这样常见的任务，突出了Android CPU和I/O管道的改进：</p>
-<p><img src="/images/image5.png" alt="image5.png"></p>
+<p><img alt="image5.png" data-src="/images/image5.png"></p>
 <p>对于GPU性能，我们创建了一个简单的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZS9ncHUtZW11bGF0aW9uLXN0cmVzcy10ZXN0" title="https://github.com/google/gpu-emulation-stress-test">GPU仿真压力测试应用程序<i class="fa fa-external-link"></i></span>去测量时间的推移。我们发现最最新版本的模拟器能够渲染比之前更高速的帧率，它是少数模拟器之一能够准确的按照Android规范去渲染OpenGL ES。</p>
-<p><img src="/images/image1.gif" alt="image1.gif"></p>
-<p><img src="/images/gpu_emulator_stress_test_chart.png" alt="gpu_emulator_stress_test_chart.png"></p>
+<p><img alt="image1.gif" data-src="/images/image1.gif"></p>
+<p><img alt="gpu_emulator_stress_test_chart.png" data-src="/images/gpu_emulator_stress_test_chart.png"></p>
 <h2 id="更多的功能点"><a href="#更多的功能点" class="headerlink" title="更多的功能点"></a>更多的功能点</h2><p>除了这些主要的功能以外，这儿还有一大堆额外的功能，我们在过去的一年中已经添加到了Android 模拟器，您可能还不知道：</p>
 <blockquote>
 <ul>
@@ -1537,7 +1541,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1545,6 +1553,8 @@
   
 
 
+
+  
 
 
 
@@ -1562,10 +1572,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1616,6 +1635,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

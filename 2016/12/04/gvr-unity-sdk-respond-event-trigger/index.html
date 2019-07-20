@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -548,40 +552,40 @@
    <a id="more"></a>
 
 <h2 id="创建C-脚本文件"><a href="#创建C-脚本文件" class="headerlink" title="创建C#脚本文件"></a>创建C#脚本文件</h2><p>   在Unity工作空间<strong>Project</strong>窗口下，为<strong>Asstes</strong>下的<strong>Sample</strong>创建一个<strong>Script</strong>文件夹，里面用来保存<strong>C#</strong>脚本，然后在里面创建一个叫做<strong>CubeScript</strong>的脚本，以此为<strong>Cube</strong>对象响应焦点事件</p>
-<p><img src="/images/gvr4-1.png" alt="gvr4-1.png"></p>
+<p><img alt="gvr4-1.png" data-src="/images/gvr4-1.png"></p>
 <p>双击<strong>CubeScript</strong>打开编辑器进行编辑，根据配置不同，会有<strong>Microsoft Visual Studio</strong>和<strong>Mono Develop</strong>两种工具打开，本例是用<strong>Mono Develop</strong>进行编辑的。打开文件后，会生成默认的代码配置</p>
-<p><img src="/images/gvr4-2.png" alt="gvr4-2.png"></p>
+<p><img alt="gvr4-2.png" data-src="/images/gvr4-2.png"></p>
 <h2 id="编辑C-脚本文件"><a href="#编辑C-脚本文件" class="headerlink" title="编辑C#脚本文件"></a>编辑C#脚本文件</h2><p>然后，进行脚本编辑，以下是一个简单的示例来说明:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class CubeScript : MonoBehaviour &#123;</span><br><span class="line">        </span><br><span class="line">        // 定义一个方法，传入boolean类型的参数 </span><br><span class="line">	public void SetGazedAt(bool gazedAt) &#123;</span><br><span class="line"></span><br><span class="line">                //通过传入的gazedAt值不同，通过三目运算符真假设置组件渲染材料颜色，true为蓝色、false为黄色</span><br><span class="line">		GetComponent&lt;Renderer&gt;().material.color = gazedAt ? Color.blue : Color.yellow;</span><br><span class="line">	&#125;</span><br><span class="line">        </span><br><span class="line">	//定义一个向上移动的方法</span><br><span class="line">	public void MoveUp() &#123;</span><br><span class="line">		//在U3d里用Vector3表示空间内的坐标，参数分别是(float x,float y,float z)</span><br><span class="line">                //通过每调用一次该方法，让组件向y轴方向位移1f的距离</span><br><span class="line">		transform.position += new Vector3 (0f, 1f, 0f);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//程序开始</span><br><span class="line">	void Start() &#123;</span><br><span class="line">                //调用设置渲染材料颜色的方法，默认设置参数为false</span><br><span class="line">		SetGazedAt(false);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//当焦点进入组件范围</span><br><span class="line">	public void OnGazeEnter() &#123;</span><br><span class="line">               ，设置渲染材料颜色的方法，设置参数为true</span><br><span class="line">		SetGazedAt(true);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">        //当焦点退出组件范围</span><br><span class="line">	public void OnGazeExit() &#123;</span><br><span class="line">		//设置渲染材料颜色的方法，设置参数为false</span><br><span class="line">		SetGazedAt(false);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//当点击组件时</span><br><span class="line">	public void OnGazeTrigger() &#123;</span><br><span class="line">                </span><br><span class="line">		//调用组件移动的方法</span><br><span class="line">		MoveUp();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="绑定C-脚本文件"><a href="#绑定C-脚本文件" class="headerlink" title="绑定C#脚本文件"></a>绑定C#脚本文件</h2><p>回到Unity工作空间，选中<strong>Cube</strong>对象，在<strong>Cube</strong>右侧<strong>Inspetor</strong>属性栏的底部，点击<strong>Add Component</strong>，在搜索栏里输入创建的脚本<strong>CubeScript</strong>,然后选中添加</p>
-<p><img src="/images/gvr4-3.png" alt="gvr4-3.png"></p>
+<p><img alt="gvr4-3.png" data-src="/images/gvr4-3.png"></p>
 <p>添加完成后，点击<strong>CubeScript</strong>后面的小齿轮，将它<strong>Move Up</strong>到<strong>Event Trigger</strong>上面</p>
-<p><img src="/images/gvr4-4.png" alt="gvr4-4.png"></p>
+<p><img alt="gvr4-4.png" data-src="/images/gvr4-4.png"></p>
 <p>点击<strong>Event Trigger</strong>里面的<strong>Add New Event Type</strong>,添加一个事件类型，选择<strong>Pointer Enter</strong>,在添加的<strong>Pointer Enter</strong>面板上，点击右下角的<strong>+</strong>,添加一项</p>
-<p><img src="/images/gvr4-5.png" alt="gvr4-5.png"></p>
+<p><img alt="gvr4-5.png" data-src="/images/gvr4-5.png"></p>
 <p>然后点击左边选择<strong>Cube</strong>对象，右边下拉框，选择定义的脚本名称<strong>CubeScript</strong>下面的<strong>OnGazeEnter()</strong>方法</p>
 <p>同理，再两次分别点击<strong>Add New Event Type</strong>，分别选择<strong>Pointer Exit</strong>和<strong>Pointer Click</strong>,分别点击<strong>+</strong>,分别选择上<strong>Cube</strong>对象，分别选择上<strong>CubeScript</strong>下面的<strong>OnGazeExit()</strong>方法和<strong>OnGazeTrigger()</strong>方法</p>
-<p><img src="/images/gvr4-6.png" alt="gvr4-6.png"></p>
+<p><img alt="gvr4-6.png" data-src="/images/gvr4-6.png"></p>
 <p>最后点击<strong>播放</strong>按钮，查看效果，按住<strong>Alt</strong>，滚动鼠标。</p>
 <blockquote>
 <ul>
 <li>当准星不在<strong>Cube</strong>对象上，准星是圆点，<strong>Cube</strong>是黄色</li>
 </ul>
 </blockquote>
-<p><img src="/images/gvr4-7.png" alt="gvr4-7.png"></p>
+<p><img alt="gvr4-7.png" data-src="/images/gvr4-7.png"></p>
 <blockquote>
 <ul>
 <li>当准星在<strong>Cube</strong>对象上，准星是圆圈，<strong>Cube</strong>是蓝色</li>
 </ul>
 </blockquote>
-<p><img src="/images/gvr4-8.png" alt="gvr4-8.png"></p>
+<p><img alt="gvr4-8.png" data-src="/images/gvr4-8.png"></p>
 <blockquote>
 <ul>
 <li>当准星在<strong>Cube</strong>对象上，点击<strong>Cube</strong>，<strong>Cube</strong>向上位移1f</li>
 </ul>
 </blockquote>
-<p><img src="/images/gvr4-9.png" alt="gvr4-9.png"></p>
+<p><img alt="gvr4-9.png" data-src="/images/gvr4-9.png"></p>
 <blockquote>
 <p>本节gvr-unity-sdk 焦点事件触发相关内容到此结束，下一节继续《Gvr Unity SDK (五) —— 添加全景SkyBox》</p>
 </blockquote>
@@ -1461,7 +1465,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1469,6 +1477,8 @@
   
 
 
+
+  
 
 
 
@@ -1486,10 +1496,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1540,6 +1559,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

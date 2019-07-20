@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -103,7 +107,7 @@
 </script>
 
   <meta name="description" content="原文来自: Android Developers Blog —— Test on Android 7.1 Developer Preview in Firebase Test Lab  为了提供最好的用户体验的大门，对于Android的Firebas测试实验室允许您测试您的应用以确保它们在多个设备配置兼容。跨越系统版本、屏幕方向和地区，点击一次，您就能够在Google云的上百台设备配置上运行您的">
-<meta name="keywords" content="Android,Firebase,Google Cloud,Testing">
+<meta name="keywords" content="Firebase,Android,Google Cloud,Testing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Firebase测试实验室里的Android开发者预览版">
 <meta property="og:url" content="https://shoewann0402.github.io/2016/11/05/android-dev-preview-in-firebase-test-lab/index.html">
@@ -569,7 +573,7 @@
 <p>从现在起至12月底（2016年12月31日），Firebase测试实验室将会在Firebase Blaze计划上，对所以虚拟设备免费提供，以此帮助您确保您的应用程序和Android 7.1开发者预览版兼容，以及与其他Android版本。</p>
 <p><span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5ibG9nc3BvdC5jb20vMjAxNi8xMC9hbmRyb2lkNzEtZGV2LXByZXZpZXctYXZhaWxhYmxlLmh0bWw=" title="http://android-developers.blogspot.com/2016/10/android71-dev-preview-available.html">为您的应用API 等级25做准备<i class="fa fa-external-link"></i></span>，然后<span class="exturl" data-url="aHR0cHM6Ly9maXJlYmFzZS5jb3JwLmdvb2dsZS5jb20vcHJvamVjdC9fL3Rlc3RsYWIvcnVu" title="https://firebase.corp.google.com/project/_/testlab/run">去Firebase测试实验室控制台<i class="fa fa-external-link"></i></span>运行您的第一个测试。</p>
 <p>测试愉快！</p>
-<p><img src="/images/Flood-It-app.png" alt=" Flood-It-app.png"></p>
+<p><img alt=" Flood-It-app.png" data-src="/images/Flood-It-app.png"></p>
 <p>(Robo测试揭开Flood-It！应用在Android 7.1开发者预览中的崩溃)</p>
 <blockquote>
 <p>以上是对Anroid 官网博客文章的翻译，如果不足，欢迎指正，谢谢</p>
@@ -661,9 +665,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
-          
             <a href="/tags/Firebase/" rel="tag"><i class="fa fa-tag"></i> Firebase</a>
+          
+            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
           
             <a href="/tags/Google-Cloud/" rel="tag"><i class="fa fa-tag"></i> Google Cloud</a>
           
@@ -1426,7 +1430,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1434,6 +1442,8 @@
   
 
 
+
+  
 
 
 
@@ -1451,10 +1461,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1505,6 +1524,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

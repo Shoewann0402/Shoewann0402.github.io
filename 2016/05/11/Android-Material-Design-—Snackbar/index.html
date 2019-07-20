@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -110,15 +114,10 @@
 <meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
 <meta property="og:description" content="本节介绍在Material Design中有趣的组件之一的Snackbar   Snackbar对于一个反馈提供了一个轻量级的操作。它显示了一个简短的消息在移动设备屏幕的底部，或者大型设备的左下方。Snackbar出现在屏幕上所有的元素之上，并且同一时间有且只能让一个被显示。除了能像Toast消息之外还提供了action动作来相互作用。以下就对Snackbar几种不同的场景进行示例说明">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://shoewann0402.github.io/images/snckbar_simple.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/snackbar_callback.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/snackbar_custom.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/snackbar_project.png">
 <meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Material Design —— Snackbar">
 <meta name="twitter:description" content="本节介绍在Material Design中有趣的组件之一的Snackbar   Snackbar对于一个反馈提供了一个轻量级的操作。它显示了一个简短的消息在移动设备屏幕的底部，或者大型设备的左下方。Snackbar出现在屏幕上所有的元素之上，并且同一时间有且只能让一个被显示。除了能像Toast消息之外还提供了action动作来相互作用。以下就对Snackbar几种不同的场景进行示例说明">
-<meta name="twitter:image" content="https://shoewann0402.github.io/images/snckbar_simple.png">
 
 
 
@@ -545,15 +544,15 @@
 <p>间隔时间应该是<strong>LENGTH_SHORT</strong>, <strong>LENGTH_LONG</strong> 或者 <strong>LENGTH_INDEFINITE</strong>，当LENGTH_INDEFINITE 被使用，snackbar将会显示时间不定，除非手动滑动关闭或者有其他新的snackbar显示</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Snackbar snackbar = Snackbar</span><br><span class="line">        .make(linearLayout, <span class="string">"This is a simple snackbar"</span>, Snackbar.LENGTH_LONG);</span><br><span class="line"> </span><br><span class="line">snackbar.show();</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/snckbar_simple.png" alt="snckbar_simple"></p>
+<p><img alt="snckbar_simple" data-src="/images/snckbar_simple.png"></p>
 <h2 id="Snackbar动作回调"><a href="#Snackbar动作回调" class="headerlink" title="Snackbar动作回调"></a>Snackbar动作回调</h2><p>您也可以使用的<strong>setAction（）</strong>方法作用于回调。当用户使用snackbar的时候，它允许我们执行某几个动作。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Snackbar snackbar = Snackbar</span><br><span class="line">        .make(coordinatorLayout, <span class="string">"Message is deleted"</span>, Snackbar.LENGTH_LONG)</span><br><span class="line">        .setAction(<span class="string">"UNDO"</span>, new View.<span class="function"><span class="title">OnClickListener</span></span>() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                Snackbar snackbar1 = Snackbar.make(coordinatorLayout, <span class="string">"Message is restored!"</span>, Snackbar.LENGTH_SHORT);</span><br><span class="line">                snackbar1.show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"> </span><br><span class="line">snackbar.show();</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/snackbar_callback.png" alt="snackbar_callback"></p>
+<p><img alt="snackbar_callback" data-src="/images/snackbar_callback.png"></p>
 <h2 id="自定义Snackbar"><a href="#自定义Snackbar" class="headerlink" title="自定义Snackbar"></a>自定义Snackbar</h2><p>Snackbar 默认为<strong>白色</strong>文本颜色和<strong>#323232</strong>的背景颜色，你能够重写这些颜色</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Snackbar snackbar = Snackbar</span><br><span class="line">        .make(coordinatorLayout, <span class="string">"No internet connection!"</span>, Snackbar.LENGTH_LONG)</span><br><span class="line">        .setAction(<span class="string">"RETRY"</span>, new View.<span class="function"><span class="title">OnClickListener</span></span>() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"> </span><br><span class="line">// Changing message text color</span><br><span class="line">snackbar.setActionTextColor(Color.RED);</span><br><span class="line"> </span><br><span class="line">// Changing action button text color</span><br><span class="line">View sbView = snackbar.getView();</span><br><span class="line">TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);</span><br><span class="line">textView.setTextColor(Color.YELLOW);</span><br><span class="line">snackbar.show();</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/snackbar_custom.png" alt="snackbar_custom"></p>
+<p><img alt="snackbar_custom" data-src="/images/snackbar_custom.png"></p>
 <h2 id="创建新项目"><a href="#创建新项目" class="headerlink" title="创建新项目"></a>创建新项目</h2><p>1、在<strong>Android Studio</strong>中 <strong>File ⇒ New Project</strong> 新建一个项目</p>
 <p>2、打开<strong>builde.gradle</strong>文件添加design support支持依赖库</p>
 <p><strong>com.android.support:design:23.3.0</strong></p>
@@ -652,7 +651,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }</code></pre>
 <p>Run and test the app.</p>
-<p><img src="/images/snackbar_project.png" alt="snackbar_project"></p>
+<p><img alt="snackbar_project" data-src="/images/snackbar_project.png"></p>
 
       
     </div>
@@ -1525,7 +1524,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1533,6 +1536,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   
 
 
+
+  
 
 
 
@@ -1550,10 +1555,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1604,6 +1618,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

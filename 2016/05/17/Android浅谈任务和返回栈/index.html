@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -554,7 +558,7 @@
 <h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h2><p>一个任务是围绕着一个活动栈元数据和信息的集合（你可以查看<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL0FjdGl2aXR5TWFuYWdlci5SZWNlbnRUYXNrSW5mby5odG1s" title="https://developer.android.com/reference/android/app/ActivityManager.RecentTaskInfo.html">RecentTaskInfo<i class="fa fa-external-link"></i></span>类获取更准确的数据）。</p>
 <p>所以当你点击了launcher桌面上你的App应用程序，系统其实会开始去上一个已经存在的任务（通过Intent意图和Activity活动来指向确定) 去恢复—— 然你回到你该回到的地方.如果任务中没有存在可以被发现，然后利用最新启动的Activity作为基类Activity，一个新的任务就在任务的返回栈里被创建了。</p>
 <h2 id="返回栈"><a href="#返回栈" class="headerlink" title="返回栈"></a>返回栈</h2><p>你或许会想象，返回键一个任务的返回栈是捆绑在一起的，但是它是双向的，当你开始利用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9jb250ZW50L0NvbnRleHQuaHRtbA==" title="http://developer.android.com/reference/android/content/Context.html">startActivity()<i class="fa fa-external-link"></i></span>启动一个新的activity,将会（默认情况下）推送出一个新的activity在你的任务之上，原因是上一个Activity 已经被暂停了（如果这个新的activity完全掩盖了上一个activity，就被停止了）。</p>
-<p><img src="/images/1-zItbFvFydIR63z_37ya1Iw.png" alt="a simple back stack"></p>
+<p><img alt="a simple back stack" data-src="/images/1-zItbFvFydIR63z_37ya1Iw.png"></p>
 <p>当操作返回键时（默认情况下）然后会‘抛出’任务，在最顶端的activity将会调用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9hcHAvQWN0aXZpdHkuaHRtbA==" title="http://developer.android.com/reference/android/app/Activity.html">finish()<i class="fa fa-external-link"></i></span>,销毁它并且从返回栈中移除，同时带你返回上一个activity。重复这样操作直到在返回栈中不会留下任何东西了，你也就将回到launcher桌面上了。</p>
 <h2 id="返回栈和Fragments"><a href="#返回栈和Fragments" class="headerlink" title="返回栈和Fragments"></a>返回栈和Fragments</h2><p>返回栈不是仅仅用于activity上：它也应用于<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9ndWlkZS9jb21wb25lbnRzL2ZyYWdtZW50cy5odG1s" title="http://developer.android.com/guide/components/fragments.html">fragments<i class="fa fa-external-link"></i></span>。当你提供一个<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9ndWlkZS9jb21wb25lbnRzL2ZyYWdtZW50cy5odG1s" title="http://developer.android.com/guide/components/fragments.html">fragment transaction<i class="fa fa-external-link"></i></span>从你的用户界面去添加，替换，或者移除一个fragment，你能够使用<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9GcmFnbWVudFRyYW5zYWN0aW9uLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/FragmentTransaction.html">addToBackStack()<i class="fa fa-external-link"></i></span>去有效添加<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9yZWZlcmVuY2UvYW5kcm9pZC9zdXBwb3J0L3Y0L2FwcC9GcmFnbWVudFRyYW5zYWN0aW9uLmh0bWw=" title="http://developer.android.com/reference/android/support/v4/app/FragmentTransaction.html">FragmentTransaction<i class="fa fa-external-link"></i></span>到你的返回栈</p>
 <p>当你使用这种方式，返回键被点击中，FragmentTransaction 将会被反向（一个添加的fragment被移除，一个替换的fragment被还原，或者一个被移除掉的fragment被重新添加）。每一个事务被添加到返回栈是被反向翻转的，直到默认的activity被finish结束的那个时候，它们所有才会被移除，再次放进来将会重复表现。</p>
@@ -597,7 +601,7 @@ PendingIntent pendingIntent = stackBuilder
 <p><strong>笔记</strong>:如上所述在<span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS90cmFpbmluZy9ub3RpZnktdXNlci9uYXZpZ2F0aW9uLmh0bWw=" title="http://developer.android.com/training/notify-user/navigation.html">文档<i class="fa fa-external-link"></i></span>里,对于其他类型的activity你或许从一个特殊的notification通知(i.e，没有在你正常的应用重新流程下的一个通知)去启动。这个或许是一个例子，环聊的（Hangout’s）直接回复像一个activity在Android N之前。这些acitivities是通常半透明 —— 你能看到其他的app应用程序在你的activity下面 —— 同时一般没有任何返回栈合成或者新的任务和它们关联。</p>
 </blockquote>
 <h2 id="任务和返回栈，一起工作"><a href="#任务和返回栈，一起工作" class="headerlink" title="任务和返回栈，一起工作"></a>任务和返回栈，一起工作</h2><p>记住这个部分已经被预测很重要，如果将是使用你的返回栈乱搞，请确保测试非常彻底，以确保最佳的用户体验。</p>
-<p><img src="/images/1-S6K7IYkWhCzkS6YAgxLfXw.png" alt="android developer patterns"></p>
+<p><img alt="android developer patterns" data-src="/images/1-S6K7IYkWhCzkS6YAgxLfXw.png"></p>
 <blockquote>
 <p>翻译有限，不足之处，欢迎指正</p>
 </blockquote>
@@ -1479,7 +1483,11 @@ PendingIntent pendingIntent = stackBuilder
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1487,6 +1495,8 @@ PendingIntent pendingIntent = stackBuilder
   
 
 
+
+  
 
 
 
@@ -1504,10 +1514,19 @@ PendingIntent pendingIntent = stackBuilder
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1558,6 +1577,11 @@ PendingIntent pendingIntent = stackBuilder
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

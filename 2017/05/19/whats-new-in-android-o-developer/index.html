@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -575,7 +579,7 @@
 <li><strong>Tensorflow 精简版</strong>：随着Android继续利用机器学习去提高用户的体验，我们希望我们的开发者合作伙伴能够做到这一点。今天我们分享了一下TensorFlow 精简版的早期看法，一个基于<span class="exturl" data-url="aHR0cHM6Ly93d3cudGVuc29yZmxvdy5vcmcv" title="https://www.tensorflow.org/">Tensorflow<i class="fa fa-external-link"></i></span>的项目即将到来。Google开源了机器学习库，Tensorflow精简版是用于嵌入式用例的快速和轻便而被特殊设计。由于许多设备上的场景需要实时性能，因此我们还在研究一种新的神经网络API，TensorFlow可以利用它来加速计算。我们计划在今年晚些时候向开发人员提供这两项维护更新，所以请继续关注！</li>
 </ul>
 </blockquote>
-<p><img src="/images/Duo_PiP_500px.gif" alt="Duo_PiP_500px"></p>
+<p><img alt="Duo_PiP_500px" data-src="/images/Duo_PiP_500px.gif"></p>
 <center> (Android O: Picture-in-picture)</center>
 
 <p>![instagram_dot_500px_bestcolors](/images/instagram_dot_500px_bestcolors .gif)</p>
@@ -1495,7 +1499,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1503,6 +1511,8 @@
   
 
 
+
+  
 
 
 
@@ -1520,10 +1530,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1574,6 +1593,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -580,22 +584,22 @@
 <h3 id="创建通知渠道"><a href="#创建通知渠道" class="headerlink" title="创建通知渠道"></a>创建通知渠道</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">NotificationCompat.Builder builder = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    NotificationChannel channel = <span class="keyword">new</span> NotificationChannel(<span class="string">"通知渠道ID"</span>,</span><br><span class="line">                    <span class="string">"通知渠道名称"</span>, NotificationManager.IMPORTANCE_DEFAULT);</span><br><span class="line">    channel.enableLights(<span class="keyword">true</span>); <span class="comment">//设置开启指示灯，如果设备有的话</span></span><br><span class="line">    channel.setLightColor(Color.RED); <span class="comment">//设置指示灯颜色</span></span><br><span class="line">    channel.setShowBadge(<span class="keyword">true</span>); <span class="comment">//设置是否显示角标</span></span><br><span class="line">    channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);<span class="comment">//设置是否应在锁定屏幕上显示此频道的通知</span></span><br><span class="line">    channel.setDescription(<span class="string">"通知渠道描述"</span>);<span class="comment">//设置渠道描述</span></span><br><span class="line">    channel.setVibrationPattern(<span class="keyword">new</span> <span class="keyword">long</span>[]&#123;<span class="number">100</span>,<span class="number">200</span>,<span class="number">300</span>,<span class="number">400</span>,<span class="number">500</span>,<span class="number">600</span>&#125;);<span class="comment">//设置震动频率</span></span><br><span class="line">    channel.setBypassDnd(<span class="keyword">true</span>);<span class="comment">//设置是否绕过免打扰模式</span></span><br><span class="line">    mNotificationManager.createNotificationChannel(channel);</span><br><span class="line">    createNotificationChannelGroups();</span><br><span class="line">    setNotificationChannelGroups(channel);</span><br><span class="line">    builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>, <span class="string">"通知渠道ID"</span>);</span><br><span class="line">    builder.setBadgeIconType(BADGE_ICON_SMALL);<span class="comment">//设置显示角标的样式</span></span><br><span class="line">    builder.setNumber(<span class="number">3</span>);<span class="comment">//设置显示角标的数量</span></span><br><span class="line">    builder.setTimeoutAfter(<span class="number">5000</span>);<span class="comment">//设置通知被创建多长时间之后自动取消通知栏的通知。</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//setContentTitle 通知栏通知的标题</span></span><br><span class="line">builder.setContentTitle(<span class="string">"内容标题"</span>);</span><br><span class="line"><span class="comment">//setContentText  通知栏通知的详细内容</span></span><br><span class="line">builder.setContentText(<span class="string">"内容文本信息"</span>);</span><br><span class="line"><span class="comment">//setAutoCancel 点击通知的清除按钮是否清除该消息（true/false）</span></span><br><span class="line">builder.setAutoCancel(<span class="keyword">true</span>);</span><br><span class="line"><span class="comment">//setLargeIcon  通知消息上的大图标</span></span><br><span class="line">builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));</span><br><span class="line"><span class="comment">//setSmallIcon  通知上面的小图标</span></span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher);<span class="comment">//小图标</span></span><br><span class="line"><span class="comment">//创建一个意图</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://www.baidu.com"</span>));</span><br><span class="line">PendingIntent pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//setContentIntent  将意图设置到通知上</span></span><br><span class="line">builder.setContentIntent(pIntent);</span><br><span class="line"><span class="comment">//通知默认的声音 震动 呼吸灯</span></span><br><span class="line">builder.setDefaults(NotificationCompat.DEFAULT_ALL);</span><br><span class="line"><span class="comment">//构建通知</span></span><br><span class="line">Notification notification = builder.build();</span><br><span class="line"><span class="comment">//将构建好的通知添加到通知管理器中，执行通知</span></span><br><span class="line">mNotificationManager.notify(<span class="number">0</span>, notification);</span><br></pre></td></tr></table></figure>
 
 <p>效果图:</p>
-<p><img src="/images/android-o-notification-channel-1.png" alt="android-o-notification-channel-1"></p>
+<p><img alt="android-o-notification-channel-1" data-src="/images/android-o-notification-channel-1.png"></p>
 <p>向右滑动通知消息，可以显示延迟本条消息显示和设置选项</p>
-<p><img src="/images/android-o-notification-channel-2.png" alt="android-o-notification-channel-2"></p>
+<p><img alt="android-o-notification-channel-2" data-src="/images/android-o-notification-channel-2.png"></p>
 <p>点击左边的延迟本条消息显示的时间</p>
-<p><img src="/images/android-o-notification-channel-3.png" alt="android-o-notification-channel-3"></p>
+<p><img alt="android-o-notification-channel-3" data-src="/images/android-o-notification-channel-3.png"></p>
 <p>点击右边的设置选项，可以显示进入操作通知的设置入口</p>
-<p><img src="/images/android-o-notification-channel-4.png" alt="android-o-notification-channel-4"></p>
+<p><img alt="android-o-notification-channel-4" data-src="/images/android-o-notification-channel-4.png"></p>
 <p>在桌面上的快捷方式上会显示角标</p>
-<p><img src="/images/android-o-notification-channel-6.png" alt="android-o-notification-channel-6"></p>
+<p><img alt="android-o-notification-channel-6" data-src="/images/android-o-notification-channel-6.png"></p>
 <p>长按快捷方式，会在快捷方式旁边弹出通知栏窗口，显示通知栏消息等信息。</p>
-<p><img src="/images/android-o-notification-channel-7.png" alt="android-o-notification-channel-7"></p>
+<p><img alt="android-o-notification-channel-7" data-src="/images/android-o-notification-channel-7.png"></p>
 <h3 id="移除通知渠道"><a href="#移除通知渠道" class="headerlink" title="移除通知渠道"></a>移除通知渠道</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    mNotificationManager.deleteNotificationChannel(<span class="string">"通知渠道ID"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="跳转到通知渠道设置"><a href="#跳转到通知渠道设置" class="headerlink" title="跳转到通知渠道设置"></a>跳转到通知渠道设置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);</span><br><span class="line">    intent.putExtra(Settings.EXTRA_CHANNEL_ID, <span class="string">"通知渠道ID"</span>);</span><br><span class="line">    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());</span><br><span class="line">    startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/android-o-notification-channel-5.png" alt="android-o-notification-channel-5"></p>
+<p><img alt="android-o-notification-channel-5" data-src="/images/android-o-notification-channel-5.png"></p>
 <h3 id="创建通知渠道组"><a href="#创建通知渠道组" class="headerlink" title="创建通知渠道组"></a>创建通知渠道组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    mNotificationManager.createNotificationChannelGroup(<span class="keyword">new</span> NotificationChannelGroup(<span class="string">"通知渠道组ID"</span>, <span class="string">"通知渠道组名称"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="绑定通知渠道组"><a href="#绑定通知渠道组" class="headerlink" title="绑定通知渠道组"></a>绑定通知渠道组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    channel.setGroup(<span class="string">"通知渠道组ID"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1479,7 +1483,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1487,6 +1495,8 @@
   
 
 
+
+  
 
 
 
@@ -1504,10 +1514,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1558,6 +1577,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

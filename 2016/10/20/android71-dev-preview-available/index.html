@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -568,7 +572,7 @@
 </ul>
 </blockquote>
 <p>最初的预览版之后，我们计划在11月会传送一个升级，紧接着是最终版公开发布到Android开源项目(AOSP)在12月，最初可以在Nexus 5x,Nexus 6P 和 Pixel C设备上使用，我们将在11月去扩展开发者预览版到其他设备。</p>
-<p><img src="/images/image00.png" alt="image00.png"></p>
+<p><img alt="image00.png" data-src="/images/image00.png"></p>
 <h2 id="为你的应用获取Android-7-1做准备"><a href="#为你的应用获取Android-7-1做准备" class="headerlink" title="为你的应用获取Android 7.1做准备"></a>为你的应用获取Android 7.1做准备</h2><p>开始，升级到Android Studio 2.2.2并下载API Level 25 platform,emulator system images 和 tools.<br>在Android Studio中通过SDK Manager可以下载最终版本的API Level 25 SDK 可用。</p>
 <p>一旦你安装了API Level 25 SDK,你就能够升级的的项目的compileSdkVersion到25去构建和针对这个新版APIs测试.如果你在进行兼容性测试，我们建议你升级你的应用的targetSdkVersion到25去测试你的应用测试禁用的兼容性行为。对于如何去建立你的应用使用API 25 SDK ,看<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9zZXR1cC1zZGsuaHRtbA==" title="https://developer.android.com/preview/setup-sdk.html">建立预览<i class="fa fa-external-link"></i></span></p>
 <p>如果你添加了应用快捷键或者圆形桌面icon到你的应用，你可以使用Android Studio的 built-in Image Asset Studio 去快速帮你创建不同大小的icons,见<span class="exturl" data-url="aHR0cHM6Ly9tYXRlcmlhbC5nb29nbGUuY29tL3N0eWxlL2ljb25zLmh0bWwjaWNvbnMtcHJvZHVjdC1pY29ucw==" title="https://material.google.com/style/icons.html#icons-product-icons">Material Design向导<i class="fa fa-external-link"></i></span></p>
@@ -576,8 +580,8 @@
 <p>对于帮助你添加图像键盘的支持，你能够使用Messager和Google 键盘应用被包括在预览版的系统镜像中去测试，作为它们包括这个新的API的支持。</p>
 <p>伴随着API Level 25的SDK，我们也要升级<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdG9waWMvbGlicmFyaWVzL3N1cHBvcnQtbGlicmFyeS9yZXZpc2lvbnMuaHRtbA==" title="https://developer.android.com/topic/libraries/support-library/revisions.html">Android Support Library<i class="fa fa-external-link"></i></span>到25.0.0，，这个新的版本让你添加图像键盘的支持向后兼容到API Level 13。它也介绍了BottomNavigationView 小部件，从材料设计想到去实现<span class="exturl" data-url="aHR0cHM6Ly9tYXRlcmlhbC5nb29nbGUuY29tL2NvbXBvbmVudHMvYm90dG9tLW5hdmlnYXRpb24uaHRtbA==" title="https://material.google.com/components/bottom-navigation.html">bottom navigation pattern<i class="fa fa-external-link"></i></span>.</p>
 <p>在API Level 25上面的详细检出<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc2RrL2FwaV9kaWZmLzI1L2NoYW5nZXMuaHRtbA==" title="https://developer.android.com/sdk/api_diff/25/changes.html">API diffs<i class="fa fa-external-link"></i></span>和已更新的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL3BhY2thZ2VzLmh0bWw=" title="https://developer.android.com/reference/packages.html">API refenrence<i class="fa fa-external-link"></i></span>在<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9pbmRleC5odG1s" title="https://developer.android.com/preview/index.html">developer preview site<i class="fa fa-external-link"></i></span></p>
-<p><img src="/images/image_asset_wizard_circle_icon_no_shadow_cropped.png" alt="image_asset_wizard_circle_icon_no_shadow_cropped.png"></p>
-<p><img src="/images/Google_Pixel_Emulator_no_shadow.png" alt="Google_Pixel_Emulator_no_shadow.png"></p>
+<p><img alt="image_asset_wizard_circle_icon_no_shadow_cropped.png" data-src="/images/image_asset_wizard_circle_icon_no_shadow_cropped.png"></p>
+<p><img alt="Google_Pixel_Emulator_no_shadow.png" data-src="/images/Google_Pixel_Emulator_no_shadow.png"></p>
 <h2 id="在Google-Play上发布你的应用到alpha-beta或者production通道"><a href="#在Google-Play上发布你的应用到alpha-beta或者production通道" class="headerlink" title="在Google Play上发布你的应用到alpha,beta或者production通道"></a>在Google Play上发布你的应用到alpha,beta或者production通道</h2><p>既然Android 7.1是最终版，你能够发布更新兼容，目标可选，API 25到Google Play.你现在能够发布应用升级，使用API 25到在Google Play Developer Console上你的alpha,<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vZGlzdHJpYnV0ZS9lbmdhZ2UvYmV0YS5odG1s" title="https://developer.android.com/distribute/engage/beta.html">beta<i class="fa fa-external-link"></i></span>,或者甚至是production通道。通过这种方式，推送你的应用升级给那些运行在Android 7.1设备上的用户，比如Pixel和Android Beta设备。</p>
 <h2 id="在你合格的设备上如何获取Android-7-1开发者预览版"><a href="#在你合格的设备上如何获取Android-7-1开发者预览版" class="headerlink" title="在你合格的设备上如何获取Android 7.1开发者预览版"></a>在你合格的设备上如何获取Android 7.1开发者预览版</h2><p>如果你已经在<span class="exturl" data-url="aHR0cHM6Ly93d3cuYW5kcm9pZC5jb20vYmV0YQ==" title="https://www.android.com/beta">Android Beta program<i class="fa fa-external-link"></i></span>注册了,你的合格的设备将会马上收到Android 7.1开发者预览版升级，在你那边不需要做任何操作。如果你还没有在Android Beta上注册，最简单的开始方式是访问<span class="exturl" data-url="aHR0cHM6Ly93d3cuYW5kcm9pZC5jb20vYmV0YQ==" title="https://www.android.com/beta">android.com/beta<i class="fa fa-external-link"></i></span>,并选择你合格的Android 电话或者平板——你将不久会通过云端收到这个(或者晚点)预览版升级。如果你已经注册的设备并且不想接收到这个升级，仅仅是访问Android Beta和取消注册这个设备。你也能够下载并<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9kb3dubG9hZC5odG1s" title="https://developer.android.com/preview/download.html">手动的刷入这个升级<i class="fa fa-external-link"></i></span></p>
 <p>我们欢迎你反馈在<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLmdvb2dsZS5jb20vcC9hbmRyb2lkL2lzc3Vlcy9saXN0P2Nhbj0xJnE9bGFiZWwlM0FEZXZQcmV2aWV3LU4tNy4x" title="https://code.google.com/p/android/issues/list?can=1&q=label%3ADevPreview-N-7.1">开发者问题跟踪<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vY29tbXVuaXRpZXMvMTA1MTUzMTM0MzcyMDYyOTg1OTY4L3N0cmVhbS83NTViYjkxZC1jMTAxLTRlMzItOTI3Ny0xZTU2MGM0ZTI2ZDI=" title="https://plus.google.com/communities/105153134372062985968/stream/755bb91d-c101-4e32-9277-1e560c4e26d2">N 开发者预览版社区<i class="fa fa-external-link"></i></span>、或者是<span class="exturl" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vY29tbXVuaXRpZXMvMTA2NzY1ODAwODAyNzY4MzM1MDc5" title="https://plus.google.com/communities/106765800802768335079">Android Beta 社区<i class="fa fa-external-link"></i></span>作为我们工作，朝向在11月的消费者发布。</p>
@@ -1456,7 +1460,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1464,6 +1472,8 @@
   
 
 
+
+  
 
 
 
@@ -1481,10 +1491,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1535,6 +1554,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

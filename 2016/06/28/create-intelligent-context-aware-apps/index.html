@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -561,9 +565,9 @@
 </blockquote>
 <p>在全新的方式里,作为一个单一的，简面化，意识API结合优化处理上下文信标。以前是不可能的，提供更准确和深刻的上下文线索，同时还管理着系统资源，以节省电池和减少带宽。</p>
 <p>我们将会于我们的一些合作伙伴密切合作，我们已经发现了惊人的方式集成到他们的应用程序中去感知上下文：</p>
-<p><img src="/images/AAAAA_trulia.png" alt="AAAAA_trulia.png"></p>
+<p><img alt="AAAAA_trulia.png" data-src="/images/AAAAA_trulia.png"></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWNvbS50cnVsaWEuYW5kcm9pZCZobD1lbg==" title="https://play.google.com/store/apps/details?id=com.trulia.android&hl=en">Trulia<i class="fa fa-external-link"></i></span>,一个网上住宅房地产网站，利用我们<strong>围栏API</strong>去建议打开房间。当天气是非常棒的时候，用户能够在它们的房子周围散步，它们会觉得很有意思。Trulia发送一个通知栏消息去提醒它们停止。这种量身定制的通知能够帮助用户在完美的时间打开房间经营。</p>
-<p><img src="/images/AAAA_SUPERPLAYER.png" alt="AAAA_SUPERPLAYER.png"></p>
+<p><img alt="AAAA_SUPERPLAYER.png" data-src="/images/AAAA_SUPERPLAYER.png"></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWZtLnN1cGVycGxheWVyLmp1a2Vib3QmaGw9ZW4=" title="https://play.google.com/store/apps/details?id=fm.superplayer.jukebot&hl=en">SuperPlayer Music<i class="fa fa-external-link"></i></span>,在另一个方面，用户利用我们的<strong>快照API</strong>和<strong>围栏API</strong>去建议完美的音乐和你当前的心情匹配，无论你是刚刚完成了一项跑步并开始舒展、是坐长途车起来、还是刚刚离开健身房，它们的助理能够理解你的上下文并建议正确的播放列表给你。</p>
 <p>我们最初设置的信标，我们的合作者真棒，我们才刚刚开始使用意识API，加入我们的旅程去构建量身定制的体验到你的应用中，通过使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jb20vYXdhcmVuZXNzLw==" title="https://developers.google.com/awareness/">Google Awareness API developer documentation<i class="fa fa-external-link"></i></span>(Google意识API开发者文档)获得开始，同时可以通过观看我们的Google I/O专题学习更多.</p>
 <blockquote>
@@ -1421,7 +1425,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1429,6 +1437,8 @@
   
 
 
+
+  
 
 
 
@@ -1446,10 +1456,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1500,6 +1519,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

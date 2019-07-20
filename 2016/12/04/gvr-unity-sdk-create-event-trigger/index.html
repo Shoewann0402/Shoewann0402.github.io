@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -548,21 +552,21 @@
    <a id="more"></a>
 <p>   其实在第一节，细心点会发现，运行效果的时候可以看到屏幕中心有个瞄准的白点，那就是用来瞄准焦点的。那是我们在那个时候拖动<strong>GvrReticle</strong>到<strong>Main Camera</strong>下面，早已经完成了本节创建视觉焦点的第一步。</p>
 <p>   然后我们选中<strong>Main Camera</strong>，在右侧<strong>Inspetor</strong>属性栏的底部，点击<strong>Add Component</strong>，在搜索栏里输入<strong>Physics Raycaster</strong>,然后选中添加</p>
-<p><img src="/images/gvr3-1.png" alt="gvr3-1.png"></p>
+<p><img alt="gvr3-1.png" data-src="/images/gvr3-1.png"></p>
 <p>   添加过后是这样的，<strong>Physics Raycaster</strong>组件被添加到了<strong>Inspetor</strong>属性栏的底部</p>
-<p><img src="/images/gvr3-2.png" alt="gvr3-2.png"></p>
+<p><img alt="gvr3-2.png" data-src="/images/gvr3-2.png"></p>
 <p>   接下来我们首先在场景中添加<strong>Event System</strong>系统事件，在Unity工作空间上半部分左侧的<strong>Hierarchy</strong>空白的地方，单击右键==&gt; <strong>UI</strong>==&gt;<strong>Event System</strong>(或者选择<strong>菜单栏</strong>==&gt;<strong>Game Object</strong>==&gt;<strong>UI</strong>==&gt;<strong>Event System</strong>),在<strong>Event System</strong>右侧<strong>Inspetor</strong>属性栏的底部，点击<strong>Add Component</strong>，在搜索栏里输入<strong>GazeInputModule（凝视输入）</strong>,然后选中添加</p>
-<p><img src="/images/gvr3-3.png" alt="gvr3-3.png"></p>
+<p><img alt="gvr3-3.png" data-src="/images/gvr3-3.png"></p>
 <p>添加过后是这样的，<strong>GazeInputModule</strong>组件被添加到了<strong>Inspetor</strong>属性栏的底部，然后点击<strong>GazeInputModule</strong>后面的小齿轮，选择<strong>Move Up</strong>将<strong>GazeInputModule</strong>移到<strong>Standalone Input Module</strong>上面</p>
-<p><img src="/images/gvr3-4.png" alt="gvr3-4.png"></p>
+<p><img alt="gvr3-4.png" data-src="/images/gvr3-4.png"></p>
 <p>选中<strong>Cube</strong>,为它添加视觉焦点，同样在<strong>Cube</strong>右侧<strong>Inspetor</strong>属性栏的底部，点击<strong>Add Component</strong>，在搜索栏里输入<strong>Event Trigger</strong>,然后选中添加</p>
-<p><img src="/images/gvr3-5.png" alt="gvr3-5.png"></p>
+<p><img alt="gvr3-5.png" data-src="/images/gvr3-5.png"></p>
 <p>之前的准星默认是白色的一个点，下面来自定义一下准星的颜色。选择<strong>Main Camera</strong>下面的<strong>GvrReticle</strong>，在<strong>GvrReticle</strong>右侧<strong>Inspetor</strong>属性栏的底部<strong>GvrReticleMaterial</strong>下面可以看到默认的颜色是白色，点击后面的拾色器，自定义颜色</p>
-<p><img src="/images/gvr3-6.png" alt="gvr3-6.png"></p>
+<p><img alt="gvr3-6.png" data-src="/images/gvr3-6.png"></p>
 <p>此文中以红色为例</p>
-<p><img src="/images/gvr3-7.png" alt="gvr3-7.png"></p>
+<p><img alt="gvr3-7.png" data-src="/images/gvr3-7.png"></p>
 <p>再次点击<strong>播放</strong>按钮，查看效果，按住<strong>Alt</strong>，滚动鼠标，当准星在<strong>Cube</strong>对象上，准星由圆点变成了圆环，表示了选中了该对象；当准星不在<strong>Cube</strong>对象上，准星由圆环变成了圆点，表示了取消选中了该对象。</p>
-<p><img src="/images/gvr3-8.png" alt="gvr3-8.png"></p>
+<p><img alt="gvr3-8.png" data-src="/images/gvr3-8.png"></p>
 <blockquote>
 <p>本节gvr-unity-sdk创建视觉焦点相关内容到此结束，下一节继续《Gvr Unity SDK (四) —— 焦点事件触发》</p>
 </blockquote>
@@ -1416,7 +1420,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1424,6 +1432,8 @@
   
 
 
+
+  
 
 
 
@@ -1441,10 +1451,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1495,6 +1514,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

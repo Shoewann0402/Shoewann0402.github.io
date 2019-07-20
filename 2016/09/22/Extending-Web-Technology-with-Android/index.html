@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -103,7 +107,7 @@
 </script>
 
   <meta name="description" content="原文来自: Android Developers Blog —— Extending Web Technology with Android  纸飞机开始被作为一个简单的想法 —— “如果你能够扔一个纸飞机从一个屏幕到其他屏幕？” 我们概念的核心是将来自全世界的人团结在一起，使用强有力的web —— 一种即时连接到其他的。现代化web技术，特别是JavaScript和OpenGL,在每一个屏幕上">
-<meta name="keywords" content="Web,Android">
+<meta name="keywords" content="Android,Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="扩展Web技术和Android">
 <meta property="og:url" content="https://shoewann0402.github.io/2016/09/22/Extending-Web-Technology-with-Android/index.html">
@@ -553,16 +557,16 @@
 
 <p><span class="exturl" data-url="aHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPW5ldC5hY3RpdmV0aGVvcnkucGFwZXJwbGFuZXM=" title="https://play.google.com/store/apps/details?id=net.activetheory.paperplanes">纸飞机<i class="fa fa-external-link"></i></span>最初的特色是在2016 Google I/O大会上，在Keynote上连接了参会者和户外的观众长达30分钟。在2016年国际和平日公开启动，我们创建了一个<span class="exturl" data-url="aHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPW5ldC5hY3RpdmV0aGVvcnkucGFwZXJwbGFuZXM=" title="https://play.google.com/store/apps/details?id=net.activetheory.paperplanes">Android Experiment<i class="fa fa-external-link"></i></span>,在Google Play上也是一大特色，充实了现有的web技术和原生的Android Nougat功能，比如当一个飞机在世界的其他地方被抓获，丰富了通知。</p>
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>当用户添加一个邮编来预先填充它们的位置，创建并且折叠他们自己的飞机。一个简单的扔的手势启动飞机进入虚拟世界，用户访问桌面版网站将会看到它们的飞机进入屏幕飞行。</p>
-<p><img src="/images/throw_plan-phone2desktop.gif" alt="throw_plan-phone2desktop.gif"></p>
+<p><img alt="throw_plan-phone2desktop.gif" data-src="/images/throw_plan-phone2desktop.gif"></p>
 <p>之后，用户能够检回，并看到他们自己的飞机已经抓住围绕着世界，在飞机上的每一个邮票读起来像一个密码，一个3D地球高亮飞行线路和已经旅行过的距离。</p>
 <p>除了标记他们自己的飞机，用户能够手势操作他们的手机，像一个网去抓住一个从其他地方已经抛出的飞机，捏来并拧开它，表明这个地方它已经访问过了。然后他们能够添加他们自己的邮票，然后将它放回群中。</p>
 <h2 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h2><p>在Google I/0的台上，我们开发的纸飞机运行时范围从50英尺的屏幕跨设备运行，桌面和移动端使用了Web的最新技术。</p>
 <h3 id="webGL"><a href="#webGL" class="headerlink" title="webGL"></a>webGL</h3><p>从程式化的低多边形地球到植绒面,WebGL是采用了渲染3D元素，使之体验更有动力。我们写了自定义GLSL着色器来照亮地球，变形目标作为用户捏来打开或关闭纸时的动画。</p>
-<p><img src="/images/earth_wireframe.gif" alt="earth_wireframe.gif"></p>
+<p><img alt="earth_wireframe.gif" data-src="/images/earth_wireframe.gif"></p>
 <h3 id="Web套接字"><a href="#Web套接字" class="headerlink" title="Web套接字"></a>Web套接字</h3><p>当用户“扔”一个飞机，一段信息是发送websockets到后端服务器，它被传递到所有的桌面电脑可视化的飞机起飞。</p>
-<p><img src="/images/throw_plane-phone.gif" alt="throw_plane-phone.gif"></p>
+<p><img alt="throw_plane-phone.gif" data-src="/images/throw_plane-phone.gif"></p>
 <h3 id="Web工作者"><a href="#Web工作者" class="headerlink" title="Web工作者"></a>Web工作者</h3><p>飞机群模拟跨越，使用WebWorkers多线程计算每一架飞机的位置，并传达消息返回给主线程使用WebGL呈现出来</p>
-<p><img src="/images/earth_flocking.gif" alt="earth_flocking.gif"></p>
+<p><img alt="earth_flocking.gif" data-src="/images/earth_flocking.gif"></p>
 <p>要创建的伟大工程，跨平台的体验，我们扩展了Web和原生Android代码，这个能够是我们利用Android中内置Chromium，去使应用程序的视图层与已经存在的网页代码进行深度整合，加入深度整合的操作系统，比如有丰富的通知和后台服务。</p>
 <p>如果你对学习更多有关如何桥接WebView和Java代码有兴趣，<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FjdGl2ZXRoZW9yeS9QYXBlci1QbGFuZXMtQW5kcm9pZC1FeHBlcmltZW50" title="https://github.com/activetheory/Paper-Planes-Android-Experiment">看看这个GitHub库里的教程<i class="fa fa-external-link"></i></span></p>
 <h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><p>Firebase 云端消息（FCM）使用发送推送通知到Android应用上，当一个用户的飞机已经其他人被抓住并扔出去了，一个通知会显示多少个城市和它航行的里程就会发送到这个飞机的FCM创建者设备上。传出通知去管理以确保它们不会过于频繁的发送到设备上。</p>
@@ -660,9 +664,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/Web/" rel="tag"><i class="fa fa-tag"></i> Web</a>
-          
             <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+          
+            <a href="/tags/Web/" rel="tag"><i class="fa fa-tag"></i> Web</a>
           
         </div>
       
@@ -1447,7 +1451,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1455,6 +1463,8 @@
   
 
 
+
+  
 
 
 
@@ -1472,10 +1482,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1526,6 +1545,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

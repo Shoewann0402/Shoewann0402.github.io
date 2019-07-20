@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -572,14 +576,14 @@
 <li>渲染器引擎已经拆分到了一个分离的进程，主应用程序隔离了来源于渲染进程的错误或者奔溃。对于一个恶意网站使用渲染器去渲染主应用程序，使它变得更加困难。</li>
 </ul>
 </blockquote>
-<p><img src="/images/webview-security-imgage1.png" alt="webview-security-imgage1"></p>
+<p><img alt="webview-security-imgage1" data-src="/images/webview-security-imgage1.png"></p>
 <blockquote>
 <ul>
 <li>对于进一步包含它，渲染器进程是运行在一个隔离进程沙箱里面，将其限制为有限的资源。比如说，渲染器引擎不能够写入到磁盘或者在它自己的网络上会话。正如Chrome在Android上所使用的一样，它也将绑定到相同的seccomp过滤器(seccomp的blogpost即将推出).sesccomp过滤器可以减少系统调用渲染器进程可以访问的次数，也能够限制系统调用允许的参数。</li>
 </ul>
 </blockquote>
 <h1 id="结合安全浏览"><a href="#结合安全浏览" class="headerlink" title="结合安全浏览"></a>结合安全浏览</h1><p>WebView最新版本结合了Google的<span class="exturl" data-url="aHR0cHM6Ly9zYWZlYnJvd3NpbmcuZ29vZ2xlLmNvbS8=" title="https://safebrowsing.google.com/">安全浏览器<i class="fa fa-external-link"></i></span>保护去检测和警告用户关于有可能危险的站点……。当配置正确时，WebView针对安全浏览器恶意软件和网络钓鱼数据库检测网址，在用户访问一个危险的站点之前显示一个警告消息。在Chrome上，这个有用的信息每个月已经超过了2.5亿次被显示，现在它可以在Android上的WebView里使用了。</p>
-<p><img src="/images/webview-security-imgage2.png" alt="webview-security-imgage2"></p>
+<p><img alt="webview-security-imgage2" data-src="/images/webview-security-imgage2.png"></p>
 <h1 id="启用安全浏览"><a href="#启用安全浏览" class="headerlink" title="启用安全浏览"></a>启用安全浏览</h1><p>对于在你的应用程序里面所有的WebViews启用安全浏览，在manifest节点下添加：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">meta-data</span> <span class="attr">android:name</span>=<span class="string">"android.webkit.WebView.EnableSafeBrowsing"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">      . . .</span><br><span class="line">     <span class="tag">&lt;<span class="name">application</span>&gt;</span> . . . <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -1463,7 +1467,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1471,6 +1479,8 @@
   
 
 
+
+  
 
 
 
@@ -1488,10 +1498,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1542,6 +1561,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

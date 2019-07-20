@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -548,25 +552,25 @@
 <a id="more"></a>
 
 <p>   首先你需要一张全景的图片，可以到<span class="exturl" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vcy9waG90b3NwaGVyZS9jb2xsZWN0aW9u" title="https://plus.google.com/s/photosphere/collection">Google collections<i class="fa fa-external-link"></i></span>或者<span class="exturl" data-url="aHR0cHM6Ly9wbHVzLmdvb2dsZS5jb20vdS8wL2NvbW11bml0aWVzLzExNTk3MDExMDA4NTIwNTUxNjkxNC9zdHJlYW0vYWJiYzFlNzEtODIzOS00YWIwLTlkZTMtM2Y2NDI5ZTc2ODFm" title="https://plus.google.com/u/0/communities/115970110085205516914/stream/abbc1e71-8239-4ab0-9de3-3f6429e7681f">Google Photo Sphere<i class="fa fa-external-link"></i></span>社区下载，本例提供一张示例全景图片(<strong>最好要Sphere的，能首尾连接在一起</strong>)</p>
-<p><img src="/images/gvr5-NewSkeyBox.jpg" alt="gvr5-NewSkeyBox.jpg"></p>
+<p><img alt="gvr5-NewSkeyBox.jpg" data-src="/images/gvr5-NewSkeyBox.jpg"></p>
 <p>在<strong>Project</strong>窗口里的<strong>Assets</strong>下的<strong>Sample</strong>里创建一个<strong>Resource</strong>文件夹，将上图添加到该目录</p>
-<p><img src="/images/gvr5-1.png" alt="gvr5-1.png"></p>
+<p><img alt="gvr5-1.png" data-src="/images/gvr5-1.png"></p>
 <p>选中图片，在右侧<strong>Inpector</strong>下面将<strong>Texture Type(纹理类型)</strong>改为<strong>Advanced(高级)</strong>，将<strong>Mapping</strong>改为<strong>Latitude-Longitude Layout</strong> ,点击底部的<strong>Apply</strong>应用</p>
-<p><img src="/images/gvr5-2.png" alt="gvr5-2.png"></p>
+<p><img alt="gvr5-2.png" data-src="/images/gvr5-2.png"></p>
 <p>稍等片刻，图片转换成功</p>
-<p><img src="/images/gvr5-3.png" alt="gvr5-3.png"></p>
+<p><img alt="gvr5-3.png" data-src="/images/gvr5-3.png"></p>
 <p>回到<strong>Sample</strong>下面的<strong>Material</strong>文件夹，新建一个<strong>Material</strong>,命名为<strong>newSkybox</strong></p>
-<p><img src="/images/gvr5-4.png" alt="gvr5-4.png"></p>
+<p><img alt="gvr5-4.png" data-src="/images/gvr5-4.png"></p>
 <p>选中<strong>newSkybox</strong>，右侧的<strong>Inpector</strong>下面，更改<strong>shader</strong>为<strong>Skybox/Cubemap</strong></p>
-<p><img src="/images/gvr5-5.png" alt="gvr5-5.png"></p>
+<p><img alt="gvr5-5.png" data-src="/images/gvr5-5.png"></p>
 <p>在<strong>Cubmap (HDR)</strong> 右边，点击选择刚刚创建好的<strong>newSkybox</strong></p>
-<p><img src="/images/gvr5-6.png" alt="gvr5-6.png"></p>
+<p><img alt="gvr5-6.png" data-src="/images/gvr5-6.png"></p>
 <p>点击菜单栏<strong>Window</strong> ==&gt; <strong>Lighting</strong>,切换到<strong>Scene</strong>选项卡下面，看到第一个选项<strong>Skybox</strong>,点击后面的小齿轮，找到创建好的<strong>newSkybox</strong>，点击选中</p>
-<p><img src="/images/gvr5-7.png" alt="gvr5-7.png"></p>
+<p><img alt="gvr5-7.png" data-src="/images/gvr5-7.png"></p>
 <p>这样自定义的全景<strong>Skybox</strong>就被加载到场景中了，可以找到刚刚的<strong>Material</strong>文件夹下面的<strong>newSkybox</strong>，通过滑动<strong>Rotation</strong>进度条的值，来设置合适的第一视觉方向</p>
-<p><img src="/images/gvr5-8.png" alt="gvr5-8.png"></p>
+<p><img alt="gvr5-8.png" data-src="/images/gvr5-8.png"></p>
 <p>最后选中<strong>Hierarchy</strong>下面的<strong>Plane</strong>，右键，<strong>Delete</strong>将它移除，点击播放按钮，按住<strong>Alt</strong>并滚动鼠标，进行环顾四周</p>
-<p><img src="/images/gvr5-9.png" alt="gvr5-9.png"></p>
+<p><img alt="gvr5-9.png" data-src="/images/gvr5-9.png"></p>
 <blockquote>
 <p>本节gvr-unity-sdk添加全景SkyBox相关内容到此结束，下一节继续《Gvr Unity SDK (六) —— Unity调用Android接口》</p>
 </blockquote>
@@ -1420,7 +1424,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1428,6 +1436,8 @@
   
 
 
+
+  
 
 
 
@@ -1445,10 +1455,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1499,6 +1518,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

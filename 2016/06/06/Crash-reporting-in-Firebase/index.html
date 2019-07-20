@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -103,7 +107,7 @@
 </script>
 
   <meta name="description" content="在2016年的Google IO大会上，Google 公布了若干有关Firebase有意思的新特性。全新的Firebase添加了全新的工具，将成为统一移动应用开发的平台，帮助开发者快速开发，提高应用的开发质量，吸引用户和从应用中盈利。你可以从Firebase新官网和YouTube视频查看更多。">
-<meta name="keywords" content="Android,Firebase,Google Cloud">
+<meta name="keywords" content="Firebase,Android,Google Cloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Firebase特性之崩溃报告">
 <meta property="og:url" content="https://shoewann0402.github.io/2016/06/06/Crash-reporting-in-Firebase/index.html">
@@ -588,16 +592,16 @@
 <blockquote>
 <p>点击<strong>Create New Project</strong>（如果你开始一个新的项目）或者<strong>import Google Project</strong>（如果你导入一个已经存在的项目），我这里创建一个新的项目。</p>
 </blockquote>
-<p><img src="/images/firebase_create_step_one.png" alt="firebase_create_step_one"></p>
+<p><img alt="firebase_create_step_one" data-src="/images/firebase_create_step_one.png"></p>
 <p><strong>Firebase</strong>支持多平台，<strong>Android</strong>、<strong>IOS</strong>、<strong>Web</strong>.我们这里是以<strong>Android</strong>为例</p>
-<p><img src="/images/firebase_create_step_two.png" alt="firebase_create_step_two"></p>
-<p><img src="/images/firebase_create_step_three.png" alt="firebase_create_step_three"></p>
+<p><img alt="firebase_create_step_two" data-src="/images/firebase_create_step_two.png"></p>
+<p><img alt="firebase_create_step_three" data-src="/images/firebase_create_step_three.png"></p>
 <blockquote>
 <p>现在，在你的APP应用里面，点击<strong>Add Firebase to your Android app</strong></p>
 </blockquote>
-<p><img src="/images/firebase_create_step_four.png" alt="firebase_create_step_four"></p>
+<p><img alt="firebase_create_step_four" data-src="/images/firebase_create_step_four.png"></p>
 <p>将会弹出一个对话框让你输入: <strong>包名和SHAI</strong></p>
-<p><img src="/images/firebase_create_step_five.png" alt="firebase_create_step_five"></p>
+<p><img alt="firebase_create_step_five" data-src="/images/firebase_create_step_five.png"></p>
 <p><strong>SHAI</strong>的获取办法：</p>
 <blockquote>
 <p>keytool -exportcert -list -v <br>-alias androiddebugkey -keystore %USERPROFILE%.android\debug.keystore   (Windows)</p>
@@ -606,11 +610,11 @@
 <p>keytool -exportcert -list -v <br>-alias androiddebugkey -keystore ~/.android/debug.keystore    （mac/linux）</p>
 </blockquote>
 <p>我的系统环境是<strong>linux</strong>，故使用后者命令，在终端执行并获得SHAI：</p>
-<p><img src="/images/firebase_create_step_six.png" alt="firebase_create_step_six"></p>
+<p><img alt="firebase_create_step_six" data-src="/images/firebase_create_step_six.png"></p>
 <p>将<strong>包名和SHAI</strong>填入输入框内,点击<strong>ADD APP</strong>，随后你将会下载一个<strong>google-services.json</strong>的配置文件，根据页面提示，放到项目里指定位置。</p>
-<p><img src="/images/firebase_create_step_seven.png" alt="firebase_create_step_seven"></p>
+<p><img alt="firebase_create_step_seven" data-src="/images/firebase_create_step_seven.png"></p>
 <p>将<strong>google-services.json</strong>文件放到<strong>project</strong>层级下的<strong>app</strong>目录下:</p>
-<p><img src="/images/firebase_create_step_eight.png" alt="firebase_create_step_eight"></p>
+<p><img alt="firebase_create_step_eight" data-src="/images/firebase_create_step_eight.png"></p>
 <h2 id="添加SDK到应用"><a href="#添加SDK到应用" class="headerlink" title="添加SDK到应用"></a>添加SDK到应用</h2><p>你的应用中要使用<strong>Firebase</strong>,你需要添加和设置SDK到你的应用中去，首先，添加以下行到你的项目根下的<strong>builde.gradle</strong>文件中去:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">  dependencies &#123;</span><br><span class="line">    <span class="comment">// Add this line</span></span><br><span class="line">    classpath <span class="string">'com.google.gms:google-services:3.0.0'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -637,16 +641,16 @@ apply plugin: <span class="string">'com.google.gms.google-services'</span>
 <h2 id="创建一个崩溃报告"><a href="#创建一个崩溃报告" class="headerlink" title="创建一个崩溃报告"></a>创建一个崩溃报告</h2><p>以上的操作已经完成了所有的配置，现在我们来创建一个崩溃报告。</p>
 <p>我在项目的MainActivity中这样定义，模拟测试一个<strong>java.lang.NullPointerException</strong>的崩溃异常的情况:</p>
 <p>定义一个TextView，但是不给它实例化对象,此时Textview对象为null，然后给它赋值一个字符串显示，给一个为空的对象赋值就会抛出<strong>java.lang.NullPointerException</strong>异常，以下是测试代码</p>
-<p><img src="/images/firebase_crash_test_local_code.png" alt="firebase_crash_test_local_code"></p>
+<p><img alt="firebase_crash_test_local_code" data-src="/images/firebase_crash_test_local_code.png"></p>
 <p>当程序运行后，log中抛出了异常，但是程序没有崩溃退出,以下是本地log:</p>
-<p><img src="/images/firebase_crash_test_local_log.png" alt="firebase_crash_test_local_log"></p>
+<p><img alt="firebase_crash_test_local_log" data-src="/images/firebase_crash_test_local_log.png"></p>
 <p>回到<strong>Firebase</strong>控制台查看，点击左侧的crash,大于20分钟左右，就能看到上传的<strong>java.lang.NullPointerException</strong>崩溃报告</p>
-<p><img src="/images/firebase_crash_reporting_one.png" alt="firebase_crash_reporting_one"></p>
-<p><img src="/images/firebase_crash_reporting_two.png" alt="firebase_crash_reporting_two"></p>
+<p><img alt="firebase_crash_reporting_one" data-src="/images/firebase_crash_reporting_one.png"></p>
+<p><img alt="firebase_crash_reporting_two" data-src="/images/firebase_crash_reporting_two.png"></p>
 <p>点击上图异常日志中的超链接，可以跳转到以下界面,在这里可以看到<strong>java.lang.NullPointerException</strong>相关的详细数据等</p>
-<p><img src="/images/firebase_crash_reporting_three.png" alt="firebase_crash_reporting_three"></p>
+<p><img alt="firebase_crash_reporting_three" data-src="/images/firebase_crash_reporting_three.png"></p>
 <p>这里可以看到测试的<strong>java.lang.NullPointerException</strong>具体行数在MainActivity.onCreate(MainActivity.java:18)</p>
-<p><img src="/images/firebase_crash_reporting_four.png" alt="firebase_crash_reporting_four"></p>
+<p><img alt="firebase_crash_reporting_four" data-src="/images/firebase_crash_reporting_four.png"></p>
 <blockquote>
 <p>以上简单的介绍了如何在App应用中使用<strong>Firebase</strong>崩溃日志报告的相关内容，有关<strong>Firebase</strong>的其他特性，后续总结。如果不足，欢迎指正，谢谢。</p>
 </blockquote>
@@ -737,9 +741,9 @@ apply plugin: <span class="string">'com.google.gms.google-services'</span>
         
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
-          
             <a href="/tags/Firebase/" rel="tag"><i class="fa fa-tag"></i> Firebase</a>
+          
+            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
           
             <a href="/tags/Google-Cloud/" rel="tag"><i class="fa fa-tag"></i> Google Cloud</a>
           
@@ -1526,7 +1530,11 @@ apply plugin: <span class="string">'com.google.gms.google-services'</span>
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1534,6 +1542,8 @@ apply plugin: <span class="string">'com.google.gms.google-services'</span>
   
 
 
+
+  
 
 
 
@@ -1551,10 +1561,19 @@ apply plugin: <span class="string">'com.google.gms.google-services'</span>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1605,6 +1624,11 @@ apply plugin: <span class="string">'com.google.gms.google-services'</span>
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

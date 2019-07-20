@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -560,8 +564,8 @@
 <h2 id="为您的应用准备7-1"><a href="#为您的应用准备7-1" class="headerlink" title="为您的应用准备7.1"></a>为您的应用准备7.1</h2><p>现在是时间去优化您的应用了，看起来最好的Android7.1.1。对于获得开始，升级到<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2luZGV4Lmh0bWw=" title="https://developer.android.com/studio/index.html">Android Studio<i class="fa fa-external-link"></i></span>2.2.2，然后通过Android Studio里面的SDK管理器下载API等级25平台，模拟器系统镜像，和工具。</p>
 <p>安装API 等级25 SDK 之后，您能够升级的您的项目的compileSdkVersion到25去编译构建和测试新的APIs,如果您在做兼容性测试，我们建议升级您的应用的targetSdkVersion到25，利用兼容性行为禁用去测试您的应用<br>。针对于如何去利用API等级25SDK去设置您的应用的详细过程，查看<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9zZXR1cC1zZGsuaHRtbA==" title="https://developer.android.com/preview/setup-sdk.html">预览版建立<i class="fa fa-external-link"></i></span></p>
 <p>如果您在添加应用快捷方式或者圆形桌面图标到您的应用，您能够使用Android Studio的built-in Image Assets Studio去快速帮助您创建不同大小的图标，参见<span class="exturl" data-url="aHR0cHM6Ly9tYXRlcmlhbC5nb29nbGUuY29tL3N0eWxlL2ljb25zLmh0bWwjaWNvbnMtcHJvZHVjdC1pY29ucw==" title="https://material.google.com/style/icons.html#icons-product-icons">Material Design设计向导<i class="fa fa-external-link"></i></span>。您能够在API等级为25的Google APIs模拟器上面去测试您的圆形图标，包括圆形图标和新的Google Pixel桌面的支持。</p>
-<p><img src="/images/android71-DP2-1.png" alt="android71-DP2-1.png"></p>
-<p><img src="/images/android71-DP2-2.png" alt="android71-DP2-2.png"></p>
+<p><img alt="android71-DP2-1.png" data-src="/images/android71-DP2-1.png"></p>
+<p><img alt="android71-DP2-2.png" data-src="/images/android71-DP2-2.png"></p>
 <p>如果您在添加图片键盘支持，您能够使用包括在预览版系统镜像中的Messenger和Google键盘应用去测试，因为它们包括对这个新API的支持。</p>
 <h2 id="使用Firebase-Test-Lab-for-Android扩展测试"><a href="#使用Firebase-Test-Lab-for-Android扩展测试" class="headerlink" title="使用Firebase Test Lab for Android扩展测试"></a>使用Firebase Test Lab for Android扩展测试</h2><p>为了帮助扩展测试，确保利用<span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5ibG9nc3BvdC5jb20vMjAxNi8xMS9hbmRyb2lkLWRldi1wcmV2aWV3LWluLWZpcmViYXNlLXRlc3QtbGFiLmh0bWw=" title="http://android-developers.blogspot.com/2016/11/android-dev-preview-in-firebase-test-lab.html">Firebase Test lab for Android<i class="fa fa-external-link"></i></span>在云端进行测试。在预览期间不对所有虚拟设备,包括开发者预览版2(API25)进行收费。您能够使用自动爬行(<span class="exturl" data-url="aHR0cHM6Ly9maXJlYmFzZS5nb29nbGUuY29tL2RvY3MvdGVzdC1sYWIvcm9iby11eC10ZXN0" title="https://firebase.google.com/docs/test-lab/robo-ux-test">Robo Test<i class="fa fa-external-link"></i></span>)去测试您的应用，不需要去写任何的测试脚本，或者您能够上传您自己仪器(例如:Espresso)测试，您能够在<span class="exturl" data-url="aHR0cHM6Ly9jb25zb2xlLmZpcmViYXNlLmdvb2dsZS5jb20vcHJvamVjdC9fL3Rlc3RsYWIvcnVu" title="https://console.firebase.google.com/project/_/testlab/run">这儿<i class="fa fa-external-link"></i></span>上传您的测试。</p>
 <h2 id="将您的应用程式发布到Google-Play的Alpha，Beta或制作频道"><a href="#将您的应用程式发布到Google-Play的Alpha，Beta或制作频道" class="headerlink" title="将您的应用程式发布到Google Play的Alpha，Beta或制作频道"></a>将您的应用程式发布到Google Play的Alpha，Beta或制作频道</h2><p>在您完成了最终版的测试，您能够发布您编译的更新和可选择定位，API25到Google Play。您能够在Google Play Consolez中发布到您的alpha,<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vZGlzdHJpYnV0ZS9lbmdhZ2UvYmV0YS5odG1s" title="https://developer.android.com/distribute/engage/beta.html">beta<i class="fa fa-external-link"></i></span>,或者甚至制作通道，推送您的应用更新升级到那些运行Android 7.1用户的设备上，比如Pixel和Android Beta设备。</p>
@@ -1444,7 +1448,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1452,6 +1460,8 @@
   
 
 
+
+  
 
 
 
@@ -1469,10 +1479,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1523,6 +1542,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

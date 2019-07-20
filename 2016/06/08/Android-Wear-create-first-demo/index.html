@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -553,44 +557,44 @@
 <p>操作系统：Ubuntu 16.04 LTS<br>开发环境：Android Studio 2.2 preview 2 (version:Linux)<br>手持设备：Google Nexus 5<br>手表设备：Moto 360 1 Gen<br>手持系统：Android 6.0.1(MOB30M)<br>手表系统：Android Wear 1.4.0.2580363 (Android 6.0.1)</p>
 </blockquote>
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>1、启动<strong>Android Studio</strong>，新建一个项目工程<strong>AndroidWearApp</strong></p>
-<p><img src="/images/wear_demo1_pic1.png" alt="wear_demo1_pic1"></p>
+<p><img alt="wear_demo1_pic1" data-src="/images/wear_demo1_pic1.png"></p>
 <p>2、复选框选中手机和手表两个选项:<br>选中<strong>Phone and Tablet</strong> 并且 <strong>Minimum SDK</strong> 选择 <strong>API15:Android 4.0.3(IceCreamSandwich)</strong><br>选中<strong>Wear</strong>并且<strong>Minimum SDK</strong> 选择 <strong>API20:Android 4.4(KitKat Wear)</strong></p>
-<p><img src="/images/wear_demo1_pic2.png" alt="wear_demo1_pic2"></p>
+<p><img alt="wear_demo1_pic2" data-src="/images/wear_demo1_pic2.png"></p>
 <p>3、<strong>Add an Activity to Mobile</strong>,我们选择添加默认的<strong>Empty Activity</strong>显示空Activity</p>
-<p><img src="/images/wear_demo1_pic3.png" alt="wear_demo1_pic3"></p>
+<p><img alt="wear_demo1_pic3" data-src="/images/wear_demo1_pic3.png"></p>
 <p>4、<strong>Add an Activity to Wear</strong> 我们选择添加<strong>Blank Wear Activity</strong>显示通知</p>
-<p><img src="/images/wear_demo1_pic4.png" alt="wear_demo1_pic4"></p>
+<p><img alt="wear_demo1_pic4" data-src="/images/wear_demo1_pic4.png"></p>
 <p>5、成功创建项目完成，打开Wear模块下的布局文件</p>
-<p><img src="/images/wear_demo1_pic5.png" alt="wear_demo1_pic5"></p>
+<p><img alt="wear_demo1_pic5" data-src="/images/wear_demo1_pic5.png"></p>
 <h2 id="开启设备调试"><a href="#开启设备调试" class="headerlink" title="开启设备调试"></a>开启设备调试</h2><h3 id="开启手机端USB调试开关"><a href="#开启手机端USB调试开关" class="headerlink" title="开启手机端USB调试开关"></a>开启手机端USB调试开关</h3><p>打开系统<strong>设置</strong>，查看是否有<strong>开发者选项</strong>，如果有直接进去打开<strong>开发者选项</strong>，开启<strong>USB调试</strong>开关；如果没有，在<strong>设置</strong>最下面的<strong>关于手机</strong>中，点击底部<strong>系统版本</strong>信息7次，会弹出打开成功的提示。按<strong>返回键</strong>回到上一级，可以看到<strong>开发者选项</strong>,打开<strong>开发者选项</strong>，开启<strong>USB调试</strong>开关。</p>
-<p><img src="/images/wear_demo1_pic6.png" alt="wear_demo1_pic6"></p>
+<p><img alt="wear_demo1_pic6" data-src="/images/wear_demo1_pic6.png"></p>
 <h3 id="开启手表端Bluetooth调试开关"><a href="#开启手表端Bluetooth调试开关" class="headerlink" title="开启手表端Bluetooth调试开关"></a>开启手表端Bluetooth调试开关</h3><p>按右侧的物理键点亮屏幕，屏幕<strong>向左滑动</strong>唤出菜单，<strong>上下滚动</strong>找到<strong>设置</strong>选项点击它，然后滚动到底部看是否有<strong>开发者选项</strong>,如果有，进去开启<strong>USB调试</strong>开关。；如果没有，点击设置底部的<strong>关于</strong>，然后点击<strong>系统版本</strong>信息7次，就会出现<strong>开发者选项</strong>。进入<strong>开发者选项</strong>,开启<strong>USB调试</strong>开关。</p>
-<p><img src="/images/wear_demo1_pic7.png" alt="wear_demo1_pic7"></p>
+<p><img alt="wear_demo1_pic7" data-src="/images/wear_demo1_pic7.png"></p>
 <h2 id="开启调试会话连接"><a href="#开启调试会话连接" class="headerlink" title="开启调试会话连接"></a>开启调试会话连接</h2><p>手机USB数据线连接到电脑，在手机端<strong>打开蓝牙</strong>，运行<strong>Android Wear应用</strong>（确保你的手机手表已经连接）。<br>点击Android Wear右上角的<strong>齿轮</strong>图标进入<strong>设置（Settings）</strong></p>
-<p><img src="/images/wear_demo1_pic8.png" alt="wear_demo1_pic8"></p>
+<p><img alt="wear_demo1_pic8" data-src="/images/wear_demo1_pic8.png"></p>
 <h2 id="开启通过蓝牙调试"><a href="#开启通过蓝牙调试" class="headerlink" title="开启通过蓝牙调试"></a>开启通过蓝牙调试</h2><p>打开<strong>设置（Settings）</strong>底部的<strong>通过蓝牙调试（Debugging over Bluetooth）</strong>切换按钮。你可以看到连接状态:</p>
 <blockquote>
 <p> Host: disconnected<br> Target: connected</p>
 </blockquote>
-<p><img src="/images/wear_demo1_pic9.png" alt="wear_demo1_pic9"></p>
+<p><img alt="wear_demo1_pic9" data-src="/images/wear_demo1_pic9.png"></p>
 <p>确保手机已经链接到电脑，并执行adb命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:4444 localabstract:/adb-hub; adb connect localhost:4444</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/wear_demo1_pic10.png" alt="wear_demo1_pic10"></p>
+<p><img alt="wear_demo1_pic10" data-src="/images/wear_demo1_pic10.png"></p>
 <p>你就可以看到刚才连接状态变成了</p>
 <blockquote>
 <p> Host: connected<br> Target: connected</p>
 </blockquote>
-<p><img src="/images/wear_demo1_pic11.png" alt="wear_demo1_pic11"></p>
+<p><img alt="wear_demo1_pic11" data-src="/images/wear_demo1_pic11.png"></p>
 <h2 id="调试应用"><a href="#调试应用" class="headerlink" title="调试应用"></a>调试应用</h2><p>我们回到Android Studio，我们可以看到 Android Monitor下面已经连接上了两个设备，一个是我的手持设备<strong>LGE Nexus 5 Android 6.0.1,API 23</strong>,另一个是我的手表设备<strong>Motorola Moto 360 Android 6.0.1,API 23</strong>,标志着我的手表手机和Android Studio三者之间都互通了。</p>
-<p><img src="/images/wear_demo1_pic12.png" alt="wear_demo1_pic12"></p>
+<p><img alt="wear_demo1_pic12" data-src="/images/wear_demo1_pic12.png"></p>
 <p>下面需要到wear模块下Java代码进行修改:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TextView mTextView;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        <span class="keyword">final</span> WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);</span><br><span class="line">        stub.setOnLayoutInflatedListener(<span class="keyword">new</span> WatchViewStub.OnLayoutInflatedListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLayoutInflated</span><span class="params">(WatchViewStub stub)</span> </span>&#123;</span><br><span class="line">                mTextView = (TextView) stub.findViewById(R.id.text);</span><br><span class="line">                mTextView.setText(<span class="string">"点我创建通知"</span>);</span><br><span class="line">                mTextView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">int</span> notificationId = <span class="number">001</span>;</span><br><span class="line">                        String eventTitle = <span class="string">"端午将至"</span>;</span><br><span class="line">                        String eventLocation = <span class="string">"祝大家端午节快乐！\n生活“粽”快乐！\n样样“粽”美好！"</span>;</span><br><span class="line"></span><br><span class="line">                        <span class="comment">// Build intent for notification content</span></span><br><span class="line">                        Intent viewIntent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, MainActivity.class);</span><br><span class="line">                        PendingIntent viewPendingIntent =</span><br><span class="line">                                PendingIntent.getActivity(MainActivity.<span class="keyword">this</span>, <span class="number">0</span>, viewIntent, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">                        NotificationCompat.Builder notificationBuilder =</span><br><span class="line">                                <span class="keyword">new</span> NotificationCompat.Builder(MainActivity.<span class="keyword">this</span>)</span><br><span class="line">                                        .setSmallIcon(R.mipmap.googledev)</span><br><span class="line">                                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.googledev))</span><br><span class="line">                                        .setContentTitle(eventTitle)</span><br><span class="line">                                        .setContentText(eventLocation)</span><br><span class="line">                                        .setContentIntent(viewPendingIntent);</span><br><span class="line"></span><br><span class="line">                        <span class="comment">// Get an instance of the NotificationManager service</span></span><br><span class="line">                        NotificationManagerCompat notificationManager =</span><br><span class="line">                                NotificationManagerCompat.from(MainActivity.<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">                        <span class="comment">// Build the notification and issues it with notification manager.</span></span><br><span class="line">                        notificationManager.notify(notificationId, notificationBuilder.build());</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>点击<strong>Android Monitor</strong>下的设备，选中手表<strong>Motorola Moto 360 Android 6.0.1,API 23</strong>，点击Android Studio上的运行，App即可会自动安装到手表上，稍微有点慢耐心等下就好。</p>
-<p><img src="/images/wear_demo1_pic13.png" alt="wear_demo1_pic13"></p>
+<p><img alt="wear_demo1_pic13" data-src="/images/wear_demo1_pic13.png"></p>
 <p>点击Activity上的TextView创建通知，回到主界面，往上滑动就能看到，刚刚创建的手表通知消息</p>
-<p><img src="/images/wear_demo1_pic14.png" alt="wear_demo1_pic14"></p>
+<p><img alt="wear_demo1_pic14" data-src="/images/wear_demo1_pic14.png"></p>
 <h2 id="卸载调试的应用"><a href="#卸载调试的应用" class="headerlink" title="卸载调试的应用"></a>卸载调试的应用</h2><p>执行命令 “adb -s localhost:4444 uninstall 包名” 即可，如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb -s localhost:4444 uninstall com.example.shoewann.androidwearapp</span><br></pre></td></tr></table></figure>
 
@@ -1470,7 +1474,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1478,6 +1486,8 @@
   
 
 
+
+  
 
 
 
@@ -1495,10 +1505,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1549,6 +1568,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

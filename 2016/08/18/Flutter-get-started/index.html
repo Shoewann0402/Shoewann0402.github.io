@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -558,13 +562,13 @@
 <h2 id="创建你的第一个Flutter应用"><a href="#创建你的第一个Flutter应用" class="headerlink" title="创建你的第一个Flutter应用"></a>创建你的第一个Flutter应用</h2><p>对于创建一个开始的项目，打开terminal终端，然后运行<code>flutter</code>命令<br>这儿是一个示例</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flutter create myapp</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/flutter_get_started_1.png" alt="flutter_get_started_1.png"></p>
+<p><img alt="flutter_get_started_1.png" data-src="/images/flutter_get_started_1.png"></p>
 <p>以上的命令创建一个Flutter项目目录，被叫做<code>myapp</code>，它包含了一个简单的示例，使用了<span class="exturl" data-url="aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS9kZXNpZ24vc3BlYy9tYXRlcmlhbC1kZXNpZ24vaW50cm9kdWN0aW9uLmh0bWw=" title="https://www.google.com/design/spec/material-design/introduction.html">Material Design<i class="fa fa-external-link"></i></span><br>在这个项目的目录中，对于你的app代码是在<code>myapp/lib/main.dart</code></p>
 <h2 id="运行你的Flutter应用"><a href="#运行你的Flutter应用" class="headerlink" title="运行你的Flutter应用"></a>运行你的Flutter应用</h2><p>使用<code>flutter run</code>命令运行你的Flutter应用到你已经连接成功的所有设备或者模拟器(<code>flutter devices</code>命令将会列出你已经连接成功的设备或者模拟器)</p>
 <p>对于从命令行运行你的应用：<br>1、打开一个teminal终端,并改变它的目录到你的app根目录下(对于你的项目，这个相同的目录下包含了一个<code>pubspec.yaml</code>文件)<br>2、运行如下命令:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ flutter run</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/flutter_get_started_2.png" alt="flutter_get_started_2.png"></p>
+<p><img alt="flutter_get_started_2.png" data-src="/images/flutter_get_started_2.png"></p>
 <p>另外，如果你是使用的<span class="exturl" data-url="aHR0cHM6Ly9hdG9tLmlvLw==" title="https://atom.io/">Atom editor<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9hdG9tLmlvL3BhY2thZ2VzL2ZsdXR0ZXI=" title="https://atom.io/packages/flutter">Flutter package<i class="fa fa-external-link"></i></span>,你能够通过选择在项目<code>lib/main.dart</code>中的文件，然后在主界面上点击运行app的快捷键开始你的Flutter应用。快捷键依赖于你使用的开发机器的操作系统:</p>
 <blockquote>
 <ul>
@@ -572,20 +576,20 @@
 <li><strong>Mac</strong> <code>Command+R</code></li>
 </ul>
 </blockquote>
-<p><img src="/images/flutter_get_started_3.png" alt="flutter_get_started_3.png"></p>
+<p><img alt="flutter_get_started_3.png" data-src="/images/flutter_get_started_3.png"></p>
 <p>如果程序能正常工作，你应该能看到你的应用已经在你的设备或者模拟器上面启动起来了</p>
 <blockquote>
 <ul>
 <li>iOS (iPhone 6s Plus)</li>
 </ul>
 </blockquote>
-<p><img src="/images/flutter-starter-app-ios.png" alt="flutter-starter-app-ios.png"></p>
+<p><img alt="flutter-starter-app-ios.png" data-src="/images/flutter-starter-app-ios.png"></p>
 <blockquote>
 <ul>
 <li>Android (Nexus 6)</li>
 </ul>
 </blockquote>
-<p><img src="/images/flutter-starter-app-android.png" alt="flutter-starter-app-android.png"></p>
+<p><img alt="flutter-starter-app-android.png" data-src="/images/flutter-starter-app-android.png"></p>
 <p>以上操作就完成了<code>Flutter</code>的入门操作</p>
 <blockquote>
 <p>以上部分具体内容来源<code>Flutter</code>官网，对其译文并扩展，如有不足，欢迎指正。</p>
@@ -1462,7 +1466,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1470,6 +1478,8 @@
   
 
 
+
+  
 
 
 
@@ -1487,10 +1497,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1541,6 +1560,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

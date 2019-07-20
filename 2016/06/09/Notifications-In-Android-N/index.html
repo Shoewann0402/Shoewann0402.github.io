@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -558,17 +562,17 @@
 <a id="more"></a>
 
 <h2 id="相同的通知，新的面貌"><a href="#相同的通知，新的面貌" class="headerlink" title="相同的通知，新的面貌"></a>相同的通知，新的面貌</h2><p>首先最明显的变化就是通知的默认外观已经显著变化，许多被周围的通知扩散区域已经折叠到了一个新的标题里面，和你的应用的应用图标以及名字固定通知。这个变化确保了标题、文本和大图标被给予最大量的空间的可能性，并且其结果就是，现在的通知通常稍大了，更容易阅读。</p>
-<p><img src="/images/notifications-in-android-n_pic1.png" alt="notifications-in-android-n_pic1"></p>
+<p><img alt="notifications-in-android-n_pic1" data-src="/images/notifications-in-android-n_pic1.png"></p>
 <p>鉴于单行标题，这是比以往的信息的有用性更重要，<strong>当你的目标是Android N 的时候，默认的情况下时间会被隐藏，不会显示出来</strong>—— 如果你有一个时间危机的通知，比如说是一个消息应用程序，你能够使用<strong>setShowWhen(true)</strong>重新开启它。此外，内容下面一小行的文字将会优先于你设置的任何内容信息:只有当你指定Android N 之前的早期版本才会同时出现。在所有的情况下，确保内容下面一小行的文字是符合标题且有用的——比如说，如果用户仅仅只有一个账户，不要添加一个账户邮箱地址作为你的内容下面一小行的文字。</p>
 <p>通知操作也得到了重新的设计，现在以下的通知条条目在视觉上是不同的。</p>
-<p><img src="/images/notifications-in-android-n_pic2.png" alt="notifications-in-android-n_pic2"></p>
+<p><img alt="notifications-in-android-n_pic2" data-src="/images/notifications-in-android-n_pic2.png"></p>
 <p>你会注意到，图标都没有出现在新的通知;而是提供了标签本身在通知栏有限的空间里更多的空间。然而，通知操作图标仍然需要请求并继续在Android旧版本设备上使用，比如说Android Wear.</p>
 <p>如果你将利用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvTm90aWZpY2F0aW9uQ29tcGF0LkJ1aWxkZXIuaHRtbA==" title="https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html">NotificationCompat.Builder<i class="fa fa-external-link"></i></span>构建一个你的通知，你可以在那儿使用标准样式风格，你将会得到全新面貌和感觉，默认的情况下，不需要进行更改代码的请求。</p>
 <h2 id="对于自定义视图提供更好的支持"><a href="#对于自定义视图提供更好的支持" class="headerlink" title="对于自定义视图提供更好的支持"></a>对于自定义视图提供更好的支持</h2><p>如果你不是从自定义<strong>RemoteViews</strong>来代替构建你的通知，适配任何全新风格就已经成为挑战了。从一个通知正文+标题，利用全新的标题、伸缩特性、动作、和大图标定位作为一个独立元素，我们将介绍一个全新的<strong>DecoratedCustomViewStyle</strong>和<strong>DecoratedMediaCustomViewStyle</strong>去提供所有的这些元素，允许你用新的<strong>setCustomContentView()</strong>方法只关注内容。</p>
-<p><img src="/images/notifications-in-android-n_pic3.png" alt="notifications-in-android-n_pic3"></p>
+<p><img alt="notifications-in-android-n_pic3" data-src="/images/notifications-in-android-n_pic3.png"></p>
 <p>这也确保了未来的外观和感觉应该被显著简单的适配，在应用那边不需要修改任何代码这些样式将平台一起进行更新。</p>
 <h2 id="直接回复"><a href="#直接回复" class="headerlink" title="直接回复"></a>直接回复</h2><p>当通知已经有了可以启动一个Activity或者在使用一个Sevice或者BroadcastReciver在后台工作的操作，<strong>直接回复（Direct Reply）</strong>允许你构建一个动作，利用通知操作直接接受通知单行文本输入。</p>
-<p><img src="/images/notifications-in-android-n_pic4.png" alt="notifications-in-android-n_pic4"></p>
+<p><img alt="notifications-in-android-n_pic4" data-src="/images/notifications-in-android-n_pic4.png"></p>
 <p>直接回复使用了相同的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvUmVtb3RlSW5wdXQuaHRtbA==" title="https://developer.android.com/reference/android/support/v4/app/RemoteInput.html">RemoteInput<i class="fa fa-external-link"></i></span>API——最初是在Android Wear里引人的——对于标记一个能够接受让用户直接输入。标记一个<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvTm90aWZpY2F0aW9uQ29tcGF0LkFjdGlvbi5odG1s" title="https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Action.html">动作(Action)<i class="fa fa-external-link"></i></span>作为能够直接接收来自用户的输入。</p>
 <p>该RemoteInput本身包含像将被用于以后检索的输入，和用户开始输入之前所显示的提示文本的关键信息。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Where should direct replies be put in the intent bundle (can be any string)</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String KEY_TEXT_REPLY = <span class="string">"key_text_reply"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create the RemoteInput specifying this key</span></span><br><span class="line">String replyLabel = getString(R.string.reply_label);</span><br><span class="line">RemoteInput remoteInput = <span class="keyword">new</span> RemoteInput.Builder(KEY_TEXT_REPLY)</span><br><span class="line">        .setLabel(replyLabel)</span><br><span class="line">        .build();</span><br></pre></td></tr></table></figure>
@@ -582,26 +586,26 @@
 
 <p>之后你将处理文本，<strong>你必须更新通知</strong>，这个是隐藏UI直接回复，应该作为一种技术来确认用户他们答复接收和正确处理的触发。</p>
 <p>对于多数模板，这都应该涉及使用追加答复到通知的底部新的<strong>setRemoteInputHistory()</strong>方法，直到主要内容被更新的其他答复被追加到历史(比如说其他人回复)</p>
-<p><img src="/images/notifications-in-android-n_pic5.png" alt="notifications-in-android-n_pic5"></p>
+<p><img alt="notifications-in-android-n_pic5" data-src="/images/notifications-in-android-n_pic5.png"></p>
 <p>然而，如果你将构建一个消息类型的应用程序，预计来回交流对话，你应该使用<strong>MessagingStyle</strong>并使附加消息追加到它上面。</p>
 <blockquote>
 <p>MessagingStyle</p>
 </blockquote>
 <p>我们已经对正在进行对话进行了优化，并使用了新的<strong>MessagingStyle</strong>进行直接回复的体验</p>
-<p><img src="/images/notifications-in-android-n_pic6.png" alt="notifications-in-android-n_pic6"></p>
+<p><img alt="notifications-in-android-n_pic6" data-src="/images/notifications-in-android-n_pic6.png"></p>
 <p>这个样式风格提供了内置的通过<strong>addMessage()</strong>返回添加多个消息格式的方法。每一个条消息支持传入文本本身，时间戳和消息的发送者（因此很容易支持群组对话）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">builder.setStyle(<span class="keyword">new</span> NotificationCompat.MessagingStyle(<span class="string">"Me"</span>)</span><br><span class="line">    .setConversationTitle(<span class="string">"Team lunch"</span>)</span><br><span class="line">    .addMessage(<span class="string">"Hi"</span>, timestampMillis1, <span class="keyword">null</span>) <span class="comment">// Pass in null for user.</span></span><br><span class="line">    .addMessage(<span class="string">"What's up?"</span>, timestampMillis2, <span class="string">"Coworker"</span>)</span><br><span class="line">    .addMessage(<span class="string">"Not much"</span>, timestampMillis3, <span class="keyword">null</span>)</span><br><span class="line">    .addMessage(<span class="string">"How about lunch?"</span>, timestampMillis4, <span class="string">"Coworker"</span>));</span><br></pre></td></tr></table></figure>
 
 <p>你将会注意到，这种风格对于具体的消息表示一流的支持从用户和他们填写的名字(使用”我”这种情况)，并设置一个可选的对话标题。当这个可以手动的使用一个<strong>BigTextStyle</strong>，通过Android Wear 2.0 使用这种风格的用户，将会获得直接内嵌的行来响应，抛弃了踢出来扩展通知来看，制造了一个无缝体验，而无须构建一个完整的可穿戴的应用程序。</p>
 <h2 id="捆绑通知"><a href="#捆绑通知" class="headerlink" title="捆绑通知"></a>捆绑通知</h2><p>一旦你使用了一个全新的视觉设计去构建一个伟大的通知，直接回复、信息风格、和<span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj0taW9nX2ZtbTZtRQ==" title="https://www.youtube.com/watch?v=-iog_fmm6mE">我们以前所有的最佳实践<i class="fa fa-external-link"></i></span>,考虑整体的通知体验是非常重要的,特别是如果你发布多个通知(说，每个正在进行会话或者每个新的电子邮件线程之间)</p>
-<p><img src="/images/notifications-in-android-n_pic7.png" alt="notifications-in-android-n_pic7"></p>
+<p><img alt="notifications-in-android-n_pic7" data-src="/images/notifications-in-android-n_pic7.png"></p>
 <p><strong>捆绑通知(Bundled notificaiton)</strong>提供了两全其美：当用户正在寻找其他通知一个单条的摘要通知或者希望在所有的通知上同时操作展开组操作个体通知（包括使用操作和直接回复）</p>
 <p>如果你将要构建<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdHJhaW5pbmcvd2VhcmFibGVzL25vdGlmaWNhdGlvbnMvc3RhY2tzLmh0bWw=" title="https://developer.android.com/training/wearables/notifications/stacks.html">Android Wear通知栈<i class="fa fa-external-link"></i></span>，和这里的API使用方法完全相同，只需要添加<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvTm90aWZpY2F0aW9uQ29tcGF0LkJ1aWxkZXIuaHRtbA==" title="https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html">setGroup()<i class="fa fa-external-link"></i></span>)到每一个通知就能将这些通知捆绑在一起了。你不局限于一组，所以捆绑通知恰如其分。对于电子邮件应用程序，你可以考虑每个帐户一个捆绑的实例。</p>
 <p>创建一个<strong>摘要通知(summary notification)</strong>也是重要的，这个摘要通知，通过<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvTm90aWZpY2F0aW9uQ29tcGF0LkJ1aWxkZXIuaHRtbA==" title="https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html"> setGroupSummary(true)<i class="fa fa-external-link"></i></span>，它仅仅是通知出现在Mashmallow及其低版本设备上，应该(你猜对了)总结所有个人通知。这是一个使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvTm90aWZpY2F0aW9uQ29tcGF0LkluYm94U3R5bGUuaHRtbA==" title="https://developer.android.com/reference/android/support/v4/app/NotificationCompat.InboxStyle.html">InboxStyle<i class="fa fa-external-link"></i></span>最合适的时候。虽然使用它不是一个要求。在Android N及其更高版本的设备上，一些信息(比如说subText，subtext, content intent, and delete intent)是从摘要的通知中提取生产倒塌通知捆绑的通知，所以你应该继续产生的所有API级别的摘要通知。</p>
 <p>为了提高在Android N个器件的整体用户体验，<strong>发布4个或者更多通知没有组的通知，这些通知将会被自动捆绑在一起</strong></p>
 <h2 id="N是为了通知"><a href="#N是为了通知" class="headerlink" title="N是为了通知"></a>N是为了通知</h2><p>通知在Android上已经渐进增强的稳定区了。从<strong>Gingerbread</strong>时代的一个敲击目标到可以展开的通知、操作动作、媒体风格，以及现在的特性，比如直接回复和捆绑通知,通知在Android上所有用户体验中扮演了一个重要的部分。</p>
 <p>利用现在许多新的工具去使用（<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvc3VwcG9ydC92NC9hcHAvTm90aWZpY2F0aW9uQ29tcGF0Lmh0bWw=" title="https://developer.android.com/reference/android/support/v4/app/NotificationCompat.html">NotificationCompat<i class="fa fa-external-link"></i></span>帮助向后兼容）,我很高兴地看到你如何来使用它们去#构建更好的应用程序</p>
-<p><img src="/images/1-S6K7IYkWhCzkS6YAgxLfXw.png" alt="1-S6K7IYkWhCzkS6YAgxLfXw"></p>
+<p><img alt="1-S6K7IYkWhCzkS6YAgxLfXw" data-src="/images/1-S6K7IYkWhCzkS6YAgxLfXw.png"></p>
 <blockquote>
 <p>以上是对Anroid 官网博客文章的翻译，如果不足，欢迎指正，谢谢。</p>
 </blockquote>
@@ -1481,7 +1485,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1489,6 +1497,8 @@
   
 
 
+
+  
 
 
 
@@ -1506,10 +1516,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1560,6 +1579,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

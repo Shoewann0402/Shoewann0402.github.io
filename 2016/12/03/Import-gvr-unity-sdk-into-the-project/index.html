@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -595,28 +599,28 @@
 <p>gvr-unity-sdk: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZXZyL2d2ci11bml0eS1zZGs=" title="https://github.com/googlevr/gvr-unity-sdk">下载<i class="fa fa-external-link"></i></span></p>
 <p>(在此就不细说具体安装过程了，如果安装过程遇到了问题可以在本文底部留言。作为Android开发者，Unity我也是才入门，如果你是小白，那我们一起学习。以下内容就是我这段时间学习<strong>gvr-unity</strong>的相关内容，仅供参考，可能有不足的地方，欢迎指正）</p>
 <h2 id="项目引入"><a href="#项目引入" class="headerlink" title="项目引入"></a>项目引入</h2><p>首先我们解压我们下载的<strong>gvr-unity-sdk</strong>，然后打开Unity工具，点击右上角的<strong>NEW</strong>创建一个新的项目，填入项目名和保存路径</p>
-<p><img src="/images/gvr1-1.png" alt="gvr1-1.png"></p>
+<p><img alt="gvr1-1.png" data-src="/images/gvr1-1.png"></p>
 <p>点击Create project后，该窗体关闭，稍等片刻将会打开主窗体,如果过程没有什么问题，将会是下面这样</p>
-<p><img src="/images/gvr1-2.png" alt="gvr1-2.png"></p>
+<p><img alt="gvr1-2.png" data-src="/images/gvr1-2.png"></p>
 <p>在上半部分的左侧是<strong>Hierarchy</strong>,默认包含了<strong>场景名称</strong>，及其下面的<strong>Main Camera(主相机)</strong>，<strong>Directional Light（方向灯）</strong></p>
 <p>然后，我们看到下半部分左侧的<strong>Project</strong>窗口，然后选中<strong>Assets</strong>，鼠标右键 ==&gt; <strong>Import Package</strong>==&gt;<strong>Custom Package</strong>，找到之前解压的<strong>gvr-unity-sdk</strong>，打开其中的<strong>GoogleVRForUnity.unitypackage</strong>文件</p>
 <p>然后弹出一个对话框，需要我们导入需要的文件，这里我只会用到<strong>Android</strong>平台，所以我取消选中<strong>Plugin</strong>下面的<strong>iOS</strong>、<strong>x86</strong>和<strong>x86_64</strong>，其他的都选中，然后点击<strong>Import</strong>导入</p>
-<p><img src="/images/gvr1-3.png" alt="gvr1-3.png"></p>
+<p><img alt="gvr1-3.png" data-src="/images/gvr1-3.png"></p>
 <p>然后又会弹出一个对话框，需要导入包，然后继续点击<strong>Import Package</strong></p>
-<p><img src="/images/gvr1-4.png" alt="gvr1-4.png"></p>
+<p><img alt="gvr1-4.png" data-src="/images/gvr1-4.png"></p>
 <p>再次点击下一个对话框的<strong>Import</strong></p>
-<p><img src="/images/gvr1-5.png" alt="gvr1-5.png"></p>
+<p><img alt="gvr1-5.png" data-src="/images/gvr1-5.png"></p>
 <p><strong>gvr-unity-sdk</strong>的项目导入到工作空间之后，将在<strong>Project</strong>窗口下，<strong>Asstes</strong>下的两个根文件:<strong>Google VR</strong> 和 <strong>Plugin</strong></p>
-<p><img src="/images/gvr1-6.png" alt="gvr1-6.png"></p>
+<p><img alt="gvr1-6.png" data-src="/images/gvr1-6.png"></p>
 <p>展开<strong>Google VR</strong>，找到<strong>Prefabs</strong>,将<strong>GvrViewerMain</strong>长按拖到<strong>Hierarchy</strong>下面</p>
-<p><img src="/images/gvr1-7.png" alt="gvr1-7.png"></p>
+<p><img alt="gvr1-7.png" data-src="/images/gvr1-7.png"></p>
 <p>然后再找到<strong>Prefabs</strong>下面的<strong>UI</strong>,将里面的<strong>GvrReticle</strong>长按，拖到拖到<strong>Hierarchy</strong>下面的<strong>Main Camera</strong>里</p>
-<p><img src="/images/gvr1-8.png" alt="gvr1-8.png"></p>
+<p><img alt="gvr1-8.png" data-src="/images/gvr1-8.png"></p>
 <p>看到工具顶部中间的三个按钮，一个是三角形的<em>播放</em>按钮，一个是双竖线的<em>暂停</em>按钮，还有一个是三角形和双竖线的<em>下一个</em>按钮，点击<strong>播放</strong>按钮，查看效果</p>
-<p><img src="/images/gvr1-9.png" alt="gvr1-9.png"></p>
+<p><img alt="gvr1-9.png" data-src="/images/gvr1-9.png"></p>
 <p>按住Alt并滑动鼠标可以环视周围的场景，再次点击点击<strong>播放</strong>，退出播放模式，取消查看</p>
 <p>如果你发现下面有报错的地方，不管它，因为当前没有绑定任何对象，所以会有错误的log输出，直接点击旁边的<strong>clear</strong>清除掉log</p>
-<p><img src="/images/gvr1-10.png" alt="gvr1-10.png"></p>
+<p><img alt="gvr1-10.png" data-src="/images/gvr1-10.png"></p>
 <p>至此，完成了<strong>gvr-unity-sdk</strong>的项目导入</p>
 <blockquote>
 <p>本节gvr-unity-sdk项目导入相关内容到此结束，下一节继续《Gvr Unity SDK (二) —— 创建GameObject》</p>
@@ -1497,7 +1501,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1505,6 +1513,8 @@
   
 
 
+
+  
 
 
 
@@ -1522,10 +1532,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1576,6 +1595,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

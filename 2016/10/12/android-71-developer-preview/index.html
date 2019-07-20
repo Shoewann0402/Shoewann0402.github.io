@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -582,9 +586,9 @@
 </ul>
 </blockquote>
 <p>对于运营商和呼叫应用，这个平台包括了新的APIs去支持<strong>多终端呼叫</strong>和新的<strong>电话配置选项</strong></p>
-<p><img src="/images/shortcuts-700.png" alt="shortcuts-700.png"></p>
+<p><img alt="shortcuts-700.png" data-src="/images/shortcuts-700.png"></p>
 <p>(App shortcuts)</p>
-<p><img src="/images/image-keyboard-7002.png" alt="image-keyboard-7002.png"></p>
+<p><img alt="image-keyboard-7002.png" data-src="/images/image-keyboard-7002.png"></p>
 <p>(Image keyboard support)</p>
 <h2 id="让您的应用做好准备"><a href="#让您的应用做好准备" class="headerlink" title="让您的应用做好准备"></a>让您的应用做好准备</h2><p>Android 7.1是增量升级，但是它是一如既往的重要，确保你的应用看上去和运行都很棒——尤其是当设备已经开始接触到消费者了。</p>
 <p>Android 7.1开发者预览版会给你，你需要利用它们的一切新的功能特性去测试你的应用程序或扩展，像快捷方式或者图像键盘。包括新APIs的SDK、编译工具、文档和示例，以及在已经支持的Nexus设备模拟器和设备系统镜像去运行你的应用。我们也将包括一个启动器和支持快捷方式的应用，一个键盘和支持图像键盘的应用。</p>
@@ -1467,7 +1471,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1475,6 +1483,8 @@
   
 
 
+
+  
 
 
 
@@ -1492,10 +1502,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1546,6 +1565,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

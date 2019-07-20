@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -110,26 +114,10 @@
 <meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
 <meta property="og:description" content="Notification 通知系统可让用户随时了解应用中的相关和即时事件，例如来自好友的新聊天信息或日历事件。可将通知视作新闻频道，在重要的事件发生时提醒用户注意，或者当作日志，在用户未注意时记录事件—可在用户的所有 Android 设备上按需同步。随着系统版本的更新，通知栏的风格种类得到扩展，从2.x、4.x、5.x、6.x，以至于最新版本的7.x(Android N)都有相当大的变化，那">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://shoewann0402.github.io/images/normal.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/downloadtype1.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/downloadfinish.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/downloadtype2.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/downloadfinish.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/bigtextStyle1.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/bigtextStyle2.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/inBoxStyle1.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/inBoxStyle2.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/bigPictureStyle1.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/bigPictureStyle2.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/hungUpStyle.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/mediaStyle1.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/mediaStyle2.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/remoteViewsStyle.png">
 <meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notification 通知样式总结">
 <meta name="twitter:description" content="Notification 通知系统可让用户随时了解应用中的相关和即时事件，例如来自好友的新聊天信息或日历事件。可将通知视作新闻频道，在重要的事件发生时提醒用户注意，或者当作日志，在用户未注意时记录事件—可在用户的所有 Android 设备上按需同步。随着系统版本的更新，通知栏的风格种类得到扩展，从2.x、4.x、5.x、6.x，以至于最新版本的7.x(Android N)都有相当大的变化，那">
-<meta name="twitter:image" content="https://shoewann0402.github.io/images/normal.png">
 
 
 
@@ -556,19 +544,19 @@
 
 <h2 id="NormalStyle"><a href="#NormalStyle" class="headerlink" title="NormalStyle"></a>NormalStyle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//为了版本兼容  选择V7包下的NotificationCompat进行构造</span><br><span class="line">NotificationCompat.Builder builder = new NotificationCompat.Builder(this);</span><br><span class="line">//setTicker 在5.0以上不显示Ticker属性信息</span><br><span class="line">builder.setTicker(<span class="string">"状态栏显示的提示"</span>);</span><br><span class="line">//setContentTitle 通知栏通知的标题</span><br><span class="line">builder.setContentTitle(<span class="string">"内容标题"</span>);</span><br><span class="line">//setContentText  通知栏通知的详细内容</span><br><span class="line">builder.setContentText(<span class="string">"内容文本信息"</span>);</span><br><span class="line">//setAutoCancel 点击通知的清除按钮是否清除该消息（<span class="literal">true</span>/<span class="literal">false</span>）</span><br><span class="line">builder.setAutoCancel(<span class="literal">true</span>);</span><br><span class="line">//setLargeIcon  通知消息上的大图标</span><br><span class="line">builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));</span><br><span class="line">//setSmallIcon  通知上面的小图标</span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher);//小图标</span><br><span class="line">//创建一个意图</span><br><span class="line">Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://www.baidu.com"</span>));</span><br><span class="line">PendingIntent pIntent = PendingIntent.getActivity(this, 1, intent, 0);</span><br><span class="line">//setContentIntent  将意图设置到通知上</span><br><span class="line">builder.setContentIntent(pIntent);</span><br><span class="line">//通知默认的声音 震动 呼吸灯</span><br><span class="line">builder.setDefaults(NotificationCompat.DEFAULT_ALL);</span><br><span class="line">//构建通知</span><br><span class="line">Notification notification = builder.build();</span><br><span class="line">//将构建好的通知添加到通知管理器中，执行通知</span><br><span class="line">manger.notify(0, notification);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/normal.png" alt="normal"></p>
+<p><img alt="normal" data-src="/images/normal.png"></p>
 <h2 id="DownloadStyle"><a href="#DownloadStyle" class="headerlink" title="DownloadStyle"></a>DownloadStyle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//为了版本兼容  选择V7包下的NotificationCompat进行构造</span><br><span class="line">final NotificationCompat.Builder builder = new NotificationCompat.Builder(this);</span><br><span class="line">//setSmallIcon  通知上面的小图标</span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher);</span><br><span class="line">//setLargeIcon  通知消息上的大图标</span><br><span class="line">builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));</span><br><span class="line">//setAutoCancel 点击通知的清除按钮是否清除该消息（<span class="literal">true</span>/<span class="literal">false</span>）</span><br><span class="line">builder.setAutoCancel(<span class="literal">true</span>);</span><br><span class="line">builder.setContentTitle(<span class="string">"微信"</span>);</span><br><span class="line">builder.setContentText(<span class="string">"下载中"</span>);</span><br><span class="line">new Thread(</span><br><span class="line">        new <span class="function"><span class="title">Runnable</span></span>() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">                int incr;</span><br><span class="line">                <span class="keyword">for</span> (incr = 0; incr &lt;= 100; incr += 5) &#123;</span><br><span class="line">                    builder.setProgress(100, incr, <span class="literal">false</span>);</span><br><span class="line">                    builder.setContentInfo(incr + <span class="string">"%"</span>);</span><br><span class="line">                    manger.notify(1, builder.build());</span><br><span class="line">                    try &#123;</span><br><span class="line">                        Thread.sleep(1 * 1000);</span><br><span class="line">                    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                builder.setContentText(<span class="string">"下载完成"</span>)</span><br><span class="line">                        // 移除进度条</span><br><span class="line">                        .setProgress(0, 0, <span class="literal">false</span>).setContentInfo(<span class="string">""</span>);</span><br><span class="line">                Notification notification = builder.build();</span><br><span class="line">                manger.notify(1, notification);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">).start();</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/downloadtype1.png" alt="downloadtype1"></p>
-<p><img src="/images/downloadfinish.png" alt="downloadfinish"></p>
+<p><img alt="downloadtype1" data-src="/images/downloadtype1.png"></p>
+<p><img alt="downloadfinish" data-src="/images/downloadfinish.png"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">//为了版本兼容  选择V7包下的NotificationCompat进行构造</span><br><span class="line">final NotificationCompat.Builder builder = new NotificationCompat.Builder(this);</span><br><span class="line">//setSmallIcon  通知上面的小图标</span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher);</span><br><span class="line">//setLargeIcon  通知消息上的大图标</span><br><span class="line">builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));</span><br><span class="line">//setAutoCancel 点击通知的清除按钮是否清除该消息（<span class="literal">true</span>/<span class="literal">false</span>）</span><br><span class="line">builder.setAutoCancel(<span class="literal">true</span>);</span><br><span class="line">builder.setContentTitle(<span class="string">"微信"</span>);</span><br><span class="line">builder.setContentText(<span class="string">"下载中"</span>);</span><br><span class="line">new Thread(</span><br><span class="line">        new <span class="function"><span class="title">Runnable</span></span>() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">                int incr;</span><br><span class="line">                <span class="keyword">for</span> (incr = 0; incr &lt;= 100; incr += 5) &#123;</span><br><span class="line">                    builder.setProgress(0, 0, <span class="literal">true</span>);</span><br><span class="line">                    manger.notify(2, builder.build());</span><br><span class="line">                    try &#123;</span><br><span class="line">                        Thread.sleep(1 * 1000);</span><br><span class="line">                    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                builder.setContentText(<span class="string">"下载完成"</span>)</span><br><span class="line">                        // 移除进度条</span><br><span class="line">                        .setProgress(0, 0, <span class="literal">false</span>).setContentInfo(<span class="string">""</span>);</span><br><span class="line">                Notification notification = builder.build();</span><br><span class="line">                manger.notify(2, notification);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">).start();</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/downloadtype2.png" alt="downloadtype1"></p>
-<p><img src="/images/downloadfinish.png" alt="downloadfinish"></p>
+<p><img alt="downloadtype1" data-src="/images/downloadtype2.png"></p>
+<p><img alt="downloadfinish" data-src="/images/downloadfinish.png"></p>
 <h2 id="BigTextStyle"><a href="#BigTextStyle" class="headerlink" title="BigTextStyle"></a>BigTextStyle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">NotificationCompat.Builder builder = new NotificationCompat.Builder(this);</span><br><span class="line">builder.setContentTitle(<span class="string">"BigTextStyle"</span>);</span><br><span class="line">builder.setContentText(<span class="string">"BigTextStyle演示示例"</span>);</span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher);</span><br><span class="line">builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));</span><br><span class="line">android.support.v4.app.NotificationCompat.BigTextStyle style = new android.support.v4.app.NotificationCompat.BigTextStyle();</span><br><span class="line">//bigText 给样式设置大文本内容</span><br><span class="line">style.bigText(<span class="string">"这里是点击通知后要显示的正文，正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字正文很多字"</span>);</span><br><span class="line">//setBigContentTitle 给样式设置大文本的标题</span><br><span class="line">style.setBigContentTitle(<span class="string">"点击后的标题"</span>);</span><br><span class="line">//SummaryText没什么用 可以不设置</span><br><span class="line">style.setSummaryText(<span class="string">"末尾只一行的文字内容"</span>);</span><br><span class="line">//setStyle 将样式添加到通知</span><br><span class="line">builder.setStyle(style);</span><br><span class="line">builder.setAutoCancel(<span class="literal">true</span>);</span><br><span class="line">Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://www.baidu.com"</span>));</span><br><span class="line">PendingIntent pIntent = PendingIntent.getActivity(this, 1, intent, 0);</span><br><span class="line">builder.setContentIntent(pIntent);</span><br><span class="line">builder.setDefaults(NotificationCompat.DEFAULT_ALL);</span><br><span class="line">Notification notification = builder.build();</span><br><span class="line">manger.notify(3, notification);</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/bigtextStyle1.png" alt="bigtextStyle1"></p>
-<p><img src="/images/bigtextStyle2.png" alt="bigtextStyle2"></p>
+<p><img alt="bigtextStyle1" data-src="/images/bigtextStyle1.png"></p>
+<p><img alt="bigtextStyle2" data-src="/images/bigtextStyle2.png"></p>
 <h2 id="InBoxStyle"><a href="#InBoxStyle" class="headerlink" title="InBoxStyle"></a>InBoxStyle</h2><pre><code class="bash">NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 builder.setContentTitle(<span class="string">"InboxStyle"</span>);
 builder.setContentText(<span class="string">"InboxStyle演示示例"</span>);
@@ -590,8 +578,8 @@ builder.setContentIntent(pIntent);
 builder.setDefaults(NotificationCompat.DEFAULT_ALL);
 Notification notification = builder.build();
 manger.notify(4, notification);</code></pre>
-<p><img src="/images/inBoxStyle1.png" alt="inBoxStyle1"></p>
-<p><img src="/images/inBoxStyle2.png" alt="inBoxStyle2"></p>
+<p><img alt="inBoxStyle1" data-src="/images/inBoxStyle1.png"></p>
+<p><img alt="inBoxStyle2" data-src="/images/inBoxStyle2.png"></p>
 <h2 id="BigPictureStyle"><a href="#BigPictureStyle" class="headerlink" title="BigPictureStyle"></a>BigPictureStyle</h2><pre><code class="bash">NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 builder.setContentTitle(<span class="string">"BigPictureStyle"</span>);
 builder.setContentText(<span class="string">"BigPicture演示示例"</span>);
@@ -610,8 +598,8 @@ builder.setContentIntent(pIntent);
 builder.setDefaults(NotificationCompat.DEFAULT_ALL);
 Notification notification = builder.build();
 manger.notify(5, notification);</code></pre>
-<p><img src="/images/bigPictureStyle1.png" alt="bigPictureStyle1"></p>
-<p><img src="/images/bigPictureStyle2.png" alt="bigPictureStyle2"></p>
+<p><img alt="bigPictureStyle1" data-src="/images/bigPictureStyle1.png"></p>
+<p><img alt="bigPictureStyle2" data-src="/images/bigPictureStyle2.png"></p>
 <h2 id="HungUpStyle"><a href="#HungUpStyle" class="headerlink" title="HungUpStyle"></a>HungUpStyle</h2><pre><code class="bash">NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 builder.setContentTitle(<span class="string">"横幅通知"</span>);
 builder.setContentText(<span class="string">"请在设置通知管理中开启消息横幅提醒权限"</span>);
@@ -625,7 +613,7 @@ builder.setFullScreenIntent(pIntent, <span class="literal">true</span>);
 builder.setAutoCancel(<span class="literal">true</span>);
 Notification notification = builder.build();
 manger.notify(6, notification);</code></pre>
-<p><img src="/images/hungUpStyle.png" alt="hungUpStyle"></p>
+<p><img alt="hungUpStyle" data-src="/images/hungUpStyle.png"></p>
 <h2 id="MediaStyle"><a href="#MediaStyle" class="headerlink" title="MediaStyle"></a>MediaStyle</h2><pre><code class="bash">NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 builder.setContentTitle(<span class="string">"You Are Not Alone"</span>);
 builder.setContentText(<span class="string">"Michael Jackson"</span>);
@@ -654,8 +642,8 @@ builder.setStyle(style);
 builder.setShowWhen(<span class="literal">false</span>);
 Notification notification = builder.build();
 manger.notify(7, notification);</code></pre>
-<p><img src="/images/mediaStyle1.png" alt="mediaStyle1"></p>
-<p><img src="/images/mediaStyle2.png" alt="mediaStyle2"></p>
+<p><img alt="mediaStyle1" data-src="/images/mediaStyle1.png"></p>
+<p><img alt="mediaStyle2" data-src="/images/mediaStyle2.png"></p>
 <h2 id="RemoteViewsStyle"><a href="#RemoteViewsStyle" class="headerlink" title="RemoteViewsStyle"></a>RemoteViewsStyle</h2><pre><code class="bash">NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
 builder.setSmallIcon(R.mipmap.ic_launcher);//小图标
 RemoteViews remoteViews = new RemoteViews(this.getPackageName(), R.layout.remoteview_main);
@@ -666,7 +654,7 @@ remoteViews.setTextViewText(R.id.tv_content, content);
 builder.setContent(remoteViews);
 Notification notification = builder.build();
 manger.notify(8, notification);    </code></pre>
-<p><img src="/images/remoteViewsStyle.png" alt="remoteViewsStyle"></p>
+<p><img alt="remoteViewsStyle" data-src="/images/remoteViewsStyle.png"></p>
 
       
     </div>
@@ -1539,7 +1527,11 @@ manger.notify(8, notification);    </code></pre>
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1547,6 +1539,8 @@ manger.notify(8, notification);    </code></pre>
   
 
 
+
+  
 
 
 
@@ -1564,10 +1558,19 @@ manger.notify(8, notification);    </code></pre>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1618,6 +1621,11 @@ manger.notify(8, notification);    </code></pre>
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

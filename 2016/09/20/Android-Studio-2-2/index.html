@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -558,61 +562,61 @@
 <li><strong>布局编辑器</strong> : 创建Android应用用户界面现在是很容易的了，使用全新的用户界面设计器。使用新的蓝图模式和调整每个插件能看到新的属性面板的属性，快速构建你的应用程序用户界面的结构。</li>
 </ul>
 </blockquote>
-<p><img src="/images/image03.png" alt="image03.png"></p>
+<p><img alt="image03.png" data-src="/images/image03.png"></p>
 <blockquote>
 <ul>
 <li><strong>约束布局</strong> ：这个新的布局是一个灵活的布局管理器对于你的应用，允许你创建一个动态的用户界面没有嵌套多个布局，向后兼容到Android API Level 9(姜饼)。约束布局工作最好使用在Android 2.2上的全新的布局编辑器。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdHJhaW5pbmcvY29uc3RyYWludC1sYXlvdXQvaW5kZXguaHRtbD91dG1fY2FtcGFpZ249YW5kcm9pZCUyMHN0dWRpb19sYXVuY2hfMi4yXzA5MTkxNiZ1dG1fc291cmNlPWFuZGRldiZ1dG1fbWVkaXVtPWJsb2c=" title="https://developer.android.com/training/constraint-layout/index.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog">学习更多<i class="fa fa-external-link"></i></span></li>
 </ul>
 </blockquote>
-<p><img src="/images/image00.gif" alt="image00.gif"></p>
+<p><img alt="image00.gif" data-src="/images/image00.gif"></p>
 <h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><blockquote>
 <ul>
 <li><strong>提高对C++的支持</strong> :你现在能够是利用<a href>CMake 或者 ndk-build</a>从Gradle去编译你的C++项目。从CMake迁移项目编译系统到Android Studio现在是无缝的了。你将也能找到C++支持在全新的wizard项目在Android Studio中，加上了一大批对于C++编辑的bug修复和debug体验，<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3Byb2plY3RzL2FkZC1uYXRpdmUtY29kZS5odG1sP3V0bV9jYW1wYWlnbj1hbmRyb2lkJTIwc3R1ZGlvX2xhdW5jaF8yLjJfMDkxOTE2JnV0bV9zb3VyY2U9YW5kZGV2JnV0bV9tZWRpdW09YmxvZw==" title="https://developer.android.com/studio/projects/add-native-code.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog">学习更多<i class="fa fa-external-link"></i></span></li>
 </ul>
 </blockquote>
-<p><img src="/images/C_plus_plus.png" alt="C_plus_plus.png"></p>
+<p><img alt="C_plus_plus.png" data-src="/images/C_plus_plus.png"></p>
 <blockquote>
 <ul>
 <li><strong>示例浏览器</strong> : 使用Android Studio 2.2 引用<a href>Android Sample Code 示例代码</a>现在是更容易了，在内置的代码编辑窗口，在Google Android 示例代码找到你应用代码的事件去帮助你跳跃开始你的app应用开发。</li>
 </ul>
 </blockquote>
-<p><img src="/images/code_sample.png" alt="code_sample.png"></p>
+<p><img alt="code_sample.png" data-src="/images/code_sample.png"></p>
 <h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><blockquote>
 <ul>
 <li><strong>即时运行的提高</strong> : 在Android Studio 2.0中介绍了，Instant Run是我们主要的、长期投资的，去使Android开发快速，重量轻。自从推出，它对许多开发者已显著提高编辑、编译、运行、运行周期迭代。在这个版本中，我们已经做了很多的稳定性和可靠性改进Instant Run（即时运行），如果您先前已禁用即时运行，我们建议您重新启用它，让我们知道，如果你遇到进一步的问题。(在Windows/Linux上：Settings → Build, Execution, Deployment → Instant Run , 在OS X 上 ：Preferences → Build, Execution, Deployment → Instant Run). 有关我们所做的修复的详细信息，请参阅<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3JlbGVhc2VzL2luZGV4Lmh0bWw/dXRtX2NhbXBhaWduPWFuZHJvaWQlMjBzdHVkaW9fbGF1bmNoXzIuMl8wOTE5MTYmdXRtX3NvdXJjZT1hbmRkZXYmdXRtX21lZGl1bT1ibG9n" title="https://developer.android.com/studio/releases/index.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog">Andr​​oid Studio 2.2中发布说明<i class="fa fa-external-link"></i></span>。</li>
 </ul>
 </blockquote>
-<p><img src="/images/image05.png" alt="image05.png"></p>
+<p><img alt="image05.png" data-src="/images/image05.png"></p>
 <blockquote>
 <ul>
 <li><strong>APK 分析器</strong> : 很简单的检查你的APK的内容，去了解每个组件的大小贡献。当你调试到<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2J1aWxkL211bHRpZGV4Lmh0bWw/dXRtX2NhbXBhaWduPWFuZHJvaWQlMjBzdHVkaW9fbGF1bmNoXzIuMl8wOTE5MTYmdXRtX3NvdXJjZT1hbmRkZXYmdXRtX21lZGl1bT1ibG9n" title="https://developer.android.com/studio/build/multidex.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog">mult-dex<i class="fa fa-external-link"></i></span>这个特性能对你有帮助，另外，利用APK分析器你能够比较一个APK的两个版本.<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2J1aWxkL2Fway1hbmFseXplci5odG1sP3V0bV9jYW1wYWlnbj1hbmRyb2lkJTIwc3R1ZGlvX2xhdW5jaF8yLjJfMDkxOTE2JnV0bV9zb3VyY2U9YW5kZGV2JnV0bV9tZWRpdW09YmxvZw==" title="https://developer.android.com/studio/build/apk-analyzer.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog">学习更多<i class="fa fa-external-link"></i></span></li>
 </ul>
 </blockquote>
-<p><img src="/images/image08.png" alt="image08.png"></p>
+<p><img alt="image08.png" data-src="/images/image08.png"></p>
 <blockquote>
 <ul>
 <li><strong>构建缓存(试验性)</strong> ：我们将继续我们的投资，以提高构建速度，推出了新的实验构建的缓存，这将有助于减少双方完全和增量构建时间。只需添加android.enableBuildCache =true 到你的<strong>gradle.properties</strong>文件中。<span class="exturl" data-url="aHR0cDovL3Rvb2xzLmFuZHJvaWQuY29tL3RlY2gtZG9jcy9idWlsZC1jYWNoZQ==" title="http://tools.android.com/tech-docs/build-cache">学习更多<i class="fa fa-external-link"></i></span></li>
 </ul>
 </blockquote>
-<p><img src="/images/build_cache.png" alt="build_cache.png"></p>
+<p><img alt="build_cache.png" data-src="/images/build_cache.png"></p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><blockquote>
 <ul>
 <li><strong>Android 模拟器中的虚拟传感器</strong>：Android 模拟器现在包括了一个新的组是虚拟传感器控制，利用新的UI控制，你现在能够测试<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vZ3VpZGUvdG9waWNzL3NlbnNvcnMvc2Vuc29yc19vdmVydmlldy5odG1sP3V0bV9jYW1wYWlnbj1hbmRyb2lkJTIwc3R1ZGlvX2xhdW5jaF8yLjJfMDkxOTE2JnV0bV9zb3VyY2U9YW5kZGV2JnV0bV9tZWRpdW09YmxvZw==" title="https://developer.android.com/guide/topics/sensors/sensors_overview.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog">Android 传感器<i class="fa fa-external-link"></i></span> 比如加速度、温度、磁力仪等等更多。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3J1bi9lbXVsYXRvci5odG1sP3V0bV9jYW1wYWlnbj1hbmRyb2lkJTIwc3R1ZGlvX2xhdW5jaF8yLjJfMDkxOTE2JnV0bV9zb3VyY2U9YW5kZGV2JnV0bV9tZWRpdW09YmxvZyNleHRlbmRlZA==" title="https://developer.android.com/studio/run/emulator.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog#extended">学习更多<i class="fa fa-external-link"></i></span></li>
 </ul>
 </blockquote>
-<p><img src="/images/image02.gif" alt="image02.gif"></p>
+<p><img alt="image02.gif" data-src="/images/image02.gif"></p>
 <blockquote>
 <ul>
 <li><strong>Espresso 测试记录器(Beta)</strong> :该Espresso测试记录器以让你轻松通过记录与您的应用程序创建交互UI测试;它然后将会为你输出UI<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdG9waWMvbGlicmFyaWVzL3Rlc3Rpbmctc3VwcG9ydC1saWJyYXJ5L2luZGV4Lmh0bWw/dXRtX2NhbXBhaWduPWFuZHJvaWQlMjBzdHVkaW9fbGF1bmNoXzIuMl8wOTE5MTYmdXRtX3NvdXJjZT1hbmRkZXYmdXRtX21lZGl1bT1ibG9nI0VzcHJlc3Nv" title="https://developer.android.com/topic/libraries/testing-support-library/index.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog#Espresso">测试代码<i class="fa fa-external-link"></i></span>.你记录你和一个设备互动，然后，添加树到你应用特殊快照中的验证UI节点上，Espresso记录器然后就会保存记录，并进行自动化生成一个对应的UI测试。你能够在本地运行测试、在持续集成服务器上、或者是使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdHJhaW5pbmcvdGVzdGluZy91bml0LXRlc3RpbmcvaW5zdHJ1bWVudGVkLXVuaXQtdGVzdHMuaHRtbD91dG1fY2FtcGFpZ249YW5kcm9pZCUyMHN0dWRpb19sYXVuY2hfMi4yXzA5MTkxNiZ1dG1fc291cmNlPWFuZGRldiZ1dG1fbWVkaXVtPWJsb2cjcnVuLWN0bA==" title="https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog#run-ctl">Firebase Test Lab for Android<i class="fa fa-external-link"></i></span>,<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3Rlc3QvZXNwcmVzc28tdGVzdC1yZWNvcmRlci5odG1s" title="https://developer.android.com/studio/test/espresso-test-recorder.html">学习更多<i class="fa fa-external-link"></i></span></li>
 </ul>
 </blockquote>
-<p><img src="/images/image10.png" alt="image10.png"></p>
+<p><img alt="image10.png" data-src="/images/image10.png"></p>
 <blockquote>
 <ul>
 <li><strong>GPU 调试器(Beta)</strong> : 该GPU调试器现在还在Beta阶段，对于分析你现在能够在你的Android 设备上捕捉OpenGL ES指令流，然后从Android Studio里面回复它。你也能够完全审查给予任意OpenGL ES指令流的GPU的状态，去更好的理解和调试你的图形输出。<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL2RlYnVnL2FtLWdwdS1kZWJ1Z2dlci5odG1sP3V0bV9jYW1wYWlnbj1hbmRyb2lkJTIwc3R1ZGlvX2xhdW5jaF8yLjJfMDkxOTE2JnV0bV9zb3VyY2U9YW5kZGV2JnV0bV9tZWRpdW09YmxvZw==" title="https://developer.android.com/studio/debug/am-gpu-debugger.html?utm_campaign=android%20studio_launch_2.2_091916&utm_source=anddev&utm_medium=blog">学习更多<i class="fa fa-external-link"></i></span></li>
 </ul>
 </blockquote>
-<p><img src="/images/image11.png" alt="image11.png"></p>
+<p><img alt="image11.png" data-src="/images/image11.png"></p>
 <p>总的来说，Android Studio 2.2包括主要的特性和更多的：</p>
 <p><strong>设计</strong>：</p>
 <blockquote>
@@ -1533,7 +1537,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1541,6 +1549,8 @@
   
 
 
+
+  
 
 
 
@@ -1558,10 +1568,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1612,6 +1631,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

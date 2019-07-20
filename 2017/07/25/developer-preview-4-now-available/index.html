@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -574,8 +578,8 @@
 <p>在<span class="exturl" data-url="aHR0cDovL2FuZHJvaWQuY29tL2JldGE=" title="http://android.com/beta">Android Beta Program<i class="fa fa-external-link"></i></span>上面去注册一个以支持的设备，并在今天通过OTA云端升级的方式获取更新，从Google play安装您当前的应用程序，并测试用户流。应用程序应该能够运行并且看起来很棒，您应该处理Android O的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9iZWhhdmlvci1jaGFuZ2VzLmh0bWw=" title="https://developer.android.com/preview/behavior-changes.html">行为变化<i class="fa fa-external-link"></i></span>配置——在特定，特别要注意<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9iZWhhdmlvci1jaGFuZ2VzLmh0bWwjYWJsbA==" title="https://developer.android.com/preview/behavior-changes.html#abll">后台位置限制<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9ub3RpZmljYXRpb24tY2hhbm5lbHMuaHRtbA==" title="https://developer.android.com/preview/features/notification-channels.html">通知渠道<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9iZWhhdmlvci1jaGFuZ2VzLmh0bWwjbmV0d29ya2luZy1hbGw=" title="https://developer.android.com/preview/behavior-changes.html#networking-all">网络<i class="fa fa-external-link"></i></span>的改变、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9iZWhhdmlvci1jaGFuZ2VzLmh0bWwjc2VjdXJpdHktYWxs" title="https://developer.android.com/preview/behavior-changes.html#security-all">安全<i class="fa fa-external-link"></i></span>以及<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9iZWhhdmlvci1jaGFuZ2VzLmh0bWwjcHJpdmFjeS1hbGw=" title="https://developer.android.com/preview/behavior-changes.html#privacy-all">标示符<i class="fa fa-external-link"></i></span>。</p>
 <p>一旦您解决了任意问题，利用当前目标等级发布您的应用更新，以便用户他们在接收到Android O的时候可以使用。</p>
 <h1 id="利用Android-O特性和APIs提高您的应用"><a href="#利用Android-O特性和APIs提高您的应用" class="headerlink" title="利用Android O特性和APIs提高您的应用"></a>利用Android O特性和APIs提高您的应用</h1><p>用户在运行最新版本的Android,在下载应用程序、消费内容，并进行购买方面通常是最活跃的。他们也是对于在他们喜欢的应用关于支持最新版本Android特性发声最多的。利用Android O,用户期待着像<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9ub3RpZmljYXRpb24tY2hhbm5lbHMuaHRtbA==" title="https://developer.android.com/preview/features/notification-channels.html">通知渠道<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9ub3RpZmljYXRpb24tYmFkZ2VzLmh0bWw=" title="https://developer.android.com/preview/features/notification-badges.html">点<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9waW5uaW5nLXNob3J0Y3V0cy13aWRnZXRzLmh0bWw=" title="https://developer.android.com/preview/features/pinning-shortcuts-widgets.html">快捷方式固定<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9hcGktb3ZlcnZpZXcuaHRtbCNvcGlw" title="https://developer.android.com/preview/api-overview.html#opip">画中画<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9hdXRvZmlsbC5odG1sI29wdGltaXppbmdfeW91cl9hcHBfZm9yX2F1dG9maWxs" title="https://developer.android.com/preview/features/autofill.html#optimizing_your_app_for_autofill">自动填充<i class="fa fa-external-link"></i></span>以及其他。这些特性也能随着时间的推移，更多用户升级到Android O，有助于增加与应用的互动。</p>
-<p><img src="/images/android-o-dp-4-2.gif" alt="android-o-dp-4-2"></p>
-<p><img src="/images/android-o-dp-4-3.gif" alt="android-o-dp-4-3"></p>
+<p><img alt="android-o-dp-4-2" data-src="/images/android-o-dp-4-2.gif"></p>
+<p><img alt="android-o-dp-4-3" data-src="/images/android-o-dp-4-3.gif"></p>
 <p>利用Android的特性提高您的应用程序能够帮助您推动和用户的互动，提供新的互动，给他们更多的控制和安全，并提高性能，功能特性像<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9hZGFwdGl2ZS1pY29ucy5odG1s" title="https://developer.android.com/preview/features/adaptive-icons.html">图标适配<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9kb3dubG9hZGFibGUtZm9udHMuaHRtbA==" title="https://developer.android.com/preview/features/downloadable-fonts.html">可下载字体<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9hdXRvc2l6aW5nLXRleHR2aWV3Lmh0bWw=" title="https://developer.android.com/preview/features/autosizing-textview.html">自动大小的文本控件<i class="fa fa-external-link"></i></span>能够简化您的开发和最小化您的APK大小。电池对于用户也是一个最关心的，因此他们将欣赏您的应用程序已经对于<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9iYWNrZ3JvdW5kLmh0bWw=" title="https://developer.android.com/preview/features/background.html">后台执行限制<i class="fa fa-external-link"></i></span>进行了优化，和其他<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9iZWhhdmlvci1jaGFuZ2VzLmh0bWwjby1hcHBz" title="https://developer.android.com/preview/behavior-changes.html#o-apps">O应用程序的重要系统行为的变化<i class="fa fa-external-link"></i></span>。</p>
 <p>访问<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9pbmRleC5odG1s" title="https://developer.android.com/preview/index.html">O开发者预览站点<i class="fa fa-external-link"></i></span>去学习关于所有的新特性以及API，并如何编译它们到您的应用程序中。</p>
 <h1 id="利用Android-Studio-加速您的开发"><a href="#利用Android-Studio-加速您的开发" class="headerlink" title="利用Android Studio 加速您的开发"></a>利用Android Studio 加速您的开发</h1><p>当您已经准备去构建Android O了，我们建议您升级到最新版的<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8wNS9hbmRyb2lkLXN0dWRpby0zLTAtY2FuYXJ5MS5odG1s" title="https://android-developers.googleblog.com/2017/05/android-studio-3-0-canary1.html">Android Studio 3.0<i class="fa fa-external-link"></i></span>,从<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvaW5kZXguaHRtbA==" title="https://developer.android.com/studio/preview/index.html">canary 通道<i class="fa fa-external-link"></i></span>下载可用。除了从<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vc3R1ZGlvL3ByZXZpZXcvZmVhdHVyZXMvYW5kcm9pZC1wcm9maWxlci5odG1s" title="https://developer.android.com/studio/preview/features/android-profiler.html">性能分析工具<i class="fa fa-external-link"></i></span>去提高应用程序，支持<span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5nb29nbGVibG9nLmNvbS8yMDE3LzA1L2FuZHJvaWQtYW5ub3VuY2VzLXN1cHBvcnQtZm9yLWtvdGxpbi5odG1s" title="http://android-developers.googleblog.com/2017/05/android-announces-support-for-kotlin.html">Kotlin程序语言<i class="fa fa-external-link"></i></span>,并且Gradle构建优化，Android Studio3.0利用<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8wNS9hbmRyb2lkLWluc3RhbnQtYXBwcy1pcy1vcGVuLXRvLWFsbC5odG1s" title="https://android-developers.googleblog.com/2017/05/android-instant-apps-is-open-to-all.html">即时应用<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy93b3JraW5nLXdpdGgtZm9udHMuaHRtbA==" title="https://developer.android.com/preview/features/working-with-fonts.html">XML字体<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9kb3dubG9hZGFibGUtZm9udHMuaHRtbA==" title="https://developer.android.com/preview/features/downloadable-fonts.html">可下载字体<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcy9hZGFwdGl2ZS1pY29ucy5odG1s" title="https://developer.android.com/preview/features/adaptive-icons.html">图标适配<i class="fa fa-external-link"></i></span>使它开发起来更方便。</p>
@@ -1468,7 +1472,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1476,6 +1484,8 @@
   
 
 
+
+  
 
 
 
@@ -1493,10 +1503,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1547,6 +1566,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

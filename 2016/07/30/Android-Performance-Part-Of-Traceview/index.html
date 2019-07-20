@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -551,22 +555,22 @@
 <a id="more"></a>
 
 <h2 id="缓慢的性能"><a href="#缓慢的性能" class="headerlink" title="缓慢的性能"></a>缓慢的性能</h2><p>缓慢的函数执行通常是由于两方面的问题造成的：<br>1、执行速度很慢的函数，这种函数很容易被发现，你的某些函数所花费的时间超过你的预期2倍、10倍数，甚至50倍。这种情况只要找到那些运行很慢的函数,查看代码，找到问题的所在，然后想办法解决就可以了。</p>
-<p><img src="/images/slow_function_1.png" alt="slow_function_1"></p>
+<p><img alt="slow_function_1" data-src="/images/slow_function_1.png"></p>
 <p>2、更难发现的是第二种类型，想方设法都难以发现，每个函数所用的时间都额外增加了一毫秒，从而导致整个程序执行速度变慢数百毫秒。而且更难以解决，需要对每段细小的地方进行分析，这样可能会导致进度缓慢，影响效率。不过SDK有一些很不错的工具，帮助你找到这些有问题的代码部分。</p>
-<p><img src="/images/slow_function_2.png" alt="slow_function_2"></p>
-<p><img src="/images/slow_function_3.png" alt="slow_function_3"></p>
+<p><img alt="slow_function_2" data-src="/images/slow_function_2.png"></p>
+<p><img alt="slow_function_3" data-src="/images/slow_function_3.png"></p>
 <h2 id="Traceview-演练"><a href="#Traceview-演练" class="headerlink" title="Traceview 演练"></a>Traceview 演练</h2><p>工具:Traceview</p>
 <p>首先连接设备，然后启动想要分析的应用程序，然后回到Android Studio,启动Android Device Monitor(菜单栏Tools&gt;Android&gt;Android Device Monitor)</p>
-<p><img src="/images/start_android_device_monitor.png" alt="start_android_device_monitor"></p>
-<p><img src="/images/android_device_monitor_logo.png" alt="android_device_monitor_logo"></p>
+<p><img alt="start_android_device_monitor" data-src="/images/start_android_device_monitor.png"></p>
+<p><img alt="android_device_monitor_logo" data-src="/images/android_device_monitor_logo.png"></p>
 <p>在左边的Devices窗格下，找到已经连接好的设备。</p>
-<p><img src="/images/android_device_monitor_main.png" alt="android_device_monitor_main"></p>
+<p><img alt="android_device_monitor_main" data-src="/images/android_device_monitor_main.png"></p>
 <p>选择需要分析的应用活动。然后会在顶部有一些图标会亮，尤其是看上去像是三面的箭头，上面有一个红色的圆点。点击这个会提示开始进行方法分析，这就是Traceview的启动方法。</p>
-<p><img src="/images/start_method_profiling.png" alt="start_method_profiling"></p>
+<p><img alt="start_method_profiling" data-src="/images/start_method_profiling.png"></p>
 <p>我们点击它会出现一个弹出窗口，提示会有两种方法来分析你的应用程序，你可以记录每个方法的输入和输出，它们对资源的要求很高，或者，你也利用示例代码进行一些分析。默认情况下分析程序将会没毫秒侦测一次你的应用程序，以发现和记录实际上在运行的功能，我们默认继续开始侦测，然后回到应用进行交互。</p>
-<p><img src="/images/profiling_options.png" alt="profiling_options"></p>
+<p><img alt="profiling_options" data-src="/images/profiling_options.png"></p>
 <p>我们在对应用进行交互好了之后，同样再次点击刚刚带红点的三面箭头图标，只不过它现在不是红色的点，而是黑色的图标或者黑色的小方块，点击它停止Traceview侦测，然后再右边你将会看到跟踪记录的视图。</p>
-<p><img src="/images/profiling_result.png" alt="profiling_result.png"></p>
+<p><img alt="profiling_result.png" data-src="/images/profiling_result.png"></p>
 <p>跟踪视图有两个主要的组成部分：</p>
 <blockquote>
 <ul>
@@ -575,9 +579,9 @@
 </ul>
 </blockquote>
 <p>上边的每一行实际对应你一个线程，显示的每一个颜色，对应一个正在运行的特定方法。可以查看一个线程的开始时间和结束时间，还可以支持放大的功能，找到特定的方法，了解它们是如何执行的，条形的宽度表示方法执行所用的时间。我我们选择一个方法，跳转到跟踪视图窗口的底部:</p>
-<p><img src="/images/profiling_result_pick_method.png" alt="profiling_result_pick_method"></p>
+<p><img alt="profiling_result_pick_method" data-src="/images/profiling_result_pick_method.png"></p>
 <p>这里，我们看到下方profile面板一些分析数据显示出来了，我们可以看到哪些方法调用了我们选定的方法，可以通过这些信息找到哪些地方耗时了。<br>另外一个十分有用的信息是，方法被调用了多少次，或者递归调用本身多少次，我们可以看到下方的profile面板有一列名为“calls and recursion”，此列显示方法被调用了多少次，最底部有个搜索栏，可以搜索需要的东西。</p>
-<p><img src="/images/profiling_calls_recurcalls.png" alt="profiling_calls_recurcalls"></p>
+<p><img alt="profiling_calls_recurcalls" data-src="/images/profiling_calls_recurcalls.png"></p>
 <blockquote>
 <p>以上就是个人对《Android 性能优化》的主要内容进行的总结,如有不足，欢迎指正。</p>
 </blockquote>
@@ -1457,7 +1461,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1465,6 +1473,8 @@
   
 
 
+
+  
 
 
 
@@ -1482,10 +1492,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1536,6 +1555,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

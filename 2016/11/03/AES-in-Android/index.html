@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -565,21 +569,21 @@
 <h3 id="示例调用"><a href="#示例调用" class="headerlink" title="示例调用"></a>示例调用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wt.aes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by shoewann on 16-9-23.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MainActivity"</span>;</span><br><span class="line"></span><br><span class="line">    String content=<span class="string">"我是需要加密的数据内容"</span>;</span><br><span class="line">    String key=<span class="string">"com.sina.com"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Log.d(TAG,<span class="string">"加密前："</span>+content);</span><br><span class="line">            <span class="comment">//encrypt （加密）</span></span><br><span class="line">            String encrypt = AESUtils.encrypt(key, content);</span><br><span class="line">            Log.d(TAG,<span class="string">"加密后："</span>+encrypt);</span><br><span class="line">            <span class="comment">//decrypt （解密）</span></span><br><span class="line">            String decrypt = AESUtils.decrypt(key, encrypt);</span><br><span class="line">            Log.d(TAG,<span class="string">"解密后："</span>+decrypt);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            Log.d(TAG,<span class="string">"ERROR："</span>+e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果,如果是这样:</p>
-<p><img src="/images/aes_success.png" alt="aes_success.png"></p>
+<p><img alt="aes_success.png" data-src="/images/aes_success.png"></p>
 <p>根据以上log信息可以看出，数据能在设备上成功被加密和解密出来，说明你当前的调试设备版本在Android 7.0(API 24)以下，你依然可以使用以上的方式来加密解密。</p>
 <h2 id="Android-N-已弃用Crypto"><a href="#Android-N-已弃用Crypto" class="headerlink" title="Android N 已弃用Crypto"></a>Android N 已弃用Crypto</h2><blockquote>
 <ul>
 <li>如果你在Android系统版本是<strong>7.0</strong>的设备上运行以上代码，结果是这样的:</li>
 </ul>
 </blockquote>
-<p><img src="/images/aes_7.0_error.png" alt="aes_7.0_error"></p>
+<p><img alt="aes_7.0_error" data-src="/images/aes_7.0_error.png"></p>
 <p>根据以上的log信息可以看出，在<strong>Android 7.0 新版本</strong> Android SDK 不再支持 <strong>Crypto</strong>,至于详细可以访问<span class="exturl" data-url="aHR0cDovL2FuZHJvaWQtZGV2ZWxvcGVycy5ibG9nc3BvdC5jb20vMjAxNi8wNi9zZWN1cml0eS1jcnlwdG8tcHJvdmlkZXItZGVwcmVjYXRlZC1pbi5odG1s" title="http://android-developers.blogspot.com/2016/06/security-crypto-provider-deprecated-in.html">http://android-developers.blogspot.com/2016/06/security-crypto-provider-deprecated-in.html<i class="fa fa-external-link"></i></span><br>或者<br>查看之前我翻译提交的<a href="https://shoewann0402.github.io/2016/06/10/security-crypto-provider-deprecated-in-android-n/">这篇文章</a>。</p>
 <p>以下是，修改过后的工具类:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wt.aes;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.charset.StandardCharsets;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.crypto.Cipher;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.SecretKey;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.IvParameterSpec;</span><br><span class="line"><span class="keyword">import</span> javax.crypto.spec.SecretKeySpec;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by shoewann on 16-9-23.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AESUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encrypt</span><span class="params">(String seed, String cleartext)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] rawKey = deriveKeyInsecurely(seed,<span class="number">32</span>).getEncoded();</span><br><span class="line">        <span class="keyword">byte</span>[] result = encrypt(rawKey, cleartext.getBytes());</span><br><span class="line">        <span class="keyword">return</span> toHex(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decrypt</span><span class="params">(String seed, String encrypted)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] rawKey = deriveKeyInsecurely(seed,<span class="number">32</span>).getEncoded();</span><br><span class="line">        <span class="keyword">byte</span>[] enc = toByte(encrypted);</span><br><span class="line">        <span class="keyword">byte</span>[] result = decrypt(rawKey, enc);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> SecretKey <span class="title">deriveKeyInsecurely</span><span class="params">(String password, <span class="keyword">int</span></span></span></span><br><span class="line"><span class="function"><span class="params">            keySizeInBytes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] passwordBytes = password.getBytes(StandardCharsets.US_ASCII);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SecretKeySpec(</span><br><span class="line">                InsecureSHA1PRNGKeyDerivator.deriveInsecureKey(</span><br><span class="line">                        passwordBytes, keySizeInBytes),</span><br><span class="line">                <span class="string">"AES"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] encrypt(<span class="keyword">byte</span>[] raw, <span class="keyword">byte</span>[] clear) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        SecretKeySpec skeySpec = <span class="keyword">new</span> SecretKeySpec(raw, <span class="string">"AES"</span>);</span><br><span class="line">        Cipher cipher = Cipher.getInstance(<span class="string">"AES"</span>);</span><br><span class="line">        cipher.init(Cipher.ENCRYPT_MODE, skeySpec, <span class="keyword">new</span> IvParameterSpec(<span class="keyword">new</span> <span class="keyword">byte</span>[cipher.getBlockSize()]));</span><br><span class="line">        <span class="keyword">byte</span>[] encrypted = cipher.doFinal(clear);</span><br><span class="line">        <span class="keyword">return</span> encrypted;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] decrypt(<span class="keyword">byte</span>[] raw, <span class="keyword">byte</span>[] encrypted) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        SecretKeySpec skeySpec = <span class="keyword">new</span> SecretKeySpec(raw, <span class="string">"AES"</span>);</span><br><span class="line">        Cipher cipher = Cipher.getInstance(<span class="string">"AES"</span>);</span><br><span class="line">        cipher.init(Cipher.DECRYPT_MODE, skeySpec, <span class="keyword">new</span> IvParameterSpec(<span class="keyword">new</span> <span class="keyword">byte</span>[cipher.getBlockSize()]));</span><br><span class="line">        <span class="keyword">byte</span>[] decrypted = cipher.doFinal(encrypted);</span><br><span class="line">        <span class="keyword">return</span> decrypted;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">toHex</span><span class="params">(String txt)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> toHex(txt.getBytes());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">fromHex</span><span class="params">(String hex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(toByte(hex));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] toByte(String hexString) &#123;</span><br><span class="line">        <span class="keyword">int</span> len = hexString.length() / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] result = <span class="keyword">new</span> <span class="keyword">byte</span>[len];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">            result[i] = Integer.valueOf(hexString.substring(<span class="number">2</span> * i, <span class="number">2</span> * i + <span class="number">2</span>), <span class="number">16</span>).byteValue();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">toHex</span><span class="params">(<span class="keyword">byte</span>[] buf)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (buf == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        StringBuffer result = <span class="keyword">new</span> StringBuffer(<span class="number">2</span> * buf.length);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; buf.length; i++) &#123;</span><br><span class="line">            appendHex(result, buf[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String HEX = <span class="string">"0123456789ABCDEF"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">appendHex</span><span class="params">(StringBuffer sb, <span class="keyword">byte</span> b)</span> </span>&#123;</span><br><span class="line">        sb.append(HEX.charAt((b &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0x0f</span>)).append(HEX.charAt(b &amp; <span class="number">0x0f</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>以上的工具类中<strong>InsecureSHA1PRNGKeyDerivator</strong>这个类，可以在<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLmdvb2dsZXNvdXJjZS5jb20vcGxhdGZvcm0vZGV2ZWxvcG1lbnQvKy9tYXN0ZXIvc2FtcGxlcy9Ccm9rZW5LZXlEZXJpdmF0aW9u" title="https://android.googlesource.com/platform/development/+/master/samples/BrokenKeyDerivation">示例代码<i class="fa fa-external-link"></i></span>里找到</p>
 <p>通过再次调用以上的工具类中的加密解密的方法，就可以在Android 7.0上成功加密解密出数据:</p>
-<p><img src="/images/aes_7.0_success.png" alt="aes_7.0_success.png"></p>
+<p><img alt="aes_7.0_success.png" data-src="/images/aes_7.0_success.png"></p>
 <blockquote>
 <p>以上是对Anroid 中使用AES及在7.0上使用相关问题，原创不易，如果不足，欢迎指正，谢谢。</p>
 </blockquote>
@@ -1446,7 +1450,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1454,6 +1462,8 @@
   
 
 
+
+  
 
 
 
@@ -1471,10 +1481,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1525,6 +1544,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

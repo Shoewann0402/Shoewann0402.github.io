@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -613,28 +617,28 @@
 
 <p>在按钮的点击事件中调用<code>showBubble</code>方法，触发通知，并显示气泡</p>
 <p>通知栏出现通知消息，屏幕右侧显示出了气泡（气泡好像没有图标，上文中有提到，即使设置了也不会在Q Beta 2上显示）</p>
-<p><img src="/images/android-q-beta2-bubble-0.png" alt="android-q-beta2-bubble-0"></p>
+<p><img alt="android-q-beta2-bubble-0" data-src="/images/android-q-beta2-bubble-0.png"></p>
 <p>下拉通知栏，可以看到创建的通知消息</p>
-<p><img src="/images/android-q-beta2-bubble-1.png" alt="android-q-beta2-bubble-1"></p>
+<p><img alt="android-q-beta2-bubble-1" data-src="/images/android-q-beta2-bubble-1.png"></p>
 <p>长按快捷方式的效果</p>
-<p><img src="/images/android-q-beta2-bubble-2.png" alt="android-q-beta2-bubble-2"></p>
+<p><img alt="android-q-beta2-bubble-2" data-src="/images/android-q-beta2-bubble-2.png"></p>
 <p>点击气泡，会触发打开<strong>BubbleActivity</strong>并弹出窗口，可以看到右上角两个图标，左下角一个，右下角一个</p>
-<p><img src="/images/android-q-beta2-bubble-3.png" alt="android-q-beta2-bubble-3"></p>
+<p><img alt="android-q-beta2-bubble-3" data-src="/images/android-q-beta2-bubble-3.png"></p>
 <p>首先我们看看左下角的图标，点击了会弹出两个选项，一个添加应用快捷方式，另一个设置壁纸</p>
-<p><img src="/images/android-q-beta2-bubble-4.png" alt="android-q-beta2-bubble-4"></p>
+<p><img alt="android-q-beta2-bubble-4" data-src="/images/android-q-beta2-bubble-4.png"></p>
 <p>点击第一个添加应用快捷方式，可以列出当前设备安装的应用</p>
-<p><img src="/images/android-q-beta2-bubble-5.png" alt="android-q-beta2-bubble-5"></p>
+<p><img alt="android-q-beta2-bubble-5" data-src="/images/android-q-beta2-bubble-5.png"></p>
 <p>随机点了两个，一个微信，一个支付宝，添加进去。添加完成之后，从此处点击过去，就能直接打开跳转到指定的应用程序 (添加进去还没测试如何移除，试过了清除数据和重新安装都没效果)</p>
-<p><img src="/images/android-q-beta2-bubble-6.png" alt="android-q-beta2-bubble-6"></p>
+<p><img alt="android-q-beta2-bubble-6" data-src="/images/android-q-beta2-bubble-6.png"></p>
 <p>点击右上角箭头的的图标可以直接进入 —— <strong>MainActivity</strong></p>
 <p>点击右上角的齿轮，可以跳转的该应用的通知的设置</p>
-<p><img src="/images/android-q-beta2-bubble-7.png" alt="android-q-beta2-bubble-7"></p>
+<p><img alt="android-q-beta2-bubble-7" data-src="/images/android-q-beta2-bubble-7.png"></p>
 <p>点击具体的一条通知渠道后面的齿轮，可以详细的进入具体的通知渠道设置</p>
-<p><img src="/images/android-q-beta2-bubble-8.png" alt="android-q-beta2-bubble-8"></p>
+<p><img alt="android-q-beta2-bubble-8" data-src="/images/android-q-beta2-bubble-8.png"></p>
 <p>然后气泡右下角的图标，类似于快捷launcher桌面，可以直接访问桌面的所有应用程序，点击也是直接打开跳转到指定的应用程序中</p>
-<p><img src="/images/android-q-beta2-bubble-9.png" alt="android-q-beta2-bubble-9"></p>
+<p><img alt="android-q-beta2-bubble-9" data-src="/images/android-q-beta2-bubble-9.png"></p>
 <p>最后，长按气泡图标，拖拽到底部指定区域，可以销毁气泡</p>
-<p><img src="/images/android-q-beta2-bubble-10.png" alt="android-q-beta2-bubble-10"></p>
+<p><img alt="android-q-beta2-bubble-10" data-src="/images/android-q-beta2-bubble-10.png"></p>
 <p>判断是否允许了气泡的方法</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">canBubble</span><span class="params">()</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">    <span class="keyword">val</span> channel = notificationManager!!.getNotificationChannel(<span class="string">"通知渠道ID"</span>)</span><br><span class="line">    <span class="keyword">return</span> notificationManager!!.areBubblesAllowed() &amp;&amp; channel.canBubble()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1513,7 +1517,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1521,6 +1529,8 @@
   
 
 
+
+  
 
 
 
@@ -1538,10 +1548,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1592,6 +1611,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

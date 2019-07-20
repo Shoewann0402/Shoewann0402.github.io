@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -559,8 +563,8 @@
 <p>以上示代码通过调用系统的照相机拍照，保存图片到sdcard，并裁剪显示到界面上。<br>我们通过这个示例为代表，来说明本节的内容。</p>
 <h2 id="复现问题"><a href="#复现问题" class="headerlink" title="复现问题"></a>复现问题</h2><p>当然在Android 7.0以下，你依然可以使用上面的代码来实现拍照裁剪显示。<br>但是当你使用的设备是Android 7.0及其以上的时候，使用以上代码，就会抛出开篇所提到的<strong>FileUriExposedException</strong>异常</p>
 <p><strong>android.os.FileUriExposedException:file://…. exposed beyond app through ClipData.Item.getUri()</strong></p>
-<p><img src="/images/android_n_take_photo_error.png" alt="android_n_take_photo_error.png"></p>
-<p><img src="/images/android_n_take_photo_error_dialog.png" alt="android_n_take_photo_error_dialog"></p>
+<p><img alt="android_n_take_photo_error.png" data-src="/images/android_n_take_photo_error.png"></p>
+<p><img alt="android_n_take_photo_error_dialog" data-src="/images/android_n_take_photo_error_dialog.png"></p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="定义FileProvider"><a href="#定义FileProvider" class="headerlink" title="定义FileProvider"></a>定义FileProvider</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">package</span>=<span class="string">"com.xw.fileproviderdemo"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">provider</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">"android.support.v4.content.FileProvider"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:authorities</span>=<span class="string">"com.xw.fileproviderdemo.takePhoto.provider"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:grantUriPermissions</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:name</span>=<span class="string">"android.support.FILE_PROVIDER_PATHS"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:resource</span>=<span class="string">"@xml/file_paths"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">provider</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>注：</p>
@@ -569,7 +573,7 @@
 <li>exported:必须为<em>false</em>,为<em>true</em>会报安全异常</li>
 </ul>
 </blockquote>
-<p><img src="/images/android_n_take_photo_export_error.png" alt="android_n_take_photo_export_error.png"></p>
+<p><img alt="android_n_take_photo_export_error.png" data-src="/images/android_n_take_photo_export_error.png"></p>
 <blockquote>
 <ul>
 <li>grantUriPermissions:为<em>true</em> 表示授予该URI临时访问权限</li>
@@ -594,8 +598,8 @@
 <p>以上的代码，将getUriForFile()返回的uri打印出来是:<br><strong>content://com.xw.fileproviderdemo.takePhoto.provider/image/xxxx.jpg</strong></p>
 <p>由此可以看出:<br><strong>image</strong>:就是xml中<paths>的子节点<external-path>里定义的<strong>android:name</strong>的值<br><strong>com.xw.fileproviderdemo.takePhoto.provider/image</strong>对应的路径就是<strong>/storage/emulated/0</strong><br>那么<strong>com.xw.fileproviderdemo.takePhoto.provider/image/xxxx.jpg</strong>对应的路径就是<strong>/storage/emulated/0/xxxx.jpg</strong></external-path></paths></p>
 <p>通过以上的代码修改，可以解决<strong>takePhoto()</strong>方法中拍照时的<strong>FileUriExposedException</strong>异常<br>再次运行项目，可以进行拍照了，拍照完成后，接下来需要进行裁剪，BOOM……Crash…Stop !!!,项目又崩溃了，然后抛出以下的异常：</p>
-<p><img src="/images/android_n_clip_pic_error.png" alt="android_n_clip_pic_error.png"></p>
-<p><img src="/images/android_n_take_photo_error_dialog.png" alt="android_n_take_photo_error_dialog"></p>
+<p><img alt="android_n_clip_pic_error.png" data-src="/images/android_n_clip_pic_error.png"></p>
+<p><img alt="android_n_take_photo_error_dialog" data-src="/images/android_n_take_photo_error_dialog.png"></p>
 <h3 id="给URI临时授权"><a href="#给URI临时授权" class="headerlink" title="给URI临时授权"></a>给URI临时授权</h3><p>同理，抛出的异常和上面takePhoto()一样,都是<strong>FileUriExposedException</strong>异常</p>
 <p>将接收该uri的目的App的PackageName通过<strong>grantUriPermission（）</strong>函数进行设置,授予读写权限:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">clipPhoto</span><span class="params">(Uri uri)</span> </span>&#123;</span><br><span class="line">       Log.d(TAG, <span class="string">"clipPhoto====&gt;"</span> + uri);</span><br><span class="line">       <span class="keyword">this</span>.grantUriPermission(<span class="string">"com.android.camera"</span>, uri,</span><br><span class="line">               Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);</span><br><span class="line">       Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.android.camera.action.CROP"</span>);</span><br><span class="line">       intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);<span class="comment">//请求URI授权读取</span></span><br><span class="line">       intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);<span class="comment">//请求URI授权写入</span></span><br><span class="line">       intent.setDataAndType(uri, <span class="string">"image/*"</span>);</span><br><span class="line">       <span class="comment">// 下面这个crop=true是设置在开启的Intent中设置显示的VIEW可裁剪</span></span><br><span class="line">       intent.putExtra(<span class="string">"crop"</span>, <span class="string">"true"</span>);</span><br><span class="line">       <span class="comment">// aspectX aspectY 是宽高的比例</span></span><br><span class="line">       intent.putExtra(<span class="string">"aspectX"</span>, <span class="number">1</span>);</span><br><span class="line">       intent.putExtra(<span class="string">"aspectY"</span>, <span class="number">1</span>);</span><br><span class="line">       intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);</span><br><span class="line">       startActivityForResult(intent, REQUEST_CODE_CLIP_PHOTO);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -605,7 +609,7 @@
 
 <p>最后，再次运行，所有<strong>Exception</strong>都解决了，Perfect ～ ! </p>
 <p>效果如下：</p>
-<p><img src="/images/android_n_take_clip_success.png" alt="android_n_take_clip_success.png"></p>
+<p><img alt="android_n_take_clip_success.png" data-src="/images/android_n_take_clip_success.png"></p>
 <blockquote>
 <ul>
 <li>以上就是简单的对Android 7.0上面权限改变之文件共享方面的概括总结，如有不足，欢迎指正，谢谢</li>
@@ -1485,7 +1489,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1493,6 +1501,8 @@
   
 
 
+
+  
 
 
 
@@ -1510,10 +1520,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1564,6 +1583,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -552,28 +556,28 @@
 <blockquote>
 <p>在你的<strong>Android Studio</strong>里，选中文件 ==&gt; 项目右键 ==&gt; New ==&gt; Folder ==&gt; Asstes Folder</p>
 </blockquote>
-<p><img src="/images/custom_font_pic1.png" alt="custom_font_pic1"></p>
+<p><img alt="custom_font_pic1" data-src="/images/custom_font_pic1.png"></p>
 <blockquote>
 <p>默认继续，==&gt; Finish</p>
 </blockquote>
-<p><img src="/images/custom_font_pic2.png" alt="custom_font_pic2"></p>
+<p><img alt="custom_font_pic2" data-src="/images/custom_font_pic2.png"></p>
 <h2 id="创建一个font字体文件夹"><a href="#创建一个font字体文件夹" class="headerlink" title="创建一个font字体文件夹"></a>创建一个font字体文件夹</h2><blockquote>
 <p>asstes ==&gt; 右键 ==&gt; new ==&gt; Directory ==&gt; 名称填入<strong>“fonts”</strong></p>
 </blockquote>
-<p><img src="/images/custom_font_pic3.png" alt="custom_font_pic3"></p>
+<p><img alt="custom_font_pic3" data-src="/images/custom_font_pic3.png"></p>
 <blockquote>
 <p>创建fonts文件夹完成</p>
 </blockquote>
-<p><img src="/images/custom_font_pic4.png" alt="custom_font_pic4"></p>
+<p><img alt="custom_font_pic4" data-src="/images/custom_font_pic4.png"></p>
 <h2 id="复制字体到fonts文件夹下"><a href="#复制字体到fonts文件夹下" class="headerlink" title="复制字体到fonts文件夹下"></a>复制字体到fonts文件夹下</h2><blockquote>
 <p>比如Material Design需要用到的Roboto字体到<span class="exturl" data-url="aHR0cHM6Ly9tYXRlcmlhbC1kZXNpZ24uc3RvcmFnZS5nb29nbGVhcGlzLmNvbS9wdWJsaXNoL21hdGVyaWFsX3ZfOC9tYXRlcmlhbF9leHRfcHVibGlzaC8wQjBKOGhzUmtrOTFMUmpVNFUxTlNlWGRqZDFVL1JvYm90b1RURi56aXA=" title="https://material-design.storage.googleapis.com/publish/material_v_8/material_ext_publish/0B0J8hsRkk91LRjU4U1NSeXdjd1U/RobotoTTF.zip">这里下载<i class="fa fa-external-link"></i></span>,下载完成后解压,复制*.ttf自定义字体到fonts文件夹下</p>
 </blockquote>
-<p><img src="/images/custom_font_pic5.png" alt="custom_font_pic5"></p>
+<p><img alt="custom_font_pic5" data-src="/images/custom_font_pic5.png"></p>
 <h2 id="Java-方式"><a href="#Java-方式" class="headerlink" title="Java 方式"></a>Java 方式</h2><p>你可以使用Java方式来自定义字体</p>
 <pre><code class="java">TextView textView=(TextView) findViewById(R.id.tv_custom_font);
 Typeface tf=Typeface.createFromAsset(getAssets(),<span class="string">"fonts/Roboto-Black.ttf"</span>);
 textView.setTypeface(tf);</code></pre>
-<p><img src="/images/custom_font_pic6.png" alt="custom_font_pic6"></p>
+<p><img alt="custom_font_pic6" data-src="/images/custom_font_pic6.png"></p>
 <h2 id="XML-方式"><a href="#XML-方式" class="headerlink" title="XML  方式"></a>XML  方式</h2><p>你也可以使用XML的方式来自定义字体</p>
 <h3 id="创建一个自定义的TextView类"><a href="#创建一个自定义的TextView类" class="headerlink" title="创建一个自定义的TextView类"></a>创建一个自定义的TextView类</h3><pre><code class="java"><span class="comment">/**</span>
 <span class="comment"> * Created by shoewann on 5/30/16.</span>
@@ -605,11 +609,11 @@ textView.setTypeface(tf);</code></pre>
 <span class="tag"> <span class="attr">app:layout_constraintLeft_toLeftOf</span>=<span class="string">"@+id/activity_main"</span></span>
 <span class="tag"> <span class="attr">app:layout_constraintRight_toRightOf</span>=<span class="string">"@+id/activity_main"</span></span>
 <span class="tag"> <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">"@+id/activity_main"</span> /&gt;</span></code></pre>
-<p><img src="/images/custom_font_pic7.png" alt="custom_font_pic7"></p>
+<p><img alt="custom_font_pic7" data-src="/images/custom_font_pic7.png"></p>
 <h2 id="默认字体在哪儿呢？"><a href="#默认字体在哪儿呢？" class="headerlink" title="默认字体在哪儿呢？"></a>默认字体在哪儿呢？</h2><p>打开SDK下面的platforms文件夹，在下面你会看到你安装的Android API不同平台</p>
-<p><img src="/images/custom_font_pic8.png" alt="custom_font_pic8"></p>
+<p><img alt="custom_font_pic8" data-src="/images/custom_font_pic8.png"></p>
 <p>任意打开一个平台的版本，比如android-19文件夹（你会在android-19/data/fonts下发现):</p>
-<p><img src="/images/custom_font_pic9.png" alt="custom_font_pic9"></p>
+<p><img alt="custom_font_pic9" data-src="/images/custom_font_pic9.png"></p>
 <blockquote>
 <p>以上简单的介绍了两种方式实现使用自定义字体的具体方法，如果不足，欢迎指正。</p>
 </blockquote>
@@ -1487,7 +1491,11 @@ textView.setTypeface(tf);</code></pre>
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1495,6 +1503,8 @@ textView.setTypeface(tf);</code></pre>
   
 
 
+
+  
 
 
 
@@ -1512,10 +1522,19 @@ textView.setTypeface(tf);</code></pre>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1566,6 +1585,11 @@ textView.setTypeface(tf);</code></pre>
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

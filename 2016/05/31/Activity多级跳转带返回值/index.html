@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -616,7 +620,7 @@
         }
     }
 }</code></pre>
-<p><img src="/images/activity_a.png" alt="activity_a"></p>
+<p><img alt="activity_a" data-src="/images/activity_a.png"></p>
 <h2 id="SecondActivity-java"><a href="#SecondActivity-java" class="headerlink" title="SecondActivity.java"></a>SecondActivity.java</h2><pre><code class="java"><span class="keyword">package</span> com.example.shoewann.activityintent;
 
 <span class="keyword">import</span> android.app.Activity;
@@ -686,7 +690,7 @@
         }
     }
 }</code></pre>
-<p><img src="/images/activity_a_b.png" alt="activity_a_b"></p>
+<p><img alt="activity_a_b" data-src="/images/activity_a_b.png"></p>
 <h2 id="ThreethActivity-java"><a href="#ThreethActivity-java" class="headerlink" title="ThreethActivity.java"></a>ThreethActivity.java</h2><pre><code class="java"><span class="keyword">package</span> com.example.shoewann.activityintent;
 
 <span class="keyword">import</span> android.app.Activity;
@@ -740,8 +744,8 @@
     }
 
 }</code></pre>
-<p><img src="/images/activity_b_c.png" alt="activity_b_c.png"></p>
-<h2 id="C-—-gt-A"><a href="#C-—-gt-A" class="headerlink" title="C —&gt; A"></a>C —&gt; A</h2><p><img src="/images/activity_c_a.png" alt="activity_c_a.png"></p>
+<p><img alt="activity_b_c.png" data-src="/images/activity_b_c.png"></p>
+<h2 id="C-—-gt-A"><a href="#C-—-gt-A" class="headerlink" title="C —&gt; A"></a>C —&gt; A</h2><p><img alt="activity_c_a.png" data-src="/images/activity_c_a.png"></p>
 <blockquote>
 <p>以上简单的介绍了Activity多级跳转带返回值的具体方法，如果不足，欢迎指正。</p>
 </blockquote>
@@ -1619,7 +1623,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1627,6 +1635,8 @@
   
 
 
+
+  
 
 
 
@@ -1644,10 +1654,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1698,6 +1717,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

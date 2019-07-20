@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -566,8 +570,8 @@
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>这一新功能目前暂提供了<code>网络连接</code>、<code>NFC</code>、<code>音量</code>三个<strong>设置面板</strong>,使我们可以访问这三个不同的设置面板，所有这些面板都可以通过简单的<code>startActivity()</code>调用启动。</p>
 <h2 id="网络连接"><a href="#网络连接" class="headerlink" title="网络连接"></a>网络连接</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings.Panel.ACTION_INTERNET_CONNECTIVITY</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/android-q-beta-settings-panel-wifi-1.png" alt="android-q-beta-settings-panel-wifi-1.png"></p>
-<p><img src="/images/android-q-beta-settings-panel-wifi-2.png" alt="android-q-beta-settings-panel-wifi-1.png"></p>
+<p><img alt="android-q-beta-settings-panel-wifi-1.png" data-src="/images/android-q-beta-settings-panel-wifi-1.png"></p>
+<p><img alt="android-q-beta-settings-panel-wifi-1.png" data-src="/images/android-q-beta-settings-panel-wifi-2.png"></p>
 <p>面板属性:</p>
 <blockquote>
 <ul>
@@ -580,7 +584,7 @@
 </blockquote>
 <h2 id="NFC"><a href="#NFC" class="headerlink" title="NFC"></a>NFC</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings.Panel.ACTION_NFC</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/android-q-beta-settings-panel-nfc.png" alt="android-q-beta-settings-panel-nfc.png"></p>
+<p><img alt="android-q-beta-settings-panel-nfc.png" data-src="/images/android-q-beta-settings-panel-nfc.png"></p>
 <p>面板属性:</p>
 <blockquote>
 <ul>
@@ -589,7 +593,7 @@
 </blockquote>
 <h2 id="音量"><a href="#音量" class="headerlink" title="音量"></a>音量</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Settings.Panel.ACTION_VOLUME</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/android-q-beta-settings-panel-volume.png" alt="android-q-beta-settings-panel-volume.png"></p>
+<p><img alt="android-q-beta-settings-panel-volume.png" data-src="/images/android-q-beta-settings-panel-volume.png"></p>
 <p>面板属性:</p>
 <blockquote>
 <ul>
@@ -1480,7 +1484,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1488,6 +1496,8 @@
   
 
 
+
+  
 
 
 
@@ -1505,10 +1515,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1559,6 +1578,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

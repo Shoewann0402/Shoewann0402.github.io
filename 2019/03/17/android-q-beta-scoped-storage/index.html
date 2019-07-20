@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -572,7 +576,7 @@
 </ul>
 </blockquote>
 <h1 id="影响"><a href="#影响" class="headerlink" title="影响"></a>影响</h1><p>这些更改会影响您的应用保存和访问外部存储上的文件的方式。</p>
-<p><img src="/images/android_q_file_access.png" alt="android_q_file_access.png"></p>
+<p><img alt="android_q_file_access.png" data-src="/images/android_q_file_access.png"></p>
 <h1 id="沙箱独立存储应用私有文件"><a href="#沙箱独立存储应用私有文件" class="headerlink" title="沙箱独立存储应用私有文件"></a>沙箱独立存储应用私有文件</h1><p>Android Q 为每一个应用在外部存储设备内采用了<code>沙箱独立存储</code>。比如<code>/sdcard</code>, 没有其他应用程序能够直接访问您应用程序沙箱内的文件，因为对于您的应用程序来说这些文件是私有的，您不再需要任何权限去访问和保存您自己外部存储中的文件，这一变化使维护用户文件的隐私变得更容易，并有助于减少应用程序所需的权限数量。</p>
 <p><strong>【注意】如果用户手动卸载了应用程序，沙箱内的私有文件也会被清理</strong></p>
 <p>通过<code>Context.getExternalFilesDir()</code>返回的位置是在外部存储上存储文件的最佳位置。因为这个位置在所有Android版本上的行为都是一致的。使用此方法时，请传入与要创建或打开的文件类型对应的媒体环境，比如说，访问或保存应用程序私有图片，调用<code>Context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)</code></p>
@@ -701,7 +705,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2019-03-17 14:06:46.117 31140-31140/com.xw.androidqtest D/FileStorageActivity: file.exists():false ， file.getAbsolutePath(): /storage/emulated/0/测试Android Q文件.txt</span><br><span class="line">2019-03-17 14:06:46.130 31140-31140/com.xw.androidqtest D/FileStorageActivity: SD卡写入内容完成...</span><br><span class="line">2019-03-17 14:06:50.346 31140-31140/com.xw.androidqtest D/FileStorageActivity: SD卡文件里面的内容:我是测试Android Q文件写入的内容</span><br></pre></td></tr></table></figure>
 
 <p>查看/sdcard根下的文件，发现没有该文件，被系统自动存放在如下沙箱中</p>
-<p><img src="/images/android-q-beta-file-test-1.png" alt="android-q-beta-file-test-1.png"></p>
+<p><img alt="android-q-beta-file-test-1.png" data-src="/images/android-q-beta-file-test-1.png"></p>
 <h3 id="测试-2-——-推荐方式-Context-getExternalFilesDir"><a href="#测试-2-——-推荐方式-Context-getExternalFilesDir" class="headerlink" title="测试 2 —— 推荐方式 Context.getExternalFilesDir()"></a>测试 2 —— 推荐方式 Context.getExternalFilesDir()</h3><p>测试将文件放入文档目录，传入<code>Environment.DIRECTORY_DOCUMENTS</code>到<code>getExternalFilesDir()</code>方法</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">writeMethod</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> context: Context = <span class="keyword">this</span><span class="symbol">@FileStorageActivity</span></span><br><span class="line">        <span class="keyword">val</span> file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), <span class="string">"测试Android Q文件.txt"</span>);</span><br><span class="line">        Log.d(tag, <span class="string">"file.exists():<span class="subst">$&#123;file.exists()&#125;</span> ， file.getAbsolutePath(): <span class="subst">$&#123;file.absolutePath&#125;</span>"</span>);</span><br><span class="line">        <span class="keyword">if</span> (file.exists()) &#123;</span><br><span class="line">            file.delete();</span><br><span class="line">            file.createNewFile();</span><br><span class="line">        &#125;</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span><span class="symbol">@FileStorageActivity</span>, <span class="string">"SD卡目录下创建文件成功..."</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        <span class="keyword">val</span> fw = FileWriter(file);</span><br><span class="line">        fw.write(<span class="string">"我是测试Android Q文件写入的内容"</span>);</span><br><span class="line">        fw.close()</span><br><span class="line">        Toast.makeText(<span class="keyword">this</span><span class="symbol">@FileStorageActivity</span>, <span class="string">"SD卡写入内容完成..."</span>, Toast.LENGTH_LONG).show()</span><br><span class="line">        Log.d(tag, <span class="string">"SD卡写入内容完成..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">readMethod</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> context: Context = <span class="keyword">this</span><span class="symbol">@FileStorageActivity</span></span><br><span class="line">        <span class="keyword">val</span> fr = FileReader(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS).path + <span class="string">"/测试Android Q文件.txt"</span>);</span><br><span class="line">        <span class="keyword">val</span> r = BufferedReader(fr);</span><br><span class="line">        <span class="keyword">val</span> result = r.readLine();</span><br><span class="line">        Log.d(tag, <span class="string">"SD卡文件里面的内容:<span class="variable">$result</span>"</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
@@ -709,16 +713,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2019-03-17 14:27:23.423 9511-9511/com.xw.androidqtest D/FileStorageActivity: file.exists():false ， file.getAbsolutePath(): /storage/emulated/0/Android/data/com.xw.androidqtest/files/Documents/测试Android Q文件.txt</span><br><span class="line">2019-03-17 14:27:23.437 9511-9511/com.xw.androidqtest D/FileStorageActivity: SD卡写入内容完成...</span><br><span class="line">2019-03-17 14:27:27.696 9511-9511/com.xw.androidqtest D/FileStorageActivity: SD卡文件里面的内容:我是测试Android Q文件写入的内容</span><br></pre></td></tr></table></figure>
 
 <p>文件所在位置：</p>
-<p><img src="/images/android-q-beta-file-test-2.png" alt="android-q-beta-file-test-2.png"></p>
+<p><img alt="android-q-beta-file-test-2.png" data-src="/images/android-q-beta-file-test-2.png"></p>
 <p>更多示例，请参照<strong>以上内容</strong>或<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcHJldmlldy9wcml2YWN5L3Njb3BlZC1zdG9yYWdl" title="https://developer.android.google.cn/preview/privacy/scoped-storage">官方文档<i class="fa fa-external-link"></i></span>, 自行测试</p>
 <hr>
 <p><strong>2019-03-26 更新:</strong></p>
 <p>得到反馈，测试 1 未能在android-10模拟器上复现成功，由于上面的测试我是在pixel 2真机上测试的，对此如下又在模拟器上进行了测试 （本次真机也同时测试了一遍）。</p>
 <p>由于<strong>没有添加</strong>读写权限，在模拟器上运行抛出了异常 —-&gt; (真机没有任何异常)</p>
-<p><img src="/images/android-q-beta-file-test-3.png" alt="android-q-beta-file-test-3.png"></p>
-<p><img src="/images/android-q-beta-file-test-4.png" alt="android-q-beta-file-test-4.png"></p>
+<p><img alt="android-q-beta-file-test-3.png" data-src="/images/android-q-beta-file-test-3.png"></p>
+<p><img alt="android-q-beta-file-test-4.png" data-src="/images/android-q-beta-file-test-4.png"></p>
 <p>于是<strong>添加</strong>读写权限，并<strong>动态授权</strong>，模拟器上运行无异常，但是确实写入的文件未能自动放入<strong>/Android/sandbox/com.xw.androidqtest</strong>目录下，位置没变还是在<strong>/storage/emulated/0/</strong>根目录下</p>
-<p><img src="/images/android-q-beta-file-test-5.png" alt="android-q-beta-file-test-5.png"></p>
+<p><img alt="android-q-beta-file-test-5.png" data-src="/images/android-q-beta-file-test-5.png"></p>
 <p>针对以上的出现的问题，猜想应该是模拟器和真机之间的差异，大家怎么看？ 欢迎大家在评论处留言讨论</p>
 <hr>
 <blockquote>
@@ -1614,7 +1618,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1622,6 +1630,8 @@
   
 
 
+
+  
 
 
 
@@ -1639,10 +1649,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1693,6 +1712,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

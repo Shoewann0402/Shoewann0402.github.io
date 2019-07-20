@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -103,7 +107,7 @@
 </script>
 
   <meta name="description" content="上一篇我们讲到了《Firebase特性之崩溃报告》，在这篇文章中，我们来共同学习一下如何在Androids上使用Firebase的测试实验室。">
-<meta name="keywords" content="Android,Firebase,Google Cloud,Testing">
+<meta name="keywords" content="Firebase,Android,Google Cloud,Testing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Firebase特性之Robo测试实验室">
 <meta property="og:url" content="https://shoewann0402.github.io/2016/11/06/android-in-firebase-robo-test-lab/index.html">
@@ -562,11 +566,11 @@
 <a id="more"></a>
 
 <h2 id="测试前的准备"><a href="#测试前的准备" class="headerlink" title="测试前的准备"></a>测试前的准备</h2><p>要在Androids上使用Firebase的测试实验室，首先要做的就是参照上一篇的内容，如果你之前在Firebase上创建过项目可以跳过继续直接进行后面下一步步骤；或者也可以在本地用Android Studio创建一个新的项目，参照上一篇的配置配置好本地和Firebase云端环境，当你本地Android　Studio环境和Firebase云端空间项目都创建成功后，确保本地项目已经添加了google-services.json文件和相关依赖，就可以开始下一步操作。</p>
-<h3 id="选择测试项目"><a href="#选择测试项目" class="headerlink" title="选择测试项目"></a>选择测试项目</h3><p><img src="/images/firebase-test-lab-1.png" alt="firebase-test-lab-1.png"></p>
+<h3 id="选择测试项目"><a href="#选择测试项目" class="headerlink" title="选择测试项目"></a>选择测试项目</h3><p><img alt="firebase-test-lab-1.png" data-src="/images/firebase-test-lab-1.png"></p>
 <p>点击左侧的<strong>Test Lab</strong></p>
-<p><img src="/images/firebase-test-lab-2.png" alt="firebase-test-lab-２.png"></p>
+<p><img alt="firebase-test-lab-２.png" data-src="/images/firebase-test-lab-2.png"></p>
 <p>在Androids上使用Firebase的测试实验室,然后点击<strong>RUN YOUR FIRST TEST</strong>按钮</p>
-<p><img src="/images/firebase-test-lab-3.png" alt="firebase-test-lab-３.png"></p>
+<p><img alt="firebase-test-lab-３.png" data-src="/images/firebase-test-lab-3.png"></p>
 <h3 id="选择测试类型"><a href="#选择测试类型" class="headerlink" title="选择测试类型"></a>选择测试类型</h3><p>当前页面会提示让你<strong>选择测试类型</strong>,有两种类型:</p>
 <blockquote>
 <ul>
@@ -585,48 +589,48 @@
 </blockquote>
 <p>本节我们来总结类型之一的<strong>Robo测试</strong>的相关使用</p>
 <h2 id="Robo测试"><a href="#Robo测试" class="headerlink" title="Robo测试"></a>Robo测试</h2><h3 id="配置测试"><a href="#配置测试" class="headerlink" title="配置测试"></a>配置测试</h3><p>我们选择默认的Robo测试，然后点击<strong>CONTINUE</strong>继续</p>
-<p><img src="/images/firebase-test-lab-robo-1.png" alt="firebase-test-lab-robo-1.png"></p>
+<p><img alt="firebase-test-lab-robo-1.png" data-src="/images/firebase-test-lab-robo-1.png"></p>
 <p>这里需要上传应用的APK文件，然后选取您要测试的尺寸。</p>
-<p><img src="/images/firebase-test-lab-robo-2.png" alt="firebase-test-lab-robo-2.png"></p>
+<p><img alt="firebase-test-lab-robo-2.png" data-src="/images/firebase-test-lab-robo-2.png"></p>
 <p>等待上传成功……</p>
-<p><img src="/images/firebase-test-lab-robo-3.png" alt="firebase-test-lab-robo-3.png"></p>
+<p><img alt="firebase-test-lab-robo-3.png" data-src="/images/firebase-test-lab-robo-3.png"></p>
 <p>上传成功后，点击<strong>CONTINUE</strong>继续</p>
-<p><img src="/images/firebase-test-lab-robo-4.png" alt="firebase-test-lab-robo-4.png"></p>
+<p><img alt="firebase-test-lab-robo-4.png" data-src="/images/firebase-test-lab-robo-4.png"></p>
 <p>这里选择你想测试的设备、API等级、方向、和地区，每一个尺寸你必须至少要选择一个，然后点击当前页面右下角的<strong>START XX TESTS</strong>按钮。（示例：我这里选择了<em>虚拟设备Nexus 5、API Level 23(Android 6.0.x)、方向横屏和竖屏、地区美国（en_us）</em> ）</p>
-<p><img src="/images/firebase-test-lab-robo-5.png" alt="firebase-test-lab-robo-5.png"></p>
+<p><img alt="firebase-test-lab-robo-5.png" data-src="/images/firebase-test-lab-robo-5.png"></p>
 <h3 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h3><p>下面开始进入Robo测试界面，开始测试上面我配置的示例，然后等待测试结果:</p>
-<p><img src="/images/firebase-test-lab-robo-6.png" alt="firebase-test-lab-robo-6.png"></p>
+<p><img alt="firebase-test-lab-robo-6.png" data-src="/images/firebase-test-lab-robo-6.png"></p>
 <p>等待几分钟，然后测试完成了，<strong>２个pass</strong>,都通过了：</p>
-<p><img src="/images/firebase-test-lab-robo-7.png" alt="firebase-test-lab-robo-7.png"></p>
+<p><img alt="firebase-test-lab-robo-7.png" data-src="/images/firebase-test-lab-robo-7.png"></p>
 <h3 id="分析测试"><a href="#分析测试" class="headerlink" title="分析测试"></a>分析测试</h3><p>然后我们点开测试配置的,其中一个设备进去，可以看到一些测试的详细的信息(<em>测试结果</em>、<em>测试时间</em>、<em>测试用时</em>、<em>地区</em>、<em>方向</em>),重点是下面的<strong>LOGS</strong>、<strong>SCREENSHOTS</strong>、<strong>ACTIVITY MAP</strong>、<strong>VIDEO</strong></p>
 <blockquote>
 <ul>
 <li><strong>LOGS</strong> 测试时打印的日志</li>
 </ul>
 </blockquote>
-<p><img src="/images/firebase-test-lab-robo-8.png" alt="firebase-test-lab-robo-8.png"></p>
+<p><img alt="firebase-test-lab-robo-8.png" data-src="/images/firebase-test-lab-robo-8.png"></p>
 <blockquote>
 <ul>
 <li><strong>SCREENSHOTS</strong>　测试时屏幕截图</li>
 </ul>
 </blockquote>
-<p><img src="/images/firebase-test-lab-robo-9.png" alt="firebase-test-lab-robo-9.png"></p>
+<p><img alt="firebase-test-lab-robo-9.png" data-src="/images/firebase-test-lab-robo-9.png"></p>
 <blockquote>
 <ul>
 <li><strong>ACTIVITY MAP</strong>　Activity 地图</li>
 </ul>
 </blockquote>
-<p><img src="/images/firebase-test-lab-robo-10.png" alt="firebase-test-lab-robo-10.png"></p>
+<p><img alt="firebase-test-lab-robo-10.png" data-src="/images/firebase-test-lab-robo-10.png"></p>
 <blockquote>
 <ul>
 <li><strong>VIDEO</strong>　视频记录的测试过程</li>
 </ul>
 </blockquote>
-<p><img src="/images/firebase-test-lab-robo-11.png" alt="firebase-test-lab-robo-11.png"></p>
+<p><img alt="firebase-test-lab-robo-11.png" data-src="/images/firebase-test-lab-robo-11.png"></p>
 <p>下面是视频对应的gif动态图效果（ps:图片是720x1280的，有点大，可以点击下面的图片，查看效果）:</p>
-<p><img src="/images/firebase-test-lab-robo-12.gif" alt="firebase-test-lab-robo-12.gif"></p>
+<p><img alt="firebase-test-lab-robo-12.gif" data-src="/images/firebase-test-lab-robo-12.gif"></p>
 <p>最后我们点击详细页面右上角的<strong>VIEW SOURCE FILES</strong>，可以查看源文件，是放在Google云平台的</p>
-<p><img src="/images/firebase-test-lab-robo-12.png" alt="firebase-test-lab-robo-12.png"></p>
+<p><img alt="firebase-test-lab-robo-12.png" data-src="/images/firebase-test-lab-robo-12.png"></p>
 <blockquote>
 <p>以上简单的介绍了如何使用Firebase实验室Robo测试类型的相关内容，有关Firebase的其他特性，后续总结。如果不足，欢迎指正，谢谢。</p>
 </blockquote>
@@ -717,9 +721,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
-          
             <a href="/tags/Firebase/" rel="tag"><i class="fa fa-tag"></i> Firebase</a>
+          
+            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
           
             <a href="/tags/Google-Cloud/" rel="tag"><i class="fa fa-tag"></i> Google Cloud</a>
           
@@ -1508,7 +1512,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1516,6 +1524,8 @@
   
 
 
+
+  
 
 
 
@@ -1533,10 +1543,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1587,6 +1606,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -562,7 +566,7 @@
 <a id="more"></a>
 
 <p>我是入手的树莓派3B(Rpi3)</p>
-<p><img src="/images/raspberry-pi-3-board.png" alt="raspberry-pi-3-board"></p>
+<p><img alt="raspberry-pi-3-board" data-src="/images/raspberry-pi-3-board.png"></p>
 <p>这里关于AndroidThings相关的入门知识，就不再次阐述了，可以参考以下站点：</p>
 <blockquote>
 <ul>
@@ -575,7 +579,7 @@
 <p>一切准备就绪，屏幕亮了，出现了绿色的android,灰色的things和三个进度点。</p>
 <p>内心是相当的激动，仿佛是开启了一个新纪元，这可能只有真正爱技术、爱谷歌、爱折腾的人才能体会的感觉。</p>
 <p>然后进入下一个界面，据说在这个界面下面小字显示的是当前的IP地址，然后根据adb connect命令去连接。可是我找了半天，试了很多次还是显示的“<strong>Not Connected</strong>” </p>
-<p><img src="/images/IMG_20170622_201119.jpg" alt="IMG_20170622_201119.jpg"></p>
+<p><img alt="IMG_20170622_201119.jpg" data-src="/images/IMG_20170622_201119.jpg"></p>
 <p>最后那天开箱测试，我还是被逼放弃了… 我猜想，原因很简单：有可能是公司的本地连接需要手动配置IP、默认网关、DNS、子网掩码，导致我目前直接连接上去是没有有效IP访问</p>
 <h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1><p>后来，我联系了谷歌GDE专家王玉成 (York Wang)，请教了它，最后解决这个问题。</p>
 <blockquote>
@@ -583,30 +587,30 @@
 <li>首先我用笔记本(Windows10)连接wifi，然后用网线连接rpi3开发板和笔记本,将wifi的网络设置为<strong>共享</strong>，这样就能分配一个IP提供给开发板访问网络，电脑跟开发板组成一个局域网</li>
 </ul>
 </blockquote>
-<p><img src="/images/QQ20170624131213.png" alt="QQ20170624131213.png"></p>
-<p><img src="/images/QQ20170624131430.png" alt="QQ20170624131430.png"></p>
+<p><img alt="QQ20170624131213.png" data-src="/images/QQ20170624131213.png"></p>
+<p><img alt="QQ20170624131430.png" data-src="/images/QQ20170624131430.png"></p>
 <blockquote>
 <ul>
 <li>打开cmd窗口输入<strong>arp -a</strong>，可以看到当前所有的网络接口</li>
 </ul>
 </blockquote>
-<p><img src="/images/QQ20170624131608.png" alt="QQ20170624131608.png"></p>
+<p><img alt="QQ20170624131608.png" data-src="/images/QQ20170624131608.png"></p>
 <blockquote>
 <ul>
 <li>然后输入<strong>ipconfig</strong>，查看当前的具体ip情况，找到本地连接(以太网)的ip，然后ip对应下的网段就是rpi3开发板的ip</li>
 </ul>
 </blockquote>
-<p><img src="/images/QQ20170624131748.png" alt="QQ20170624131748.png"></p>
+<p><img alt="QQ20170624131748.png" data-src="/images/QQ20170624131748.png"></p>
 <blockquote>
 <ul>
 <li>最后我们输入<strong>adb connect <ip></ip></strong>去连接设备，连接成功后，回显示成功信息，并输入<strong>adb shell</strong> 验证，可以看到显示的是<strong>rpi3</strong></li>
 </ul>
 </blockquote>
-<p><img src="/images/QQ20170624132347.png" alt="QQ20170624132347.png"></p>
+<p><img alt="QQ20170624132347.png" data-src="/images/QQ20170624132347.png"></p>
 <p>参照以上的方式我们就成功的完成了adb连接到androidThings开发板,剩下的就和普通开发android一样了,通过Android Studio建立一个androidThings的项目, 成功的运行了第一个AndroidThings项目到开发板</p>
-<p><img src="/images/Screenshot20170624192229.png" alt="Screenshot20170624192229.png"></p>
+<p><img alt="Screenshot20170624192229.png" data-src="/images/Screenshot20170624192229.png"></p>
 <p>点击一下返回按钮，就回到了桌面(后来我才知道这货居然就是launcher桌面)，可以看到最下面已经能显示具体的网络连接和IP地址了</p>
-<p><img src="/images/Screenshot20170624192312.png" alt="Screenshot20170624192312.png"></p>
+<p><img alt="Screenshot20170624192312.png" data-src="/images/Screenshot20170624192312.png"></p>
 <blockquote>
 <p>以上就是个人在入门androidThings时的笔记记录，如需转载，请注明出处，谢谢！</p>
 </blockquote>
@@ -1486,7 +1490,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1494,6 +1502,8 @@
   
 
 
+
+  
 
 
 
@@ -1511,10 +1521,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1565,6 +1584,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -549,62 +553,62 @@
 
 <p>  Unity 调用Android的代码接口，需要将Android逻辑代码写好，然后打包成架包放到Unity3d中，提供给Unity3d调用，本节以一个简单的示例来说明。</p>
 <h2 id="Android-端"><a href="#Android-端" class="headerlink" title="Android 端"></a>Android 端</h2><h3 id="创建Android项目"><a href="#创建Android项目" class="headerlink" title="创建Android项目"></a>创建Android项目</h3><p>  首先打开Android Studio ，新建一个Android项目GvrSample</p>
-<p><img src="/images/gvr6-1.png" alt="gvr6-1.png"></p>
+<p><img alt="gvr6-1.png" data-src="/images/gvr6-1.png"></p>
 <p>  然后，找到Unity安装目录，在如下路径找到<strong>classes.jar</strong>文件</p>
-<p><img src="/images/gvr6-2.png" alt="gvr6-2.png"></p>
+<p><img alt="gvr6-2.png" data-src="/images/gvr6-2.png"></p>
 <p>  将<strong>classes.jar</strong>文件复制粘贴到<em>Android Studio</em>工程里<strong>app/libs</strong>下面</p>
-<p><img src="/images/gvr6-3.png" alt="gvr6-3.png"></p>
+<p><img alt="gvr6-3.png" data-src="/images/gvr6-3.png"></p>
 <p>  之后选中该<strong>classes,jar</strong> 文件，<strong>右键</strong>==&gt; <strong>Add as Library</strong>,弹出的<strong>Module</strong>选择<strong>app</strong> ，点击ok，等待系统添加完成</p>
 <h3 id="编写功能逻辑代码"><a href="#编写功能逻辑代码" class="headerlink" title="编写功能逻辑代码"></a>编写功能逻辑代码</h3><p>  在<strong>MainActivity</strong>下面，更改默认的<strong>AppCompatActivity</strong>为<strong>UnityPlayerActivity</strong>,去掉<strong>OnCreate</strong>方法里面的布局调用代码。</p>
 <p>  这里，以Unity端4个Button点击，调用该类的4个方法，输出指定的信息为例</p>
-<p><img src="/images/gvr6-4.png" alt="gvr6-4.png"></p>
+<p><img alt="gvr6-4.png" data-src="/images/gvr6-4.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//无参数无返回值的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Method_A</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_A: 调用=&gt;[无参数、无返回值]A方法"</span>);</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_A: 没有传递参数给我，不需要返回参数给Unity3d"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//无参数有返回值的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">Method_B</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_B: 调用=&gt;[无参数、有返回值的B方法"</span>);</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_B: 没有传递参数给我,需要返回特定的数据给Unity3d"</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"方法B中某特定返回值"</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//有参数无返回值的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Method_C</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_C: 调用=&gt;[有参数、无返回值]的C方法"</span>);</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_C: 有传递参数"</span>+a+<span class="string">"给我,不需要返回特定的数据给Unity3d"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//有参数有返回值的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">Method_D</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_D: 调用=&gt;[有参数、有返回值]的D方法"</span>);</span><br><span class="line">      Log.d(TAG, <span class="string">"Method_D: 有传递参数"</span>+a+<span class="string">"，"</span>+b+<span class="string">"给我,需要返回特定的数据给Unity3d"</span>);</span><br><span class="line">      <span class="keyword">if</span> (a&gt;b)&#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="string">"方法D中，返回最大值："</span>+a;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"方法D中，返回最大值："</span>+b;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 
 <p>  打开<strong>app</strong>下面的<strong>builde.gradle</strong>文件，更改<strong>apply com.android.application</strong>为<strong>com.android.library</strong>,之后，删除或者注释下面的 <strong>applicationId</strong>,点击右上角的<strong>Sync Now</strong>,最后,选择菜单栏<strong>Build</strong>==&gt;<strong>Build Apk</strong></p>
-<p><img src="/images/gvr6-5.png" alt="gvr6-5.png"></p>
+<p><img alt="gvr6-5.png" data-src="/images/gvr6-5.png"></p>
 <p>  然后会在<strong>app/build/output/aar</strong>下面生成<strong>app-debug.aar</strong>文件</p>
-<p><img src="/images/gvr6-6.png" alt="gvr6-6.png"></p>
+<p><img alt="gvr6-6.png" data-src="/images/gvr6-6.png"></p>
 <h3 id="获得Android接口"><a href="#获得Android接口" class="headerlink" title="获得Android接口"></a>获得Android接口</h3><p>  将生成好的<strong>app-debug.aar</strong>文件拷贝出来，然后该后缀并解压到文件夹下，其中的<strong>classes.jar</strong>文件就是后面需要用到的了</p>
 <h2 id="Unity3d-端"><a href="#Unity3d-端" class="headerlink" title="Unity3d 端"></a>Unity3d 端</h2><p>   新建Unity3d项目，3D 类型</p>
 <h3 id="创建-UI"><a href="#创建-UI" class="headerlink" title="创建 UI"></a>创建 UI</h3><p>   在工作空间左侧的Hierarchy下新建一个<strong>Button</strong>，结构为<strong>Canvas/Button/Text</strong>，选中<strong>Canvas</strong>,再右侧的<strong>Inspector</strong>下面的<strong>Canvas</strong>属性，更改<strong>Render Mode</strong>为<strong>World Space</strong></p>
-<p><img src="/images/gvr6-7.png" alt="gvr6-7.png"></p>
+<p><img alt="gvr6-7.png" data-src="/images/gvr6-7.png"></p>
 <p>  然后设置它的<strong>Width</strong>和<strong>Hight</strong>都为<strong>200dp</strong></p>
-<p><img src="/images/gvr6-8.png" alt="gvr6-8.png"></p>
+<p><img alt="gvr6-8.png" data-src="/images/gvr6-8.png"></p>
 <p>  就是这样的效果</p>
-<p><img src="/images/gvr6-9.png" alt="gvr6-9.png"></p>
+<p><img alt="gvr6-9.png" data-src="/images/gvr6-9.png"></p>
 <p>  现在，选中<strong>Button</strong>，按<strong>Ctrl+D</strong>，在<strong>Button</strong>下面克隆出<strong>Button （1）、Button （2）、Button （3）</strong></p>
-<p><img src="/images/gvr6-10.png" alt="gvr6-10.png"></p>
+<p><img alt="gvr6-10.png" data-src="/images/gvr6-10.png"></p>
 <p>  选中这<strong>4个Button</strong>，沿着Y轴拖拽按钮，使它的位置在<strong>Canvas</strong>矩形框范围内的顶部</p>
-<p><img src="/images/gvr6-11.png" alt="gvr6-11.png"></p>
+<p><img alt="gvr6-11.png" data-src="/images/gvr6-11.png"></p>
 <p>  选中左侧<strong>Button （1）</strong> ,沿着Y轴向下，调整好<strong>Button （1）</strong>的位置</p>
-<p><img src="/images/gvr6-12.png" alt="gvr6-12.png"></p>
+<p><img alt="gvr6-12.png" data-src="/images/gvr6-12.png"></p>
 <p>  选中<strong>Button （2）</strong> ,沿着Y轴向下，调整好<strong>Button （2）</strong>的位置</p>
-<p><img src="/images/gvr6-13.png" alt="gvr6-13.png"></p>
+<p><img alt="gvr6-13.png" data-src="/images/gvr6-13.png"></p>
 <p>  选中<strong>Button （2）</strong> ,沿着Y轴向下，调整好<strong>Button （3）</strong>的位置</p>
-<p><img src="/images/gvr6-14.png" alt="gvr6-14.png"></p>
+<p><img alt="gvr6-14.png" data-src="/images/gvr6-14.png"></p>
 <p>  接下来就是修改按钮上面文字了</p>
 <p>  展开<strong>Cavans/Button</strong>，选中里面的<strong>Text</strong>控件，在右边的<strong>Text (Script)</strong>下修改<strong>Text</strong>为<strong>无参数无返回值</strong></p>
-<p><img src="/images/gvr6-15.png" alt="gvr6-15.png"></p>
+<p><img alt="gvr6-15.png" data-src="/images/gvr6-15.png"></p>
 <p>  同理,展开<strong>Cavans/Button (1)</strong>，选中里面的<strong>Text</strong>控件，在右边的<strong>Text (Script)</strong>下修改<strong>Text</strong>为<strong>无参数有返回值</strong></p>
-<p><img src="/images/gvr6-16.png" alt="gvr6-16.png"></p>
+<p><img alt="gvr6-16.png" data-src="/images/gvr6-16.png"></p>
 <p>  展开<strong>Cavans/Button (2)</strong>，选中里面的<strong>Text</strong>控件，在右边的<strong>Text (Script)</strong>下修改<strong>Text</strong>为<strong>有参数无返回值</strong></p>
-<p><img src="/images/gvr6-17.png" alt="gvr6-17.png"></p>
+<p><img alt="gvr6-17.png" data-src="/images/gvr6-17.png"></p>
 <p>  展开<strong>Cavans/Button (3)</strong>，选中里面的<strong>Text</strong>控件，在右边的<strong>Text (Script)</strong>下修改<strong>Text</strong>为<strong>有参数有返回值</strong></p>
-<p><img src="/images/gvr6-18.png" alt="gvr6-18.png"></p>
+<p><img alt="gvr6-18.png" data-src="/images/gvr6-18.png"></p>
 <p>  再次选中<strong>Canvas</strong>，在右侧的<strong>Inspector</strong>里面设置<em>Pos x</em>、<em>Pos Y</em>、<em>Pos Z</em>都为<strong>0</strong>,同时，修改下面的Scale 对应的 <em>X</em> 、<em>Y</em>、<em>Z</em>值为<strong>0.25</strong>,</p>
-<p><img src="/images/gvr6-19.png" alt="gvr6-19.png"></p>
+<p><img alt="gvr6-19.png" data-src="/images/gvr6-19.png"></p>
 <p>  点击<strong>Main Camera</strong>可以看到当前的UI视图，但是还需要调整</p>
-<p><img src="/images/gvr6-20.png" alt="gvr6-20.png"></p>
+<p><img alt="gvr6-20.png" data-src="/images/gvr6-20.png"></p>
 <p>  再次选中<strong>Canvas</strong>,右侧设置<em>Pos Z</em> 值为<strong>40</strong>，可以合适的看到场景中的UI了</p>
-<p><img src="/images/gvr6-21.png" alt="gvr6-21.png"></p>
+<p><img alt="gvr6-21.png" data-src="/images/gvr6-21.png"></p>
 <h3 id="添加GVR-SDK"><a href="#添加GVR-SDK" class="headerlink" title="添加GVR SDK"></a>添加GVR SDK</h3><p>  现在需要参照之前的做法，导入gvr-unity-sdk下面的packge，将<strong>GvrViewerMain</strong>和<strong>GvrReticle</strong>拖到<strong>Hierarchy</strong>指定的地方，点击播放按钮进行播放，查看效果</p>
-<p><img src="/images/gvr6-22.png" alt="gvr6-22.png"></p>
-<p><img src="/images/gvr6-23.png" alt="gvr6-23.png"></p>
+<p><img alt="gvr6-22.png" data-src="/images/gvr6-22.png"></p>
+<p><img alt="gvr6-23.png" data-src="/images/gvr6-23.png"></p>
 <h3 id="创建响应脚本"><a href="#创建响应脚本" class="headerlink" title="创建响应脚本"></a>创建响应脚本</h3><p>  在<strong>Assets</strong>下新建一个<strong>Script</strong>文件夹，创建一个<strong>Button1</strong> C# 脚本</p>
-<p><img src="/images/gvr6-24.png" alt="gvr6-24.png"></p>
+<p><img alt="gvr6-24.png" data-src="/images/gvr6-24.png"></p>
 <p>  同理，在下面依次创建<strong>Button2</strong>、<strong>Button3</strong>、<strong>Button4</strong></p>
-<p><img src="/images/gvr6-25.png" alt="gvr6-25.png"></p>
+<p><img alt="gvr6-25.png" data-src="/images/gvr6-25.png"></p>
 <h3 id="编写脚本内容"><a href="#编写脚本内容" class="headerlink" title="编写脚本内容"></a>编写脚本内容</h3><p>分别用VS或者Mono打开 <strong>Button1、Button2、Button3、Button4</strong>这四个脚本文件</p>
 <blockquote>
 <ul>
@@ -635,46 +639,46 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using System.Collections;</span><br><span class="line"></span><br><span class="line">public class Button4 : MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">	public void CallAndroidMethod_D()&#123;</span><br><span class="line"></span><br><span class="line">		AndroidJavaClass jc = new AndroidJavaClass (&quot;com.unity3d.player.UnityPlayer&quot;);</span><br><span class="line">		AndroidJavaObject jo = jc.GetStatic&lt;AndroidJavaObject&gt; (&quot;currentActivity&quot;);</span><br><span class="line">		string getMethod_D=jo.Call&lt;string&gt; (&quot;Method_D&quot;,1,2);</span><br><span class="line">		Debug.Log (&quot;getMethod_D:==&gt;&quot; + getMethod_D);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="添加物理响应和事件触发"><a href="#添加物理响应和事件触发" class="headerlink" title="添加物理响应和事件触发"></a>添加物理响应和事件触发</h3><p>  为<strong>Main Camera</strong>添加<strong>Physics Raycaster</strong></p>
-<p><img src="/images/gvr6-26.png" alt="gvr6-26.png"></p>
+<p><img alt="gvr6-26.png" data-src="/images/gvr6-26.png"></p>
 <p>  为<strong>Event System</strong>添加<strong>Gaze Input Module</strong>并移到<strong>standalone Input Module</strong>上面</p>
-<p><img src="/images/gvr6-27.png" alt="gvr6-27.png"></p>
+<p><img alt="gvr6-27.png" data-src="/images/gvr6-27.png"></p>
 <h3 id="为Button绑定脚本事件"><a href="#为Button绑定脚本事件" class="headerlink" title="为Button绑定脚本事件"></a>为Button绑定脚本事件</h3><p> 选中<strong>Button</strong>在右边<strong>Add Component</strong>添加<strong>Button1</strong>脚本，并添加<strong>Event Trigger</strong>响应事件，在<strong>Event Trigger</strong>里添加<strong>Pointer Click</strong>事件，绑定到控件<strong>Button</strong>,调用脚本<strong>Button1</strong>里面的<strong>CallAndroidMethod_A()</strong>方法</p>
-<p><img src="/images/gvr6-28.png" alt="gvr6-28.png"></p>
+<p><img alt="gvr6-28.png" data-src="/images/gvr6-28.png"></p>
 <p> 同理，选中<strong>Button （1）</strong>在右边<strong>Add Component</strong>添加<strong>Button2</strong>脚本，并添加<strong>Event Trigger</strong>响应事件，在<strong>Event Trigger</strong>里添加<strong>Pointer Click</strong>事件，绑定到控件<strong>Button （1）</strong>,调用脚本<strong>Button2</strong>里面的<strong>CallAndroidMethod_B()</strong>方法</p>
-<p><img src="/images/gvr6-29.png" alt="gvr6-29.png"></p>
+<p><img alt="gvr6-29.png" data-src="/images/gvr6-29.png"></p>
 <p> 选中<strong>Button （2）</strong>在右边<strong>Add Component</strong>添加<strong>Button3</strong>脚本，并添加<strong>Event Trigger</strong>响应事件，在<strong>Event Trigger</strong>里添加<strong>Pointer Click</strong>事件，绑定到控件<strong>Button （2）</strong>,调用脚本<strong>Button3</strong>里面的<strong>CallAndroidMethod_C()</strong>方法</p>
-<p><img src="/images/gvr6-30.png" alt="gvr6-30.png"></p>
+<p><img alt="gvr6-30.png" data-src="/images/gvr6-30.png"></p>
 <p> 选中<strong>Button (3)</strong>在右边<strong>Add Component</strong>添加<strong>Button4</strong>脚本，并添加<strong>Event Trigger</strong>响应事件，在<strong>Event Trigger</strong>里添加<strong>Pointer Click</strong>事件，绑定到控件<strong>Button（3）</strong>,调用脚本<strong>Button4</strong>里面的<strong>CallAndroidMethod_D()</strong>方法</p>
-<p><img src="/images/gvr6-31.png" alt="gvr6-31.png"></p>
+<p><img alt="gvr6-31.png" data-src="/images/gvr6-31.png"></p>
 <h3 id="添加Android-接口到Unity"><a href="#添加Android-接口到Unity" class="headerlink" title="添加Android 接口到Unity"></a>添加Android 接口到Unity</h3><p>  将上面打包解压后的<strong>classes.jar</strong>Android功能架包添加到<strong>Plugins/Android/libs</strong>下</p>
-<p><img src="/images/gvr6-32.png" alt="gvr6-32.png"></p>
+<p><img alt="gvr6-32.png" data-src="/images/gvr6-32.png"></p>
 <p>  修改合并<strong>Plugins/Android</strong>下的<strong>AndroidManifest.xml</strong></p>
-<p><img src="/images/gvr6-33.png" alt="gvr6-33.png"></p>
+<p><img alt="gvr6-33.png" data-src="/images/gvr6-33.png"></p>
 <h3 id="运行并响应事件"><a href="#运行并响应事件" class="headerlink" title="运行并响应事件"></a>运行并响应事件</h3><p>按照前面讲的，打包时填写的公司名和产品名，要和下面对应一致，并且同时也要和android端的包名一致。</p>
 <blockquote>
 <p>当点击第一个按钮: 无参数无返回值</p>
 </blockquote>
-<p><img src="/images/gvr6-34.png" alt="gvr6-34.png"></p>
+<p><img alt="gvr6-34.png" data-src="/images/gvr6-34.png"></p>
 <p>输出:</p>
-<p><img src="/images/gvr6-35.png" alt="gvr6-35.png"></p>
+<p><img alt="gvr6-35.png" data-src="/images/gvr6-35.png"></p>
 <blockquote>
 <p>当点击第二个按钮: 无参数有返回值</p>
 </blockquote>
-<p><img src="/images/gvr6-36.png" alt="gvr6-36.png"></p>
+<p><img alt="gvr6-36.png" data-src="/images/gvr6-36.png"></p>
 <p>输出:</p>
-<p><img src="/images/gvr6-37.png" alt="gvr6-37.png"></p>
+<p><img alt="gvr6-37.png" data-src="/images/gvr6-37.png"></p>
 <blockquote>
 <p>当点击第三个按钮: 有参数无返回值</p>
 </blockquote>
-<p><img src="/images/gvr6-38.png" alt="gvr6-38.png"></p>
+<p><img alt="gvr6-38.png" data-src="/images/gvr6-38.png"></p>
 <p>输出:</p>
-<p><img src="/images/gvr6-39.png" alt="gvr6-39.png"></p>
+<p><img alt="gvr6-39.png" data-src="/images/gvr6-39.png"></p>
 <blockquote>
 <p>当点击第四个按钮: 有参数有返回值</p>
 </blockquote>
-<p><img src="/images/gvr6-40.png" alt="gvr6-40.png"></p>
+<p><img alt="gvr6-40.png" data-src="/images/gvr6-40.png"></p>
 <p>输出:</p>
-<p><img src="/images/gvr6-41.png" alt="gvr6-41.png"></p>
+<p><img alt="gvr6-41.png" data-src="/images/gvr6-41.png"></p>
 <blockquote>
 <p>本节gvr-unity-sdk之Unity调用Android接口相关内容到此结束，更多功能需要自行扩展，下一节继续《Gvr Unity SDK (七) —— Unity 添加图片》</p>
 </blockquote>
@@ -1554,7 +1558,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1562,6 +1570,8 @@
   
 
 
+
+  
 
 
 
@@ -1579,10 +1589,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1633,6 +1652,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

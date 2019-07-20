@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -578,7 +582,7 @@
 <h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><h4 id="XML文件"><a href="#XML文件" class="headerlink" title="XML文件"></a>XML文件</h4><blockquote>
 <p>activity_main.xml</p>
 </blockquote>
-<p><img src="/images/socket_basic_xml.png" alt="socket_basic_xml"></p>
+<p><img alt="socket_basic_xml" data-src="/images/socket_basic_xml.png"></p>
 <h4 id="Java-代码"><a href="#Java-代码" class="headerlink" title="Java 代码"></a>Java 代码</h4><blockquote>
 <p>MainActivity.java</p>
 </blockquote>
@@ -587,15 +591,15 @@
 <h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><blockquote>
 <p>客户端发送前：</p>
 </blockquote>
-<p><img src="/images/socket_basic_client_send.png" alt="socket_basic_client_send"></p>
+<p><img alt="socket_basic_client_send" data-src="/images/socket_basic_client_send.png"></p>
 <blockquote>
 <p>服务端收到信息并返回：</p>
 </blockquote>
-<p><img src="/images/socket_basic_server.png" alt="socket_basic_server"></p>
+<p><img alt="socket_basic_server" data-src="/images/socket_basic_server.png"></p>
 <blockquote>
 <p>客户端收到服务器返回的信息：</p>
 </blockquote>
-<p><img src="/images/socket_basic_client_receiver.png" alt="socket_basic_client_receiver"></p>
+<p><img alt="socket_basic_client_receiver" data-src="/images/socket_basic_client_receiver.png"></p>
 <h2 id="简易聊天室示例"><a href="#简易聊天室示例" class="headerlink" title="简易聊天室示例"></a>简易聊天室示例</h2><blockquote>
 <p>以下的示例简单的实现你一个简易的聊天室效果</p>
 </blockquote>
@@ -612,7 +616,7 @@
 <h3 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h3><h4 id="XML-布局"><a href="#XML-布局" class="headerlink" title="XML 布局"></a>XML 布局</h4><blockquote>
 <p>activity_main.xml</p>
 </blockquote>
-<p><img src="/images/socket_chat_xml.png" alt="socket_chat_xml"></p>
+<p><img alt="socket_chat_xml" data-src="/images/socket_chat_xml.png"></p>
 <h4 id="Java-代码-1"><a href="#Java-代码-1" class="headerlink" title="Java 代码"></a>Java 代码</h4><blockquote>
 <p>ClientThread.java</p>
 </blockquote>
@@ -626,15 +630,15 @@
 <h4 id="效果图-1"><a href="#效果图-1" class="headerlink" title="效果图"></a>效果图</h4><blockquote>
 <p>客户端 A：</p>
 </blockquote>
-<p><img src="/images/socket_chat_client_one.png" alt="socket_chat_client_one"></p>
+<p><img alt="socket_chat_client_one" data-src="/images/socket_chat_client_one.png"></p>
 <blockquote>
 <p>客户端 B：</p>
 </blockquote>
-<p><img src="/images/socket_chat_client_two.png" alt="socket_chat_client_two"></p>
+<p><img alt="socket_chat_client_two" data-src="/images/socket_chat_client_two.png"></p>
 <blockquote>
 <p>服务端：</p>
 </blockquote>
-<p><img src="/images/socket_chat_server.png" alt="socket_chat_server"></p>
+<p><img alt="socket_chat_server" data-src="/images/socket_chat_server.png"></p>
 <blockquote>
 <p>以上简单的介绍了Socket网络通信相关内容，如果不足，欢迎指正。</p>
 </blockquote>
@@ -1516,7 +1520,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1524,6 +1532,8 @@
   
 
 
+
+  
 
 
 
@@ -1541,10 +1551,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1595,6 +1614,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -559,7 +563,7 @@
 <a id="more"></a>
 
 <p>今天我们很高兴的宣布了<code>Room</code>和<code>Lifecycle</code><span class="exturl" data-url="aHR0cDovL2RldmVsb3Blci5hbmRyb2lkLmNvbS9hcmNo" title="http://developer.android.com/arch">架构组件<i class="fa fa-external-link"></i></span>库到了1.0稳定。这些API已经为生产应用程序和库做好了准备，是我们建议开发者寻找架构用程序架构的帮助以及本地存储(尽管这里这里是建议，但是不要求)。<code>Lifecycle</code>现在也能够和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vdG9waWMvbGlicmFyaWVzL3N1cHBvcnQtbGlicmFyeS9pbmRleC5odG1s" title="https://developer.android.com/topic/libraries/support-library/index.html">支持库<i class="fa fa-external-link"></i></span>集成，因此你能够使用像AppCompatActivity这样标准的类去使用它们。</p>
-<p>尽管我们在今天声明它们稳定，公测的组件已经在应用程序中一起使用了，有数十亿次安装。顶端开发者，像Zappos,已经能花费更多的时间去感谢架构组件什么是最重要的:<br><img src="/images/zappos-logo.jpg" alt="zappos-logo.jpg"></p>
+<p>尽管我们在今天声明它们稳定，公测的组件已经在应用程序中一起使用了，有数十亿次安装。顶端开发者，像Zappos,已经能花费更多的时间去感谢架构组件什么是最重要的:<br><img alt="zappos-logo.jpg" data-src="/images/zappos-logo.jpg"></p>
 <p><em>在Android架构组件发布之前，我们有自己的ViewModel实现，我们使用Loaders和Dependency注入，通过更改配置去保存我们的ViewModel。我们最近切换到了Android架构组件ViewModel实现，所有的样板都消失了。我们发现我们可以花费更多的时间在设计、业务逻辑以及测试上面，在写样板和担心Android生命周期上的问题也会少一点了</em></p>
 <p><em>我们也开始去使用LiveData将它直接勾进Android生命周期里。我们使用它去回收和展示网络数据，并且不必再去关心网络呼叫订阅管理 —— Zappos公司Android软件工程师大卫亨利</em></p>
 <p>架构组件提供了一个示例，灵活而适用的方法让开发者们免去了一些共同问题，因此他们能够关注于构建更棒的体验，这个是依靠于应用程序架构向导的核心构建块。</p>
@@ -1453,7 +1457,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1461,6 +1469,8 @@
   
 
 
+
+  
 
 
 
@@ -1478,10 +1488,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1532,6 +1551,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

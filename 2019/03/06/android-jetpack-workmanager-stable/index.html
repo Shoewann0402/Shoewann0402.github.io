@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -580,7 +584,7 @@
 </ul>
 </blockquote>
 <p>观看和阅读下面去学习在您的APP里面什么时候以及如何使用WorkManager去简化管理后台工作</p>
-<p><img src="/images/android_jetpack_introducing_workmanager.png" alt="android_jetpack_introducing_workmanager"></p>
+<p><img alt="android_jetpack_introducing_workmanager" data-src="/images/android_jetpack_introducing_workmanager.png"></p>
 <p><span class="exturl" data-url="aHR0cHM6Ly95b3V0dS5iZS9wZV95cU0xNmhQUQ==" title="https://youtu.be/pe_yqM16hPQ">Android Jetpack: 介绍WorkManager<i class="fa fa-external-link"></i></span></p>
 <h2 id="何时使用-WorkManager"><a href="#何时使用-WorkManager" class="headerlink" title="何时使用 WorkManager"></a>何时使用 WorkManager</h2><p>WorkManager是针对于能够被延期任务的最佳套件，但是即使是应用程序或者设备重启(比如: 使用后端服务定期同步数据以及上传日志或者分析数据) 也是仍然有望运行</p>
 <p>对于像需要立即运行去发送即时消息或者APP在退出之后不需要立即运行的任务，去看看<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vZ3VpZGUvYmFja2dyb3VuZC8=" title="https://developer.android.com/guide/background/">后台处理向导 <i class="fa fa-external-link"></i></span>了解哪一种解决方案满足您的需求。</p>
@@ -1490,7 +1494,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1498,6 +1506,8 @@
   
 
 
+
+  
 
 
 
@@ -1515,10 +1525,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1569,6 +1588,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -110,35 +114,10 @@
 <meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
 <meta property="og:description" content="原文来自：  Flexbox-layout   什么是Flexbox？Flexbox 布局模型宗旨是对于在一个flex容器平铺出flex项提供更多高效的方法，即使flex项的大小未知.因此，它提供了更有效的方法,利用已存在的布局去实现响应式用户界面.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://shoewann0402.github.io/images/flexbox-visual.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/flexdirction_row.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/fiexdirection_row_reverse.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/flexdirection_column.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/flexdirection_column_reverse.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/flexwrap_nowrap.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/flexwrap_wrap.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/flexwrap_wrap_reverse.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/justifycontent_flex_start.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/justifycontent_flex_end.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/justifycontent_center.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/justifycontent_space_between.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/justifycontent_space_around.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignlitems_stretch.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignlitems_flex_start.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignlitems_flex_end.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignlitems_center.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignlitems_baseline.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignContent_stretch.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignContent_flex_start.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignContent_flex_end.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignContent_center.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignContent_space_between.png">
-<meta property="og:image" content="https://shoewann0402.github.io/images/alignContent_space_around.png">
 <meta property="og:updated_time" content="2019-03-11T09:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google官方Android开源库--FlexboxLayout">
 <meta name="twitter:description" content="原文来自：  Flexbox-layout   什么是Flexbox？Flexbox 布局模型宗旨是对于在一个flex容器平铺出flex项提供更多高效的方法，即使flex项的大小未知.因此，它提供了更有效的方法,利用已存在的布局去实现响应式用户界面.">
-<meta name="twitter:image" content="https://shoewann0402.github.io/images/flexbox-visual.png">
 
 
 
@@ -561,7 +540,7 @@
 <h2 id="什么是Flexbox？"><a href="#什么是Flexbox？" class="headerlink" title="什么是Flexbox？"></a>什么是Flexbox？</h2><p><strong>Flexbox</strong> 布局模型宗旨是对于在一个<strong>flex</strong>容器平铺出<strong>flex</strong>项提供更多高效的方法，即使<strong>flex</strong>项的大小未知.因此，它提供了更有效的方法,利用已存在的布局去实现响应式用户界面.</p>
 <a id="more"></a>
 
-<h2 id="布局模型"><a href="#布局模型" class="headerlink" title="布局模型"></a>布局模型</h2><p><img src="/images/flexbox-visual.png" alt="flexbox_visual"></p>
+<h2 id="布局模型"><a href="#布局模型" class="headerlink" title="布局模型"></a>布局模型</h2><p><img alt="flexbox_visual" data-src="/images/flexbox-visual.png"></p>
 <h2 id="安装Gradle依赖"><a href="#安装Gradle依赖" class="headerlink" title="安装Gradle依赖"></a>安装Gradle依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    compile <span class="string">'com.google.android:flexbox:0.1.2'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><strong>FlexboxLayout</strong>像LinearLayout和RelativeLayout一样继承了<strong>ViewGroup</strong>，你可以在一个<strong>XML</strong>中像这样指定属性:</p>
@@ -586,53 +565,53 @@ view.setLayoutParams(lp);</code></pre>
 <p>子项的方向是摆放在<strong>Flexbox</strong>布局里面的，它决定里主轴线的方向（和十字交叉轴，垂直于主轴线），可能的值是：</p>
 <blockquote>
 <ul>
-<li>row (default) 主轴为水平方向，起点在左端<br><img src="/images/flexdirction_row.png" alt="flexdirction_row"></li>
-<li>row_reverse 主轴为水平方向，起点在右端<br><img src="/images/fiexdirection_row_reverse.png" alt="fiexdirection_row_reverse"></li>
-<li>column 主轴为垂直方向，起点在上沿<br><img src="/images/flexdirection_column.png" alt="flexdirection_column"></li>
-<li>column_reverse 主轴为垂直方向，起点在下沿。<br><img src="/images/flexdirection_column_reverse.png" alt="flexdirection_column_reverse"></li>
+<li>row (default) 主轴为水平方向，起点在左端<br><img alt="flexdirction_row" data-src="/images/flexdirction_row.png"></li>
+<li>row_reverse 主轴为水平方向，起点在右端<br><img alt="fiexdirection_row_reverse" data-src="/images/fiexdirection_row_reverse.png"></li>
+<li>column 主轴为垂直方向，起点在上沿<br><img alt="flexdirection_column" data-src="/images/flexdirection_column.png"></li>
+<li>column_reverse 主轴为垂直方向，起点在下沿。<br><img alt="flexdirection_column_reverse" data-src="/images/flexdirection_column_reverse.png"></li>
 </ul>
 </blockquote>
 <p>2.flexWrap</p>
 <p>这个属性控制着flex容器是单行还是多行，方向是十字交叉轴可能的值是：</p>
 <blockquote>
 <ul>
-<li>nowrap (default) 不换行<br><img src="/images/flexwrap_nowrap.png" alt="flexwrap_nowrap"></li>
-<li>wrap 按正常方向换行<br><img src="/images/flexwrap_wrap.png" alt="flexwrap_wrap"></li>
-<li>wrap_reverse 按反方向换行<br><img src="/images/flexwrap_wrap_reverse.png" alt="flexwrap_wrap_reverse"></li>
+<li>nowrap (default) 不换行<br><img alt="flexwrap_nowrap" data-src="/images/flexwrap_nowrap.png"></li>
+<li>wrap 按正常方向换行<br><img alt="flexwrap_wrap" data-src="/images/flexwrap_wrap.png"></li>
+<li>wrap_reverse 按反方向换行<br><img alt="flexwrap_wrap_reverse" data-src="/images/flexwrap_wrap_reverse.png"></li>
 </ul>
 </blockquote>
 <p>3.justifyContent</p>
 <p>这个属性控制着主轴线的边缘对齐方式，可能的值是：</p>
 <blockquote>
 <ul>
-<li>flex_start (default) 左对齐<br><img src="/images/justifycontent_flex_start.png" alt="justifycontent_flex_start"></li>
-<li>flex_end 右对齐<br><img src="/images/justifycontent_flex_end.png" alt="justifycontent_flex_end"></li>
-<li>center 居中<br><img src="/images/justifycontent_center.png" alt="justifycontent_center"></li>
-<li>space_between 两端对齐<br><img src="/images/justifycontent_space_between.png" alt="justifycontent_space_between"></li>
-<li>space_around 每个子项两侧间的间距离相等<br><img src="/images/justifycontent_space_around.png" alt="justifycontent_space_around"></li>
+<li>flex_start (default) 左对齐<br><img alt="justifycontent_flex_start" data-src="/images/justifycontent_flex_start.png"></li>
+<li>flex_end 右对齐<br><img alt="justifycontent_flex_end" data-src="/images/justifycontent_flex_end.png"></li>
+<li>center 居中<br><img alt="justifycontent_center" data-src="/images/justifycontent_center.png"></li>
+<li>space_between 两端对齐<br><img alt="justifycontent_space_between" data-src="/images/justifycontent_space_between.png"></li>
+<li>space_around 每个子项两侧间的间距离相等<br><img alt="justifycontent_space_around" data-src="/images/justifycontent_space_around.png"></li>
 </ul>
 </blockquote>
 <p>4.alignItems</p>
 <p>这个属性控制着十字轴的边缘对齐方式，可能的值是：</p>
 <blockquote>
 <ul>
-<li>stretch (default) 如果子项没有设置高度或者设为<strong>auto</strong>，将占满整个容器的高度<br><img src="/images/alignlitems_stretch.png" alt="alignlitems_stretch"></li>
-<li>flex_start 交叉轴的起点中对齐<br><img src="/images/alignlitems_flex_start.png" alt="alignlitems_flex_start"></li>
-<li>flex_end 交叉轴的终点对齐<br><img src="/images/alignlitems_flex_end.png" alt="alignlitems_flex_end"></li>
-<li>center 交叉轴的中点对齐<br><img src="/images/alignlitems_center.png" alt="alignlitems_center"></li>
-<li>baseline 项目的第一行文字的基线对其<br><img src="/images/alignlitems_baseline.png" alt="alignlitems_baseline"></li>
+<li>stretch (default) 如果子项没有设置高度或者设为<strong>auto</strong>，将占满整个容器的高度<br><img alt="alignlitems_stretch" data-src="/images/alignlitems_stretch.png"></li>
+<li>flex_start 交叉轴的起点中对齐<br><img alt="alignlitems_flex_start" data-src="/images/alignlitems_flex_start.png"></li>
+<li>flex_end 交叉轴的终点对齐<br><img alt="alignlitems_flex_end" data-src="/images/alignlitems_flex_end.png"></li>
+<li>center 交叉轴的中点对齐<br><img alt="alignlitems_center" data-src="/images/alignlitems_center.png"></li>
+<li>baseline 项目的第一行文字的基线对其<br><img alt="alignlitems_baseline" data-src="/images/alignlitems_baseline.png"></li>
 </ul>
 </blockquote>
 <p>5.alignContent</p>
 <p>这个属性控制着<strong>flex</strong>行和<strong>flex</strong>容器的边缘对齐方式，可能的值是：</p>
 <blockquote>
 <ul>
-<li>stretch (default) 轴线占满整个交叉轴<br><img src="/images/alignContent_stretch.png" alt="alignContent_stretch"></li>
-<li>flex_start 与交叉轴的起点对齐<br><img src="/images/alignContent_flex_start.png" alt="alignContent_flex_start"></li>
-<li>flex_end 与交叉轴的终点对齐<br><img src="/images/alignContent_flex_end.png" alt="alignContent_flex_end"></li>
-<li>center 与交叉轴的终点对齐<br><img src="/images/alignContent_center.png" alt="alignContent_center"></li>
-<li>space_between 与交叉轴两端对齐，轴线之间的间隔平均分配<br><img src="/images/alignContent_space_between.png" alt="alignContent_space_between"></li>
-<li>space_around 每根轴线两侧的间隔相等<br><img src="/images/alignContent_space_around.png" alt="alignContent_space_around"></li>
+<li>stretch (default) 轴线占满整个交叉轴<br><img alt="alignContent_stretch" data-src="/images/alignContent_stretch.png"></li>
+<li>flex_start 与交叉轴的起点对齐<br><img alt="alignContent_flex_start" data-src="/images/alignContent_flex_start.png"></li>
+<li>flex_end 与交叉轴的终点对齐<br><img alt="alignContent_flex_end" data-src="/images/alignContent_flex_end.png"></li>
+<li>center 与交叉轴的终点对齐<br><img alt="alignContent_center" data-src="/images/alignContent_center.png"></li>
+<li>space_between 与交叉轴两端对齐，轴线之间的间隔平均分配<br><img alt="alignContent_space_between" data-src="/images/alignContent_space_between.png"></li>
+<li>space_around 每根轴线两侧的间隔相等<br><img alt="alignContent_space_around" data-src="/images/alignContent_space_around.png"></li>
 </ul>
 </blockquote>
 <p>你也可以在FlexboxLayout中指定以下的属性：</p>
@@ -1538,7 +1517,11 @@ view.setLayoutParams(lp);</code></pre>
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1546,6 +1529,8 @@ view.setLayoutParams(lp);</code></pre>
   
 
 
+
+  
 
 
 
@@ -1563,10 +1548,19 @@ view.setLayoutParams(lp);</code></pre>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1617,6 +1611,11 @@ view.setLayoutParams(lp);</code></pre>
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

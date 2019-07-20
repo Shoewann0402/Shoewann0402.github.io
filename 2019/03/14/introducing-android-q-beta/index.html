@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -552,7 +556,7 @@
 <h1 id="建立在Android的隐私保护之上"><a href="#建立在Android的隐私保护之上" class="headerlink" title="建立在Android的隐私保护之上"></a>建立在Android的隐私保护之上</h1><p>Android的设计以安全和隐私为中心,随着Android的成熟,我们增加了很多功能来保护用户,像<span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2UuYW5kcm9pZC5jb20vc2VjdXJpdHkvZW5jcnlwdGlvbi9maWxlLWJhc2Vk" title="https://source.android.com/security/encryption/file-based">基于文件的加密<i class="fa fa-external-link"></i></span>、操作系统控制要求应用程序在<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vZ3VpZGUvdG9waWNzL3Blcm1pc3Npb25zL292ZXJ2aWV3" title="https://developer.android.com/guide/topics/permissions/overview">访问敏感资源之前请求权限<i class="fa fa-external-link"></i></span>、锁定<span class="exturl" data-url="aHR0cHM6Ly93d3cudGhldmVyZ2UuY29tLzIwMTgvMy83LzE3MDkxMTA0L2FuZHJvaWQtcC1wcmV2ZW50cy1hcHBzLXVzaW5nLW1pYy1jYW1lcmEtaWRsZS1iYWNrZ3JvdW5k" title="https://www.theverge.com/2018/3/7/17091104/android-p-prevents-apps-using-mic-camera-idle-background">相机/麦克风后台访问<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cuY29tcHV0ZXJ3b3JsZC5jb20vYXJ0aWNsZS8zMjk3MDM5L2FuZHJvaWQtcGllLXNlY3VyaXR5LXNldHRpbmcuaHRtbA==" title="https://www.computerworld.com/article/3297039/android-pie-security-setting.html">锁定模式<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9zZWN1cml0eS5nb29nbGVibG9nLmNvbS8yMDE4LzEwL2dvb2dsZS1hbmQtYW5kcm9pZC1oYXZlLXlvdXItYmFjay1ieS5odG1s" title="https://security.googleblog.com/2018/10/google-and-android-have-your-back-by.html">加密备份<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cuYW5kcm9pZC5jb20vcGxheS1wcm90ZWN0Lw==" title="https://www.android.com/play-protect/">Google Play Protect<i class="fa fa-external-link"></i></span>(每天扫描超过500亿个应用程序，以识别潜在的有害应用程序并删除它们)以及更多。在Android Q中，我们已经做了更多的增强来保护我们的用户，其中许多增强是我们在Strobe项目中工作的一部分。</p>
 <h2 id="给用户更多的位置控制"><a href="#给用户更多的位置控制" class="headerlink" title="给用户更多的位置控制"></a>给用户更多的位置控制</h2><p>使用Android Q，操作系统帮助用户更好地控制应用程序何时可以获得位置。就像之前的操作系统版本一样，应用程序只有在请求你的权限并得到你的许可后才能获得位置信息。</p>
 <p>特别敏感的一件事是，应用程序在不使用的情况下(在后台)访问位置。Android Q 允许用户永远不允许应用程序查看自己的位置，只在应用程序正在使用(运行)或一直在使用(后台)时才允许。</p>
-<p><img src="/images/android_q_loc_dialog.png" alt="android_q_loc_dialog"></p>
+<p><img alt="android_q_loc_dialog" data-src="/images/android_q_loc_dialog.png"></p>
 <p>例如，一个应用程序询问用户食品配送的位置是有意义的，用户可能希望授予它这样做的能力。但由于应用程序可能不需要当前正在使用的位置之外的位置，用户可能不想授予该访问权限。Android Q现在提供了更高级别的控制。请阅读<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9wcml2YWN5L2RldmljZS1sb2NhdGlvbg==" title="https://developer.android.com/preview/privacy/device-location">开发人员指南<i class="fa fa-external-link"></i></span>，了解有关如何使应用程序适应此新控件的详细信息。期待更多以用户为中心的改进出现在即将到来的beta中。我们的目标是非常敏感地，始终为开发人员提供尽可能多的通知和支持。</p>
 <h2 id="Android-Q中更多的隐私保护"><a href="#Android-Q中更多的隐私保护" class="headerlink" title="Android Q中更多的隐私保护"></a>Android Q中更多的隐私保护</h2><p>除了位置的改变，我们还在进行进一步的更新，以确保透明度、用户控制权和个人数据的安全。</p>
 <p>在Android Q 中，该操作系统让用户对应用程序有了更多的控制，控制对共享文件的访问。用户将能够通过新的运行时权限控制应用程序对照片、视频或音频集合的访问。对于下载，应用程序必须使用系统文件选择器，这允许用户决定应用程序可以访问哪些下载文件。对于开发人员来说，您的应用程序如何在外部存储上使用共享区域有一些变化。请确保阅读作用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9wcml2YWN5L3Njb3BlZC1zdG9yYWdl" title="https://developer.android.com/preview/privacy/scoped-storage">域存储(Scoped Storage)更改<i class="fa fa-external-link"></i></span>以获得详细信息。</p>
@@ -561,14 +565,14 @@
 <p>我们提前把这些变化告诉你，这样你就可以有尽可能多的时间来准备。我们还努力为开发人员预先提供详细的信息，我们建议查看关于隐私更改的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9wcml2YWN5" title="https://developer.android.com/preview/privacy">详细文档<i class="fa fa-external-link"></i></span>，并立即开始测试。</p>
 <h1 id="吸引用户的新方式"><a href="#吸引用户的新方式" class="headerlink" title="吸引用户的新方式"></a>吸引用户的新方式</h1><p>在Android Q中，我们启用了新的方式将用户带入你的应用程序，并在他们从其他应用程序过渡时简化体验。</p>
 <h2 id="折叠和创新的新屏幕"><a href="#折叠和创新的新屏幕" class="headerlink" title="折叠和创新的新屏幕"></a>折叠和创新的新屏幕</h2><p>可折叠设备开辟了一些创新的经验和用例。为了帮助你的应用程序更好地利用这些和其他大屏幕设备，我们在Android Q中做了很多改进，包括onResume和onPause的改变，以支持多简历，并在你的应用程序有焦点时通知你。我们还更改了resizeableActivity manifest属性的工作方式，以帮助您管理应用程序在可折叠和大屏幕上的显示方式。为了让您开始在这些新设备上构建和测试，我们一直在努力更新Android模拟器，以支持多显示器类型切换——更多细节即将公布!</p>
-<p><img src="/images/android_q_map.png" alt="android_q_map"></p>
+<p><img alt="android_q_map" data-src="/images/android_q_map.png"></p>
 <h2 id="分享快捷键"><a href="#分享快捷键" class="headerlink" title="分享快捷键"></a>分享快捷键</h2><p>当用户想在另一个应用程序中与他人分享照片等内容时，过程应该很快。在Android Q中，我们通过共享快捷方式让这一过程变得更快更简单，用户可以直接跳转到另一个应用程序来共享内容。开发人员可以发布共享目标，这些目标在应用程序中启动带有附加内容的特定活动，并在共享UI中显示给用户。因为它们是预先发布的，所以可以在启动时立即加载共享UI。</p>
-<p><img src="/images/android_q_share.png" alt="android_q_share"></p>
+<p><img alt="android_q_share" data-src="/images/android_q_share.png"></p>
 <p>共享快捷方式机制类似于应用程序快捷方式的工作方式，因此我们扩展了<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9wbS9TaG9ydGN1dEluZm8=" title="https://developer.android.com/reference/android/content/pm/ShortcutInfo">ShortcutInfo API<i class="fa fa-external-link"></i></span>，以便更容易地集成这两个功能。新的ShareTarget AndroidX库也支持这个新的API。这允许应用程序使用新功能，同时允许pre-Q设备使用直接共享。您可以在<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZXNhbXBsZXMvYW5kcm9pZC1TaGFyaW5nU2hvcnRjdXRz" title="https://github.com/googlesamples/android-SharingShortcuts">这里<i class="fa fa-external-link"></i></span>找到带有源代码的早期示例应用程序。</p>
 <h2 id="设置面板"><a href="#设置面板" class="headerlink" title="设置面板"></a>设置面板</h2><p>现在，您还可以通过一个新的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvcHJvdmlkZXIvU2V0dGluZ3MuUGFuZWw=" title="https://developer.android.com/reference/android/provider/Settings.Panel">设置面板API<i class="fa fa-external-link"></i></span>在应用程序上下文中直接显示关键系统设置，该API利用了我们在Android 9 Pie中引入的slice特性。</p>
 <p>设置面板是一个浮动的UI，您可以从应用程序中调用它来显示用户可能需要的系统设置，比如internet连接、NFC和音频音量。例如，浏览器可以显示带有连接设置的面板，如飞机模式、Wi-Fi(包括附近的网络)和移动数据。没有必要离开应用程序;用户可以根据需要从面板管理设置。要显示设置面板，只需使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvcHJvdmlkZXIvU2V0dGluZ3MuUGFuZWwuaHRtbCNBQ1RJT05fSU5URVJORVRfQ09OTkVDVElWSVRZ" title="https://developer.android.com/reference/android/provider/Settings.Panel.html#ACTION_INTERNET_CONNECTIVITY">Settings.Panel actions<i class="fa fa-external-link"></i></span>其中一个新设置触发一个intent</p>
 <h1 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h1><p>在Android Q中，我们扩展了您的应用程序可以使用Android的连接堆栈并添加新的连接API。</p>
-<p><img src="/images/android_q_connect.png" alt="android_q_connect"></p>
+<p><img alt="android_q_connect" data-src="/images/android_q_connect.png"></p>
 <h2 id="连接权限、隐私和安全性"><a href="#连接权限、隐私和安全性" class="headerlink" title="连接权限、隐私和安全性"></a>连接权限、隐私和安全性</h2><p>大多数用于扫描网络的api已经需要粗位置权限，但在Android Q 中，对于蓝牙、蜂窝网络和Wi-Fi，我们正在通过要求精细位置权限来增强对这些api的保护。如果你的应用只需要建立点对点连接或推荐网络，看看下面改进的Wi-Fi api——它们简化了连接，不需要位置许可。</p>
 <p>除了Android Q在连接不同Wi-Fi网络时提供的随机MAC地址，我们还增加了新的Wi-Fi标准支持WP3和OWE，以提高家庭和工作网络以及开放/公共网络的安全性。</p>
 <h2 id="改进的点对点和互联网连接"><a href="#改进的点对点和互联网连接" class="headerlink" title="改进的点对点和互联网连接"></a>改进的点对点和互联网连接</h2><p>在Android Q中，我们重构了Wi-Fi堆栈，以改善隐私和性能，但也改善了常见的用例，比如管理物联网设备和建议互联网连接——不需要位置许可。</p>
@@ -579,9 +583,9 @@
 <h1 id="相机、媒体、图形"><a href="#相机、媒体、图形" class="headerlink" title="相机、媒体、图形"></a>相机、媒体、图形</h1><h2 id="动态深度格式的照片"><a href="#动态深度格式的照片" class="headerlink" title="动态深度格式的照片"></a>动态深度格式的照片</h2><p>许多移动设备上的相机可以通过模糊前景或背景来模拟较窄的景深。它们为图像中的不同点捕获深度元数据，并对图像应用静态模糊，然后丢弃深度元数据。</p>
 <p>从Android Q开始，应用程序可以请求一个动态深度图像，该图像由一个JPEG、XMP元数据(与深度相关的元素相关)和一个深度和置信度地图组成，这些数据嵌入到宣传支持的设备的同一个文件中。</p>
 <p>要求JPEG +动态深度图像可以让你在你的应用程序中提供专门的模糊和bokeh选项。你甚至可以使用这些数据来创建3D图像或支持AR摄影用例。我们正在使动态深度成为生态系统的一种开放格式，我们正在与我们的设备制造商合作伙伴合作，使其在运行Android Q及更高版本的设备上可用。</p>
-<p><img src="/images/q_depth_image_x.jpg" alt="q_depth_image_x.jpg"></p>
-<p><img src="/images/q_depth_image_xx.jpg" alt="q_depth_image_xx.jpg"></p>
-<p><img src="/images/q_depth_image_xxx.jpg" alt="q_depth_image_xxx.jpg"></p>
+<p><img alt="q_depth_image_x.jpg" data-src="/images/q_depth_image_x.jpg"></p>
+<p><img alt="q_depth_image_xx.jpg" data-src="/images/q_depth_image_xx.jpg"></p>
+<p><img alt="q_depth_image_xxx.jpg" data-src="/images/q_depth_image_xxx.jpg"></p>
 <p>使用动态深度图像，你可以在你的应用程序中提供专门的模糊和背景虚化选项。</p>
 <h2 id="新的音频和视频编解码器"><a href="#新的音频和视频编解码器" class="headerlink" title="新的音频和视频编解码器"></a>新的音频和视频编解码器</h2><p>Android Q引入了对开源视频编解码器<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQVYx" title="https://en.wikipedia.org/wiki/AV1">AV1<i class="fa fa-external-link"></i></span>的支持。这使得媒体供应商可以用<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQVYxI1F1YWxpdHlfYW5kX2VmZmljaWVuY3k=" title="https://en.wikipedia.org/wiki/AV1#Quality_and_efficiency">更少的带宽<i class="fa fa-external-link"></i></span>向Android设备传输高质量的视频内容。此外，Android Q支持使用<span class="exturl" data-url="aHR0cDovL29wdXMtY29kZWMub3JnLw==" title="http://opus-codec.org/">Opus<i class="fa fa-external-link"></i></span>进行音频编码，Opus是一种针对语音和音乐流媒体进行优化的编解码器，<span class="exturl" data-url="aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvSGlnaC1keW5hbWljLXJhbmdlX3ZpZGVvI0hEUjEwKw==" title="https://en.wikipedia.org/wiki/High-dynamic-range_video#HDR10+">HDR10+<i class="fa fa-external-link"></i></span>用于支持Opus的设备上的高动态范围视频。</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvbWVkaWEvTWVkaWFDb2RlY0luZm8=" title="https://developer.android.com/reference/android/media/MediaCodecInfo">MediaCodecInfo API<i class="fa fa-external-link"></i></span>引入了一种更简单的方法来确定Android设备的视频呈现能力。对于任何给定的编解码器，都可以使用VideoCodecCapabilities.getSupportedPerformancePoints()获得支持的大小和帧速率列表。这允许您选择在任何给定设备上呈现的最佳质量的视频内容。</p>
@@ -591,7 +595,7 @@
 <h2 id="神经网络-API-1-2"><a href="#神经网络-API-1-2" class="headerlink" title="神经网络 API 1.2"></a>神经网络 API 1.2</h2><p>自2017年推出神经网络API (NNAPI)以来，我们继续扩大支持的操作数量，并改进现有功能。在Android Q中，我们增加了60个新操作，包括ARGMAX, ARGMIN，量化LSTM，以及一系列的性能优化。这为加速更大范围的模型奠定了基础，比如用于目标检测和图像分割的模型。我们正在与硬件供应商和流行的机器学习框架(如<span class="exturl" data-url="aHR0cHM6Ly93d3cudGVuc29yZmxvdy5vcmcv" title="https://www.tensorflow.org/">TensorFlow<i class="fa fa-external-link"></i></span>)合作，优化和推出对NNAPI 1.2的支持。</p>
 <h1 id="Android基础的加强"><a href="#Android基础的加强" class="headerlink" title="Android基础的加强"></a>Android基础的加强</h1><h2 id="ART-性能"><a href="#ART-性能" class="headerlink" title="ART 性能"></a>ART 性能</h2><p>Android Q对ART运行时进行了几项新的改进，帮助应用程序更快地启动并消耗更少的内存，而不需要开发人员做任何工作。</p>
 <p>自Android Nougat以来，ART提供了<span class="exturl" data-url="aHR0cHM6Ly9zb3VyY2UuYW5kcm9pZC5jb20vZGV2aWNlcy90ZWNoL2RhbHZpay9qaXQtY29tcGlsZXI=" title="https://source.android.com/devices/tech/dalvik/jit-compiler">Profile Guided Optimization <i class="fa fa-external-link"></i></span>(PGO)，它通过识别和预编译代码中经常执行的部分，随着时间的推移加快了应用程序的启动速度。为了帮助最初的应用程序启动，谷歌Play现在提供了基于云的配置文件和apk。这些都是匿名的、聚合的艺术配置文件，可以让艺术在应用程序运行之前预先编译应用程序的某些部分，从而为整个优化过程提供了一个重要的起点。基于云的配置文件对所有应用程序都有好处，而且运行Android P或更高版本的设备已经可以使用这些配置文件。</p>
-<p><img src="/images/android_q_art.png" alt="android_q_art"></p>
+<p><img alt="android_q_art" data-src="/images/android_q_art.png"></p>
 <p>我们还在继续改进ART本身。例如，在Android Q中，我们通过提前启动应用程序进程并将其移至安全容器来优化Zygote进程，因此可以立即启动。 我们将更多信息存储在应用程序的堆映像中，例如类，并使用线程来更快地加载映像。 我们还在ART的Concurrent Copying（CC）垃圾收集器中添加了Generational Garbage Collection。 分代CC更有效率，因为它分别收集年轻代对象，与全堆GC相比，成本更低，同时仍然可以回收大量空间。 这使得垃圾收集整体上在时间和CPU方面更加高效，减少了jank并帮助应用程序在低端设备上更好地运行。</p>
 <h2 id="应用安全"><a href="#应用安全" class="headerlink" title="应用安全"></a>应用安全</h2><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvaGFyZHdhcmUvYmlvbWV0cmljcy9wYWNrYWdlLXN1bW1hcnk=" title="https://developer.android.com/reference/android/hardware/biometrics/package-summary">BiometricPrompt<i class="fa fa-external-link"></i></span>是我们的统一认证框架，支持系统级的生物识别。在Android Q中，我们扩展了对被动身份验证方法(如face)的支持，并添加了隐式和显式身份验证流。在显式流中，用户必须在身份验证期间显式地确认TEE中的事务。隐式流是为使用被动身份验证的事务设计的轻量级替代方案。我们还改进了设备凭据在需要时的回退。</p>
 <p>Android Q增加了对TLS 1.3的支持，<span class="exturl" data-url="aHR0cHM6Ly93d3cuaWV0Zi5vcmcvYmxvZy90bHMxMy8=" title="https://www.ietf.org/blog/tls13/">TLS 1.3<i class="fa fa-external-link"></i></span>是对TLS标准的重大修订，包括性能优势和增强的安全性。 我们的基准测试表明，与TLS 1.2相比，使用TLS 1.3可以将安全连接的速度提高40％。 默认情况下，为所有TLS连接启用TLS 1.3。 有关详细信息，请参阅<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcHJldmlldy9mZWF0dXJlcyN0bHMtMS4z" title="https://developer.android.com/preview/features#tls-1.3">文档<i class="fa fa-external-link"></i></span>。</p>
@@ -1484,7 +1488,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1492,6 +1500,8 @@
   
 
 
+
+  
 
 
 
@@ -1509,10 +1519,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1563,6 +1582,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

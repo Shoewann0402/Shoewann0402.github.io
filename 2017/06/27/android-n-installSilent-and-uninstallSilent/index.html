@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -567,16 +571,16 @@
 
 <p><strong>Error: java.lang.SecurityException: Package com.ifeng.news2 does not belong to 10045</strong></p>
 <p>那么，我们来看看<strong>belong to 10045</strong>的包是什么？</p>
-<p><img src="/images/Screenshot20170627150302.png" alt="Screenshot20170627150302.png"></p>
+<p><img alt="Screenshot20170627150302.png" data-src="/images/Screenshot20170627150302.png"></p>
 <p>可以看到<strong>10045</strong>对应的包是我当前的这个测试应用的包名<strong>com.wt.testshortcut</strong>，而不是指定需要安装apk应用的包名<strong>com.ifeng.news2</strong></p>
 <p>因此，我们再改之:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">06-27 16:17:58.843 D/MainActivity: onClick: /sdcard/com.ifeng.news2.apk</span><br><span class="line">06-27 16:17:58.846 D/PackageUtils: Enter----&gt;&gt;&gt;installSilent()</span><br><span class="line">06-27 16:17:58.846 D/PackageUtils: installSilent—————&gt;&gt;&gt;&gt;/sdcard/com.ifeng.news2.apk</span><br><span class="line">06-27 16:17:58.856 D/PackageUtils: command---&gt;&gt;&gt;LD_LIBRARY_PATH=/vendor/lib*:/system/lib* pm install -i com.wt.testshortcut --user 0 /sdcard/com.ifeng.news2.apk</span><br><span class="line">06-27 16:18:18.359 E/ApkStatusReceiver: packageName--&gt;com.ifeng.news2</span><br><span class="line">06-27 16:18:18.359 E/ApkStatusReceiver: onReceive--&gt;android.intent.action.PACKAGE_ADDED</span><br></pre></td></tr></table></figure>
 
 <p>从上面的log可以看出，我自定义的<strong>ApkStatusReceiver</strong>监听包安装、卸载、替换的广播，收到了一个包名为<strong>com.ifeng.news2</strong>的应用被添加，也就是我刚刚我们需要静默安装上去的应用，此时手机已确认该应用被成功安装。</p>
 <p>最终pm install的命令就是：<strong>pm install -i 作为安装者的应用包名 –user 0 需要安装的应用在移动设备上的路径</strong></p>
-<h2 id="源码部分"><a href="#源码部分" class="headerlink" title="源码部分"></a>源码部分</h2><p><img src="/images/Screenshot20170627140757.png" alt="Screenshot20170627140757.png"></p>
+<h2 id="源码部分"><a href="#源码部分" class="headerlink" title="源码部分"></a>源码部分</h2><p><img alt="Screenshot20170627140757.png" data-src="/images/Screenshot20170627140757.png"></p>
 <p>以上截图，可以看到第<strong>01515</strong>行的pm安装命令: <strong>pm install [-lrtsfd] [-i PACKAGE] [–user USER_ID] [PATH]</strong></p>
-<p><img src="/images/Screenshot20170627141935.png" alt="Screenshot20170627141935.png"></p>
+<p><img alt="Screenshot20170627141935.png" data-src="/images/Screenshot20170627141935.png"></p>
 <p>以上截图，可以看到<strong>-i: specify the installer package name</strong> (指定安装程序包名称),而不是指定被安装程序包名称，由此也可以推断出上面的安装命令</p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><blockquote>
 <ul>
@@ -588,7 +592,7 @@
 
 <p><strong>Error: failed to write; /sdcard/com.ifeng.news2.apk (Permission denied)</strong></p>
 <p>最后，我们来看看在Terminal终端执行pm install的情况：</p>
-<p><img src="/images/Screenshot20170627193851.png" alt="Screenshot20170627193851.png"></p>
+<p><img alt="Screenshot20170627193851.png" data-src="/images/Screenshot20170627193851.png"></p>
 <p>可以看到，之前在7.0上面执行失败的命令和成功命令都能够在Terminal终端上面执行静默安装成功。</p>
 <p>以上就是关于7.0上静默安装的内容，接下来看看静默卸载 …..</p>
 <h1 id="静默卸载"><a href="#静默卸载" class="headerlink" title="静默卸载"></a>静默卸载</h1><h2 id="复现错误-1"><a href="#复现错误-1" class="headerlink" title="复现错误"></a>复现错误</h2><p>在7.0上使用pm uninstall package 命令，会抛出一下异常log:</p>
@@ -598,7 +602,7 @@
 <p>ErrorMsg:Security exception: Permission Denial: runUninstall from pm command asks to run as user -1 but is calling from user 0; this requires android.permission.INTERACT_ACROSS_USERS_FULL</p>
 <h2 id="解决错误-1"><a href="#解决错误-1" class="headerlink" title="解决错误"></a>解决错误</h2><p>我们现在来看上面静默安装(#源码部分)的第一张图，看到第<strong>01522</strong>行，命令显示的是:<strong>pm uninstall [-k] [–user USER_ID] PACKAGE</strong></p>
 <p>确定我们的判断是没有问题的，在7.0上执行pm指令的时候，都需要跟上<strong>[–user USER_ID]</strong></p>
-<p><img src="/images/Screenshot20170627202038.png" alt="Screenshot20170627202038.png"></p>
+<p><img alt="Screenshot20170627202038.png" data-src="/images/Screenshot20170627202038.png"></p>
 <p>注：其中<strong>[-k]</strong>是代表是否需要保留需要卸载应用包名的数据</p>
 <p>因此，我们修改执行命令，同静默安装一样增加<strong>–user 0</strong>:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">06-27 20:28:59.893 D/MainActivity: onClick: com.ifeng.news2</span><br><span class="line">06-27 20:28:59.899 D/PackageUtils: Enter----&gt;&gt;&gt;uninstallSilent()</span><br><span class="line">06-27 20:28:59.899 D/PackageUtils: command---&gt;&gt;&gt;LD_LIBRARY_PATH=/vendor/lib*:/system/lib* pm uninstall -k --user 0 com.ifeng.news2</span><br><span class="line">06-27 20:29:01.006 D/PackageUtils: commandResult---&gt;&gt;&gt;com.wt.testshortcut.ShellUtils$CommandResult@67c71a1</span><br><span class="line">06-27 20:29:01.019 E/PackageUtils: uninstallSilent successMsg:, ErrorMsg:Exception occurred while dumping:java.lang.NullPointerException	at com.android.internal.util.Preconditions.checkNotNull(Preconditions.java:94)	at com.android.server.AppOpsService.checkPackage(AppOpsService.java:999)	at android.app.AppOpsManager.checkPackage(AppOpsManager.java:1682)	at com.android.server.pm.PackageInstallerService.uninstall(PackageInstallerService.java:879)	at com.android.server.pm.PackageManagerShellCommand.runUninstall(PackageManagerShellCommand.java:792)	at com.android.server.pm.PackageManagerShellCommand.onCommand(PackageManagerShellCommand.java:118)	at android.os.ShellCommand.exec(ShellCommand.java:94)	at com.android.server.pm.PackageManagerService.onShellCommand(PackageManagerService.java:18747)	at android.os.Binder.shellCommand(Binder.java:468)	at android.os.Binder.onTransact(Binder.java:367)	at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:2387)	at com.android.server.pm.PackageManagerService.onTransact(PackageManagerService.java:3197)	at android.os.Binder.execTransact(Binder.java:565)	at java.lang.reflect.Method.invoke(Native Method)	at com.qihoo360.mobilesafe.loadedmgr.b.s.a(SourceFile:287)	at com.qihoo360.mobilesafe.loaded.SystemServerJar$FilterInstance.filterExecTransact(SourceFile:463)	at com.qihoo360.mobilesafe.loadednative.NativeManager.execTransact(SourceFile:203)</span><br></pre></td></tr></table></figure>
@@ -607,15 +611,15 @@
 <p>下面我们一起来看看这个流程，逆向倒推：</p>
 <p>Preconditions.checkNotNull() &lt;=== AppOpsService.checkPackage() &lt;=== AppOpsManager.checkPackage() &lt;=== PackageInstallerService.uninstall() &lt;=== PackageManagerShellCommand.runUninstall() &lt;=== PackageManagerShellCommand.onCommand()</p>
 <h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>通过对源码的分析，定位到了<strong>PackageInstallerService.uninstall()</strong>方法</p>
-<p><img src="/images/Screenshot20170627204704.png" alt="Screenshot20170627204704.png"></p>
+<p><img alt="Screenshot20170627204704.png" data-src="/images/Screenshot20170627204704.png"></p>
 <p>PackageInstallerService.uninstall()里面调用AppOpsManager.checkPackage()，需要传递<strong>callerPackageName</strong>的参数，因为它是null了，导致后面CheckNotNull()方法抛出了java.lang.NullPointerException异常</p>
-<p><img src="/images/Screenshot20170627205539.png" alt="Screenshot20170627205539.png"></p>
+<p><img alt="Screenshot20170627205539.png" data-src="/images/Screenshot20170627205539.png"></p>
 <p>这个<strong>callerPackageName</strong>，不是我需要去卸载应用的包名，而是我需要去执行卸载操作的应用的包名。分析上面的pm uninstall命令，也并没有明确指定哪儿需要传入我当前应用的包名。</p>
 <p>好吧，我也尝试像静默安装一样添加当前包名的参数，使用Terminal终端来执行pm uninstall命令卸载:</p>
-<p><img src="/images/Screenshot20170627210607.png" alt="Screenshot20170627210607.png"></p>
+<p><img alt="Screenshot20170627210607.png" data-src="/images/Screenshot20170627210607.png"></p>
 <p>结果！命令无效 …..</p>
 <p>再来往前看PackageManagerShellCommand.runUninstall()这个方法</p>
-<p><img src="/images/Screenshot20170628111723.png" alt="Screenshot20170628111723.png"></p>
+<p><img alt="Screenshot20170628111723.png" data-src="/images/Screenshot20170628111723.png"></p>
 <p>这个方法是运行卸载，取出command命令里面的每一段。其中可以看到option选项只有“-k”、“–user”，“packageName”是我们需要指定卸载掉的包名。再往下看到最底部，有一个uninstall的方法，里面的第二个参数传的是“null”,它正好是我们需要传过去的<strong>callerPackageName</strong>。</p>
 <p>是不是这个地方设置了null,导致了后面为null呢？</p>
 <p>我尝试着给这个null赋值一个固定的包名:com.wt.testshortcut</p>
@@ -1512,7 +1516,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1520,6 +1528,8 @@
   
 
 
+
+  
 
 
 
@@ -1537,10 +1547,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1591,6 +1610,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -556,7 +560,7 @@
 </blockquote>
 <p>本节介绍Material Design中的组件之一Bottom Sheet</p>
 <a id="more"></a>
-<p><img src="/images/expand.gif" alt="components_buttons_usage_main"></p>
+<p><img alt="components_buttons_usage_main" data-src="/images/expand.gif"></p>
 <h2 id="如何添加？"><a href="#如何添加？" class="headerlink" title="如何添加？"></a>如何添加？</h2><p>1、在你的<code>builde.gradle</code>文件中，添加最新版的<code>appcompat</code>和<code>design</code>依赖库.</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">     <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:X.X.X'</span> <span class="comment">//这里的X.X.X代表版本</span></span><br><span class="line">     <span class="keyword">compile</span> <span class="string">'com.android.support.design:X.X.X'</span><span class="comment">//这里的X.X.X代表版本</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -583,7 +587,7 @@
 <li><code>STATE_HIDDEN</code> ： 默认无此状态（可通过<code>app:behavior_hideable</code> 启用此状态），启用后用户将能通过向下滑动完全隐藏 <em>bottom sheet</em></li>
 </ul>
 </blockquote>
-<h2 id="Modal-bottom-sheets"><a href="#Modal-bottom-sheets" class="headerlink" title="Modal bottom sheets"></a>Modal bottom sheets</h2><p><img src="/images/modal-bottom-sheets.gif" alt="modal-bottom-sheets"></p>
+<h2 id="Modal-bottom-sheets"><a href="#Modal-bottom-sheets" class="headerlink" title="Modal bottom sheets"></a>Modal bottom sheets</h2><p><img alt="modal-bottom-sheets" data-src="/images/modal-bottom-sheets.gif"></p>
 <h3 id="BottomSheetDialog"><a href="#BottomSheetDialog" class="headerlink" title="BottomSheetDialog"></a>BottomSheetDialog</h3><p>创建一个BottomSheetDialog,例如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">BottomSheetDialog dialog = <span class="keyword">new</span> BottomSheetDialog(context);</span><br><span class="line"></span><br><span class="line">View view = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_list, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.bottom_sheet_recycler_view);</span><br><span class="line">recyclerView.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(context));</span><br><span class="line">recyclerView.setAdapter(<span class="keyword">new</span> SimpleAdapter());</span><br><span class="line">dialog.setContentView(view);</span><br><span class="line">dialog.show();</span><br></pre></td></tr></table></figure>
 
@@ -1465,7 +1469,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1473,6 +1481,8 @@
   
 
 
+
+  
 
 
 
@@ -1490,10 +1500,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1544,6 +1563,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 

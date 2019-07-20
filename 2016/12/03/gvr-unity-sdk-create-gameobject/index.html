@@ -71,6 +71,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 <script id="hexo.configurations">
@@ -82,9 +86,9 @@
     sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"default"},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -548,34 +552,34 @@
 <a id="more"></a>
 
 <h2 id="创建GameObject"><a href="#创建GameObject" class="headerlink" title="创建GameObject"></a>创建GameObject</h2><p>   接下来我们首先在场景中添加一块<strong>Plane(平面)</strong>，在Unity工作空间上半部分左侧的<strong>Hierarchy</strong>空白的地方，单击右键==&gt; <strong>3D Object</strong>==&gt;<strong>Plane</strong>(或者选择<strong>菜单栏</strong>==&gt;<strong>Game Object</strong>==&gt;<strong>3D Object</strong>==&gt;<strong>Plane</strong>),然后在右边的属性栏里面将它的X，Y，Z三个方向都放大3倍</p>
-<p><img src="/images/gvr2-1.png" alt="gvr2-1.png"></p>
+<p><img alt="gvr2-1.png" data-src="/images/gvr2-1.png"></p>
 <p>这里要重点说明一下图中的X、Y、Z轴，看到图中的Main Camera，以它为中心，<strong>红色</strong>的是<strong>X轴</strong>(控制左右)、<strong>绿色</strong>的是<strong>Y轴</strong>(控制高低)、<strong>蓝色</strong>的是<strong>Z轴</strong>(控制远近)</p>
 <p>然后我们点击<strong>播放</strong>按钮，查看效果</p>
-<p><img src="/images/gvr2-2.png" alt="gvr2-2.png"></p>
+<p><img alt="gvr2-2.png" data-src="/images/gvr2-2.png"></p>
 <p>之后，我们来给<strong>Plane</strong>平面换一个颜色。在<strong>Assets</strong>窗口下，新建一个文件夹来保存自己的东西，我这里新建了<strong>Sample</strong>为例，在<strong>Sample</strong>下面新建一个<strong>Material</strong>文件夹来保存<strong>Material</strong>资源。在<strong>Material</strong>文件夹下，单击右键==&gt;<strong>Create</strong>==&gt;<strong>Material</strong>,命名为<strong>Plane</strong></p>
-<p><img src="/images/gvr2-3.png" alt="gvr2-3.png"></p>
+<p><img alt="gvr2-3.png" data-src="/images/gvr2-3.png"></p>
 <p>选中刚刚创建的<strong>Plane</strong>，在右侧的属性栏中，点击<strong>Albedo</strong>后面的拾色器，选择颜色</p>
-<p><img src="/images/gvr2-4.png" alt="gvr2-4.png"></p>
+<p><img alt="gvr2-4.png" data-src="/images/gvr2-4.png"></p>
 <p>我这里以绿色为例</p>
-<p><img src="/images/gvr2-5.png" alt="gvr2-5.png"></p>
+<p><img alt="gvr2-5.png" data-src="/images/gvr2-5.png"></p>
 <p>然后，将绿色的<strong>Plane</strong>，长按拖拽进场景中的<strong>Plane</strong>上面，然后点击<strong>播放</strong>按钮，查看效果</p>
-<p><img src="/images/gvr2-6.png" alt="gvr2-6.png"></p>
+<p><img alt="gvr2-6.png" data-src="/images/gvr2-6.png"></p>
 <p>以创建<strong>Plane</strong>对象同样的方式，在Unity工作空间上半部分左侧的<strong>Hierarchy</strong>空白的地方，创建一个<strong>Cube</strong>和在<strong>Material</strong>文件夹下创建一个<strong>Cube</strong>的<strong>Material</strong>，同样用拾色器，选择颜色，我这里以黄色为例</p>
-<p><img src="/images/gvr2-7.png" alt="gvr2-7.png"></p>
+<p><img alt="gvr2-7.png" data-src="/images/gvr2-7.png"></p>
 <p>再次点击<strong>播放</strong>按钮，查看效果</p>
-<p><img src="/images/gvr2-8.png" alt="gvr2-8.png"></p>
+<p><img alt="gvr2-8.png" data-src="/images/gvr2-8.png"></p>
 <p>最后按以下<strong>Ctrl+S</strong>保存一下(通常有这个习惯的人，早已经完成了这步了)，这便是一个Scene场景，下次可以通过双击这个打开一个场景</p>
-<p><img src="/images/gvr2-9.png" alt="gvr2-9.png"></p>
+<p><img alt="gvr2-9.png" data-src="/images/gvr2-9.png"></p>
 <h2 id="运行打包到设备"><a href="#运行打包到设备" class="headerlink" title="运行打包到设备"></a>运行打包到设备</h2><p>首次运行，点击<strong>File</strong>==&gt;<strong>Build &amp; Settings</strong>，点击<strong>Add Open Scenes</strong>,添加场景进行Build<br>左下角，这里我只选择<strong>Android</strong>平台，然后选择<strong>Player Settings</strong></p>
-<p><img src="/images/gvr2-10.png" alt="gvr2-10.png"></p>
+<p><img alt="gvr2-10.png" data-src="/images/gvr2-10.png"></p>
 <p>在右边的<strong>Inspector</strong>下面填上<strong>公司名</strong>和<strong>产品名</strong>，也需要填到下面填包名的地方</p>
-<p><img src="/images/gvr2-11.png" alt="gvr2-11.png"></p>
+<p><img alt="gvr2-11.png" data-src="/images/gvr2-11.png"></p>
 <p>这两个地方一定要保持一致</p>
-<p><img src="/images/gvr2-12.png" alt="gvr2-12.png"></p>
+<p><img alt="gvr2-12.png" data-src="/images/gvr2-12.png"></p>
 <p>然后再设置一下方向，在<strong>Resolution and Presentation</strong>下面的<strong>Oritation</strong>，更改<strong>Auto Rotation</strong>为<strong>Landscape Left</strong></p>
-<p><img src="/images/gvr2-13.png" alt="gvr2-13.png"></p>
+<p><img alt="gvr2-13.png" data-src="/images/gvr2-13.png"></p>
 <p>最后点击<strong>Build &amp; Run</strong>，定义一个文件名，进行保存，稍候就会运行到设备上</p>
-<p><img src="/images/gvr2-14.png" alt="gvr2-14.png"></p>
+<p><img alt="gvr2-14.png" data-src="/images/gvr2-14.png"></p>
 <blockquote>
 <p>本节gvr-unity-sdk创建GameObject相关内容到此结束，下一节继续《Gvr Unity SDK (三) —— 创建视觉焦点》</p>
 </blockquote>
@@ -1455,7 +1459,11 @@
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1463,6 +1471,8 @@
   
 
 
+
+  
 
 
 
@@ -1480,10 +1490,19 @@
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
   
   <script src="/lib/reading_progress/reading_progress.js"></script>
@@ -1534,6 +1553,11 @@
 
 
   
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
 
   
 
