@@ -107,7 +107,7 @@
 </script>
 
   <meta name="description" content="Android Q 系统, 对应用存储空间访问进行了限制。">
-<meta name="keywords" content="Android,Android Q,Permission,scoped,sandbox,Shared collections,File,external storage,behavior change,media">
+<meta name="keywords" content="Android,Android Q,scoped,sandbox,Shared collections,Permission,File,external storage,behavior change,media">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Q 独立存储">
 <meta property="og:url" content="https://shoewann0402.github.io/2019/03/17/android-q-beta-scoped-storage/index.html">
@@ -115,7 +115,7 @@
 <meta property="og:description" content="Android Q 系统, 对应用存储空间访问进行了限制。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android-q-log.png">
-<meta property="og:updated_time" content="2019-07-19T16:43:45.812Z">
+<meta property="og:updated_time" content="2019-07-21T16:49:34.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Q 独立存储">
 <meta name="twitter:description" content="Android Q 系统, 对应用存储空间访问进行了限制。">
@@ -478,7 +478,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-20 00:43:45" itemprop="dateModified" datetime="2019-07-20T00:43:45+08:00">2019-07-20</time>
+                <time title="修改时间：2019-07-22 00:49:34" itemprop="dateModified" datetime="2019-07-22T00:49:34+08:00">2019-07-22</time>
               </span>
             
           
@@ -538,7 +538,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">8.6k</span>
+              <span title="本文字数">9.2k</span>
             </span>
           
 
@@ -550,7 +550,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">14 分钟</span>
+              <span title="阅读时长">15 分钟</span>
             </span>
           
 
@@ -601,7 +601,20 @@
 <li>应用程序从外部存储设备访问自己的文件不需要特殊权限</li>
 </ul>
 </blockquote>
-<h1 id="影响"><a href="#影响" class="headerlink" title="影响"></a>影响</h1><p>这些更改会影响您的应用保存和访问外部存储上的文件的方式。</p>
+<hr>
+<h1 id="更新变化-gt-Q-beta5"><a href="#更新变化-gt-Q-beta5" class="headerlink" title="更新变化 -&gt; Q beta5"></a>更新变化 -&gt; Q beta5</h1><p>以下内容是 Q beta 5 上<strong>最新的变化</strong> (临时添加部分内容)</p>
+<p>1、您可以使用新的**<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvUi5hdHRyLmh0bWwjcmVxdWVzdExlZ2FjeUV4dGVybmFsU3RvcmFnZQ==" title="https://developer.android.google.cn/reference/android/R.attr.html#requestLegacyExternalStorage">requestLegacyExternalStorage<i class="fa fa-external-link"></i></span> manifest属性在Android Q设备上启用应用程序的新行为，即使您的应用程序的目标是Android 9或更低。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">...</span> &gt;</span></span><br><span class="line">  <span class="comment">&lt;!--在目标版本为 Android Q 的应用程序上这个属性值默认情况下为 false --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- This attribute is "false" by default on apps targeting Android Q. --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">application</span> <span class="attr">android:requestLegacyExternalStorage</span>=<span class="string">"true"</span> <span class="attr">...</span> &gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2、Android Q继续使用<strong>READ_EXTERNAL_STORAGE</strong>和<strong>WRITE_EXTERNAL_STORAGE</strong>权限，这两个权限对应于面向存储用户的运行时权限。<br>3、早期测试版本中引入的特定于媒体集合的权限，现<strong>已过时</strong></p>
+<blockquote>
+<ul>
+<li><del>READ_MEDIA_IMAGES</del></li>
+<li><del>READ_MEDIA_AUDIO</del> </li>
+<li><del>READ_MEDIA_VIDEO</del></li>
+</ul>
+</blockquote>
+<h2 id="更多变化和使用参见官方文档"><a href="#更多变化和使用参见官方文档" class="headerlink" title="更多变化和使用参见官方文档"></a>更多变化和使用参见官方文档</h2><h1 id="影响"><a href="#影响" class="headerlink" title="影响"></a>影响</h1><p>这些更改会影响您的应用保存和访问外部存储上的文件的方式。</p>
 <p><img alt="android_q_file_access.png" data-src="/images/android_q_file_access.png"></p>
 <h1 id="沙箱独立存储应用私有文件"><a href="#沙箱独立存储应用私有文件" class="headerlink" title="沙箱独立存储应用私有文件"></a>沙箱独立存储应用私有文件</h1><p>Android Q 为每一个应用在外部存储设备内采用了<code>沙箱独立存储</code>。比如<code>/sdcard</code>, 没有其他应用程序能够直接访问您应用程序沙箱内的文件，因为对于您的应用程序来说这些文件是私有的，您不再需要任何权限去访问和保存您自己外部存储中的文件，这一变化使维护用户文件的隐私变得更容易，并有助于减少应用程序所需的权限数量。</p>
 <p><strong>【注意】如果用户手动卸载了应用程序，沙箱内的私有文件也会被清理</strong></p>
@@ -889,13 +902,13 @@
           
             <a href="/tags/Android-Q/" rel="tag"><i class="fa fa-tag"></i> Android Q</a>
           
-            <a href="/tags/Permission/" rel="tag"><i class="fa fa-tag"></i> Permission</a>
-          
             <a href="/tags/scoped/" rel="tag"><i class="fa fa-tag"></i> scoped</a>
           
             <a href="/tags/sandbox/" rel="tag"><i class="fa fa-tag"></i> sandbox</a>
           
             <a href="/tags/Shared-collections/" rel="tag"><i class="fa fa-tag"></i> Shared collections</a>
+          
+            <a href="/tags/Permission/" rel="tag"><i class="fa fa-tag"></i> Permission</a>
           
             <a href="/tags/File/" rel="tag"><i class="fa fa-tag"></i> File</a>
           
@@ -1609,7 +1622,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变化"><span class="nav-number">2.</span> <span class="nav-text">变化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#影响"><span class="nav-number">3.</span> <span class="nav-text">影响</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#沙箱独立存储应用私有文件"><span class="nav-number">4.</span> <span class="nav-text">沙箱独立存储应用私有文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分享媒体文件集"><span class="nav-number">5.</span> <span class="nav-text">分享媒体文件集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看其他应用程序文件的权限"><span class="nav-number">5.1.</span> <span class="nav-text">查看其他应用程序文件的权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问共享集合"><span class="nav-number">5.2.</span> <span class="nav-text">访问共享集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保留应用程序在共享集合中的文件"><span class="nav-number">5.3.</span> <span class="nav-text">保留应用程序在共享集合中的文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#照片的特殊注意事项"><span class="nav-number">6.</span> <span class="nav-text">照片的特殊注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问照片的位置"><span class="nav-number">6.1.</span> <span class="nav-text">访问照片的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#展示用户图库照片"><span class="nav-number">6.2.</span> <span class="nav-text">展示用户图库照片</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理其他应用程序的文件"><span class="nav-number">7.</span> <span class="nav-text">处理其他应用程序的文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问其他应用创建的文件"><span class="nav-number">7.1.</span> <span class="nav-text">访问其他应用创建的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写入其他应用创建的文件"><span class="nav-number">7.2.</span> <span class="nav-text">写入其他应用创建的文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问特殊文件"><span class="nav-number">8.</span> <span class="nav-text">访问特殊文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配套的app文件共享"><span class="nav-number">9.</span> <span class="nav-text">配套的app文件共享</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#升级设备上以前安装的应用程序的兼容性模式"><span class="nav-number">10.</span> <span class="nav-text">升级设备上以前安装的应用程序的兼容性模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#识别特殊的外部存储设备"><span class="nav-number">11.</span> <span class="nav-text">识别特殊的外部存储设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取外部存储设备列表"><span class="nav-number">11.1.</span> <span class="nav-text">获取外部存储设备列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置一个虚拟的外部存储设备"><span class="nav-number">11.2.</span> <span class="nav-text">设置一个虚拟的外部存储设备</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试行为变化"><span class="nav-number">12.</span> <span class="nav-text">测试行为变化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#切换行为更改"><span class="nav-number">12.1.</span> <span class="nav-text">切换行为更改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试兼容模式行为"><span class="nav-number">13.</span> <span class="nav-text">测试兼容模式行为</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将外部存储作为文件管理器浏览"><span class="nav-number">14.</span> <span class="nav-text">将外部存储作为文件管理器浏览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试示例"><span class="nav-number">15.</span> <span class="nav-text">测试示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件存储"><span class="nav-number">15.1.</span> <span class="nav-text">文件存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-1-——-默认方式-getExternalStorageDirectory"><span class="nav-number">15.1.1.</span> <span class="nav-text">测试 1 —— 默认方式 getExternalStorageDirectory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-2-——-推荐方式-Context-getExternalFilesDir"><span class="nav-number">15.1.2.</span> <span class="nav-text">测试 2 —— 推荐方式 Context.getExternalFilesDir()</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变化"><span class="nav-number">2.</span> <span class="nav-text">变化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新变化-gt-Q-beta5"><span class="nav-number">3.</span> <span class="nav-text">更新变化 -&gt; Q beta5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#更多变化和使用参见官方文档"><span class="nav-number">3.1.</span> <span class="nav-text">更多变化和使用参见官方文档</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#影响"><span class="nav-number">4.</span> <span class="nav-text">影响</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#沙箱独立存储应用私有文件"><span class="nav-number">5.</span> <span class="nav-text">沙箱独立存储应用私有文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分享媒体文件集"><span class="nav-number">6.</span> <span class="nav-text">分享媒体文件集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看其他应用程序文件的权限"><span class="nav-number">6.1.</span> <span class="nav-text">查看其他应用程序文件的权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问共享集合"><span class="nav-number">6.2.</span> <span class="nav-text">访问共享集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保留应用程序在共享集合中的文件"><span class="nav-number">6.3.</span> <span class="nav-text">保留应用程序在共享集合中的文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#照片的特殊注意事项"><span class="nav-number">7.</span> <span class="nav-text">照片的特殊注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问照片的位置"><span class="nav-number">7.1.</span> <span class="nav-text">访问照片的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#展示用户图库照片"><span class="nav-number">7.2.</span> <span class="nav-text">展示用户图库照片</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理其他应用程序的文件"><span class="nav-number">8.</span> <span class="nav-text">处理其他应用程序的文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问其他应用创建的文件"><span class="nav-number">8.1.</span> <span class="nav-text">访问其他应用创建的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写入其他应用创建的文件"><span class="nav-number">8.2.</span> <span class="nav-text">写入其他应用创建的文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问特殊文件"><span class="nav-number">9.</span> <span class="nav-text">访问特殊文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配套的app文件共享"><span class="nav-number">10.</span> <span class="nav-text">配套的app文件共享</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#升级设备上以前安装的应用程序的兼容性模式"><span class="nav-number">11.</span> <span class="nav-text">升级设备上以前安装的应用程序的兼容性模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#识别特殊的外部存储设备"><span class="nav-number">12.</span> <span class="nav-text">识别特殊的外部存储设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取外部存储设备列表"><span class="nav-number">12.1.</span> <span class="nav-text">获取外部存储设备列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置一个虚拟的外部存储设备"><span class="nav-number">12.2.</span> <span class="nav-text">设置一个虚拟的外部存储设备</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试行为变化"><span class="nav-number">13.</span> <span class="nav-text">测试行为变化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#切换行为更改"><span class="nav-number">13.1.</span> <span class="nav-text">切换行为更改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试兼容模式行为"><span class="nav-number">14.</span> <span class="nav-text">测试兼容模式行为</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将外部存储作为文件管理器浏览"><span class="nav-number">15.</span> <span class="nav-text">将外部存储作为文件管理器浏览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试示例"><span class="nav-number">16.</span> <span class="nav-text">测试示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件存储"><span class="nav-number">16.1.</span> <span class="nav-text">文件存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-1-——-默认方式-getExternalStorageDirectory"><span class="nav-number">16.1.1.</span> <span class="nav-text">测试 1 —— 默认方式 getExternalStorageDirectory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-2-——-推荐方式-Context-getExternalFilesDir"><span class="nav-number">16.1.2.</span> <span class="nav-text">测试 2 —— 推荐方式 Context.getExternalFilesDir()</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1643,7 +1656,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">305k</span>
+    <span title="站点总字数">306k</span>
   
 
   
@@ -1652,7 +1665,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">8:29</span>
+    <span title="站点阅读时长">8:30</span>
   
 </div>
 
