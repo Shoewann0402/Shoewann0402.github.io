@@ -1,7 +1,6 @@
 const ap = new APlayer({
     container: document.getElementById('aplayer'),
-    fixed: true,
-    autoplay: false,
+    mini: true,
     audio: [
       {
         name: "贝加尔湖畔",

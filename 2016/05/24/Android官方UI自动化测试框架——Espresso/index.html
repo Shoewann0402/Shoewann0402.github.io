@@ -80,7 +80,7 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
     fancybox: true,
@@ -102,6 +102,16 @@
     }
   };
 </script>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "ab691b7b"
+    });
+  daovoice('update');
+  </script>
+
 
   <meta name="description" content="上周在美国山景城的Google公司，举办了一年一度的Google IO 大会，主要是发布一些新的产品和开发工具，以及接下来一年的发展方向。在其中也推出了Android Studio 2.2 预览版1，对其进行了强化，内置了部分新工具，比如Firebase、Espresso 测试记录器 、APK 分析器等等。正好无意中看到Espresso这部分，自己也没有使用过，那今天就来说说: Espress">
 <meta name="keywords" content="Android UI Test">
@@ -215,7 +225,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -942,7 +952,6 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-
       
 
       
@@ -1462,6 +1471,14 @@
     <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
   </div>
 
+
+<!-- 音频播放 -->
+<!--<div align="center">
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+</div> -->
 
 
 
@@ -2274,12 +2291,6 @@ if ($('body').find('div.pdf').length) {
 
   
   
-  <!-- 音频播放 -->
-  <link rel="stylesheet" href="/dist/APlayer.min.css">
-  <div id="aplayer"></div>
-  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
-  <script type="text/javascript" src="/dist/music.js"></script>
-
    <script>
 	// Function called if AdBlock is not detected
 	function adBlockNotDetected() {

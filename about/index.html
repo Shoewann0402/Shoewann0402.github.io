@@ -80,7 +80,7 @@
     root: '/',
     scheme: 'Muse',
     version: '7.2.0',
-    sidebar: {"position":"right","display":"hide","offset":12,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":true},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
     copycode: {"enable":true,"show_result":true,"style":"mac"},
     fancybox: true,
@@ -102,6 +102,16 @@
     }
   };
 </script>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "ab691b7b"
+    });
+  daovoice('update');
+  </script>
+
 
   <meta name="description" content="关于本站笔者个人总结、翻译Google相关技术，以及记录新技术、日常解决的Bug、心得等 关于笔者一名热衷于Google技术的Android开发工程师、原混迹在上海GDG社区，并在社区活动中参与了2次志愿者经历   ● 爱自学专研新技术:学习能力强,自建技术交流群、搭建技术博客总结和翻译技术文章 ● 爱泡在技术网站 :Android开发者官网、github、stackoverflow、csdn、推">
 <meta name="keywords" content="google,android,vr,chrome,ads,dart,misc,web,firebase,shoewann,daydream,flutter,tensorflow,android wear,android things">
@@ -213,7 +223,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -517,7 +527,6 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-
       
 
       
@@ -1037,6 +1046,14 @@
     <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
   </div>
 
+
+<!-- 音频播放 -->
+<!--<div align="center">
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+</div> -->
 
 
 
@@ -1811,12 +1828,6 @@ if ($('body').find('div.pdf').length) {
 
   
   
-  <!-- 音频播放 -->
-  <link rel="stylesheet" href="/dist/APlayer.min.css">
-  <div id="aplayer"></div>
-  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
-  <script type="text/javascript" src="/dist/music.js"></script>
-
    <script>
 	// Function called if AdBlock is not detected
 	function adBlockNotDetected() {
