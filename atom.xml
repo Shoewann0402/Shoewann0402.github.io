@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shoewann0402.github.io/"/>
-  <updated>2019-08-12T18:14:40.951Z</updated>
+  <updated>2019-08-13T18:30:16.423Z</updated>
   <id>https://shoewann0402.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Q 检查网络连通性</title>
+    <link href="https://shoewann0402.github.io/2019/08/14/android-q-network-connectivity-check/"/>
+    <id>https://shoewann0402.github.io/2019/08/14/android-q-network-connectivity-check/</id>
+    <published>2019-08-13T17:58:20.000Z</published>
+    <updated>2019-08-13T18:30:16.423Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>对Android Q 上检查网络连通性的相关记录</p></blockquote><hr><a id="more"></a><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>大多数情况下，我们从ConnectivityManager获取活动的网络信息，并检查该网络是否已经连接</p><p>像这样</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fun isNetworkConnected(context: Context?): Boolean &#123;</span><br><span class="line">    val mConnectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager</span><br><span class="line">    val mNetworkInfo = mConnectivityManager.activeNetworkInfo</span><br><span class="line">    return mNetworkInfo!=null &amp;&amp; mNetworkInfo.isConnected</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但是在Android Q (API 29) 上，从<strong>ConnectivityManager</strong>类里<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvbmV0L0Nvbm5lY3Rpdml0eU1hbmFnZXIuaHRtbCNnZXRBY3RpdmVOZXR3b3JrSW5mbygp" title="https://developer.android.google.cn/reference/android/net/ConnectivityManager.html#getActiveNetworkInfo()">废弃<i class="fa fa-external-link"></i></span>了<strong>activeNetworkInfo</strong>方法(Java对应<strong>getActiveNetworkInfo()</strong>方法)。</p><h2 id="Android-Q"><a href="#Android-Q" class="headerlink" title="Android Q"></a>Android Q</h2><p>查询相关文档，可以找到另一种方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">fun isNetworkConnectedWithQ(context: Context?): Boolean &#123;</span><br><span class="line"></span><br><span class="line">            var hasNetwork = false</span><br><span class="line">            if (context != null) &#123;</span><br><span class="line">                val mConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager</span><br><span class="line">                val networks = mConnectivityManager.allNetworks</span><br><span class="line">                if (networks.isNotEmpty()) &#123;</span><br><span class="line">                    for (network in networks) &#123;</span><br><span class="line">                        val nc = mConnectivityManager.getNetworkCapabilities(network)</span><br><span class="line">                        if (nc!!.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)) &#123;</span><br><span class="line">                            hasNetwork = true</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return hasNetwork </span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure><p>注意：以上代码中<strong>allNetworks</strong>、<strong>getNetworkCapabilities</strong>和<strong>hasCapability</strong>都是在API 21 (Lollipop)被添加的，也就是说最低版本需要21。对此，这里为了兼容到21版本以下，可以将两种方式合并到一个方法中，同时兼容。</p><h2 id="同时兼容"><a href="#同时兼容" class="headerlink" title="同时兼容"></a>同时兼容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">fun isNetworkConnected(context: Context?): Boolean &#123;</span><br><span class="line"></span><br><span class="line">            val mConnectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager</span><br><span class="line"></span><br><span class="line">            if (Build.VERSION.SDK_INT&lt;Build.VERSION_CODES.Q)&#123;</span><br><span class="line">                val mNetworkInfo = mConnectivityManager.activeNetworkInfo</span><br><span class="line">                return mNetworkInfo!=null &amp;&amp; mNetworkInfo.isConnected</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            var hasNetwork = false</span><br><span class="line"></span><br><span class="line">            val networks = mConnectivityManager.allNetworks</span><br><span class="line">            if (networks.isNotEmpty()) &#123;</span><br><span class="line">                for (network in networks) &#123;</span><br><span class="line">                    val nc = mConnectivityManager.getNetworkCapabilities(network)</span><br><span class="line">                    if (nc!!.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)) &#123;</span><br><span class="line">                        hasNetwork = true</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return hasNetwork</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure><p>最后，不要忘记在清单文件添加网络权限</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span>/&gt;</span></span><br></pre></td></tr></table></figure><blockquote><p>以上就是针对Android Q上网络检查方式的一个简单的记录，如有不足，欢迎指正</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;对Android Q 上检查网络连通性的相关记录&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="https://shoewann0402.github.io/categories/Android/"/>
+    
+      <category term="Android Q" scheme="https://shoewann0402.github.io/categories/Android/Android-Q/"/>
+    
+    
+      <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
+    
+      <category term="Android Q" scheme="https://shoewann0402.github.io/tags/Android-Q/"/>
+    
+      <category term="NetWork" scheme="https://shoewann0402.github.io/tags/NetWork/"/>
+    
+      <category term="ConnectivityManager" scheme="https://shoewann0402.github.io/tags/ConnectivityManager/"/>
+    
+  </entry>
   
   <entry>
     <title>Android Q Beta 6 存储示例</title>
@@ -136,11 +169,11 @@
     
       <category term="Android Q" scheme="https://shoewann0402.github.io/tags/Android-Q/"/>
     
+      <category term="Settings Panel" scheme="https://shoewann0402.github.io/tags/Settings-Panel/"/>
+    
       <category term="WIFI" scheme="https://shoewann0402.github.io/tags/WIFI/"/>
     
       <category term="setWifiEnabled" scheme="https://shoewann0402.github.io/tags/setWifiEnabled/"/>
-    
-      <category term="Settings Panel" scheme="https://shoewann0402.github.io/tags/Settings-Panel/"/>
     
   </entry>
   
@@ -630,36 +663,6 @@
       <category term="Play Console" scheme="https://shoewann0402.github.io/tags/Play-Console/"/>
     
       <category term="Studio" scheme="https://shoewann0402.github.io/tags/Studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谷歌助理能够帮助您控制Android媒体应用程序</title>
-    <link href="https://shoewann0402.github.io/2017/10/12/the-google-assistant-can-help-control/"/>
-    <id>https://shoewann0402.github.io/2017/10/12/the-google-assistant-can-help-control/</id>
-    <published>2017-10-11T17:43:41.000Z</published>
-    <updated>2019-03-11T09:33:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>原文来自：<span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8xMC90aGUtZ29vZ2xlLWFzc2lzdGFudC1jYW4taGVscC1jb250cm9sLmh0bWw=" title="https://android-developers.googleblog.com/2017/10/the-google-assistant-can-help-control.html">The Google Assistant can help control your Android media apps<i class="fa fa-external-link"></i></span></p></blockquote><p>谷歌助理可用贯穿通了手机，音响，安卓电视以及更多。它能够帮助用户在一天中完成更多的工作 —— 这儿它们需要添加一些事情到去完成的列表，打开电灯，或者播放一首歌曲。</p><p>音乐是特别的,助理有大量的提供。它能够通过设备(“播放摇滚乐”)理解媒体命令，并支持媒体控制(像暂停、跳过、快进、赞成)，用户也能通过谷歌助理控制安卓媒体播放。例如，您告诉谷歌助理”暂停回放”，无需抬起手指就能暂停回放。或者说”在Universal音乐播放器上播放摇滚乐”来播放音乐</p><a id="more"></a><p>为了让用户在使用您的媒体应用中的谷歌助理时能够控制回放，您可以使用<span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2dvb2dsZS1kZXZlbG9wZXJzL3VuZGVyc3RhbmRpbmctbWVkaWFzZXNzaW9uLXBhcnQtMS0zLWU0ZDI3MjVmMThlNA==" title="https://medium.com/google-developers/understanding-mediasession-part-1-3-e4d2725f18e4">MediaSession<i class="fa fa-external-link"></i></span>API去让这件事发生。我们建议您在制作应用程序与Google Assistant的集成时，使用MediaSession。</p><h2 id="在您的应用程序中如何使用MediaSession-？"><a href="#在您的应用程序中如何使用MediaSession-？" class="headerlink" title="在您的应用程序中如何使用MediaSession ？"></a>在您的应用程序中如何使用MediaSession ？</h2><p>您必须实现一个MediaSession,在<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vZ3VpZGUvdG9waWNzL21lZGlhLWFwcHMvaW50ZXJhY3Rpbmctd2l0aC1hc3Npc3RhbnQuaHRtbCN1c2VfYV9tZWRpYV9zZXNzaW9u" title="https://developer.android.com/guide/topics/media-apps/interacting-with-assistant.html#use_a_media_session">与谷歌助理进行交互时<i class="fa fa-external-link"></i></span>处理所描述的一组规定的动作。</p><p>这里是一些示例项目，能够帮您开始在您的媒体应用程序里面使用MediaSession</p><blockquote><ul><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZXNhbXBsZXMvYW5kcm9pZC1NZWRpYUJyb3dzZXJTZXJ2aWNlLw==" title="https://github.com/googlesamples/android-MediaBrowserService/">媒体浏览器服务示例<i class="fa fa-external-link"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZXNhbXBsZXMvYW5kcm9pZC1Vbml2ZXJzYWxNdXNpY1BsYXllcg==" title="https://github.com/googlesamples/android-UniversalMusicPlayer">Universal 音乐播放器示例<i class="fa fa-external-link"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZXNhbXBsZXMvbGVhbmJhY2stYXNzaXN0YW50" title="https://github.com/googlesamples/leanback-assistant">助理与Leanback样本集成示例<i class="fa fa-external-link"></i></span></li></ul></blockquote><p>对于想了解学习更多关于MediaSession，这里有一些好的资源：</p><blockquote><ul><li><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2dvb2dsZS1kZXZlbG9wZXJzL3VuZGVyc3RhbmRpbmctbWVkaWFzZXNzaW9uLXBhcnQtMS0zLWU0ZDI3MjVmMThlNA==" title="https://medium.com/google-developers/understanding-mediasession-part-1-3-e4d2725f18e4">理解MediaSession<i class="fa fa-external-link"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vZ3VpZGUvdG9waWNzL21lZGlhLWFwcHMvd29ya2luZy13aXRoLWEtbWVkaWEtc2Vzc2lvbi5odG1s" title="https://developer.android.com/guide/topics/media-apps/working-with-a-media-session.html">使用MediaSession<i class="fa fa-external-link"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9hbmRyb2lkLWRldmVsb3BlcnMuZ29vZ2xlYmxvZy5jb20vMjAxNy8xMC92aWRlby1wbGF5YmFjay13aXRoLWdvb2dsZS1hc3Npc3RhbnQtb24uaHRtbA==" title="https://android-developers.googleblog.com/2017/10/video-playback-with-google-assistant-on.html">使用谷歌助理在安卓电视上进行视频回放<i class="fa fa-external-link"></i></span></li></ul></blockquote><h2 id="谷歌助理如何使用MediaSession？"><a href="#谷歌助理如何使用MediaSession？" class="headerlink" title="谷歌助理如何使用MediaSession？"></a>谷歌助理如何使用MediaSession？</h2><p>谷歌助理使用MediaSession时和其他外部控制器(比如安卓可穿戴设备)相同的方式使用MediaSession。每一个控制器都会导致您的应用程序状态变化。<br>并且这儿需要有一个方式去响应这些变化。这就是MediaSession的发挥作用的地方。</p><p>通过使用MediaSession,谷歌助理能够控制您的应用程序的媒体播放，以及保持同步其当前状态</p><h2 id="如何使用MediaSession测试我的应用程序？"><a href="#如何使用MediaSession测试我的应用程序？" class="headerlink" title="如何使用MediaSession测试我的应用程序？"></a>如何使用MediaSession测试我的应用程序？</h2><p>一旦您实现了MediaSession您将可能想去测试，如何在您的应用程序以外去控制媒体播放，<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZXNhbXBsZXMvYW5kcm9pZC1tZWRpYS1jb250cm9sbGVy" title="https://github.com/googlesamples/android-media-controller">媒体控制器测试<i class="fa fa-external-link"></i></span>工具被创建去模拟外部控制您的媒体播放，您可以验证当其他应用程序(比如谷歌助理)与您的应用程序就行互动时，它将可以按预期方式工作。</p><blockquote><p>以上是对Anroid 官网博客文章的翻译，如果不足，欢迎指正，谢谢</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;原文来自：&lt;a href=&quot;https://android-developers.googleblog.com/2017/10/the-google-assistant-can-help-control.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;The Google Assistant can help control your Android media apps&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;谷歌助理可用贯穿通了手机，音响，安卓电视以及更多。它能够帮助用户在一天中完成更多的工作 —— 这儿它们需要添加一些事情到去完成的列表，打开电灯，或者播放一首歌曲。&lt;/p&gt;
-&lt;p&gt;音乐是特别的,助理有大量的提供。它能够通过设备(“播放摇滚乐”)理解媒体命令，并支持媒体控制(像暂停、跳过、快进、赞成)，用户也能通过谷歌助理控制安卓媒体播放。例如，您告诉谷歌助理”暂停回放”，无需抬起手指就能暂停回放。或者说”在Universal音乐播放器上播放摇滚乐”来播放音乐&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="https://shoewann0402.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
-    
-      <category term="Android Assistant" scheme="https://shoewann0402.github.io/tags/Android-Assistant/"/>
-    
-      <category term="MediaSession" scheme="https://shoewann0402.github.io/tags/MediaSession/"/>
     
   </entry>
   
