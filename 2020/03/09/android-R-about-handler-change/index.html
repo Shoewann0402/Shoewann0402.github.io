@@ -122,7 +122,7 @@
 <meta property="og:description" content="Handler 类，相信大家并不陌生，也应当耳熟能详，且铭记于心几乎项目中使用频率较高，同时也是面试时常挂嘴边的必考知识点 今天我们来谈谈在Android 11/R 上 Handler 相关变化">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/handler_deprecated.png">
-<meta property="og:updated_time" content="2020-03-09T07:01:44.342Z">
+<meta property="og:updated_time" content="2020-03-09T07:04:56.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 11 (R) 之 Handler 相关变化">
 <meta name="twitter:description" content="Handler 类，相信大家并不陌生，也应当耳熟能详，且铭记于心几乎项目中使用频率较高，同时也是面试时常挂嘴边的必考知识点 今天我们来谈谈在Android 11/R 上 Handler 相关变化">
@@ -491,7 +491,7 @@
                 
               
 
-              <time title="创建时间：2020-03-09 14:18:37 / 修改时间：15:01:44" itemprop="dateCreated datePublished" datetime="2020-03-09T14:18:37+08:00">2020-03-09</time>
+              <time title="创建时间：2020-03-09 14:18:37 / 修改时间：15:04:56" itemprop="dateCreated datePublished" datetime="2020-03-09T14:18:37+08:00">2020-03-09</time>
             </span>
           
 
@@ -653,7 +653,7 @@
 <h4 id="2-Runnable"><a href="#2-Runnable" class="headerlink" title="2. Runnable"></a>2. Runnable</h4><figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Runnable mRunnable = new Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> void run() &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
 
 <p>该使用方式是创建了一个内部类，内部类隐性持有外部类对象的引用，如果Activity结束，Runnable里面的任务没有处理完，则不会释放Activity的引用，则Activity无法被回收，造成内存泄漏。</p>
-<h2 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h2><p>Looper在android的消息机制充当消息循环的角色，它不停的充MessageQueue中拿出消息，并将消息交给Handler处理。</p>
+<h2 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h2><p>Looper在android的消息机制充当消息循环的角色，它不停的从MessageQueue中拿出消息，并将消息交给Handler处理。</p>
 <h3 id="prepareMainLooper"><a href="#prepareMainLooper" class="headerlink" title="prepareMainLooper()"></a><del>prepareMainLooper()</del></h3><p>在Android 11/ R中，<strong><code>Looper.prepareMainLooper()</code></strong> <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvb3MvTG9vcGVyI3ByZXBhcmVNYWluTG9vcGVyKCk=" title="https://developer.android.google.cn/reference/android/os/Looper#prepareMainLooper()">已废弃<i class="fa fa-external-link"></i></span></p>
 <p><img alt="prepareMainLooper_deprecated.png" data-src="/images/prepareMainLooper_deprecated.png"></p>
 <p><strong>方法作用</strong> : 将当前线程初始化为循环程序，将其标记为应用程序的主循环程序<br><strong>废弃原因</strong> : 应用程序的主循环程序是由Android环境创建的，因此您无需在自己应用里调用此函数。</p>
