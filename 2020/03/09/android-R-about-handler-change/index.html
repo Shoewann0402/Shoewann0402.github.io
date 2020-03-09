@@ -122,7 +122,7 @@
 <meta property="og:description" content="Handler 类，相信大家并不陌生，也应当耳熟能详，且铭记于心几乎项目中使用频率较高，同时也是面试时常挂嘴边的必考知识点 今天我们来谈谈在Android 11/R 上 Handler 相关变化">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/handler_deprecated.png">
-<meta property="og:updated_time" content="2020-03-09T06:57:13.129Z">
+<meta property="og:updated_time" content="2020-03-09T07:01:44.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 11 (R) 之 Handler 相关变化">
 <meta name="twitter:description" content="Handler 类，相信大家并不陌生，也应当耳熟能详，且铭记于心几乎项目中使用频率较高，同时也是面试时常挂嘴边的必考知识点 今天我们来谈谈在Android 11/R 上 Handler 相关变化">
@@ -491,7 +491,7 @@
                 
               
 
-              <time title="创建时间：2020-03-09 14:18:37 / 修改时间：14:57:13" itemprop="dateCreated datePublished" datetime="2020-03-09T14:18:37+08:00">2020-03-09</time>
+              <time title="创建时间：2020-03-09 14:18:37 / 修改时间：15:01:44" itemprop="dateCreated datePublished" datetime="2020-03-09T14:18:37+08:00">2020-03-09</time>
             </span>
           
 
@@ -670,7 +670,7 @@
 <p>【源码部分】</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">Looper</span><span class="params">(<span class="keyword">boolean</span> quitAllowed)</span> </span>&#123;</span><br><span class="line">    mQueue = <span class="keyword">new</span> MessageQueue(quitAllowed);</span><br><span class="line">    mThread = Thread.currentThread();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>而Looper的的Loop方法，主要是用来从MessageQueue消息队列里面拿出消息。</p>
+<p>而Looper的Loop()方法，主要是用来从MessageQueue消息队列里面拿出消息。</p>
 <p>以上就是本文的全部内容，感谢您的阅读</p>
 <blockquote>
 <p>本文基于Android R DP1 post，如有不足, 欢迎指正</p>
