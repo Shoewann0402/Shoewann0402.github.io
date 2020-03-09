@@ -122,7 +122,7 @@
 <meta property="og:description" content="Handler 类，相信大家并不陌生，也应当耳熟能详，且铭记于心几乎项目中使用频率较高，同时也是面试时常挂嘴边的必考知识点 今天我们来谈谈在Android 11/R 上 Handler 相关变化">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/handler_deprecated.png">
-<meta property="og:updated_time" content="2020-03-09T06:47:49.587Z">
+<meta property="og:updated_time" content="2020-03-09T06:57:13.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 11 (R) 之 Handler 相关变化">
 <meta name="twitter:description" content="Handler 类，相信大家并不陌生，也应当耳熟能详，且铭记于心几乎项目中使用频率较高，同时也是面试时常挂嘴边的必考知识点 今天我们来谈谈在Android 11/R 上 Handler 相关变化">
@@ -491,7 +491,7 @@
                 
               
 
-              <time title="创建时间：2020-03-09 14:18:37 / 修改时间：14:47:49" itemprop="dateCreated datePublished" datetime="2020-03-09T14:18:37+08:00">2020-03-09</time>
+              <time title="创建时间：2020-03-09 14:18:37 / 修改时间：14:57:13" itemprop="dateCreated datePublished" datetime="2020-03-09T14:18:37+08:00">2020-03-09</time>
             </span>
           
 
@@ -604,8 +604,8 @@
 <hr>
 <a id="more"></a>
 
-<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p><em>Handler 可让您发送和处理 Message 和 Runnable 与线程的 MessageQueue 关联的对象。每个处理程序<br>实例与单个线程以及该线程的消息相关联排队。创建新的处理程序时，它会绑定到 Looper。它将消息和可运行消息传递到该 Looper 的消息排队并在该 Looper 的线程上执行它们。</em></p>
-<p>Android DP1 的发布，参考以下的差异报告 官方对 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvb3MvSGFuZGxl" title="https://developer.android.google.cn/reference/android/os/Handle">Handler<i class="fa fa-external-link"></i></span> 类的两个构造函数进行了更改，一个是 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvb3MvSGFuZGxlciNIYW5kbGVyKCk=" title="https://developer.android.google.cn/reference/android/os/Handler#Handler()">Handler()<i class="fa fa-external-link"></i></span>，另一个是 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvb3MvSGFuZGxlciNIYW5kbGVyKGFuZHJvaWQub3MuSGFuZGxlci5DYWxsYmFjayk=" title="https://developer.android.google.cn/reference/android/os/Handler#Handler(android.os.Handler.Callback)">Handler(Handler.Callback callback)<i class="fa fa-external-link"></i></span></p>
+<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p>Handler 可让您发送和处理 Message 和 Runnable 与线程的 MessageQueue 关联的对象。每个处理程序<br>实例与单个线程以及该线程的消息相关联排队。创建新的处理程序时，它会绑定到 Looper。它将消息和可运行消息传递到该 Looper 的消息排队并在该 Looper 的线程上执行它们。</p>
+<p>Android 11/R DP1 的发布，参考以下的差异报告 官方对 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvb3MvSGFuZGxl" title="https://developer.android.google.cn/reference/android/os/Handle">Handler<i class="fa fa-external-link"></i></span> 类的两个构造函数进行了更改，一个是 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvb3MvSGFuZGxlciNIYW5kbGVyKCk=" title="https://developer.android.google.cn/reference/android/os/Handler#Handler()">Handler()<i class="fa fa-external-link"></i></span>，另一个是 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvb3MvSGFuZGxlciNIYW5kbGVyKGFuZHJvaWQub3MuSGFuZGxlci5DYWxsYmFjayk=" title="https://developer.android.google.cn/reference/android/os/Handler#Handler(android.os.Handler.Callback)">Handler(Handler.Callback callback)<i class="fa fa-external-link"></i></span></p>
 <p>结果也就是将这两个方法 ——  <strong><del>废！弃！了！</del></strong></p>
 <table>
 <thead>
@@ -632,11 +632,11 @@
 <blockquote>
 <p><strong><del>Handler()</del></strong> </p>
 </blockquote>
-<p>这个构造函数废弃了, 在Handler构造期间隐式选择Loooper会导致操作悄无声息的丢失(如果Handler不再期待新的任务并退出)，崩溃(如果Handler有时在没有激活Looper的主线程中被创建) 或者竞争条件下的bug,处理程序与之关联的线程不是作者预期的，而是使用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2phdmEvdXRpbC9jb25jdXJyZW50L0V4ZWN1dG9y" title="https://developer.android.com/reference/java/util/concurrent/Executor">Executor<i class="fa fa-external-link"></i></span> 或者使用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvb3MvTG9vcGVyI2dldE1haW5Mb29wZXIoKQ==" title="https://developer.android.com/reference/android/os/Looper#getMainLooper()">Looper#getMainLooper<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvdmlldy9WaWV3I2dldEhhbmRsZXIoKQ==" title="https://developer.android.com/reference/android/view/View#getHandler()">View#getHandler()<i class="fa fa-external-link"></i></span>, 或者类似方法显式指定Looper。如果为了兼容性需要隐式线程局部行为，使用 <strong>new Handler(Looper.myLooper())</strong> 让读者清楚知道。</p>
+<p>这个构造函数废弃了, 在Handler构造期间隐式选择Looper会导致操作悄无声息的丢失(如果Handler不再期待新的任务并退出)，崩溃(如果Handler有时在没有激活Looper的主线程中被创建) 或者竞争条件下的bug,处理程序与之关联的线程不是作者预期的，而是使用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2phdmEvdXRpbC9jb25jdXJyZW50L0V4ZWN1dG9y" title="https://developer.android.com/reference/java/util/concurrent/Executor">Executor<i class="fa fa-external-link"></i></span> 或者使用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvb3MvTG9vcGVyI2dldE1haW5Mb29wZXIoKQ==" title="https://developer.android.com/reference/android/os/Looper#getMainLooper()">Looper#getMainLooper<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvdmlldy9WaWV3I2dldEhhbmRsZXIoKQ==" title="https://developer.android.com/reference/android/view/View#getHandler()">View#getHandler()<i class="fa fa-external-link"></i></span>, 或者类似方法显式指定Looper。如果为了兼容性需要隐式线程局部行为，使用 <strong>new Handler(Looper.myLooper())</strong> 让读者清楚知道。</p>
 <blockquote>
 <p><strong><del>Handler(Handler.Callback callback)</del></strong></p>
 </blockquote>
-<p>这个构造函数废弃了, 在Handler构造期间隐式选择Loooper会导致操作悄无声息的丢失(如果Handler不再期待新的任务并退出)，崩溃(如果Handler有时在没有激活Looper的主线程中被创建) 或者竞争条件下的bug,处理程序与之关联的线程不是作者预期的，而是使用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2phdmEvdXRpbC9jb25jdXJyZW50L0V4ZWN1dG9y" title="https://developer.android.com/reference/java/util/concurrent/Executor">Executor<i class="fa fa-external-link"></i></span> 或者使用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvb3MvTG9vcGVyI2dldE1haW5Mb29wZXIoKQ==" title="https://developer.android.com/reference/android/os/Looper#getMainLooper()">Looper#getMainLooper<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvdmlldy9WaWV3I2dldEhhbmRsZXIoKQ==" title="https://developer.android.com/reference/android/view/View#getHandler()">View#getHandler()<i class="fa fa-external-link"></i></span>, 或者类似方法显式指定Looper。如果为了兼容性需要隐式线程局部行为，使用 <strong>new Handler(Looper.myLooper(), callback)</strong> 让读者清楚知道。</p>
+<p>这个构造函数废弃了, 在Handler构造期间隐式选择Looper会导致操作悄无声息的丢失(如果Handler不再期待新的任务并退出)，崩溃(如果Handler有时在没有激活Looper的主线程中被创建) 或者竞争条件下的bug,处理程序与之关联的线程不是作者预期的，而是使用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2phdmEvdXRpbC9jb25jdXJyZW50L0V4ZWN1dG9y" title="https://developer.android.com/reference/java/util/concurrent/Executor">Executor<i class="fa fa-external-link"></i></span> 或者使用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvb3MvTG9vcGVyI2dldE1haW5Mb29wZXIoKQ==" title="https://developer.android.com/reference/android/os/Looper#getMainLooper()">Looper#getMainLooper<i class="fa fa-external-link"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5jb20vcmVmZXJlbmNlL2FuZHJvaWQvdmlldy9WaWV3I2dldEhhbmRsZXIoKQ==" title="https://developer.android.com/reference/android/view/View#getHandler()">View#getHandler()<i class="fa fa-external-link"></i></span>, 或者类似方法显式指定Looper。如果为了兼容性需要隐式线程局部行为，使用 <strong>new Handler(Looper.myLooper(), callback)</strong> 让读者清楚知道。</p>
 <hr>
 <p>通过上面的官方文档介绍<br>那么在Android 11 /R 之后创建Handler构造函数</p>
 <blockquote>
