@@ -122,7 +122,7 @@
 <meta property="og:description" content="Android 11/R 废弃了 IntentService  本文我们一起来回顾它">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/intentService-deprecated.png">
-<meta property="og:updated_time" content="2020-03-10T07:22:09.380Z">
+<meta property="og:updated_time" content="2020-03-10T09:27:37.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 11（R）之 IntentService">
 <meta name="twitter:description" content="Android 11/R 废弃了 IntentService  本文我们一起来回顾它">
@@ -491,7 +491,7 @@
                 
               
 
-              <time title="创建时间：2020-03-10 14:29:43 / 修改时间：15:22:09" itemprop="dateCreated datePublished" datetime="2020-03-10T14:29:43+08:00">2020-03-10</time>
+              <time title="创建时间：2020-03-10 14:29:43 / 修改时间：17:27:37" itemprop="dateCreated datePublished" datetime="2020-03-10T14:29:43+08:00">2020-03-10</time>
             </span>
           
 
@@ -556,7 +556,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">18k</span>
+              <span title="本文字数">20k</span>
             </span>
           
 
@@ -568,7 +568,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">30 分钟</span>
+              <span title="阅读时长">34 分钟</span>
             </span>
           
 
@@ -735,6 +735,15 @@
 <li><p>WorkManager，并不是所有的任务都可以取消，当任务正在执行时是不能取消的，当然任务执行完成了，取消也是意义的，也就是说当任务加入到ManagerWork的队列中但是还没有执行时才可以取消。</p>
 </li>
 </ol>
+<ol start="4">
+<li>如果将[开始]按钮里面的代码延时(70s)启动，模拟后台启动，<code>MainActivity.kt</code> 改成如下：</li>
+</ol>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">R.id.btnStart -&gt; &#123;</span><br><span class="line">               Log.d(TAG, <span class="string">"startService() called"</span>)</span><br><span class="line">               Handler(Looper.getMainLooper()).postDelayed(&#123;</span><br><span class="line">                       <span class="comment">//startIntentService()</span></span><br><span class="line">                       <span class="comment">//startJobIntentService()</span></span><br><span class="line">                       <span class="comment">//startMyWorkManagerOneTimeWork()</span></span><br><span class="line">                       <span class="comment">//startMyWorkManagerPeriodicWork()</span></span><br><span class="line">                   &#125;, <span class="number">70</span> * <span class="number">1000</span>)</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+
+<p>再点击 <strong>开始</strong> 按钮之后，按<strong>Home</strong>键回到<strong>launcher</strong><br><strong><del>IntentService</del></strong> 的方式会因为Android O / 8.0 后台限制抛出异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">2020-03-10 17:23:01.132 10813-10813/com.shoewann.androidrtest D/MainActivity: startIntentService() called</span><br><span class="line">2020-03-10 17:23:01.139 10813-10813/com.shoewann.androidrtest D/AndroidRuntime: Shutting down VM</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    --------- beginning of crash</span><br><span class="line">2020-03-10 17:23:01.143 10813-10813/com.shoewann.androidrtest E/AndroidRuntime: FATAL EXCEPTION: main</span><br><span class="line">    Process: com.shoewann.androidrtest, PID: 10813</span><br><span class="line">    java.lang.IllegalStateException: Not allowed to start service Intent &#123; cmp=com.shoewann.androidrtest/.MyIntentService &#125;: app is in background uid UidRecord&#123;f520899 u0a421 LAST bg:+1m8s709ms idle change:idle procs:1 seq(0,0,0)&#125;</span><br><span class="line">        at android.app.ContextImpl.startServiceCommon(ContextImpl.java:1699)</span><br><span class="line">        at android.app.ContextImpl.startService(ContextImpl.java:1654)</span><br><span class="line">        at android.content.ContextWrapper.startService(ContextWrapper.java:719)</span><br><span class="line">        at com.shoewann.androidrtest.MainActivity.startIntentService(MainActivity.kt:59)</span><br><span class="line">        at com.shoewann.androidrtest.MainActivity.access$startIntentService(MainActivity.kt:18)</span><br><span class="line">        at com.shoewann.androidrtest.MainActivity$onClick$1.run(MainActivity.kt:158)</span><br><span class="line">        at android.os.Handler.handleCallback(Handler.java:907)</span><br><span class="line">        at android.os.Handler.dispatchMessage(Handler.java:99)</span><br><span class="line">        at android.os.Looper.loop(Looper.java:216)</span><br><span class="line">        at android.app.ActivityThread.main(ActivityThread.java:7506)</span><br><span class="line">        at java.lang.reflect.Method.invoke(Native Method)</span><br><span class="line">    	a</span><br><span class="line">2020-03-10 17:23:01.169 10813-10813/com.shoewann.androidrtest I/Process: Sending signal. PID: 10813 SIG: 9</span><br></pre></td></tr></table></figure>
+
+<p>其他均验证通过<br><strong>JobIntentService</strong> 和 <strong>WorkManager</strong> 的方式为 <strong><del>IntentService</del></strong> 替代方案</p>
 <p>以上就是本文的全部内容，其他方面请自行总结扩展测试，感谢您的阅读</p>
 <blockquote>
 <p>本文基于Android 11 / R DP1 发布，如有不足, 欢迎指正</p>
@@ -1647,7 +1656,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">364k</span>
+    <span title="站点总字数">367k</span>
   
 
   
@@ -1656,7 +1665,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">10:07</span>
+    <span title="站点阅读时长">10:11</span>
   
 </div>
 
