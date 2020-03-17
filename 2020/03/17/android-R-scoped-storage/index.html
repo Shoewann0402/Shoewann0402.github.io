@@ -122,7 +122,7 @@
 <meta property="og:description" content="Android 在 Q 上引入了分区存储，对外部存储访问收拢了宽裕的权限，对存储数据文件的读写进行了限制，那么 Android R 上又有哪些变化呢 ?  本文就让我们一起来了解一下 , Let’s go ~">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android-r.png">
-<meta property="og:updated_time" content="2020-03-17T10:05:53.673Z">
+<meta property="og:updated_time" content="2020-03-17T10:09:16.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 11 (R) 分区存储">
 <meta name="twitter:description" content="Android 在 Q 上引入了分区存储，对外部存储访问收拢了宽裕的权限，对存储数据文件的读写进行了限制，那么 Android R 上又有哪些变化呢 ?  本文就让我们一起来了解一下 , Let’s go ~">
@@ -484,7 +484,7 @@
                 
               
 
-              <time title="创建时间：2020-03-17 17:16:50 / 修改时间：18:05:53" itemprop="dateCreated datePublished" datetime="2020-03-17T17:16:50+08:00">2020-03-17</time>
+              <time title="创建时间：2020-03-17 17:16:50 / 修改时间：18:09:16" itemprop="dateCreated datePublished" datetime="2020-03-17T17:16:50+08:00">2020-03-17</time>
             </span>
           
 
@@ -767,7 +767,7 @@
 <li>将用户引导至系统设置页面，在该页面上，用户可以对应用启用<strong>授予所有文件的管理权限</strong>选项</li>
 </ul>
 </blockquote>
-<p>简单说，像这种文件管理器、备份及存储类应用。你需要在 Google Play Developer Console上填写声明表格说明为什么需要改权限，提交之后会被审核是否加入白名单，一旦加入成功以后，您的应用就可以向用户索要权限了，如果用户也同意您应用的访问权限请求，MadiaStore 访问将不再过滤，包括非媒体库文件。但是获得此权限的应用仍然无法访问这些目录在存储卷上显示为 <code>Android/data/</code>的子目录，也就是属于其他应用的应用专属目录。</p>
+<p>简单说，像这种文件管理器、备份及存储类应用。你需要在 Google Play Developer Console上填写声明表格说明为什么需要<code>MANAGE_EXTERNAL_STORAGE</code>权限，提交之后会被审核是否加入白名单，一旦加入成功以后，您的应用就可以向用户索要权限了，如果用户也同意您应用的访问权限请求，MadiaStore 访问将不再过滤，包括非媒体库文件。但是获得此权限的应用仍然无法访问这些目录在存储卷上显示为 <code>Android/data/</code>的子目录，也就是属于其他应用的应用专属目录。</p>
 <p><code>MANAGE_EXTERNAL_STORAGE</code> 权限允许应用访问共享的存储空间中的潜在敏感数据。</p>
 <h3 id="二、示例"><a href="#二、示例" class="headerlink" title="二、示例"></a>二、示例</h3><p><img alt="scoped-storage-on-android-11-1.png" data-src="/images/scoped-storage-on-android-11-1.png"></p>
 <p>按照上面 Q ~ R 这一些列规则点，我们可以将示例进行分类如下</p>
