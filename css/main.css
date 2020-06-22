@@ -1837,6 +1837,11 @@ pre .javascript .function {
   color: #eee;
   border-bottom-color: #eee;
 }
+@media (max-width: 991px) {
+  .sidebar {
+    display: none;
+  }
+}
 .sidebar-inner {
   position: relative;
   padding: 20px 10px;
@@ -1909,7 +1914,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e4b861;
+  background: #133d53;
 }
 .feed-link,
 .chat {
@@ -2033,6 +2038,7 @@ pre .javascript .function {
   .sidebar-toggle {
     opacity: 0.8;
     right: 20px;
+    display: none;
   }
 }
 .sidebar-toggle-line {
