@@ -347,11 +347,11 @@
     
       <category term="Android Q" scheme="https://shoewann0402.github.io/tags/Android-Q/"/>
     
-      <category term="Settings Panel" scheme="https://shoewann0402.github.io/tags/Settings-Panel/"/>
-    
       <category term="WIFI" scheme="https://shoewann0402.github.io/tags/WIFI/"/>
     
       <category term="setWifiEnabled" scheme="https://shoewann0402.github.io/tags/setWifiEnabled/"/>
+    
+      <category term="Settings Panel" scheme="https://shoewann0402.github.io/tags/Settings-Panel/"/>
     
   </entry>
   
@@ -646,9 +646,9 @@
       <category term="Notification" scheme="https://shoewann0402.github.io/categories/Android/Notification/"/>
     
     
-      <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
-    
       <category term="Notification Channels" scheme="https://shoewann0402.github.io/tags/Notification-Channels/"/>
+    
+      <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
     
       <category term="通知渠道" scheme="https://shoewann0402.github.io/tags/%E9%80%9A%E7%9F%A5%E6%B8%A0%E9%81%93/"/>
     
@@ -676,9 +676,9 @@
       <category term="WindowManager" scheme="https://shoewann0402.github.io/categories/Android/WindowManager/"/>
     
     
-      <category term="WindowManager" scheme="https://shoewann0402.github.io/tags/WindowManager/"/>
-    
       <category term="Android O" scheme="https://shoewann0402.github.io/tags/Android-O/"/>
+    
+      <category term="WindowManager" scheme="https://shoewann0402.github.io/tags/WindowManager/"/>
     
       <category term="Android M" scheme="https://shoewann0402.github.io/tags/Android-M/"/>
     
