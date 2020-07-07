@@ -104,6 +104,14 @@
 </script>
 
 
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "ab691b7b"
+    });
+  daovoice('update');
+  </script>
+
 
   <meta name="description" content="最近在做静默安装和卸载功能的时候，应用程序放到系统分区(/system/priv-app/)执行pm命令实现静默安装和卸载的方式在7.0上安装、卸载失败。Google 在N上加强了安全权限，对此用本文来记录如何解决7.0上的静默安装和静默卸载。">
 <meta name="keywords" content="installSilent,uninstallSilent,android N,android 7.x">
