@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shoewann0402.github.io/about/index.html</loc>
+    
+    <lastmod>2020-07-07T10:24:21.031Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shoewann0402.github.io/2020/03/17/android-R-scoped-storage/</loc>
     
     <lastmod>2020-03-17T10:17:48.159Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>https://shoewann0402.github.io/2019/04/07/android-q-beta2-bubbles/</loc>
     
     <lastmod>2019-07-19T16:41:32.623Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/about/index.html</loc>
-    
-    <lastmod>2019-03-27T02:43:15.000Z</lastmod>
     
   </url>
   
