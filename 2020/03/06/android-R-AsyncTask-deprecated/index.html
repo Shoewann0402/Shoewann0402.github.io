@@ -117,12 +117,12 @@
 <meta name="keywords" content="Android,Android R,AsycnTask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 11 (R) 之 AsyncTask 前世今生">
-<meta property="og:url" content="https://shoewann0402.github.io/2020/09/10/android-R-AsyncTask-deprecated/index.html">
+<meta property="og:url" content="https://shoewann0402.github.io/2020/03/06/android-R-AsyncTask-deprecated/index.html">
 <meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
 <meta property="og:description" content="在过去的十年中，AsyncTask一直是用于在Android中编写并发代码的最广泛使用的解决方案之一但是，从 Android 11 (R) 开始，官方正式弃用, 也标志着AsyncTask 的时代正式结束  本文我们一起来回顾它的前世今生">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/asynctask-deprecated-from-android-11.png">
-<meta property="og:updated_time" content="2020-03-06T13:31:42.000Z">
+<meta property="og:updated_time" content="2020-09-12T09:54:19.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 11 (R) 之 AsyncTask 前世今生">
 <meta name="twitter:description" content="在过去的十年中，AsyncTask一直是用于在Android中编写并发代码的最广泛使用的解决方案之一但是，从 Android 11 (R) 开始，官方正式弃用, 也标志着AsyncTask 的时代正式结束  本文我们一起来回顾它的前世今生">
@@ -136,7 +136,7 @@
 
   
   
-  <link rel="canonical" href="https://shoewann0402.github.io/2020/09/10/android-R-AsyncTask-deprecated/">
+  <link rel="canonical" href="https://shoewann0402.github.io/2020/03/06/android-R-AsyncTask-deprecated/">
 
 
 
@@ -441,7 +441,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2020/09/10/android-R-AsyncTask-deprecated/">
+    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2020/03/06/android-R-AsyncTask-deprecated/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shoewann">
@@ -484,7 +484,7 @@
                 
               
 
-              <time title="创建时间：2020-09-10 21:11:39" itemprop="dateCreated datePublished" datetime="2020-09-10T21:11:39+08:00">2020-09-10</time>
+              <time title="创建时间：2020-03-06 13:03:32" itemprop="dateCreated datePublished" datetime="2020-03-06T13:03:32+08:00">2020-03-06</time>
             </span>
           
 
@@ -499,7 +499,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-06 21:31:42" itemprop="dateModified" datetime="2020-03-06T21:31:42+08:00">2020-03-06</time>
+                <time title="修改时间：2020-09-12 17:54:19" itemprop="dateModified" datetime="2020-09-12T17:54:19+08:00">2020-09-12</time>
               </span>
             
           
@@ -535,7 +535,7 @@
 
           
           
-            <span id="/2020/09/10/android-R-AsyncTask-deprecated/" class="post-meta-item leancloud_visitors" data-flag-title="Android 11 (R) 之 AsyncTask 前世今生">
+            <span id="/2020/03/06/android-R-AsyncTask-deprecated/" class="post-meta-item leancloud_visitors" data-flag-title="Android 11 (R) 之 AsyncTask 前世今生">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -616,10 +616,10 @@
 <h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><p>直接使用 AsyncTask</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AsyncTask.execute &#123;</span><br><span class="line">           Log.d(TAG, &quot;###### AsyncTask execute #####&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p> — java </p>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p> — java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncTask</span> &lt; <span class="title">Params</span>, <span class="title">Progress</span>, <span class="title">Result</span> &gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>— kotlin </p>
+<p>— kotlin</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abstract class AsyncTask&lt;Params : Any!, Progress : Any!, Result : Any!&gt;</span><br></pre></td></tr></table></figure>
 
 <p>AsyncTask是一个泛型抽象类</p>
@@ -752,7 +752,7 @@
 <li>一个AsyncTask对象只能执行一次，即只能调用一次execute</li>
 </ol>
 <h3 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h3><p>问题描述</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This AsyncTask class should be static or leaks might occur (anonymous android.os.AsyncTask) less... (Ctrl+F1) </span><br><span class="line">A static field will leak contexts.  Non-static inner classes have an implicit reference to their outer class. If that outer class is for example a Fragment or Activity, then this reference means that the long-running handler/loader/task will hold a reference to the activity which prevents it from getting garbage collected.  Similarly, direct field references to activities and fragments from these longer running instances can cause leaks.  ViewModel classes should never point to Views or non-application Contexts</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This AsyncTask class should be static or leaks might occur (anonymous android.os.AsyncTask) less... (Ctrl+F1)</span><br><span class="line">A static field will leak contexts.  Non-static inner classes have an implicit reference to their outer class. If that outer class is for example a Fragment or Activity, then this reference means that the long-running handler/loader/task will hold a reference to the activity which prevents it from getting garbage collected.  Similarly, direct field references to activities and fragments from these longer running instances can cause leaks.  ViewModel classes should never point to Views or non-application Contexts</span><br></pre></td></tr></table></figure>
 
 <p>解决方法 ： 静态内部类+弱引用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Void</span>, <span class="title">Void</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> WeakReference&lt;MyActivity&gt; activityReference;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//只保留一个弱引用到Activity</span></span><br><span class="line">        MyTask(MyActivity context) &#123;</span><br><span class="line">            activityReference = <span class="keyword">new</span> WeakReference&lt;&gt;(context);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> String <span class="title">doInBackground</span><span class="params">(Void... params)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"task finished"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(String result)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//获取Activity的引用（如果仍存在）</span></span><br><span class="line">            MyActivity activity = activityReference.get();</span><br><span class="line">            <span class="keyword">if</span> (activity == <span class="keyword">null</span> || activity.isFinishing()) <span class="keyword">return</span>;</span><br><span class="line">            <span class="comment">// 验证Activity的UI</span></span><br><span class="line">            TextView textView = activity.findViewById(R.id.textview);</span><br><span class="line">            textView.setText(result);</span><br><span class="line">            <span class="comment">// 访问Activity成员变量</span></span><br><span class="line">            activity.mSomeMemberVariable = <span class="number">321</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -767,7 +767,7 @@
 <p>AsyncTask旨在启用和轻松使用UI线程。但是，最常见的用例是集成到UI中，这会导致Context泄漏，丢失的回调或配置更改崩溃。它还在平台的不同版本上具有不一致的行为，吞噬的异常doInBackground，并且不能提供比<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2tvdGxpbi9qYXZhL3V0aWwvY29uY3VycmVudC9FeGVjdXRvci5odG1s" title="https://developer.android.google.cn/reference/kotlin/java/util/concurrent/Executor.html">Executor<i class="fa fa-external-link"></i></span>直接使用更多的实用程序。</p>
 </blockquote>
 <p>AsyncTask是为围绕<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2tvdGxpbi9qYXZhL2xhbmcvVGhyZWFkLmh0bWw=" title="https://developer.android.google.cn/reference/kotlin/java/lang/Thread.html">Thread<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2tvdGxpbi9hbmRyb2lkL29zL0hhbmRsZXI=" title="https://developer.android.google.cn/reference/kotlin/android/os/Handler">Handler<i class="fa fa-external-link"></i></span>的帮助器类而被设计出来的，并且不构成通用的线程框架。理想情况下，应将AsyncTasks用于较短的操作（最多几秒钟）。如果需要使线程长时间运行，则强烈建议您使用<strong>java.util.concurrent</strong>包提供的各种API，例如 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2tvdGxpbi9qYXZhL3V0aWwvY29uY3VycmVudC9FeGVjdXRvci5odG1s" title="https://developer.android.google.cn/reference/kotlin/java/util/concurrent/Executor.html">Executor<i class="fa fa-external-link"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2tvdGxpbi9qYXZhL3V0aWwvY29uY3VycmVudC9UaHJlYWRQb29sRXhlY3V0b3IuaHRtbA==" title="https://developer.android.google.cn/reference/kotlin/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor<i class="fa fa-external-link"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2tvdGxpbi9qYXZhL3V0aWwvY29uY3VycmVudC9GdXR1cmVUYXNrLmh0bWw=" title="https://developer.android.google.cn/reference/kotlin/java/util/concurrent/FutureTask.html">FutureTask<i class="fa fa-external-link"></i></span>。</p>
-<h3 id="代替示例"><a href="#代替示例" class="headerlink" title="代替示例"></a>代替示例</h3><h4 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">// ----------- 示例1 ----------------------</span><br><span class="line">//定义</span><br><span class="line">class DirectExecutor : Executor &#123;</span><br><span class="line">    override fun execute(runnable: Runnable?) &#123;</span><br><span class="line">        runnable?.run()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//调用</span><br><span class="line">val directExecutor = DirectExecutor()</span><br><span class="line">   directExecutor.execute &#123;</span><br><span class="line">            Log.d(TAG, &quot;###### DirectExecutor execute ##### &quot;)</span><br><span class="line">            .........</span><br><span class="line">            .........</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">//----------- 示例2 ----------------------</span><br><span class="line">//定义</span><br><span class="line">class ThreadPerTaskExecutor : Executor &#123;</span><br><span class="line">    override fun execute(runnable: Runnable?) &#123;</span><br><span class="line">            Thread(runnable).start()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//调用</span><br><span class="line">val threadPerTaskExecutor = ThreadPerTaskExecutor()</span><br><span class="line">    threadPerTaskExecutor.execute &#123;</span><br><span class="line">        Log.d(TAG, &quot;###### threadPerTaskExecutor execute #####&quot;)</span><br><span class="line">        .........</span><br><span class="line">        .........</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代替示例"><a href="#代替示例" class="headerlink" title="代替示例"></a>代替示例</h3><h4 id="Executor"><a href="#Executor" class="headerlink" title="Executor"></a>Executor</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">// ----------- 示例1 ----------------------</span><br><span class="line">//定义</span><br><span class="line">class DirectExecutor : Executor &#123;</span><br><span class="line">    override fun execute(runnable: Runnable?) &#123;</span><br><span class="line">        runnable?.run()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//调用</span><br><span class="line">val directExecutor = DirectExecutor()</span><br><span class="line">   directExecutor.execute &#123;</span><br><span class="line">            Log.d(TAG, &quot;###### DirectExecutor execute ##### &quot;)</span><br><span class="line">            .........</span><br><span class="line">            .........</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//----------- 示例2 ----------------------</span><br><span class="line">//定义</span><br><span class="line">class ThreadPerTaskExecutor : Executor &#123;</span><br><span class="line">    override fun execute(runnable: Runnable?) &#123;</span><br><span class="line">            Thread(runnable).start()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//调用</span><br><span class="line">val threadPerTaskExecutor = ThreadPerTaskExecutor()</span><br><span class="line">    threadPerTaskExecutor.execute &#123;</span><br><span class="line">        Log.d(TAG, &quot;###### threadPerTaskExecutor execute #####&quot;)</span><br><span class="line">        .........</span><br><span class="line">        .........</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//核心线程池大小 --&gt; 即需要开启多少个线程</span><br><span class="line">val coreThreadPoolSize = Runtime.getRuntime().availableProcessors() //系统有多少可用就开多少</span><br><span class="line">//最大线程池大小</span><br><span class="line">val maximumPoolSize = 15</span><br><span class="line">//线程最大空闲时间</span><br><span class="line">//线程池中超过corePoolSize数目的空闲线程最大存活时间；可以allowCoreThreadTimeOut(true)使得核心线程  有效时间</span><br><span class="line">val keepAliveTime = 120L</span><br><span class="line">//keepAliveTime时间单位</span><br><span class="line">val unit = TimeUnit.SECONDS</span><br><span class="line">//定义阻塞式列队</span><br><span class="line">val workQueue = ArrayBlockingQueue&lt;Runnable&gt;(10000)</span><br><span class="line">val executor = ThreadPoolExecutor(coreThreadPoolSize,</span><br><span class="line">               maximumPoolSize, keepAliveTime, unit, workQueue</span><br><span class="line">       )</span><br><span class="line">for (i in 0..100) &#123;</span><br><span class="line">       executor.execute &#123;</span><br><span class="line">           Log.d(TAG, &quot;线程池中线程数目：&quot;+executor.poolSize +&quot;，队列中等待执行的任务数目：&quot;+</span><br><span class="line">                   executor.queue.size +&quot;，已执行完成的任务数目：&quot;+executor.completedTaskCount)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">executor.shutdown()</span><br></pre></td></tr></table></figure>
 
@@ -783,7 +783,7 @@
 </ol>
 <p>以上就是本文对AsyncTask的简单回顾总结</p>
 <blockquote>
-<p>本文发布于Android 11 / R DP 1 。如有不足，欢迎指正 </p>
+<p>本文发布于Android 11 / R DP 1 。如有不足，欢迎指正</p>
 </blockquote>
 
       
@@ -900,7 +900,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://shoewann0402.github.io/2020/09/10/android-R-AsyncTask-deprecated/" title="Android 11 (R) 之 AsyncTask 前世今生">https://shoewann0402.github.io/2020/09/10/android-R-AsyncTask-deprecated/</a>
+    <a href="https://shoewann0402.github.io/2020/03/06/android-R-AsyncTask-deprecated/" title="Android 11 (R) 之 AsyncTask 前世今生">https://shoewann0402.github.io/2020/03/06/android-R-AsyncTask-deprecated/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
@@ -959,8 +959,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/17/android-R-scoped-storage/" rel="next" title="Android 11 (R) 分区存储">
-                <i class="fa fa-chevron-left"></i> Android 11 (R) 分区存储
+              <a href="/2019/08/14/android-q-network-connectivity-check/" rel="next" title="Android Q 检查网络连通性">
+                <i class="fa fa-chevron-left"></i> Android Q 检查网络连通性
               </a>
             
           </div>
@@ -969,8 +969,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/09/12/reverse-analysis-of-the-frist-harmonyos-app/" rel="prev" title="逆向分析第一个鸿蒙OS应用">
-                逆向分析第一个鸿蒙OS应用 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/09/android-R-about-handler-change/" rel="prev" title="Android 11 (R) 之 Handler 相关变化">
+                Android 11 (R) 之 Handler 相关变化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1946,7 +1946,7 @@ setInterval("createtime()",250);
 
 <script>
   window.livereOptions = {
-    refer: '2020/09/10/android-R-AsyncTask-deprecated/'
+    refer: '2020/03/06/android-R-AsyncTask-deprecated/'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
