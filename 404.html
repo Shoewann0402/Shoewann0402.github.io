@@ -16,6 +16,7 @@
 
 <html class="theme-next muse use-motion" lang="zh-CN">
 <script src="https://www.googleoptimize.com/optimize.js?id=GTM-P4KTMX3"></script>
+<link rel="stylesheet" href="adblock-checker.css" />
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -216,7 +217,18 @@
 </noscript>
 
 </head>
-
+<script src="advertisement.js"></script>
+<script src="adblock-checker.js"></script>
+<script type="text/javascript">
+	adb_checker({
+		url: 'http://www.afreesms.com/adblock/disabling/', // Link to help users disable AdBlock
+		redirect: false, // True to redirect user to the above url
+		warning: {
+			text: 'Please disable AdBlock!', // Message to the users
+			button: 'Help me to disable!'
+		}
+	});
+</script>
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
