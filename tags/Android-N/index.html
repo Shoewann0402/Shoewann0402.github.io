@@ -117,7 +117,7 @@
 <meta name="keywords" content="google,android,vr,chrome,ads,dart,misc,web,firebase,shoewann,daydream,flutter,tensorflow,android wear,android things">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shoewann&#39;s Personal Blog">
-<meta property="og:url" content="https://shoewann0402.github.io/tags/Android-N/index.html">
+<meta property="og:url" content="https://shoewann0402.github.io/tags/android-N/index.html">
 <meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
 <meta property="og:description" content="Android Developer &amp; Google Fans">
 <meta property="og:locale" content="zh-CN">
@@ -133,7 +133,7 @@
 
   
   
-  <link rel="canonical" href="https://shoewann0402.github.io/tags/Android-N/">
+  <link rel="canonical" href="https://shoewann0402.github.io/tags/android-N/">
 
 
 
@@ -153,7 +153,7 @@
 </script>
 
   
-  <title>标签: Android N | Shoewann's Personal Blog</title>
+  <title>标签: android N | Shoewann's Personal Blog</title>
   
 
 
@@ -452,7 +452,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h2>Android N<small>标签</small>
+        <h2>android N<small>标签</small>
         </h2>
       </div>
 
@@ -464,43 +464,17 @@
 
       <h3 class="post-title">
         
-          <a class="post-title-link" href="/2016/06/10/security-crypto-provider-deprecated-in-android-n/" itemprop="url">
+          <a class="post-title-link" href="/2017/06/27/android-n-installSilent-and-uninstallSilent/" itemprop="url">
             
-              <span itemprop="name">Android N对安全加密提供者已弃用</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-06-10T12:44:32+08:00" content="2016-06-10">
-          06-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2016/06/09/Notifications-In-Android-N/" itemprop="url">
-            
-              <span itemprop="name">Android N 中的 Notification 通知</span>
+              <span itemprop="name">Android N 静默安装和卸载</span>
             
           </a>
         
       </h3>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-06-09T09:50:03+08:00" content="2016-06-09">
-          06-09
+        <time class="post-time" itemprop="dateCreated" datetime="2017-06-27T17:49:01+08:00" content="2017-06-27">
+          06-27
         </time>
       </div>
 
@@ -559,7 +533,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -670,7 +644,15 @@
         
           
         
-        <span class="site-state-item-count">47</span>
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1001,7 +983,17 @@
         
           
         
-        <span class="site-state-item-count">157</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">162</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1168,7 +1160,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">416k</span>
+    <span title="站点总字数">421k</span>
   
 
   
@@ -1177,7 +1169,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">11:34</span>
+    <span title="站点阅读时长">11:42</span>
   
 </div>
 
@@ -1868,6 +1860,25 @@ if ($('body').find('div.pdf').length) {
 	} else {
 		// Otherwise, you import the script FuckAdBlock
 		var importFAB = document.createElement('script');
+		importFAB.onload = function() {
+			// If all goes well, we configure FuckAdBlock
+			fuckAdBlock.onDetected(adBlockDetected)
+			fuckAdBlock.onNotDetected(adBlockNotDetected);
+		};
+		importFAB.onerror = function() {
+			// If the script does not load (blocked, integrity error, ...)
+			// Then a detection is triggered
+			adBlockDetected();
+		};
+		importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
+		importFAB.crossOrigin = 'anonymous';
+		importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
+		document.head.appendChild(importFAB);
+        }
+  </script>
+</body>
+</html>
+Element('script');
 		importFAB.onload = function() {
 			// If all goes well, we configure FuckAdBlock
 			fuckAdBlock.onDetected(adBlockDetected)
