@@ -527,12 +527,12 @@
       </categories>
       <tags>
         <tag>Android O</tag>
-        <tag>Develop</tag>
-        <tag>Featured</tag>
         <tag>android o apis</tag>
         <tag>AndroidO</tag>
         <tag>API</tag>
+        <tag>Develop</tag>
         <tag>Developer Preview</tag>
+        <tag>Featured</tag>
         <tag>Project Treble</tag>
       </tags>
   </entry>
@@ -548,9 +548,9 @@
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>Android Studio 3.0</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
+        <tag>Android Studio 3.0</tag>
         <tag>Kotlin</tag>
       </tags>
   </entry>
@@ -565,9 +565,9 @@
         <category>Google I/O 2017</category>
       </categories>
       <tags>
-        <tag>Android Studio 3.0</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
+        <tag>Android Studio 3.0</tag>
         <tag>Canary</tag>
       </tags>
   </entry>
@@ -585,8 +585,8 @@
         <tag>Android Go</tag>
         <tag>Android O</tag>
         <tag>Develop</tag>
-        <tag>Featured</tag>
         <tag>Developer Preview</tag>
+        <tag>Featured</tag>
         <tag>Google I/O</tag>
         <tag>Android TV</tag>
         <tag>Dashboard</tag>
@@ -731,8 +731,8 @@
         <category>Testing</category>
       </categories>
       <tags>
-        <tag>Firebase</tag>
         <tag>Android</tag>
+        <tag>Firebase</tag>
         <tag>Google Cloud</tag>
         <tag>Testing</tag>
       </tags>
@@ -747,8 +747,8 @@
         <category>Testing</category>
       </categories>
       <tags>
-        <tag>Firebase</tag>
         <tag>Android</tag>
+        <tag>Firebase</tag>
         <tag>Google Cloud</tag>
         <tag>Testing</tag>
       </tags>
@@ -841,8 +841,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Web</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -1047,8 +1047,8 @@
         <category>Google cloud</category>
       </categories>
       <tags>
-        <tag>Firebase</tag>
         <tag>Android</tag>
+        <tag>Firebase</tag>
         <tag>Google Cloud</tag>
       </tags>
   </entry>
