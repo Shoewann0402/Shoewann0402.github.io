@@ -4,7 +4,7 @@
   <url>
     <loc>https://shoewann0402.github.io/2020/09/12/reverse-analysis-of-the-frist-harmonyos-app/</loc>
     
-    <lastmod>2020-09-12T13:29:28.190Z</lastmod>
+    <lastmod>2020-09-13T07:04:18.943Z</lastmod>
     
   </url>
   
@@ -135,13 +135,6 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/05/31/Activity%E5%A4%9A%E7%BA%A7%E8%B7%B3%E8%BD%AC%E5%B8%A6%E8%BF%94%E5%9B%9E%E5%80%BC/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2016/05/11/Android-Material-Design-%E2%80%94Snackbar/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
@@ -149,7 +142,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/05/12/Android-Notification-%E9%80%9A%E7%9F%A5%E6%A0%B7%E5%BC%8F%E6%80%BB%E7%BB%93/</loc>
+    <loc>https://shoewann0402.github.io/2016/05/31/Activity%E5%A4%9A%E7%BA%A7%E8%B7%B3%E8%BD%AC%E5%B8%A6%E8%BF%94%E5%9B%9E%E5%80%BC/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -157,6 +150,13 @@
   
   <url>
     <loc>https://shoewann0402.github.io/2016/07/30/Android-Performance-Part-Of-Traceview/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/05/12/Android-Notification-%E9%80%9A%E7%9F%A5%E6%A0%B7%E5%BC%8F%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -233,6 +233,13 @@
   </url>
   
   <url>
+    <loc>https://shoewann0402.github.io/2016/08/18/Flutter-get-started/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shoewann0402.github.io/2016/06/06/Crash-reporting-in-Firebase/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
@@ -254,13 +261,6 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/08/18/Flutter-get-started/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2016/05/16/Google%E5%AE%98%E6%96%B9Android%E5%BC%80%E6%BA%90%E5%BA%93-FlexboxLayout/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
@@ -275,13 +275,6 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/12/05/Introducing-android-oreo-go-edition/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2016/12/03/Import-gvr-unity-sdk-into-the-project/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
@@ -289,14 +282,14 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/08/02/Material-Design-Bottom-sheets/</loc>
+    <loc>https://shoewann0402.github.io/2017/12/05/Introducing-android-oreo-go-edition/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/08/01/Material-Design-Components-Buttons/</loc>
+    <loc>https://shoewann0402.github.io/2016/08/02/Material-Design-Bottom-sheets/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -318,6 +311,13 @@
   
   <url>
     <loc>https://shoewann0402.github.io/2018/01/08/about-android-o-notification-channels/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/08/01/Material-Design-Components-Buttons/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -359,13 +359,6 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/11/06/android-in-firebase-robo-test-lab/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2019/03/06/android-jetpack-workmanager-stable/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
@@ -373,7 +366,21 @@
   </url>
   
   <url>
+    <loc>https://shoewann0402.github.io/2016/11/06/android-in-firebase-robo-test-lab/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shoewann0402.github.io/2016/06/28/android-mobile-vision-text-api/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/10/08/android-nio-channel-operation-file/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -394,21 +401,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/10/08/android-nio-channel-operation-file/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2017/06/09/android-o-apis-are-final-get-your-apps/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2017/05/19/android-studio-3-0-canary1/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -422,7 +415,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/06/29/android-things-console-developer-preview/</loc>
+    <loc>https://shoewann0402.github.io/2017/05/19/android-studio-3-0-canary1/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -436,14 +429,14 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/07/31/android-vector-drawable-example-using-appcompat-support-library/</loc>
+    <loc>https://shoewann0402.github.io/2017/06/29/android-things-console-developer-preview/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/10/20/android71-dev-preview-available/</loc>
+    <loc>https://shoewann0402.github.io/2016/07/31/android-vector-drawable-example-using-appcompat-support-library/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -457,14 +450,21 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/07/21/connecting-your-app-to-wifi-device/</loc>
+    <loc>https://shoewann0402.github.io/2017/11/07/announcing-architecture-components-10/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/07/25/developer-preview-4-now-available/</loc>
+    <loc>https://shoewann0402.github.io/2016/10/20/android71-dev-preview-available/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/07/21/connecting-your-app-to-wifi-device/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -478,7 +478,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/11/23/final-update-to-android-7-1-developer-preview/</loc>
+    <loc>https://shoewann0402.github.io/2017/07/25/developer-preview-4-now-available/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -492,14 +492,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/08/19/google-releases-source-for-google-io-md/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shoewann0402.github.io/2016/12/10/gvr-unity-sdk-call-android-sameple/</loc>
+    <loc>https://shoewann0402.github.io/2016/11/23/final-update-to-android-7-1-developer-preview/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -513,7 +506,21 @@
   </url>
   
   <url>
+    <loc>https://shoewann0402.github.io/2017/08/19/google-releases-source-for-google-io-md/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shoewann0402.github.io/2016/12/04/gvr-unity-sdk-create-event-trigger/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/12/10/gvr-unity-sdk-call-android-sameple/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -548,13 +555,6 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2017/11/07/announcing-architecture-components-10/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2017/10/13/introducing-android-instant-apps-sdk-11/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
@@ -583,13 +583,6 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/06/10/security-crypto-provider-deprecated-in-android-n/</loc>
-    
-    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shoewann0402.github.io/2017/06/24/start-android-things-way/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
@@ -597,7 +590,7 @@
   </url>
   
   <url>
-    <loc>https://shoewann0402.github.io/2016/08/23/taking-final-wrapper-off-of-nougat/</loc>
+    <loc>https://shoewann0402.github.io/2016/06/10/security-crypto-provider-deprecated-in-android-n/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
@@ -605,6 +598,13 @@
   
   <url>
     <loc>https://shoewann0402.github.io/2016/11/03/support-ended-for-eclipse-android/</loc>
+    
+    <lastmod>2019-03-11T09:33:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shoewann0402.github.io/2016/08/23/taking-final-wrapper-off-of-nougat/</loc>
     
     <lastmod>2019-03-11T09:33:32.000Z</lastmod>
     
