@@ -448,9 +448,9 @@
       </categories>
       <tags>
         <tag>Android O</tag>
+        <tag>AndroidO</tag>
         <tag>Developer Preview</tag>
         <tag>Android O Developer Preview</tag>
-        <tag>AndroidO</tag>
         <tag>DP4</tag>
       </tags>
   </entry>
@@ -479,8 +479,8 @@
         <category>IoT</category>
       </categories>
       <tags>
-        <tag>Android Things</tag>
         <tag>Developer Preview</tag>
+        <tag>Android Things</tag>
         <tag>IoT</tag>
       </tags>
   </entry>
@@ -543,11 +543,11 @@
         <tag>Android O</tag>
         <tag>Develop</tag>
         <tag>Featured</tag>
-        <tag>Developer Preview</tag>
-        <tag>AndroidO</tag>
-        <tag>Project Treble</tag>
         <tag>android o apis</tag>
+        <tag>AndroidO</tag>
         <tag>API</tag>
+        <tag>Developer Preview</tag>
+        <tag>Project Treble</tag>
       </tags>
   </entry>
   <entry>
@@ -745,8 +745,8 @@
         <category>Testing</category>
       </categories>
       <tags>
-        <tag>Firebase</tag>
         <tag>Android</tag>
+        <tag>Firebase</tag>
         <tag>Google Cloud</tag>
         <tag>Testing</tag>
       </tags>
@@ -761,8 +761,8 @@
         <category>Testing</category>
       </categories>
       <tags>
-        <tag>Firebase</tag>
         <tag>Android</tag>
+        <tag>Firebase</tag>
         <tag>Google Cloud</tag>
         <tag>Testing</tag>
       </tags>
@@ -855,8 +855,8 @@
         <category>Android</category>
       </categories>
       <tags>
-        <tag>Android</tag>
         <tag>Web</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -1061,8 +1061,8 @@
         <category>Google cloud</category>
       </categories>
       <tags>
-        <tag>Firebase</tag>
         <tag>Android</tag>
+        <tag>Firebase</tag>
         <tag>Google Cloud</tag>
       </tags>
   </entry>
