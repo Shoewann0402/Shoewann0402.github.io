@@ -123,7 +123,7 @@
 <meta property="og:description" content="微信群里来路不明的红包，让你心动了吧？ 别动！！！，我先来告诉你这是什么！">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/fake-red-pack.png">
-<meta property="og:updated_time" content="2020-09-17T00:16:36.833Z">
+<meta property="og:updated_time" content="2020-09-17T03:09:49.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信群来路不明的红包">
 <meta name="twitter:description" content="微信群里来路不明的红包，让你心动了吧？ 别动！！！，我先来告诉你这是什么！">
@@ -499,7 +499,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-09-17 08:16:36" itemprop="dateModified" datetime="2020-09-17T08:16:36+08:00">2020-09-17</time>
+                <time title="修改时间：2020-09-17 11:09:49" itemprop="dateModified" datetime="2020-09-17T11:09:49+08:00">2020-09-17</time>
               </span>
             
           
@@ -552,7 +552,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1.3k</span>
+              <span title="本文字数">6.9k</span>
             </span>
           
 
@@ -564,7 +564,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">2 分钟</span>
+              <span title="阅读时长">11 分钟</span>
             </span>
           
 
@@ -609,14 +609,23 @@
 <p>后面，她自己意识到了这是个假的，发了一条消息 ： 好像是假的。</p>
 <p>嗯? 便宜没捡到吧 ~~ 当然这也不能全怪她, 网络诈骗的也玩出来各种新花样。</p>
 <p>于是，我打算追溯一下这个红包，分析它背后到底要干什么 ~</p>
-<h2 id="经过"><a href="#经过" class="headerlink" title="经过"></a>经过</h2><p>我用电脑浏览器打开微信红包链接，马上弹出我获得红包的提示 （天下哪儿有这么多好事???）</p>
+<h2 id="经过"><a href="#经过" class="headerlink" title="经过"></a>经过</h2><p>我用电脑浏览器打开微信红包链接</p>
+<p><img alt="虚假红包" data-src="/images/fake-red-pack-0-1.png"></p>
+<p>点击开启，马上弹出我获得红包的提示 （天下哪儿有这么多好事???）</p>
 <p><img alt="虚假红包" data-src="/images/fake-red-pack-1.png"></p>
 <p>很明显, 这是一个静态页面，一眼就能知道领红包的人和金额都是写在代码里面的，然后产生随机数什么的</p>
 <p>那个分享的可能要让你分享很多次，然后最后弹出个什么广告或者让你填什么，下载什么的</p>
 <p>最后钱被盗，个人信息被泄露，差不多都是干这些屁事。</p>
-<p>按F12，查看源码分析，定位到领红包的位置，哈~</p>
+<p>按F12，查看源码分析，哈~</p>
+<p>定义的固定用户列表，随机显示领取人</p>
 <p><img alt="随机显示人、金额、时间" data-src="/images/fake-red-pack-2.png"></p>
 <p>没错，定时循环，随机领取的人、金额、时间</p>
+<p>然后，这里是分享计划，计划分享成功和失败了提示你什么信息</p>
+<p><img alt="假红包分享计划" data-src="/images/fake-red-pack-2-1.png"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> plan = [</span><br><span class="line">    <span class="string">"&lt;p&gt;&lt;strong&gt;&lt;span style=\"color: rgb(0, 176, 80); font-size: 24px;\"&gt;分享成功 &lt;img src=\"https://sp3.oss-cn-beijing.aliyuncs.com/hb2/yes.png\" style=\"position:relative;top:8px;width:40px;height:40px;\"&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p &gt; &lt;p&gt;请继续分享到&lt;strong style=\"color: red; font-size: 22px\"&gt;2&lt;/strong&gt;个微信群&lt;/p &gt; &lt;p&gt;&lt;span style=\"font-size: 20px;color:red;\"&gt;"</span>+money+<span class="string">"元&lt;/span&gt; &lt;p&gt;将自动存入您的微信钱包&lt;/p &gt;"</span>,</span><br><span class="line">    <span class="string">'&lt;p&gt;&lt;span style=\"font-size: 24px; color: rgb(255, 0, 0);\"&gt;&lt;strong&gt;分享失败&lt;img src=\"https://sp3.oss-cn-beijing.aliyuncs.com/hb2/no.png\" style=\"top: 8px;position: relative;width:40px;height:40px;\"&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=\"font-size: 16px;\"&gt;请尝试重新分享到&lt;strong&gt;&lt;span style=\"font-size: 20px; color: rgb(255, 0, 0);\"&gt;微信群&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"font-size: 16px;\"&gt;&lt;span style=\"font-size: 20px;color:red;\"&gt;'</span>+money+<span class="string">'元&lt;/span&gt;将自动存入微信钱包&lt;strong&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p &gt;'</span>,</span><br><span class="line">    <span class="string">'&lt;p&gt;&lt;strong&gt;&lt;span style=\"color: rgb(0, 176, 80); font-size: 24px;\"&gt;分享成功 &lt;img src=\"https://sp3.oss-cn-beijing.aliyuncs.com/hb2/yes.png\" style=\"position:relative;top:8px;width:40px;height:40px;\"&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p &gt; &lt;p&gt;请继续分享到&lt;strong style=\"color: red; font-size: 22px\"&gt;1&lt;/strong&gt;个微信群&lt;/p &gt; &lt;p&gt;&lt;span style=\"font-size: 20px;color:red;\"&gt;'</span>+money+<span class="string">'元&lt;/span&gt; &lt;p&gt;将自动存入您的微信钱包&lt;/p &gt;'</span>,</span><br><span class="line">    <span class="string">"&lt;p&gt;&lt;span style=\"font-size: 24px; color: rgb(255, 0, 0);\"&gt;&lt;strong&gt;分享失败&lt;img src=\"https://sp3.oss-cn-beijing.aliyuncs.com/hb2/no.png\" style=\"top: 8px;position: relative;width:40px;height:40px;\"&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"color: rgb(247, 150, 70);\"&gt;&lt;/span&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"font-size: 16px;\"&gt;请不要分享到&lt;span style=\"color: rgb(255, 0, 0);font-size: 22px\"&gt;相同的群或好友&lt;/span&gt;&lt;/P&gt;&lt;p&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"font-size: 16px;\"&gt;请尝试重新分享到不同的&lt;strong&gt;&lt;span style=\"font-size: 20px; color: rgb(255, 0, 0);\"&gt;微信群&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"font-size: 16px;\"&gt;即可马上领取&lt;strong&gt;&lt;span style=\"font-size: 20px;color:red;\"&gt;"</span>+money+<span class="string">"元&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p &gt;"</span>,</span><br><span class="line">    <span class="string">'&lt;p&gt;&lt;span style=\"font-size: 24px; color: rgb(255, 0, 0);\"&gt;&lt;strong&gt;分享失败&lt;img src=\"https://sp3.oss-cn-beijing.aliyuncs.com/hb2/no.png\" style=\"top: 8px;position: relative;width:40px;height:40px;\"&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"color: rgb(247, 150, 70);\"&gt;&lt;/span&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"font-size: 16px;\"&gt;请分享到&lt;span style=\"color: rgb(255, 0, 0);font-size: 22px\"&gt;人数大于50的群&lt;/span&gt;&lt;/P&gt;&lt;p&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"font-size: 16px;\"&gt;即可马上领取&lt;strong&gt;&lt;span style=\"font-size: 20px;color:red;\"&gt;'</span>+money+<span class="string">'元&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p &gt;'</span>,</span><br><span class="line">    <span class="string">'&lt;p&gt;&lt;strong&gt;&lt;span style=\"color: rgb(0, 176, 80); font-size: 24px;\"&gt;分享成功&lt;img src=\"https://sp3.oss-cn-beijing.aliyuncs.com/hb2/yes.png\" style=\"position:relative;top:8px;width:40px;height:40px;\"&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p &gt;&lt;p&gt;只剩&lt;span style=\"color: rgb(255, 0, 0);\"&gt;最后一步啦&lt;/span&gt;&lt;/p &gt;&lt;p&gt;请分享到&lt;span style=\"font-size: 24px; color: rgb(255, 0, 0);\"&gt;朋友圈&lt;/span&gt;&lt;/p &gt;&lt;p&gt;保证100%可领取&lt;span style=\"font-size: 20px;color:red;\"&gt;'</span>+money+<span class="string">'元&lt;/span&gt;&lt;/p&gt;'</span>,</span><br><span class="line">    <span class="string">'&lt;p&gt;&lt;span style=\"font-size: 24px; color: rgb(255, 0, 0);\"&gt;&lt;strong&gt;分享失败&lt;img src=\"https://sp3.oss-cn-beijing.aliyuncs.com/hb2/no.png\" style=\"top: 8px;position: relative;width:40px;height:40px;\"&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"color: rgb(247, 150, 70);\"&gt;&lt;/span&gt;&lt;/p &gt;&lt;p style=\"font-size: 16px;\"&gt;注意：必须&lt;span style=\"color: rgb(255, 0, 0);\"&gt;公开&lt;/span&gt;分享才可以领取&lt;/span&gt;&lt;/p &gt;&lt;p&gt;&lt;/p &gt;&lt;p&gt;&lt;strong style=\"color: DarkOrange; font-size: 15px\"&gt;客服需要验证朋友圈分享信息发放红包！&lt;/strong&gt;&lt;/br&gt;&lt;span style=\"font-size: 16px;\"&gt;请尝试重新分享到&lt;strong&gt;&lt;span style=\"font-size: 20px; color: rgb(255, 0, 0);\"&gt;朋友圈&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p &gt;&lt;p&gt;&lt;span style=\"font-size: 16px;\"&gt;保证&lt;strong&gt;&lt;span style=\"font-size: 20px; color: rgb(255, 0, 0);\"&gt;100%&lt;/span&gt;&lt;/strong&gt;可以领取&lt;strong&gt;&lt;span style=\"font-size: 20px;color:red;\"&gt;'</span>+money+<span class="string">'元&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;'</span>,</span><br><span class="line">    <span class="string">'&lt;p style=\"margin:0;padding:0;\"&gt;感谢您的参与 :-)&lt;/p &gt; &lt;p style=\"margin:0;padding:0;\"&gt; &lt;span style=\"font-size: 18px;\"&gt;&lt;strong&gt; &lt;span style=\"color: rgb(255, 0, 0);\"&gt;注意：系统将会验证朋友圈信息判断是否完成转发任务&lt;/span&gt; &lt;/strong&gt; &lt;/span&gt; &lt;/p &gt; &lt;p style=\"margin:0;padding:0;margin-top:20px;\"&gt;由于活动量巨大&lt;/p &gt; &lt;p style=\"margin:0;padding:0; font-size:12px\"&gt;补贴最迟24小时内到账&lt;/p &gt; &lt;p style=\"margin:0;padding:0; color:red\"&gt;请保留朋友圈信息至补贴到账&lt;/p &gt; &lt;p style=\"margin:0;padding:0;\"&gt;请注意查看您的微信钱包&lt;/p &gt; &lt;p style=\"margin:0;padding:0;\"&gt;&lt;span style=\"color: rgb(255, 0, 0); font-size:14px\"&gt;&lt;strong&gt;删除分享链接可能导致无法到账&lt;/strong&gt;&lt;/span&gt; &lt;/p &gt;'</span>,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>具体的分享方法，处理你当前分享到了第几步了，下一步该做什么</p>
+<p><img alt="假红包分享计划" data-src="/images/fake-red-pack-2-2.png"></p>
 <p>youdao (诱导) 的方法，诱导你去分享</p>
 <p><img alt="诱导分享" data-src="/images/fake-red-pack-3.png"></p>
 <p>在网站的源码结构下，发现了一个网址，想先用这个链接试试，扫描一下看能不能扫到后台</p>
@@ -1548,7 +1557,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">424k</span>
+    <span title="站点总字数">430k</span>
   
 
   
@@ -1557,7 +1566,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">11:47</span>
+    <span title="站点阅读时长">11:56</span>
   
 </div>
 
