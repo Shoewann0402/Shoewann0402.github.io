@@ -1901,10 +1901,17 @@ if ($('body').find('div.pdf').length) {
 		document.head.appendChild(importFAB);
         }
   </script>
-  <script>(function(){id='SJ5k3RUSrDax-MPRH06hez1vt';function l(u){var e=document.createElement('script');e.type='text/javascript';e.src='https://www.adblockanalytics.com/'+u;e.async=0;var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(e,x);}l('dfp.min.js');l('analyze.js');})();</script>
 </body>
 </html>
- detection is triggered
+Element('script');
+		importFAB.onload = function() {
+			// If all goes well, we configure FuckAdBlock
+			fuckAdBlock.onDetected(adBlockDetected)
+			fuckAdBlock.onNotDetected(adBlockNotDetected);
+		};
+		importFAB.onerror = function() {
+			// If the script does not load (blocked, integrity error, ...)
+			// Then a detection is triggered
 			adBlockDetected();
 		};
 		importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
@@ -1913,6 +1920,5 @@ if ($('body').find('div.pdf').length) {
 		document.head.appendChild(importFAB);
         }
   </script>
-  <script>(function(){id='SJ5k3RUSrDax-MPRH06hez1vt';function l(u){var e=document.createElement('script');e.type='text/javascript';e.src='https://www.adblockanalytics.com/'+u;e.async=0;var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(e,x);}l('dfp.min.js');l('analyze.js');})();</script>
 </body>
 </html>
