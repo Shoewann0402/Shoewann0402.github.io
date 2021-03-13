@@ -123,7 +123,7 @@
 <meta property="og:description" content="与早期版本一样，Android 12包含可能会影响您的应用程序的行为更改。以下行为更改仅适用于以Android 12或更高版本为目标的应用。如果您的应用程序针对Android 12，则应在适用的情况下修改您的应用程序以正确支持这些行为。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://shoewann0402.github.io/images/android12.png">
-<meta property="og:updated_time" content="2021-03-13T09:49:15.146Z">
+<meta property="og:updated_time" content="2021-03-13T09:57:24.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向 Android 12 的行为变更">
 <meta name="twitter:description" content="与早期版本一样，Android 12包含可能会影响您的应用程序的行为更改。以下行为更改仅适用于以Android 12或更高版本为目标的应用。如果您的应用程序针对Android 12，则应在适用的情况下修改您的应用程序以正确支持这些行为。">
@@ -484,7 +484,7 @@
                 
               
 
-              <time title="创建时间：2021-03-13 17:42:45 / 修改时间：17:49:15" itemprop="dateCreated datePublished" datetime="2021-03-13T17:42:45+08:00">2021-03-13</time>
+              <time title="创建时间：2021-03-13 17:42:45 / 修改时间：17:57:24" itemprop="dateCreated datePublished" datetime="2021-03-13T17:42:45+08:00">2021-03-13</time>
             </span>
           
 
@@ -630,9 +630,9 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>运行项目，<code>Run</code> 窗口出现错误信息</p>
-<p><img alt="20210313_095133_18" data-src="images/20210313_095133_18.png"></p>
+<p><img alt="20210313_095133_18" data-src="/images/20210313_095133_18.png"></p>
 <p><code>Logcat</code>窗口 下显示错误日志</p>
-<p><img alt="20210313_095516_93" data-src="images/20210313_095516_93.png"></p>
+<p><img alt="20210313_095516_93" data-src="/images/20210313_095516_93.png"></p>
 <p>设备上没有应用安装成功 ~~ Hmm….</p>
 <blockquote>
 <ul>
@@ -643,23 +643,23 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">".MainActivity"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>运行项目，，<code>Run</code> 窗口出现如下成功消息</p>
-<p><img alt="20210313_100606_28" data-src="images/20210313_100606_28.png"></p>
+<p><img alt="20210313_100606_28" data-src="/images/20210313_100606_28.png"></p>
 <p>手机上的APP没有启动起来，但是安装成功了</p>
-<p><img alt="20210313_100748_84" data-src="images/20210313_100748_84.png"></p>
+<p><img alt="20210313_100748_84" data-src="/images/20210313_100748_84.png"></p>
 <p>然后手动去点击APP，启动它, 提示 <strong>应用未安装</strong></p>
-<p><img alt="20210313_101307_47" data-src="images/20210313_101307_47.png"></p>
+<p><img alt="20210313_101307_47" data-src="/images/20210313_101307_47.png"></p>
 <p>切换下<code>Logcat</code> 到<code>Error</code> 看看有没有什么发现? 抛出了 <strong>安全性异常</strong> ….</p>
-<p><img alt="20210313_101626_54" data-src="images/20210313_101626_54.png"></p>
+<p><img alt="20210313_101626_54" data-src="/images/20210313_101626_54.png"></p>
 <p>?????????????? TM 居然运行一个例子跑不起来? WTF !!!</p>
-<p><img alt="20210313_101947_36" data-src="images/20210313_101947_36.png"></p>
+<p><img alt="20210313_101947_36" data-src="/images/20210313_101947_36.png"></p>
 <p>好吧 ~ 你赢了！ 那可能我的打开方式不对吧，重新再试一次</p>
 <p><code>false</code>不行，那我试试 <code>true</code></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">".MainActivity"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>走你 <code>Run</code></p>
-<p><img alt="20210313_102908_30" data-src="images/20210313_102908_30.png"></p>
-<p><img alt="20210313_103208_10" data-src="images/20210313_103208_10.png"></p>
-<p><img alt="20210313_103252_91" data-src="images/20210313_103252_91.png"></p>
+<p><img alt="20210313_102908_30" data-src="/images/20210313_102908_30.png"></p>
+<p><img alt="20210313_103208_10" data-src="/images/20210313_103208_10.png"></p>
+<p><img alt="20210313_103252_91" data-src="/images/20210313_103252_91.png"></p>
 <p>Hmmm … 第一个Android S 的例子，可算把你成功运行起来了。</p>
 <p>那么，问题来了 ?</p>
 <blockquote>
@@ -694,7 +694,7 @@
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个意图</span></span><br><span class="line"><span class="keyword">val</span> intent = Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://developer.android.google.cn/"</span>))</span><br><span class="line"><span class="keyword">val</span> pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="number">0</span>)</span><br><span class="line"><span class="comment">//setContentIntent  将意图设置到通知上</span></span><br><span class="line">builder.setContentIntent(pIntent)</span><br><span class="line"><span class="comment">//构建通知</span></span><br><span class="line"><span class="keyword">val</span> notification = builder.build()</span><br><span class="line"><span class="comment">//将构建好的通知添加到通知管理器中，执行通知</span></span><br><span class="line">mNotificationManager.notify(<span class="number">0</span>, notification)</span><br></pre></td></tr></table></figure>
 
 <p>因为缺少可变性声明，没有声明，抛出异常</p>
-<p><img alt="20210313_115401_99" data-src="images/20210313_115401_99.png"></p>
+<p><img alt="20210313_115401_99" data-src="/images/20210313_115401_99.png"></p>
 <p><code>FLAG_IMMUTABLE</code> (不可变性) 声明 <strong>@RequiresApi(23)</strong></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="comment">/*flags*/</span> PendingIntent.FLAG_IMMUTABLE)</span><br></pre></td></tr></table></figure>
 
@@ -718,9 +718,9 @@
 <figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line">        Timer().schedule(<span class="keyword">object</span> : TimerTask() &#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">run</span><span class="params">()</span></span> &#123;</span><br><span class="line">                Log.d(tag, <span class="string">"run() called"</span>)</span><br><span class="line">                startService(Intent(<span class="keyword">this</span><span class="symbol">@MainActivity</span>, MyService::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>))</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">5000</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>程序运行起来了，然后按Home键回到launcher, 将app切到后台 等待效果。</p>
-<p><img alt="20210313_163622_86" data-src="images/20210313_163622_86.png"></p>
-<p><img alt="20210313_163720_55" data-src="images/20210313_163720_55.png"></p>
-<p><img alt="20210313_163552_95" data-src="images/20210313_163552_95.png"></p>
+<p><img alt="20210313_163622_86" data-src="/images/20210313_163622_86.png"></p>
+<p><img alt="20210313_163720_55" data-src="/images/20210313_163720_55.png"></p>
+<p><img alt="20210313_163552_95" data-src="/images/20210313_163552_95.png"></p>
 <h3 id="无法从服务或广播接收者创建通知跳板"><a href="#无法从服务或广播接收者创建通知跳板" class="headerlink" title="无法从服务或广播接收者创建通知跳板"></a>无法从服务或广播接收者创建通知跳板</h3><p>当用户与<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvdG9waWNzL3VpL25vdGlmaWVycy9ub3RpZmljYXRpb25z" title="https://developer.android.google.cn/guide/topics/ui/notifiers/notifications">通知<i class="fa fa-external-link"></i></span>交互时，某些应用程序会通过启动<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvY29tcG9uZW50cy9mdW5kYW1lbnRhbHMjQ29tcG9uZW50cw==" title="https://developer.android.google.cn/guide/components/fundamentals#Components">应用程序组件<i class="fa fa-external-link"></i></span>来响应通知点击，该组件最终会启动用户最终看到并与之交互的Activity。此应用程序组件称为<em>通知跳板</em>。</p>
 <p>为了提高应用程序性能和UX，面向Android 12的应用程序无法从用作通知蹦床的服务或 广播接收器启动活动 。换句话说，用户点击通知或通知内的操作按钮后，应用程序无法在 Service 或 BroadcastReceiver 内调用startActivity()</p>
 <p>当您的应用尝试从充当通知蹦床的服务或广播接收器启动活动时，系统将阻止该活动启动，并且Logcat中将显示以下消息 ：</p>
@@ -757,7 +757,7 @@
 <p>通过<code>shell</code>切换行为：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell am compat enable 167676448 com.xw.androidstest</span><br><span class="line">adb shell am compat disable 167676448 com.xw.androidstest</span><br></pre></td></tr></table></figure>
 
-<p><img alt="20210313_155949_11" data-src="images/20210313_155949_11.png"></p>
+<p><img alt="20210313_155949_11" data-src="/images/20210313_155949_11.png"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2021-03-13 23:58:24.356 533-1591/system_process I/ActivityTaskManager: START u0 &#123;flg=0x10000000 cmp=com.xw.androidstest/.MainActivity2&#125; from uid 10177</span><br><span class="line">2021-03-13 23:58:24.358 533-1591/system_process E/NotificationService: Indirect notification activity start (trampoline) from com.xw.androidstest blocked</span><br><span class="line">2021-03-13 23:58:24.359 533-1591/system_process W/ActivityTaskManager: Background activity start [callingPackage: com.xw.androidstest; callingUid: 10177; appSwitchAllowed: true; balAppSwitchEnabled: true; isCallingUidForeground: false; callingUidHasAnyVisibleWindow: false; callingUidProcState: SERVICE; isCallingUidPersistentSystemProcess: false; realCallingUid: 10177; isRealCallingUidForeground: false; realCallingUidHasAnyVisibleWindow: false; realCallingUidProcState: SERVICE; isRealCallingUidPersistentSystemProcess: false; originatingPendingIntent: null; allowBackgroundActivityStart: false; intent: Intent &#123; flg=0x10000000 cmp=com.xw.androidstest/.MainActivity2 &#125;; callerApp: ProcessRecord&#123;30029ba 25657:com.xw.androidstest/u0a177&#125;]</span><br><span class="line">2021-03-13 23:58:24.360 533-1591/system_process E/ActivityTaskManager: Abort background activity starts from 10177</span><br></pre></td></tr></table></figure>
 
 <h3 id="自定义通知变更"><a href="#自定义通知变更" class="headerlink" title="自定义通知变更"></a>自定义通知变更</h3><blockquote>
@@ -771,9 +771,9 @@
 </ul>
 </blockquote>
 <p>标准模板中的自定义通知：</p>
-<p><img alt="20210313_132122_31" data-src="images/20210313_132122_31.png"></p>
+<p><img alt="20210313_132122_31" data-src="/images/20210313_132122_31.png"></p>
 <p>折叠与非折叠状态下的样式</p>
-<p><img alt="20210313_132237_84" data-src="images/20210313_132237_84.png"></p>
+<p><img alt="20210313_132237_84" data-src="/images/20210313_132237_84.png"></p>
 <p>官方建议使用了构建自定义通知的相关接口的应用，都要重新适配，相关接口有：</p>
 <blockquote>
 <ul>
@@ -809,9 +809,9 @@
 
 <p>运行一下效果呢：</p>
 <p>折叠状态</p>
-<p><img alt="20210313_143947_68" data-src="images/20210313_143947_68.png"></p>
+<p><img alt="20210313_143947_68" data-src="/images/20210313_143947_68.png"></p>
 <p>展开状态</p>
-<p><img alt="20210313_144023_82" data-src="images/20210313_144023_82.png"></p>
+<p><img alt="20210313_144023_82" data-src="/images/20210313_144023_82.png"></p>
 <p>修改一下折叠后的</p>
 <pre><code class="kt"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">notification</span><span class="params">()</span></span> {
         <span class="keyword">val</span> mNotificationManager = getSystemService(NOTIFICATION_SERVICE) <span class="keyword">as</span> NotificationManager
@@ -842,9 +842,9 @@
 
     }</code></pre>
 <p>折叠状态</p>
-<p><img alt="20210313_145724_20" data-src="images/20210313_145724_20.png"></p>
+<p><img alt="20210313_145724_20" data-src="/images/20210313_145724_20.png"></p>
 <p>展开状态</p>
-<p><img alt="20210313_145800_28" data-src="images/20210313_145800_28.png"></p>
+<p><img alt="20210313_145800_28" data-src="/images/20210313_145800_28.png"></p>
 <blockquote>
 <p>其他目标版本为 Android 12的行为变化，请 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vYWJvdXQvdmVyc2lvbnMvMTIvYmVoYXZpb3ItY2hhbmdlcy0xMg==" title="https://developer.android.google.cn/about/versions/12/behavior-changes-12">参考官网<i class="fa fa-external-link"></i></span></p>
 </blockquote>
@@ -861,14 +861,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2016\09\22\Extending-Web-Technology-with-Android\" rel="bookmark">扩展Web技术和Android</a></div>
+      <div class="popular-posts-title"><a href="\2016\06\06\Crash-reporting-in-Firebase\" rel="bookmark">Firebase特性之崩溃报告</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2016\06\06\Crash-reporting-in-Firebase\" rel="bookmark">Firebase特性之崩溃报告</a></div>
+      <div class="popular-posts-title"><a href="\2016\09\22\Extending-Web-Technology-with-Android\" rel="bookmark">扩展Web技术和Android</a></div>
       
     </li>
   
@@ -889,7 +889,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="\2020\03\09\android-R-about-handler-change\" rel="bookmark">Android 11 (R) 之 Handler 相关变化</a></div>
+      <div class="popular-posts-title"><a href="\2020\03\06\android-R-AsyncTask-deprecated\" rel="bookmark">Android 11 (R) 之 AsyncTask 前世今生</a></div>
       
     </li>
   
@@ -901,6 +901,17 @@
     
       
     
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
 
     
     
