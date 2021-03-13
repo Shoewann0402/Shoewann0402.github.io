@@ -1,0 +1,2573 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<script src="https://www.googleoptimize.com/optimize.js?id=GTM-P4KTMX3"></script>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  <meta name="google-site-verification" content="GPvp8NXPYxNlQOz9NarDxF5wMu2GpoiC6_txrpmFAVo">
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "ab691b7b"
+    });
+  daovoice('update');
+  </script>
+
+
+  <meta name="description" content="与早期版本一样，Android 12包含可能会影响您的应用程序的行为更改。以下行为更改仅适用于以Android 12或更高版本为目标的应用。如果您的应用程序针对Android 12，则应在适用的情况下修改您的应用程序以正确支持这些行为。">
+<meta name="keywords" content="Android,Android 12,Android S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向 Android 12 的行为变更">
+<meta property="og:url" content="https://shoewann0402.github.io/2021/03/13/behavior-changes-12/index.html">
+<meta property="og:site_name" content="Shoewann&#39;s Personal Blog">
+<meta property="og:description" content="与早期版本一样，Android 12包含可能会影响您的应用程序的行为更改。以下行为更改仅适用于以Android 12或更高版本为目标的应用。如果您的应用程序针对Android 12，则应在适用的情况下修改您的应用程序以正确支持这些行为。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://shoewann0402.github.io/images/android12.png">
+<meta property="og:updated_time" content="2021-03-13T09:49:15.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向 Android 12 的行为变更">
+<meta name="twitter:description" content="与早期版本一样，Android 12包含可能会影响您的应用程序的行为更改。以下行为更改仅适用于以Android 12或更高版本为目标的应用。如果您的应用程序针对Android 12，则应在适用的情况下修改您的应用程序以正确支持这些行为。">
+<meta name="twitter:image" content="https://shoewann0402.github.io/images/android12.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Shoewann's Personal Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://shoewann0402.github.io/2021/03/13/behavior-changes-12/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2736746584497864",
+          enable_page_level_ads: true
+     });
+</script>
+
+  
+  <title>面向 Android 12 的行为变更 | Shoewann's Personal Blog</title>
+  
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82400413-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-82400413-1');
+    }
+  </script>
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?27dc35cebcac5cc403c892eca7cd5130";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="/favicon.ico" alt="Shoewann's Personal Blog">
+        </a>
+      </div>
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Shoewann's Personal Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">记录 & 分享</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shoewann0402.github.io/2021/03/13/behavior-changes-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shoewann">
+      <meta itemprop="description" content="Android Developer & Google Fans">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shoewann's Personal Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">面向 Android 12 的行为变更
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-03-13 17:42:45 / 修改时间：17:49:15" itemprop="dateCreated datePublished" datetime="2021-03-13T17:42:45+08:00">2021-03-13</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/Android-12/" itemprop="url" rel="index"><span itemprop="name">Android 12</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+            <span id="/2021/03/13/behavior-changes-12/" class="post-meta-item leancloud_visitors" data-flag-title="面向 Android 12 的行为变更">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">18k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">29 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <img src="/images/android12.png" itemprop="contentUrl">
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <blockquote>
+<p>与早期版本一样，Android 12包含可能会影响您的应用程序的行为更改。以下行为更改仅适用于以Android 12或更高版本为目标的应用。如果您的应用程序针对Android 12，则应在适用的情况下修改您的应用程序以正确支持这些行为。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2021年2月18号</p>
+<p>Android 12 的第一个开发者预览版（DP1 - Developer Preview 1）正式发布</p>
+<p>之后，在3月3日发布了内部版本为<code>SPP1.210122.022</code>的DP1.1</p>
+<p>能支持该系统的最低Pixel设备也就是<code>Pixel 3</code>了</p>
+<p>这个周末 终于能腾出一点时间 写点笔记了 : )</p>
+<p>来吧，这次一起来简单的看看 目标版本为12的相关行为变化</p>
+<blockquote>
+<p>文档基于： Android 12 DP1 / DP1.1<br>运行环境：  Windows 10 、Android Studio 4.1.2 、 Android Emulator API S</p>
+</blockquote>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><h3 id="组件暴露安全问题"><a href="#组件暴露安全问题" class="headerlink" title="组件暴露安全问题"></a>组件暴露安全问题</h3><p>如果您的应用以Android 12为目标并且包含使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvY29tcG9uZW50cy9pbnRlbnRzLWZpbHRlcnMjUmVjZWl2aW5n" title="https://developer.android.google.cn/guide/components/intents-filters#Receiving">intent filters<i class="fa fa-external-link"></i></span>的<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvY29tcG9uZW50cy9hY3Rpdml0aWVzL2ludHJvLWFjdGl2aXRpZXM=" title="https://developer.android.google.cn/guide/components/activities/intro-activities">activities<i class="fa fa-external-link"></i></span>，<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvY29tcG9uZW50cy9zZXJ2aWNlcw==" title="https://developer.android.google.cn/guide/components/services">services<i class="fa fa-external-link"></i></span>以及<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvY29tcG9uZW50cy9icm9hZGNhc3Rz" title="https://developer.android.google.cn/guide/components/broadcasts">broadcast receivers<i class="fa fa-external-link"></i></span> ，则必须为这些应用组件显式声明<code>android：exported</code>属性。</p>
+<blockquote>
+<p>警告：一个activity, service, 或者 broadcast receiver 使用了 intent filters , 但是并没有显式声明<strong>android：exported</strong>属性值，您的app将无法被安装到运行android 12的设备上</p>
+</blockquote>
+<p>当使用Android Studio时，你试图去安装该app, Logcat将会展示如下的错误消息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Installation did not succeed.</span><br><span class="line">The application could not be installed: INSTALL_FAILED_VERIFICATION_FAILURE</span><br><span class="line">List of apks:</span><br><span class="line">[0] &apos;.../build/outputs/apk/debug/app-debug.apk&apos;</span><br><span class="line">Installation failed due to: &apos;null&apos;</span><br></pre></td></tr></table></figure>
+
+<p>如果您的应用在需要时未声明android：exported的值，则Logcat提供以下错误消息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Targeting S+ (version 10000 and above) requires that an explicit value for \</span><br><span class="line">android:exported be defined when intent filters are present</span><br></pre></td></tr></table></figure>
+
+<p>以下代码段显示了一个包含意图过滤器且已针对Android 12正确配置的服务示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">android:name</span>=<span class="string">"com.example.app.backgroundService"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">android:exported</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"com.example.app.START_BACKGROUND"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>创建一个 <strong>targetSdkVersion “S”</strong> 的新项目</p>
+<blockquote>
+<ul>
+<li>CASE 1 不添加 <strong>android:exported</strong> 属性</li>
+</ul>
+</blockquote>
+<p>项目构建完成，默认的情况下activity下是没有 <strong>android:exported</strong> 属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行项目，<code>Run</code> 窗口出现错误信息</p>
+<p><img alt="20210313_095133_18" data-src="images/20210313_095133_18.png"></p>
+<p><code>Logcat</code>窗口 下显示错误日志</p>
+<p><img alt="20210313_095516_93" data-src="images/20210313_095516_93.png"></p>
+<p>设备上没有应用安装成功 ~~ Hmm….</p>
+<blockquote>
+<ul>
+<li>CASE 2 添加上 <strong>android:exported</strong> 属性</li>
+</ul>
+</blockquote>
+<p>添加 <strong>android:exported=”false”</strong> 到 MainActivity 节点内</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">".MainActivity"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行项目，，<code>Run</code> 窗口出现如下成功消息</p>
+<p><img alt="20210313_100606_28" data-src="images/20210313_100606_28.png"></p>
+<p>手机上的APP没有启动起来，但是安装成功了</p>
+<p><img alt="20210313_100748_84" data-src="images/20210313_100748_84.png"></p>
+<p>然后手动去点击APP，启动它, 提示 <strong>应用未安装</strong></p>
+<p><img alt="20210313_101307_47" data-src="images/20210313_101307_47.png"></p>
+<p>切换下<code>Logcat</code> 到<code>Error</code> 看看有没有什么发现? 抛出了 <strong>安全性异常</strong> ….</p>
+<p><img alt="20210313_101626_54" data-src="images/20210313_101626_54.png"></p>
+<p>?????????????? TM 居然运行一个例子跑不起来? WTF !!!</p>
+<p><img alt="20210313_101947_36" data-src="images/20210313_101947_36.png"></p>
+<p>好吧 ~ 你赢了！ 那可能我的打开方式不对吧，重新再试一次</p>
+<p><code>false</code>不行，那我试试 <code>true</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">".MainActivity"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>走你 <code>Run</code></p>
+<p><img alt="20210313_102908_30" data-src="images/20210313_102908_30.png"></p>
+<p><img alt="20210313_103208_10" data-src="images/20210313_103208_10.png"></p>
+<p><img alt="20210313_103252_91" data-src="images/20210313_103252_91.png"></p>
+<p>Hmmm … 第一个Android S 的例子，可算把你成功运行起来了。</p>
+<p>那么，问题来了 ?</p>
+<blockquote>
+<p><strong>Q :</strong> <em>为什么 MainActivity 必须要设置 android:exported=”true” ?</em><br><strong>A :</strong>  略.（留给大家回答了）</p>
+</blockquote>
+<p>程序运行起来了，我们继续后面的内容</p>
+<h3 id="Pending-intents-必须声明可变性"><a href="#Pending-intents-必须声明可变性" class="headerlink" title="Pending intents 必须声明可变性"></a>Pending intents 必须声明可变性</h3><p>如果您的应用程序针对Android 12，则必须指定<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL1BlbmRpbmdJbnRlbnQ=" title="https://developer.android.google.cn/reference/android/app/PendingIntent">PendingIntent<i class="fa fa-external-link"></i></span>应用程序创建的每个对象的可变性。此附加要求可提高应用程序的安全性。</p>
+<p>要声明给定<code>PendingIntent</code>对象是可变的或不可变的 ，请分别使用 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL1BlbmRpbmdJbnRlbnQjRkxBR19NVVRBQkxF" title="https://developer.android.google.cn/reference/android/app/PendingIntent#FLAG_MUTABLE">PendingIntent.FLAG_MUTABLE<i class="fa fa-external-link"></i></span> <strong>可变标志</strong> 或 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL1BlbmRpbmdJbnRlbnQjRkxBR19JTU1VVEFCTEU=" title="https://developer.android.google.cn/reference/android/app/PendingIntent#FLAG_IMMUTABLE">PendingIntent.FLAG_IMMUTABLE<i class="fa fa-external-link"></i></span> <strong>不可变标志</strong>。如果您的应用尝试在<code>PendingIntent</code>未设置任何可变性标志的情况下创建对象，则系统将抛出 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2phdmEvbGFuZy9JbGxlZ2FsQXJndW1lbnRFeGNlcHRpb24=" title="https://developer.android.google.cn/reference/java/lang/IllegalArgumentException">IllegalArgumentException<i class="fa fa-external-link"></i></span>，并且<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vc3R1ZGlvL2NvbW1hbmQtbGluZS9sb2djYXQ=" title="https://developer.android.google.cn/studio/command-line/logcat">Logcat<i class="fa fa-external-link"></i></span>中将显示以下消息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PACKAGE_NAME: Targeting S+ (version 10000 and above) requires that one of \</span><br><span class="line">FLAG_IMMUTABLE or FLAG_MUTABLE be specified when creating a PendingIntent.  </span><br><span class="line"></span><br><span class="line">Strongly consider using FLAG_IMMUTABLE, only use FLAG_MUTABLE if \</span><br><span class="line">some functionality depends on the PendingIntent being mutable, e.g. if \</span><br><span class="line">it needs to be used with inline replies or bubbles.</span><br></pre></td></tr></table></figure>
+
+<p><strong>尽可能创建不可变的 Pending intents</strong><br>在大多数情况下，您的应用应创建不可变的<code>PendingIntent</code>对象，如以下代码片段所示。如果<code>PendingIntent</code>对象是不可变的，则应用程序无法修改意图以调整调用意图的结果。</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> pendingIntent = PendingIntent.getActivity(applicationContext,</span><br><span class="line">        REQUEST_CODE, intent,</span><br><span class="line">        <span class="comment">/* flags */</span> PendingIntent.FLAG_IMMUTABLE)</span><br></pre></td></tr></table></figure>
+
+<p>但是，某些应用程序需要创建可变<code>PendingIntent</code>对象，而不是：</p>
+<blockquote>
+<ul>
+<li>一个<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vdHJhaW5pbmcvbm90aWZ5LXVzZXIvYnVpbGQtbm90aWZpY2F0aW9uI3JlcGx5LWFjdGlvbg==" title="https://developer.android.google.cn/training/notify-user/build-notification#reply-action">通知中直接回复动作<i class="fa fa-external-link"></i></span>需要改变的剪辑数据PendingIntent是与答复相关联的对象。通常，您可以通过将<code>FILL_IN_CLIP_DATA</code>标记作为<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9JbnRlbnQjZmlsbEluKGFuZHJvaWQuY29udGVudC5JbnRlbnQsJTIwaW50KQ==" title="https://developer.android.google.cn/reference/android/content/Intent#fillIn(android.content.Intent,%20int)">fillIn()<i class="fa fa-external-link"></i></span>方法传递给方法来 请求此更改。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>如果您的应用 使用a将对话放入<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvdG9waWNzL3VpL2J1YmJsZXM=" title="https://developer.android.google.cn/guide/topics/ui/bubbles">气泡<i class="fa fa-external-link"></i></span>中<code>PendingIntent</code>，则意图应该是可变的，以便系统可以应用正确的标志，例如 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9JbnRlbnQjRkxBR19BQ1RJVklUWV9NVUxUSVBMRV9UQVNL" title="https://developer.android.google.cn/reference/android/content/Intent#FLAG_ACTIVITY_MULTIPLE_TASK">FLAG_ACTIVITY_MULTIPLE_TASK<i class="fa fa-external-link"></i></span> 和 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvY29udGVudC9JbnRlbnQjRkxBR19BQ1RJVklUWV9ORVdfRE9DVU1FTlQ=" title="https://developer.android.google.cn/reference/android/content/Intent#FLAG_ACTIVITY_NEW_DOCUMENT">FLAG_ACTIVITY_NEW_DOCUMENT<i class="fa fa-external-link"></i></span>。</li>
+</ul>
+</blockquote>
+<p>如果您的应用创建了可变<code>PendingIntent</code>对象，则强烈建议您使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvY29tcG9uZW50cy9pbnRlbnRzLWZpbHRlcnMjRXhhbXBsZUV4cGxpY2l0" title="https://developer.android.google.cn/guide/components/intents-filters#ExampleExplicit">明确的意图<i class="fa fa-external-link"></i></span> 并填写 <code>ComponentName</code>。这样，每当另一个应用程序调用PendingIntent并将控制权传递回您的应用程序时，该应用程序中的同一组件始终会启动。</p>
+<p><strong>测试可变性Pending intents 更改</strong></p>
+<p>要确定您的应用是否缺少可变性声明，请在Android Studio中查找以下<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vc3R1ZGlvL3dyaXRlL2xpbnQ=" title="https://developer.android.google.cn/studio/write/lint">lint警告<i class="fa fa-external-link"></i></span>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: Missing PendingIntent mutability flag [UnspecifiedImmutableFlag]</span><br></pre></td></tr></table></figure>
+
+<p>在开发者预览期间，您可以通过关闭 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vYWJvdXQvdmVyc2lvbnMvMTIvcmVmZXJlbmNlL2NvbXBhdC1mcmFtZXdvcmstY2hhbmdlcyNwZW5kaW5nX2ludGVudF9leHBsaWNpdF9tdXRhYmlsaXR5X3JlcXVpcmVk" title="https://developer.android.google.cn/about/versions/12/reference/compat-framework-changes#pending_intent_explicit_mutability_required">PENDING_INTENT_EXPLICIT_MUTABILITY_REQUIRED<i class="fa fa-external-link"></i></span> 应用程序兼容性标志来禁用此系统行为以进行测试。</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><p>在 MainActivity 中创建一个意图通知</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个意图</span></span><br><span class="line"><span class="keyword">val</span> intent = Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://developer.android.google.cn/"</span>))</span><br><span class="line"><span class="keyword">val</span> pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="number">0</span>)</span><br><span class="line"><span class="comment">//setContentIntent  将意图设置到通知上</span></span><br><span class="line">builder.setContentIntent(pIntent)</span><br><span class="line"><span class="comment">//构建通知</span></span><br><span class="line"><span class="keyword">val</span> notification = builder.build()</span><br><span class="line"><span class="comment">//将构建好的通知添加到通知管理器中，执行通知</span></span><br><span class="line">mNotificationManager.notify(<span class="number">0</span>, notification)</span><br></pre></td></tr></table></figure>
+
+<p>因为缺少可变性声明，没有声明，抛出异常</p>
+<p><img alt="20210313_115401_99" data-src="images/20210313_115401_99.png"></p>
+<p><code>FLAG_IMMUTABLE</code> (不可变性) 声明 <strong>@RequiresApi(23)</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="comment">/*flags*/</span> PendingIntent.FLAG_IMMUTABLE)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可变性声明: 指示创建的PendingIntent应该是不可变的标志。这意味着传递给send方法以填充此intent的未填充属性的其他intent参数将被忽略。FLAG_IMMUTABLE仅限制了​​更改send()由的调用者 发送的意图的语义的能力send()。PendingIntent的创建者始终可以通过来更新PendingIntent本身FLAG_UPDATE_CURRENT。</p>
+</blockquote>
+<p><code>FLAG_MUTABLE</code> (可变性) 声明 <strong>@RequiresApi(31)</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="comment">/*flags*/</span> PendingIntent.FLAG_MUTABLE)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可变性声明: 指示创建的PendingIntent应该是可变的标志。此标志不能与组合FLAG_IMMUTABLE。<br>直到 Build.VERSION_CODES.R，除非FLAG_IMMUTABLE已设置，否则默认情况下都假定PendingIntents是可变的。从开始Build.VERSION_CODES.S，将需要使用（@link #FLAG_IMMUTABLE}或FLAG_MUTABLE。显式指定创建时PendingIntents的可变性。强烈建议FLAG_IMMUTABLE在创建PendingIntent时使用。FLAG_MUTABLE仅当某些功能依赖于修改基础意图时才应使用。例如需要与内联回复或气泡一起使用的任何PendingIntent。</p>
+</blockquote>
+<h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><h3 id="前台服务通知不允许在后台开启"><a href="#前台服务通知不允许在后台开启" class="headerlink" title="前台服务通知不允许在后台开启"></a>前台服务通知不允许在后台开启</h3><p>除了一些特殊情况，以Android 12为目标的应用在后台运行时将无法再启动前台服务。如果应用程序在后台运行时尝试启动前台服务，则会发生异常（少数特殊情况除外），考虑在您的应用程序在后台运行时使用<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vdG9waWMvbGlicmFyaWVzL2FyY2hpdGVjdHVyZS93b3JrbWFuYWdlcg==" title="https://developer.android.google.cn/topic/libraries/architecture/workmanager">WorkManager<i class="fa fa-external-link"></i></span>调度和开始工作。</p>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><p>创建一个前台服务</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xw.androidstest</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Notification</span><br><span class="line"><span class="keyword">import</span> android.app.PendingIntent</span><br><span class="line"><span class="keyword">import</span> android.app.Service</span><br><span class="line"><span class="keyword">import</span> android.content.Intent</span><br><span class="line"><span class="keyword">import</span> android.os.IBinder</span><br><span class="line"><span class="keyword">import</span> android.util.Log</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyService</span> : <span class="type">Service</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">val</span> tag = <span class="string">"MyService"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBind</span><span class="params">(intent: <span class="type">Intent</span>)</span></span>: IBinder? &#123;</span><br><span class="line">        <span class="keyword">throw</span> UnsupportedOperationException(<span class="string">"Not yet implemented"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate()</span><br><span class="line">        Log.d(tag, <span class="string">"onCreate()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStartCommand</span><span class="params">(intent: <span class="type">Intent</span>?, flags: <span class="type">Int</span>, startId: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        Log.d(tag, <span class="string">"onStartCommand()"</span>)</span><br><span class="line">        foregroundNotify()</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">foregroundNotify</span><span class="params">()</span></span> &#123;</span><br><span class="line">        Log.d(tag, <span class="string">"foregroundNotify() called"</span>)</span><br><span class="line">        <span class="keyword">val</span> pendingIntent: PendingIntent =</span><br><span class="line">            Intent(<span class="keyword">this</span>, MainActivity2::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>).<span class="title">let</span> </span>&#123; notificationIntent -&gt;</span><br><span class="line">                PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, notificationIntent, PendingIntent.FLAG_IMMUTABLE)</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">val</span> notification: Notification = Notification.Builder(<span class="keyword">this</span>, <span class="string">"通知渠道ID"</span>)</span><br><span class="line">            .setContentTitle(<span class="string">"前台服务标题"</span>)</span><br><span class="line">            .setContentText(<span class="string">"前台服务内容"</span>)</span><br><span class="line">            .setSmallIcon(R.drawable.icon)</span><br><span class="line">            .setContentIntent(pendingIntent)</span><br><span class="line">            .build()</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Notification ID cannot be 0.</span></span><br><span class="line">        startForeground(<span class="number">10</span>, notification)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDestroy</span><span class="params">()</span></span> &#123;</span><br><span class="line">        Log.d(tag, <span class="string">"onDestroy()"</span>);</span><br><span class="line">        stopForeground(<span class="literal">true</span>);<span class="comment">// 停止前台服务--参数：表示是否移除之前的通知</span></span><br><span class="line">        <span class="keyword">super</span>.onDestroy()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>添加权限</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.FOREGROUND_SERVICE"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在MainActivity 中调用</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line">        Timer().schedule(<span class="keyword">object</span> : TimerTask() &#123;</span><br><span class="line">            <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">run</span><span class="params">()</span></span> &#123;</span><br><span class="line">                Log.d(tag, <span class="string">"run() called"</span>)</span><br><span class="line">                startService(Intent(<span class="keyword">this</span><span class="symbol">@MainActivity</span>, MyService::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>))</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">5000</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序运行起来了，然后按Home键回到launcher, 将app切到后台 等待效果。</p>
+<p><img alt="20210313_163622_86" data-src="images/20210313_163622_86.png"></p>
+<p><img alt="20210313_163720_55" data-src="images/20210313_163720_55.png"></p>
+<p><img alt="20210313_163552_95" data-src="images/20210313_163552_95.png"></p>
+<h3 id="无法从服务或广播接收者创建通知跳板"><a href="#无法从服务或广播接收者创建通知跳板" class="headerlink" title="无法从服务或广播接收者创建通知跳板"></a>无法从服务或广播接收者创建通知跳板</h3><p>当用户与<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvdG9waWNzL3VpL25vdGlmaWVycy9ub3RpZmljYXRpb25z" title="https://developer.android.google.cn/guide/topics/ui/notifiers/notifications">通知<i class="fa fa-external-link"></i></span>交互时，某些应用程序会通过启动<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvY29tcG9uZW50cy9mdW5kYW1lbnRhbHMjQ29tcG9uZW50cw==" title="https://developer.android.google.cn/guide/components/fundamentals#Components">应用程序组件<i class="fa fa-external-link"></i></span>来响应通知点击，该组件最终会启动用户最终看到并与之交互的Activity。此应用程序组件称为<em>通知跳板</em>。</p>
+<p>为了提高应用程序性能和UX，面向Android 12的应用程序无法从用作通知蹦床的服务或 广播接收器启动活动 。换句话说，用户点击通知或通知内的操作按钮后，应用程序无法在 Service 或 BroadcastReceiver 内调用startActivity()</p>
+<p>当您的应用尝试从充当通知蹦床的服务或广播接收器启动活动时，系统将阻止该活动启动，并且Logcat中将显示以下消息 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Indirect notification activity start (trampoline) from PACKAGE_NAME, \</span><br><span class="line">this should be avoided for performance reasons.</span><br></pre></td></tr></table></figure>
+
+<p>更新您的应用</p>
+<p>如果您的应用从充当通跳板的服务或广播接收器启动活动，请完成以下迁移步骤：</p>
+<ol>
+<li><p>创建<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL1BlbmRpbmdJbnRlbnQ=" title="https://developer.android.google.cn/reference/android/app/PendingIntent">PendingIntent<i class="fa fa-external-link"></i></span>与以下活动之一关联的对象：</p>
+<blockquote>
+<ul>
+<li>用户点击通知后看到的Activity（首选）。</li>
+<li>跳板Activity或启动用户点击通知后看到的Activity的Activity</li>
+</ul>
+</blockquote>
+</li>
+<li><p>使用<code>PendingIntent</code>在上一步中创建的对象作为<span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL05vdGlmaWNhdGlvbi5CdWlsZGVyI3NldENvbnRlbnRJbnRlbnQoYW5kcm9pZC5hcHAuUGVuZGluZ0ludGVudA==" title="https://developer.android.google.cn/reference/android/app/Notification.Builder#setContentIntent(android.app.PendingIntent">构建通知<i class="fa fa-external-link"></i></span>的一部分。</p>
+</li>
+</ol>
+<p>切换行为<br>在开发人员预览版中测试应用程序时，可以使用<code>NOTIFICATION_TRAMPOLINE_BLOCK</code>应用程序兼容性标志启用和禁用此限制。</p>
+<h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h4><p>新建了一个服务、一个广播、一个MainActivity2 , 分别在服务和广播里面去启动 MainActivity2</p>
+<p>MyService.kt</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyService</span> : <span class="type">Service</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBind</span><span class="params">(intent: <span class="type">Intent</span>)</span></span>: IBinder? &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onStartCommand</span><span class="params">(intent: <span class="type">Intent</span>?, flags: <span class="type">Int</span>, startId: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        intent?.let &#123;</span><br><span class="line">            intent.setClass(<span class="keyword">this</span>,MainActivity2::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK</span><br><span class="line">            startActivity(intent)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>MyReceiver.kt</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyReceiver</span> : <span class="type">BroadcastReceiver</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onReceive</span><span class="params">(context: <span class="type">Context</span>, intent: <span class="type">Intent</span>)</span></span> &#123;</span><br><span class="line">        intent.let &#123;</span><br><span class="line">            intent.setClass(context,MainActivity2::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line">            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK</span><br><span class="line">            context.startActivity(intent)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>MainActivity2.kt</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainActivity2</span> : <span class="type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreate</span><span class="params">(savedInstanceState: <span class="type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后分别在MainActivity里进行两种情况处理</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个服务意图 点击通知栏消息启动服务</span></span><br><span class="line"><span class="keyword">val</span> intent = Intent()</span><br><span class="line">intent.setClass(<span class="keyword">this</span>, MyService::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line"><span class="keyword">val</span> pIntent = PendingIntent.getService(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="comment">/*flags*/</span> PendingIntent.FLAG_IMMUTABLE)</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个广播意图 点击通知栏消息启动广播</span></span><br><span class="line"><span class="keyword">val</span> intent = Intent()</span><br><span class="line">intent.setClass(<span class="keyword">this</span>, MyReceiver::<span class="class"><span class="keyword">class</span>.<span class="title">java</span>)</span></span><br><span class="line"><span class="keyword">val</span> pIntent = PendingIntent.getBroadcast(<span class="keyword">this</span>, <span class="number">1</span>, intent, <span class="comment">/*flags*/</span> PendingIntent.FLAG_IMMUTABLE)</span><br></pre></td></tr></table></figure>
+
+<p>通过<code>shell</code>切换行为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell am compat enable 167676448 com.xw.androidstest</span><br><span class="line">adb shell am compat disable 167676448 com.xw.androidstest</span><br></pre></td></tr></table></figure>
+
+<p><img alt="20210313_155949_11" data-src="images/20210313_155949_11.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2021-03-13 23:58:24.356 533-1591/system_process I/ActivityTaskManager: START u0 &#123;flg=0x10000000 cmp=com.xw.androidstest/.MainActivity2&#125; from uid 10177</span><br><span class="line">2021-03-13 23:58:24.358 533-1591/system_process E/NotificationService: Indirect notification activity start (trampoline) from com.xw.androidstest blocked</span><br><span class="line">2021-03-13 23:58:24.359 533-1591/system_process W/ActivityTaskManager: Background activity start [callingPackage: com.xw.androidstest; callingUid: 10177; appSwitchAllowed: true; balAppSwitchEnabled: true; isCallingUidForeground: false; callingUidHasAnyVisibleWindow: false; callingUidProcState: SERVICE; isCallingUidPersistentSystemProcess: false; realCallingUid: 10177; isRealCallingUidForeground: false; realCallingUidHasAnyVisibleWindow: false; realCallingUidProcState: SERVICE; isRealCallingUidPersistentSystemProcess: false; originatingPendingIntent: null; allowBackgroundActivityStart: false; intent: Intent &#123; flg=0x10000000 cmp=com.xw.androidstest/.MainActivity2 &#125;; callerApp: ProcessRecord&#123;30029ba 25657:com.xw.androidstest/u0a177&#125;]</span><br><span class="line">2021-03-13 23:58:24.360 533-1591/system_process E/ActivityTaskManager: Abort background activity starts from 10177</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义通知变更"><a href="#自定义通知变更" class="headerlink" title="自定义通知变更"></a>自定义通知变更</h3><blockquote>
+<ul>
+<li>原状：以前，自定义通知可以使用整个通知区域，并提供自己的布局和样式。这导致可能会混淆用户或导致不同设备上的布局兼容性问题。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>现状：针对 targetSdkVersion Android 12，自定义通知不再使用完整的通知区域，android12 提供了系统应用标准模板；<br>模板可确保自定义通知与所有状态下的其他通知具有相同的修饰（人人平等），例如通知的图标和扩展提示（处于折叠状态）以及通知的图标、应用程序名称和折叠提示（处于扩展状态）。<br>Android 12 通过这种方式使得所有通知在视觉上保持一致，为用户提供了一个可发现的、熟悉的通知扩展。</li>
+</ul>
+</blockquote>
+<p>标准模板中的自定义通知：</p>
+<p><img alt="20210313_132122_31" data-src="images/20210313_132122_31.png"></p>
+<p>折叠与非折叠状态下的样式</p>
+<p><img alt="20210313_132237_84" data-src="images/20210313_132237_84.png"></p>
+<p>官方建议使用了构建自定义通知的相关接口的应用，都要重新适配，相关接口有：</p>
+<blockquote>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL05vdGlmaWNhdGlvbi5CdWlsZGVyI3NldEN1c3RvbUNvbnRlbnRWaWV3KGFuZHJvaWQud2lkZ2V0LlJlbW90ZVZpZXdzKQ==" title="https://developer.android.google.cn/reference/android/app/Notification.Builder#setCustomContentView(android.widget.RemoteViews)">setCustomContentView(RemoteViews)<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL05vdGlmaWNhdGlvbi5CdWlsZGVyI3NldEN1c3RvbUJpZ0NvbnRlbnRWaWV3KGFuZHJvaWQud2lkZ2V0LlJlbW90ZVZpZXdzKQ==" title="https://developer.android.google.cn/reference/android/app/Notification.Builder#setCustomBigContentView(android.widget.RemoteViews)">setCustomBigContentView(RemoteViews)<i class="fa fa-external-link"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vcmVmZXJlbmNlL2FuZHJvaWQvYXBwL05vdGlmaWNhdGlvbi5CdWlsZGVyI3NldEN1c3RvbUhlYWRzVXBDb250ZW50VmlldyhhbmRyb2lkLndpZGdldC5SZW1vdGVWaWV3cyk=" title="https://developer.android.google.cn/reference/android/app/Notification.Builder#setCustomHeadsUpContentView(android.widget.RemoteViews)">setCustomHeadsUpContentView(RemoteViews)<i class="fa fa-external-link"></i></span></li>
+</ul>
+</blockquote>
+<p>如果您的应用使用的是完全自定义的通知，建议您尽快使用新模板进行测试并进行必要的调整：</p>
+<ol>
+<li><p>启用自定义通知更改：</p>
+<blockquote>
+<ul>
+<li>改变你的应用程序的targetSdkVersion，以S开启新的行为。</li>
+<li>重新编译。</li>
+<li>在运行Android 12的设备或模拟器上安装您的应用。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>测试所有使用自定义视图的通知，确保它们在阴影中看起来像您期望的那样。</p>
+</li>
+<li><p>请注意自定义视图的度量。通常，自定义通知的高度要小于以前。在折叠状态下，自定义内容的最大高度已从106dp降低到48dp。同样，水平空间也更少。</p>
+</li>
+<li><p>为了确保“抬头”状态看起来像您期望的那样，请不要忘记将通知通道的重要性提高到“高”（屏幕弹出）。</p>
+</li>
+</ol>
+<h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h4><p>创建一个自定义的通知</p>
+<p>remote_view.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_margin</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"60dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">"@drawable/icon"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"60dp"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginStart</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_marginStart</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">"@+id/music_name"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textSize</span>=<span class="string">"20dp"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:text</span>=<span class="string">"可可托海的牧羊人"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:maxLines</span>=<span class="string">"1"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:ellipsize</span>=<span class="string">"end"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_marginStart</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_marginTop</span>=<span class="string">"6dp"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:id</span>=<span class="string">"@+id/singer_name"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:textSize</span>=<span class="string">"16dp"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:text</span>=<span class="string">"王琪"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"center"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">"5dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageButton</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/btn_prev"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"@drawable/ic_baseline_skip_previous_24"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageButton</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginStart</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/btn_play"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:src</span>=<span class="string">"@drawable/ic_baseline_play_arrow_24"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"#00ffffff"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ImageButton</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_marginStart</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:id</span>=<span class="string">"@+id/btn_next"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:background</span>=<span class="string">"@drawable/ic_baseline_skip_next_24"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_width</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>MainActivity.kt</p>
+<figure class="highlight kt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">notification</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">val</span> mNotificationManager = getSystemService(NOTIFICATION_SERVICE) <span class="keyword">as</span> NotificationManager</span><br><span class="line">        <span class="keyword">val</span> builder: NotificationCompat.Builder?</span><br><span class="line">        <span class="keyword">val</span> channel = NotificationChannel(</span><br><span class="line">            <span class="string">"通知渠道ID"</span>,</span><br><span class="line">            <span class="string">"通知渠道名称"</span>, NotificationManager.IMPORTANCE_DEFAULT</span><br><span class="line">        )</span><br><span class="line">        channel.description = <span class="string">"通知渠道描述"</span></span><br><span class="line">        mNotificationManager.createNotificationChannel(channel)</span><br><span class="line">        builder = NotificationCompat.Builder(<span class="keyword">this</span>, <span class="string">"通知渠道ID"</span>)</span><br><span class="line"></span><br><span class="line">        builder.setSmallIcon(R.drawable.ic_baseline_music_note_24)</span><br><span class="line">        builder.setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> intent = Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://developer.android.google.cn/"</span>))</span><br><span class="line">        <span class="keyword">val</span> pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, PendingIntent.FLAG_IMMUTABLE)</span><br><span class="line">        builder.setContentIntent(pIntent)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> remoteViews = RemoteViews(<span class="keyword">this</span>.packageName, R.layout.remote_view)</span><br><span class="line"></span><br><span class="line">        builder.setCustomContentView(remoteViews)</span><br><span class="line">        builder.setCustomBigContentView(remoteViews)</span><br><span class="line">        builder.setCustomHeadsUpContentView(remoteViews)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        builder.setDefaults(NotificationCompat.DEFAULT_ALL)</span><br><span class="line">        <span class="keyword">val</span> notification = builder.build()</span><br><span class="line">        mNotificationManager.notify(<span class="number">0</span>, notification)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行一下效果呢：</p>
+<p>折叠状态</p>
+<p><img alt="20210313_143947_68" data-src="images/20210313_143947_68.png"></p>
+<p>展开状态</p>
+<p><img alt="20210313_144023_82" data-src="images/20210313_144023_82.png"></p>
+<p>修改一下折叠后的</p>
+<pre><code class="kt"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">notification</span><span class="params">()</span></span> {
+        <span class="keyword">val</span> mNotificationManager = getSystemService(NOTIFICATION_SERVICE) <span class="keyword">as</span> NotificationManager
+        <span class="keyword">val</span> builder: NotificationCompat.Builder?
+        <span class="keyword">val</span> channel = NotificationChannel(
+            <span class="string">"通知渠道ID"</span>,
+            <span class="string">"通知渠道名称"</span>, NotificationManager.IMPORTANCE_DEFAULT
+        )
+        channel.description = <span class="string">"通知渠道描述"</span>
+        mNotificationManager.createNotificationChannel(channel)
+        builder = NotificationCompat.Builder(<span class="keyword">this</span>, <span class="string">"通知渠道ID"</span>)
+        builder.setContentText(<span class="string">"可可托海的牧羊人-王琪"</span>)
+        builder.setSmallIcon(R.drawable.ic_baseline_music_note_24)
+        builder.setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.ic_baseline_music_note_24))
+        builder.priority = NotificationCompat.PRIORITY_HIGH
+        <span class="keyword">val</span> intent = Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://developer.android.google.cn/"</span>))
+        <span class="keyword">val</span> pIntent = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">1</span>, intent, PendingIntent.FLAG_IMMUTABLE)
+        builder.setContentIntent(pIntent)
+
+        <span class="keyword">val</span> remoteViews = RemoteViews(<span class="keyword">this</span>.packageName, R.layout.remote_view)
+        builder.setCustomBigContentView(remoteViews)
+        builder.setCustomHeadsUpContentView(remoteViews)
+
+
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL)
+        <span class="keyword">val</span> notification = builder.build()
+        mNotificationManager.notify(<span class="number">0</span>, notification)
+
+    }</code></pre>
+<p>折叠状态</p>
+<p><img alt="20210313_145724_20" data-src="images/20210313_145724_20.png"></p>
+<p>展开状态</p>
+<p><img alt="20210313_145800_28" data-src="images/20210313_145800_28.png"></p>
+<blockquote>
+<p>其他目标版本为 Android 12的行为变化，请 <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vYWJvdXQvdmVyc2lvbnMvMTIvYmVoYXZpb3ItY2hhbmdlcy0xMg==" title="https://developer.android.google.cn/about/versions/12/behavior-changes-12">参考官网<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+
+      
+    </div>
+
+    
+      
+
+  <div class="popular-posts-header">相关文章推荐</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2016\09\22\Extending-Web-Technology-with-Android\" rel="bookmark">扩展Web技术和Android</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2016\06\06\Crash-reporting-in-Firebase\" rel="bookmark">Firebase特性之崩溃报告</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2017\12\05\Introducing-android-oreo-go-edition\" rel="bookmark">介绍Android Oreo(Go版)与Android8.1的发布</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2019\03\15\about-android-q-beta-location\" rel="bookmark">关于 Android Q 定位</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="\2020\03\09\android-R-about-handler-change\" rel="bookmark">Android 11 (R) 之 Handler 相关变化</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/path/to/wechat-reward-image/wechat-reward-image.png" alt="Shoewann 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/path/to/alipay-reward-image/alipay-reward-image.jpg" alt="Shoewann 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Shoewann</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://shoewann0402.github.io/2021/03/13/behavior-changes-12/" title="面向 Android 12 的行为变更">https://shoewann0402.github.io/2021/03/13/behavior-changes-12/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+          
+            <a href="/tags/Android-12/" rel="tag"><i class="fa fa-tag"></i> Android 12</a>
+          
+            <a href="/tags/Android-S/" rel="tag"><i class="fa fa-tag"></i> Android S</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+          
+            <span class="post-meta-divider">|</span>
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/06/An-unknown-bank-card/" rel="next" title="一张多出来的银行卡">
+                <i class="fa fa-chevron-left"></i> 一张多出来的银行卡
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+          </div>
+          
+
+  <div style="margin:0px 0px 60px 0px"></div>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 信息流广告1 -->
+<ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-2736746584497864" data-ad-slot="4936302539"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  <div id="wpac-rating"></div>
+	<script type="text/javascript">
+	wpac_init = window.wpac_init || [];
+	wpac_init.push({widget: 'Rating', id: 19883});
+	(function() {
+    	if ('WIDGETPACK_LOADED' in window) return;
+   	 WIDGETPACK_LOADED = true;
+    	var mc = document.createElement('script');
+    	mc.type = 'text/javascript';
+    	mc.async = true;
+    	mc.src = 'https://embed.widgetpack.com/widget.js';
+    	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjYzNC8xOTE4MQ=="></div>
+    </div>
+
+  
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 文字广告和展示广告1 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2736746584497864" data-ad-slot="4544462438" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="Shoewann">
+  
+  <p class="site-author-name" itemprop="name">Shoewann</p>
+  <div class="site-description motion-element" itemprop="description">Android Developer & Google Fans</div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">169</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Nob2V3YW5uMDQwMg==" title="GitHub &rarr; https://github.com/shoewann0402"><i class="fa fa-fw fa-github"></i></span>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <span class="exturl" data-url="bWFpbHRvOnh1d2FuZzA0MDJAZ21haWwuY29t" title="E-Mail &rarr; mailto:xuwang0402@gmail.com"><i class="fa fa-fw fa-envelope"></i></span>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <span class="exturl" data-url="aHR0cHM6Ly93ZWliby5jb20vU2hvZXdhbm4=" title="Weibo &rarr; https://weibo.com/Shoewann"><i class="fa fa-fw fa-weibo"></i></span>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9mNTU2ZWRjZTg2ZGY0MTg=" title="Twitter &rarr; https://twitter.com/f556edce86df418"><i class="fa fa-fw fa-twitter"></i></span>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+      
+        
+      
+        <span class="exturl" data-url="aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3Byb2ZpbGUucGhwP2lkPTEwMDAwNzg3NTMzNzc1Mw==" title="FB Page &rarr; https://www.facebook.com/profile.php?id=100007875337753"><i class="fa fa-fw fa-facebook"></i></span>
+      </span>
+    
+  </div>
+
+
+
+  <div class="cc-license motion-element" itemprop="license">
+  
+  
+    
+  
+  
+  
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+<!-- 音频播放 -->
+<!--<div align="center">
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+</div> -->
+
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLmdvb2dsZS5jbg==" title="https://developers.google.cn">Google开发者官网</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS8yODcwMDg=" title="http://weibo.com/287008">Google谷歌爱好者</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dmaW5n" title="https://blog.csdn.net/wfing">王玉成</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly95YW5nYm8udGVjaC8=" title="https://yangbo.tech/">杨波</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9oZW5jb2Rlci5jb20v" title="https://hencoder.com/">扔物线朱凯</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d1b2xpbl9ibG9n" title="https://blog.csdn.net/guolin_blog">郭霖的专栏</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xtajYyMzU2NTc5MQ==" title="https://blog.csdn.net/lmj623565791">鸿洋</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9jaGVueXUuYmxvZy5jc2RuLm5ldC8=" title="https://chenyu.blog.csdn.net/">chen.yu</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL21hcnRpbmhhbi5zaXRlLw==" title="http://martinhan.site/">MartinHan的小站</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3d3dy53amRpYW5rb25nLmNuLw==" title="http://www.wjdiankong.cn/">尼古拉斯赵四</span>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dhbmdob25nbGVpMDE=" title="https://blog.csdn.net/wanghonglei01">宏雷的CSDN</span>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全"><span class="nav-number">2.</span> <span class="nav-text">安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件暴露安全问题"><span class="nav-number">2.1.</span> <span class="nav-text">组件暴露安全问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">2.1.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pending-intents-必须声明可变性"><span class="nav-number">2.2.</span> <span class="nav-text">Pending intents 必须声明可变性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能"><span class="nav-number">3.</span> <span class="nav-text">性能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前台服务通知不允许在后台开启"><span class="nav-number">3.1.</span> <span class="nav-text">前台服务通知不允许在后台开启</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-2"><span class="nav-number">3.1.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无法从服务或广播接收者创建通知跳板"><span class="nav-number">3.2.</span> <span class="nav-text">无法从服务或广播接收者创建通知跳板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-3"><span class="nav-number">3.2.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义通知变更"><span class="nav-number">3.3.</span> <span class="nav-text">自定义通知变更</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-4"><span class="nav-number">3.3.1.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=c5a15952a6450d42add71651a17eab4a619bede3c63194238dcede3442dd850c"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Google技术分享交流" title="Google技术分享交流"></a>
+<div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shoewann</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">449k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">12:29</span>
+  
+</div>
+
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Muse</span> v7.2.0</div>
+
+
+
+<div>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/11/2016 14:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+</div>
+
+
+        
+
+
+
+
+
+
+  <div style="display: none;">
+    <script>
+      var cnzz_s_tag = document.createElement('script');
+      cnzz_s_tag.type = 'text/javascript';
+      cnzz_s_tag.async = true;
+      cnzz_s_tag.charset = 'utf-8';
+      cnzz_s_tag.src = 'https://w.cnzz.com/c.php?id=1259071960&async=1';
+      var root_s = document.getElementsByTagName('script')[0];
+      root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+
+    </script>
+  </div>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/lazyload/lozad.min.js?v=1.10.0"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
+
+
+
+  
+
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+  <script src="/js/js.cookie.js?v=7.2.0"></script>
+  <script src="/js/scroll-cookie.js?v=7.2.0"></script>
+
+
+  
+  <script src="/js/exturl.js?v=7.2.0"></script>
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+
+  
+
+
+  
+    
+
+
+<script>
+  window.livereOptions = {
+    refer: '2021/03/13/behavior-changes-12/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $('.leancloud_visitors');
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
+            
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
+            
+              .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+              })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function() {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'ACMTtyiajBtyriIPCjgyQbkW-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'ACMTtyiajBtyriIPCjgyQbkW-gzGzoHsz',
+                'X-LC-Key': '6DCk5HyLXFUQI3gFXrBR7b1z',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+            if (localhost.test(document.URL)) return;
+            addCount(Counter);
+          
+        });
+    });
+  </script>
+
+
+
+
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+
+
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "default";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Linkedin,Mailto,Reddit,Delicious,StumbleUpon,Pinterest,Facebook,GooglePlus,Slashdot,Technorati,Posterous,Tumblr,GoogleBookmarks,Newsvine,Evernote,Friendfeed,Vkontakte,Odnoklassniki,Mailru";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 19883,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+
+  
+  <script>
+	// Function called if AdBlock is not detected
+	function adBlockNotDetected() {
+		  //alert('[ AdBlock is not enabled ] \n\n 未检测到相关广告拦截，欢迎您访问本站 ~');
+	}
+
+	// Function called if AdBlock is detected
+	function adBlockDetected() {
+      alert('--- AdBlock is enabled ---  \n\n检测到您开启了广告拦截功能，为了本站的更好发展，麻烦您关闭拦截，感谢 !!!');
+	}
+
+	// We look at whether FuckAdBlock already exists.
+	if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
+		// If this is the case, it means that something tries to usurp are identity
+		// So, considering that it is a detection
+		adBlockDetected();
+	} else {
+		// Otherwise, you import the script FuckAdBlock
+		var importFAB = document.createElement('script');
+		importFAB.onload = function() {
+			// If all goes well, we configure FuckAdBlock
+			fuckAdBlock.onDetected(adBlockDetected)
+			fuckAdBlock.onNotDetected(adBlockNotDetected);
+		};
+		importFAB.onerror = function() {
+			// If the script does not load (blocked, integrity error, ...)
+			// Then a detection is triggered
+			adBlockDetected();
+		};
+		importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
+		importFAB.crossOrigin = 'anonymous';
+		importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
+		document.head.appendChild(importFAB);
+        }
+  </script>
+</body>
+</html>
