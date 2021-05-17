@@ -246,13 +246,13 @@
     
       <category term="Android R" scheme="https://shoewann0402.github.io/tags/Android-R/"/>
     
+      <category term="WorkManager" scheme="https://shoewann0402.github.io/tags/WorkManager/"/>
+    
       <category term="IntentService" scheme="https://shoewann0402.github.io/tags/IntentService/"/>
     
       <category term="Jobs" scheme="https://shoewann0402.github.io/tags/Jobs/"/>
     
       <category term="JobIntentService" scheme="https://shoewann0402.github.io/tags/JobIntentService/"/>
-    
-      <category term="WorkManager" scheme="https://shoewann0402.github.io/tags/WorkManager/"/>
     
   </entry>
   
@@ -679,9 +679,9 @@
     
       <category term="Android" scheme="https://shoewann0402.github.io/tags/Android/"/>
     
-      <category term="WorkManager" scheme="https://shoewann0402.github.io/tags/WorkManager/"/>
-    
       <category term="Jetpack" scheme="https://shoewann0402.github.io/tags/Jetpack/"/>
+    
+      <category term="WorkManager" scheme="https://shoewann0402.github.io/tags/WorkManager/"/>
     
   </entry>
   

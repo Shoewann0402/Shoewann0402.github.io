@@ -102,10 +102,10 @@
       <tags>
         <tag>Android</tag>
         <tag>Android R</tag>
+        <tag>WorkManager</tag>
         <tag>IntentService</tag>
         <tag>Jobs</tag>
         <tag>JobIntentService</tag>
-        <tag>WorkManager</tag>
       </tags>
   </entry>
   <entry>
@@ -300,8 +300,8 @@
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>WorkManager</tag>
         <tag>Jetpack</tag>
+        <tag>WorkManager</tag>
       </tags>
   </entry>
   <entry>
